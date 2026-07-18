@@ -1,0 +1,157 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-07-18",
+  "source": "Tổng hợp từ cổng thông tin và văn bản hành chính công khai. Dữ liệu mẫu phục vụ demo, cần đối soát với UBND xã trước khi sử dụng chính thức.",
+  "commune": {
+    "name": "Xã Hòa Tiến",
+    "city": "Thành phố Đà Nẵng",
+    "formedFrom": ["Xã Hòa Khương", "Xã Hòa Tiến"],
+    "effectiveDate": "2025-07-01",
+    "area_km2": 65.9,
+    "population": 38823,
+    "portal": "hoatien.danang.gov.vn",
+    "note": "Xã Hòa Tiến mới được thành lập theo Nghị quyết 1659/NQ-UBTVQH15, hoạt động từ 01/7/2025 trên cơ sở hợp nhất xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ)."
+  },
+  "contact": {
+    "office": "UBND xã Hòa Tiến",
+    "address": "Thôn Phú Sơn Tây (Quốc lộ 14B), xã Hòa Tiến, TP Đà Nẵng",
+    "phone": "(0236) 3846176",
+    "portal": "https://hoatien.danang.gov.vn",
+    "publicServicePortal": "https://dichvucong.gov.vn",
+    "workingHours": {
+      "weekdays": "Thứ 2 – Thứ 6: Sáng 07:30–11:30, Chiều 13:30–17:00",
+      "saturday": "Sáng thứ 7 làm việc theo lịch niêm yết (bộ phận một cửa)",
+      "sunday": "Nghỉ"
+    }
+  },
+  "procedures": [
+    {
+      "id": "KS-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký khai sinh",
+      "keywords": ["khai sinh", "giấy khai sinh", "đăng ký khai sinh", "trẻ mới sinh", "làm giấy cho con"],
+      "description": "Đăng ký khai sinh cho trẻ em sinh sống trên địa bàn xã. Nên thực hiện trong vòng 60 ngày kể từ ngày sinh.",
+      "documents": [
+        "Tờ khai đăng ký khai sinh (theo mẫu)",
+        "Giấy chứng sinh do cơ sở y tế cấp (nếu không có thì cần văn bản người làm chứng)",
+        "Giấy tờ tùy thân của cha, mẹ (CCCD/hộ chiếu)",
+        "Giấy chứng nhận kết hôn của cha mẹ (nếu có)"
+      ],
+      "fee": "Miễn phí (đăng ký đúng hạn)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hộ tịch 2014; Nghị định 123/2015/NĐ-CP"
+    },
+    {
+      "id": "KT-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký kết hôn",
+      "keywords": ["kết hôn", "đăng ký kết hôn", "giấy kết hôn", "làm giấy cưới", "đăng ký hôn nhân"],
+      "description": "Đăng ký kết hôn cho công dân cư trú tại xã. Hai bên nam nữ phải có mặt khi đăng ký.",
+      "documents": [
+        "Tờ khai đăng ký kết hôn (theo mẫu)",
+        "Giấy tờ tùy thân của hai bên (CCCD/hộ chiếu)",
+        "Giấy xác nhận tình trạng hôn nhân do nơi cư trú cấp",
+        "Quyết định/bản án ly hôn đã có hiệu lực (nếu đã từng kết hôn)"
+      ],
+      "fee": "Miễn phí (công dân Việt Nam trong nước)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hôn nhân và Gia đình 2014; Luật Hộ tịch 2014"
+    },
+    {
+      "id": "TT-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký khai tử",
+      "keywords": ["khai tử", "giấy chứng tử", "đăng ký khai tử", "người mất", "làm giấy khai tử"],
+      "description": "Đăng ký khai tử khi có người chết trên địa bàn xã. Nên thực hiện trong vòng 15 ngày.",
+      "documents": [
+        "Tờ khai đăng ký khai tử (theo mẫu)",
+        "Giấy báo tử hoặc giấy tờ thay thế do cơ quan có thẩm quyền cấp",
+        "Giấy tờ tùy thân của người đi khai tử"
+      ],
+      "fee": "Miễn phí (đăng ký đúng hạn)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hộ tịch 2014; Nghị định 123/2015/NĐ-CP"
+    },
+    {
+      "id": "CT-01",
+      "category": "Chứng thực",
+      "name": "Chứng thực bản sao từ bản chính",
+      "keywords": ["chứng thực", "sao y", "công chứng bản sao", "photo công chứng", "sao y bản chính"],
+      "description": "Chứng thực bản sao đúng với bản chính các giấy tờ, văn bản do cơ quan có thẩm quyền cấp.",
+      "documents": [
+        "Bản chính giấy tờ cần chứng thực để đối chiếu",
+        "Bản sao (bản photo) giấy tờ cần chứng thực"
+      ],
+      "fee": "2.000 đồng/trang (tham khảo, theo quy định phí hiện hành)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 23/2015/NĐ-CP"
+    },
+    {
+      "id": "CT-02",
+      "category": "Chứng thực",
+      "name": "Chứng thực chữ ký",
+      "keywords": ["chứng thực chữ ký", "ký công chứng", "xác nhận chữ ký", "chữ ký"],
+      "description": "Chứng thực chữ ký của người yêu cầu trên giấy tờ, văn bản.",
+      "documents": [
+        "Giấy tờ tùy thân của người yêu cầu (CCCD/hộ chiếu)",
+        "Giấy tờ, văn bản mà người yêu cầu sẽ ký vào"
+      ],
+      "fee": "10.000 đồng/trường hợp (tham khảo)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 23/2015/NĐ-CP"
+    },
+    {
+      "id": "XN-01",
+      "category": "Cư trú",
+      "name": "Xác nhận tình trạng hôn nhân",
+      "keywords": ["tình trạng hôn nhân", "xác nhận độc thân", "giấy độc thân", "chưa kết hôn", "xác nhận hôn nhân"],
+      "description": "Cấp giấy xác nhận tình trạng hôn nhân cho công dân cư trú tại xã (thường dùng để đăng ký kết hôn, giao dịch dân sự).",
+      "documents": [
+        "Tờ khai xác nhận tình trạng hôn nhân (theo mẫu)",
+        "Giấy tờ tùy thân (CCCD/hộ chiếu)",
+        "Giấy tờ chứng minh nơi cư trú (nếu cần)"
+      ],
+      "fee": "15.000 đồng/trường hợp (tham khảo)",
+      "processingTime": "Trong ngày hoặc tối đa 03 ngày làm việc nếu cần xác minh",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 123/2015/NĐ-CP"
+    }
+  ],
+  "faq": [
+    {
+      "id": "FAQ-01",
+      "question": "Bộ phận Một cửa xã Hòa Tiến làm việc giờ nào?",
+      "keywords": ["giờ làm việc", "mấy giờ", "thời gian làm việc", "giờ mở cửa"],
+      "answer": "Bộ phận Một cửa làm việc từ thứ 2 đến thứ 6: sáng 07:30–11:30, chiều 13:30–17:00. Sáng thứ 7 làm việc theo lịch niêm yết. Chủ nhật nghỉ."
+    },
+    {
+      "id": "FAQ-02",
+      "question": "Tôi có thể nộp hồ sơ trực tuyến không?",
+      "keywords": ["trực tuyến", "online", "nộp online", "dịch vụ công", "qua mạng"],
+      "answer": "Nhiều thủ tục có thể nộp trực tuyến qua Cổng Dịch vụ công Quốc gia tại dichvucong.gov.vn. Bạn cần tài khoản định danh điện tử (VNeID) để đăng nhập và nộp hồ sơ."
+    },
+    {
+      "id": "FAQ-03",
+      "question": "Xã Hòa Tiến được thành lập từ đâu?",
+      "keywords": ["sáp nhập", "thành lập", "hòa khương", "lịch sử xã", "hình thành"],
+      "answer": "Xã Hòa Tiến mới hoạt động từ 01/7/2025, hình thành từ việc hợp nhất xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ), theo Nghị quyết 1659/NQ-UBTVQH15. Xã thuộc TP Đà Nẵng, diện tích khoảng 65,9 km², dân số khoảng 38.823 người."
+    },
+    {
+      "id": "FAQ-04",
+      "question": "Làm khai sinh cho con có mất phí không?",
+      "keywords": ["phí khai sinh", "khai sinh mất tiền", "lệ phí khai sinh"],
+      "answer": "Đăng ký khai sinh đúng hạn (trong vòng 60 ngày kể từ ngày sinh) được miễn lệ phí. Bạn cần mang theo giấy chứng sinh và giấy tờ tùy thân của cha mẹ."
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hòa Tiến AI · Trợ lý hành chính số</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <div class="seal">HT</div>
+      <div class="brand-text"><b>Hòa Tiến AI</b><span>Trợ lý hành chính số</span></div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#tro-ly">Trợ lý AI</a>
+      <a href="#thu-tuc">Thủ tục</a>
+      <a href="#faq">Hỏi đáp</a>
+      <a href="#lien-he">Liên hệ</a>
+      <a href="#tro-ly" class="nav-cta">Hỏi ngay</a>
+    </nav>
+    <div class="user-menu" id="userMenu">
+      <button class="auth-trigger" id="authTrigger">Đăng nhập</button>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="who"><b id="userName"></b><span id="userEmail"></span></div>
+        <button id="logoutBtn">Đăng xuất</button>
+      </div>
+    </div>
+    <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Xã Hòa Tiến · TP Đà Nẵng</span>
+    <h1>Hỏi một câu, <em>xong</em> thủ tục.</h1>
+    <p class="lead">Trợ lý AI giúp người dân Hòa Tiến tra cứu thủ tục hành chính, biết cần chuẩn bị hồ sơ gì và liên hệ đúng nơi — bằng tiếng Việt, ngay trên điện thoại.</p>
+    <div class="hero-actions">
+      <a href="#tro-ly" class="btn btn-primary">Trò chuyện với trợ lý →</a>
+      <a href="#thu-tuc" class="btn btn-ghost">Xem danh mục thủ tục</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>24/7</b><span>Hỗ trợ mọi lúc</span></div>
+      <div><b>0 đ</b><span>Miễn phí sử dụng</span></div>
+      <div><b>Có dẫn nguồn</b><span>Thông tin đáng tin</span></div>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 400 400" fill="none">
+      <path d="M40 300 Q120 250 200 290 T380 270" stroke="#1d6f8b" stroke-width="2.5" opacity=".35" fill="none"/>
+      <path d="M20 330 Q120 290 210 320 T390 300" stroke="#2f7d4f" stroke-width="2.5" opacity=".3" fill="none"/>
+      <circle cx="120" cy="150" r="5" fill="#2f7d4f"/>
+      <circle cx="250" cy="200" r="5" fill="#1d6f8b"/>
+      <circle cx="180" cy="280" r="5" fill="#e8b84b"/>
+      <line x1="120" y1="150" x2="250" y2="200" stroke="#2f7d4f" stroke-width="1.2" opacity=".3" stroke-dasharray="4 4"/>
+      <line x1="250" y1="200" x2="180" y2="280" stroke="#1d6f8b" stroke-width="1.2" opacity=".3" stroke-dasharray="4 4"/>
+    </svg>
+    <div class="art-chip chip-1"><span class="dot"></span>UBND xã</div>
+    <div class="art-chip chip-2"><span class="dot"></span>Bộ phận Một cửa</div>
+    <div class="art-chip chip-3"><span class="dot"></span>Dịch vụ công</div>
+  </div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1200 18" preserveAspectRatio="none"><path d="M0 9 Q30 0 60 9 T120 9 T180 9 T240 9 T300 9 T360 9 T420 9 T480 9 T540 9 T600 9 T660 9 T720 9 T780 9 T840 9 T900 9 T960 9 T1020 9 T1080 9 T1140 9 T1200 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+<!-- CHAT -->
+<section id="tro-ly" class="block">
+  <div class="sec-head" style="text-align:center;">
+    <span class="eyebrow" style="margin:0 auto 12px; display:inline-flex;">Trợ lý AI</span>
+    <h2>Hỏi bất cứ điều gì về thủ tục hành chính</h2>
+    <p style="margin:8px auto 0;">Ví dụ: “Làm khai sinh cho con cần giấy tờ gì?” — trợ lý trả lời kèm nguồn và mã QR.</p>
+  </div>
+  <div class="chat-wrap">
+    <div class="net-banner" id="netBanner">
+      Không kết nối được tới máy chủ. Bạn có thể thử lại, hoặc dùng
+      <a href="../legacy/index.html">bản chạy offline</a> nếu đang ở khu vực mạng yếu.
+    </div>
+    <div class="chat-card">
+      <div class="chat-top">
+        <div class="avatar">HT</div>
+        <div style="flex:1;"><b>Trợ lý Hòa Tiến</b><span><i class="live"></i> Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã</span></div>
+        <button class="history-toggle" id="historyToggle" style="color:#fff; display:none;">Lịch sử ▾</button>
+      </div>
+      <div class="history-panel" id="historyPanel"></div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chips" id="quickChips"></div>
+      <div class="chat-input">
+        <input id="chatInput" type="text" placeholder="Nhập câu hỏi của bạn…" autocomplete="off" />
+        <button class="send-btn" id="sendBtn" aria-label="Gửi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCEDURES -->
+<section id="thu-tuc" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Dịch vụ công</span>
+    <h2>Danh mục thủ tục hành chính</h2>
+    <p>Nhấn vào từng thủ tục để xem hồ sơ cần chuẩn bị, lệ phí, thời gian xử lý và mã QR nộp trực tuyến.</p>
+  </div>
+  <div class="grid" id="procGrid"></div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1200 18" preserveAspectRatio="none"><path d="M0 9 Q30 0 60 9 T120 9 T180 9 T240 9 T300 9 T360 9 T420 9 T480 9 T540 9 T600 9 T660 9 T720 9 T780 9 T840 9 T900 9 T960 9 T1020 9 T1080 9 T1140 9 T1200 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+<!-- FAQ -->
+<section id="faq" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Hỏi đáp</span>
+    <h2>Câu hỏi thường gặp</h2>
+    <p>Những thắc mắc phổ biến của người dân về giờ làm việc, nộp hồ sơ trực tuyến và thông tin xã.</p>
+  </div>
+  <div id="faqList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="lien-he" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Liên hệ</span>
+    <h2>Ủy ban nhân dân xã Hòa Tiến</h2>
+    <p>Nếu trợ lý chưa trả lời được, hãy liên hệ trực tiếp bộ phận Một cửa của xã.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-list" id="contactList"></div>
+    <div class="contact-qr">
+      <img id="portalQr" alt="QR cổng thông tin xã" />
+      <b>Cổng thông tin xã Hòa Tiến</b>
+      <small>Quét để truy cập nhanh</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Hòa Tiến AI</b> · Trợ lý hành chính số — sản phẩm dự thi “Ý tưởng sáng tạo · Hòa Tiến số”.<br/>
+  <span class="disc" style="display:block;">Đây là hệ thống thử nghiệm phục vụ dự thi và trải nghiệm trực tiếp. Dữ liệu thủ tục mang tính tham khảo, cần đối soát với UBND xã Hòa Tiến trước khi sử dụng chính thức. Trợ lý AI chỉ trả lời trong phạm vi dữ liệu của xã và luôn hướng người dân liên hệ UBND khi cần.</span>
+</footer>
+
+<!-- MODAL: chi tiết thủ tục -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- MODAL: đăng nhập / đăng ký -->
+<div class="modal-bg" id="authModalBg" onclick="if(event.target===this)closeAuthModal()">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-top">
+      <button class="x" onclick="closeAuthModal()">✕</button>
+      <div class="cat">Tài khoản</div>
+      <h3>Chào bạn</h3>
+    </div>
+    <div class="modal-body">
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">Đăng nhập</div>
+        <div class="auth-tab" data-tab="register">Đăng ký</div>
+      </div>
+      <div class="auth-error" id="authError"></div>
+      <form class="auth-form active" id="loginForm">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required autocomplete="email" />
+        <label>Mật khẩu</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password" />
+        <button type="submit" class="btn btn-primary auth-submit">Đăng nhập</button>
+      </form>
+      <form class="auth-form" id="registerForm">
+        <label>Họ tên hiển thị</label>
+        <input type="text" id="registerName" required />
+        <label>Email</label>
+        <input type="email" id="registerEmail" required autocomplete="email" />
+        <label>Mật khẩu (tối thiểu 6 ký tự)</label>
+        <input type="password" id="registerPassword" required minlength="6" autocomplete="new-password" />
+        <button type="submit" class="btn btn-primary auth-submit">Tạo tài khoản</button>
+      </form>
+      <p style="font-size:12px; color:var(--ink-soft); margin-top:14px; text-align:center;">
+        Bạn không cần đăng nhập để hỏi trợ lý hay tra cứu thủ tục — đăng nhập chỉ để lưu lại lịch sử câu hỏi của bạn.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Đổi URL này trước khi deploy production (trỏ tới domain backend Railway/Render)
+  window.__HOATIEN_API_BASE__ = "http://localhost:8000";
+</script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+/* ============================================================
+   app.js — Logic UI Hòa Tiến AI Assistant (gọi backend thật)
+   ============================================================ */
+
+let CONTACTS = null;
+let PROCEDURES = [];
+
+/* ---------- QR helper ---------- */
+function qr(data, size = 96) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=0&data=${encodeURIComponent(data)}`;
+}
+
+/* ---------- Banner mạng ---------- */
+function showNetBanner(show) {
+  document.getElementById('netBanner').classList.toggle('show', show);
+}
+
+/* ---------- Chat UI ---------- */
+function addMsg(role, contentHtml, src) {
+  const body = document.getElementById('chatBody');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+  const av = role === 'bot' ? 'AI' : 'Bạn';
+  wrap.innerHTML = `<div class="mini-av">${av}</div>
+    <div class="bubble">${contentHtml}${src ? `<div class="src"><b>ⓘ</b> ${src}</div>` : ''}</div>`;
+  body.appendChild(wrap);
+  body.scrollTop = body.scrollHeight;
+  return wrap;
+}
+
+function addTyping() {
+  const body = document.getElementById('chatBody');
+  const w = document.createElement('div');
+  w.className = 'msg bot'; w.id = 'typingRow';
+  w.innerHTML = `<div class="mini-av">AI</div><div class="bubble typing"><span></span><span></span><span></span></div>`;
+  body.appendChild(w); body.scrollTop = body.scrollHeight;
+}
+function removeTyping() { const t = document.getElementById('typingRow'); if (t) t.remove(); }
+
+function buildAnswerHtml(res) {
+  let html = res.answer_html;
+  if (res.matched_source_type === 'procedure') {
+    // Bổ sung QR nếu backend trả kèm online_url (đã có trong response mở rộng)
+  }
+  return html;
+}
+
+async function ask(query) {
+  if (!query.trim()) return;
+  addMsg('user', query);
+  document.getElementById('chatInput').value = '';
+  addTyping();
+  try {
+    const res = await api.chat(query);
+    removeTyping();
+    addMsg('bot', buildAnswerHtml(res), res.source);
+    showNetBanner(false);
+    if (getToken()) loadHistory(); // cập nhật panel lịch sử nếu đang mở
+  } catch (e) {
+    removeTyping();
+    if (e instanceof ApiError && e.status === 0) {
+      showNetBanner(true);
+      addMsg('bot', 'Không kết nối được tới máy chủ. Vui lòng thử lại sau ít phút.');
+    } else {
+      addMsg('bot', 'Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  }
+}
+
+/* ---------- Khởi tạo dữ liệu tĩnh (procedures, faq, contacts) ---------- */
+async function initData() {
+  try {
+    const [procedures, faqs, contacts] = await Promise.all([
+      api.getProcedures(), api.getFaq(), api.getContacts(),
+    ]);
+    PROCEDURES = procedures;
+    CONTACTS = contacts;
+    renderProcedures(procedures);
+    renderFaq(faqs);
+    renderContacts(contacts);
+    showNetBanner(false);
+  } catch (e) {
+    showNetBanner(true);
+  }
+}
+
+function renderProcedures(procedures) {
+  const grid = document.getElementById('procGrid');
+  grid.innerHTML = '';
+  procedures.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cat">${p.category}</div>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <div class="meta"><span><b>Phí:</b> ${p.fee.split('(')[0]}</span><span><b>⏱</b> ${p.processing_time}</span></div>`;
+    card.onclick = () => openModal(p);
+    grid.appendChild(card);
+  });
+}
+
+function renderFaq(faqs) {
+  const faqList = document.getElementById('faqList');
+  faqList.innerHTML = '';
+  faqs.forEach(f => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `<div class="faq-q">${f.question}<span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></div>
+      <div class="faq-a">${f.answer}</div>`;
+    item.querySelector('.faq-q').onclick = () => item.classList.toggle('open');
+    faqList.appendChild(item);
+  });
+}
+
+function renderContacts(c) {
+  const rows = [
+    ['📍', 'Địa chỉ', c.address],
+    ['☎️', 'Điện thoại', c.phone],
+    ['🕒', 'Giờ làm việc', c.working_hours.weekdays],
+    ['🌐', 'Cổng thông tin', c.portal_url],
+  ];
+  const cl = document.getElementById('contactList');
+  cl.innerHTML = '';
+  rows.forEach(([ic, label, val]) => {
+    const r = document.createElement('div');
+    r.className = 'contact-row';
+    r.innerHTML = `<div class="ci">${ic}</div><div><b>${label}</b><span>${val}</span></div>`;
+    cl.appendChild(r);
+  });
+  document.getElementById('portalQr').src = qr(c.portal_url, 150);
+}
+
+/* ---------- Modal chi tiết thủ tục ---------- */
+function openModal(p) {
+  const m = document.getElementById('modalContent');
+  m.innerHTML = `
+    <div class="modal-top">
+      <button class="x" onclick="closeModal()">✕</button>
+      <div class="cat">${p.category}</div>
+      <h3>${p.name}</h3>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--ink-soft);">${p.description}</p>
+      <h4>Hồ sơ cần chuẩn bị</h4>
+      <ul>${p.documents.map(d => `<li>${d}</li>`).join('')}</ul>
+      <h4>Thông tin xử lý</h4>
+      <div class="info-pills">
+        <div class="pill"><b>Lệ phí</b>${p.fee}</div>
+        <div class="pill"><b>Thời gian</b>${p.processing_time}</div>
+        <div class="pill"><b>Nơi nộp</b>${p.place_of_submission}</div>
+        <div class="pill"><b>Căn cứ</b>${p.legal_basis}</div>
+      </div>
+      <div class="qr-box">
+        <img src="${qr(p.online_url, 96)}" alt="QR nộp trực tuyến"/>
+        <div><b>Nộp hồ sơ trực tuyến</b><br/><small>Quét mã QR để đến Cổng Dịch vụ công Quốc gia và nộp hồ sơ ${p.name.toLowerCase()}.</small></div>
+      </div>
+      <a href="#tro-ly" class="btn btn-primary modal-cta" onclick="closeModal()">Hỏi trợ lý về thủ tục này →</a>
+    </div>`;
+  document.getElementById('modalBg').classList.add('show');
+}
+function closeModal() { document.getElementById('modalBg').classList.remove('show'); }
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+function openAuthModal(tab = 'login') {
+  document.getElementById('authModalBg').classList.add('show');
+  switchAuthTab(tab);
+  document.getElementById('authError').classList.remove('show');
+}
+function closeAuthModal() { document.getElementById('authModalBg').classList.remove('show'); }
+
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.getElementById('loginForm').classList.toggle('active', tab === 'login');
+  document.getElementById('registerForm').classList.toggle('active', tab === 'register');
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('authError');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function updateAuthUI() {
+  const user = getStoredUser();
+  const trigger = document.getElementById('authTrigger');
+  const dropdown = document.getElementById('userDropdown');
+  const historyToggle = document.getElementById('historyToggle');
+
+  if (user) {
+    trigger.innerHTML = `<span class="av">${user.display_name.charAt(0).toUpperCase()}</span> ${user.display_name.split(' ')[0]}`;
+    document.getElementById('userName').textContent = user.display_name;
+    document.getElementById('userEmail').textContent = user.email;
+    historyToggle.style.display = 'inline-flex';
+  } else {
+    trigger.textContent = 'Đăng nhập';
+    dropdown.classList.remove('show');
+    historyToggle.style.display = 'none';
+    document.getElementById('historyPanel').classList.remove('show');
+  }
+}
+
+async function loadHistory() {
+  const panel = document.getElementById('historyPanel');
+  try {
+    const items = await api.getHistory();
+    if (!items.length) {
+      panel.innerHTML = '<div style="color:var(--ink-soft); font-size:13px;">Bạn chưa có câu hỏi nào được lưu.</div>';
+      return;
+    }
+    panel.innerHTML = items.map(h => `
+      <div class="history-item" data-q="${encodeURIComponent(h.question)}">
+        <div class="hq">${h.question}</div>
+        <div class="ht">${new Date(h.created_at).toLocaleString('vi-VN')}</div>
+      </div>`).join('');
+    panel.querySelectorAll('.history-item').forEach(el => {
+      el.onclick = () => ask(decodeURIComponent(el.dataset.q));
+    });
+  } catch (e) {
+    panel.innerHTML = '<div style="color:var(--ink-soft); font-size:13px;">Không tải được lịch sử.</div>';
+  }
+}
+
+/* ---------- Events ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  initData();
+  updateAuthUI();
+
+  // greeting + chips
+  addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);
+  const chips = ['Làm khai sinh cần gì?', 'Đăng ký kết hôn', 'Giờ làm việc?', 'Chứng thực bản sao'];
+  const chipBox = document.getElementById('quickChips');
+  chips.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip-q'; b.textContent = c;
+    b.onclick = () => ask(c);
+    chipBox.appendChild(b);
+  });
+
+  document.getElementById('sendBtn').onclick = () => ask(document.getElementById('chatInput').value);
+  document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') ask(e.target.value); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAuthModal(); } });
+
+  // Auth trigger
+  document.getElementById('authTrigger').onclick = () => {
+    if (getStoredUser()) {
+      document.getElementById('userDropdown').classList.toggle('show');
+    } else {
+      openAuthModal('login');
+    }
+  };
+  document.getElementById('logoutBtn').onclick = () => {
+    clearSession();
+    updateAuthUI();
+    document.getElementById('userDropdown').classList.remove('show');
+  };
+  document.querySelectorAll('.auth-tab').forEach(t => t.onclick = () => switchAuthTab(t.dataset.tab));
+
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    document.getElementById('authError').classList.remove('show');
+    try {
+      const res = await api.login(
+        document.getElementById('loginEmail').value,
+        document.getElementById('loginPassword').value
+      );
+      setSession(res.access_token, res.user);
+      updateAuthUI();
+      closeAuthModal();
+    } catch (err) {
+      showAuthError(err instanceof ApiError && err.status === 0 ? 'Không kết nối được máy chủ.' : err.message);
+    }
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    document.getElementById('authError').classList.remove('show');
+    try {
+      const res = await api.register(
+        document.getElementById('registerEmail').value,
+        document.getElementById('registerPassword').value,
+        document.getElementById('registerName').value
+      );
+      setSession(res.access_token, res.user);
+      updateAuthUI();
+      closeAuthModal();
+    } catch (err) {
+      showAuthError(err instanceof ApiError && err.status === 0 ? 'Không kết nối được máy chủ.' : err.message);
+    }
+  });
+
+  document.getElementById('historyToggle').onclick = () => {
+    const panel = document.getElementById('historyPanel');
+    panel.classList.toggle('show');
+    if (panel.classList.contains('show')) loadHistory();
+  };
+});

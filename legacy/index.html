@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hòa Tiến AI · Trợ lý hành chính số</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paddy: #2f7d4f;        /* xanh lúa */
+    --paddy-deep: #1f5a38;
+    --river: #1d6f8b;        /* xanh sông Yên */
+    --river-deep: #12495c;
+    --rice: #e8b84b;         /* vàng lúa */
+    --rice-soft: #f4d888;
+    --cream: #faf7ef;
+    --ink: #1a241f;
+    --ink-soft: #4a564e;
+    --line: #e4ddcb;
+    --white: #ffffff;
+    --shadow: 0 8px 30px rgba(31,90,56,.10);
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* ── Divider hoa văn sóng nước ── */
+  .wave-divider { display:block; width:100%; height:18px; color: var(--rice); opacity:.8; }
+
+  /* ── Header ── */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,247,239,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    max-width: 1120px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .seal {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(140deg, var(--paddy), var(--river));
+    display:grid; place-items:center; color:#fff; font-weight:800; font-size:18px;
+    box-shadow: var(--shadow);
+  }
+  .brand-text b { display:block; font-size: 16px; letter-spacing:.2px; }
+  .brand-text span { display:block; font-size: 11px; color: var(--ink-soft); letter-spacing:.6px; text-transform:uppercase; }
+  .nav-links { margin-left:auto; display:flex; gap:6px; }
+  .nav-links a {
+    text-decoration:none; font-size:14px; font-weight:500; color:var(--ink-soft);
+    padding:8px 14px; border-radius:10px; transition:.2s;
+  }
+  .nav-links a:hover { background:var(--white); color:var(--paddy-deep); box-shadow:var(--shadow); }
+  .nav-cta {
+    margin-left:6px; background:var(--paddy); color:#fff !important; font-weight:600 !important;
+  }
+  .nav-cta:hover { background:var(--paddy-deep) !important; }
+  .burger { margin-left:auto; display:none; background:none; border:none; cursor:pointer; padding:8px; }
+  .burger span { display:block; width:22px; height:2px; background:var(--ink); margin:4px 0; border-radius:2px; }
+
+  /* ── Hero ── */
+  .hero {
+    max-width: 1120px; margin: 0 auto; padding: 64px 24px 40px;
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items:center;
+  }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    color:var(--river-deep); background:rgba(29,111,139,.08);
+    padding:6px 12px; border-radius:999px; margin-bottom:20px;
+  }
+  .eyebrow::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--paddy); }
+  .hero h1 {
+    font-family:'Be Vietnam Pro'; font-weight:800; font-size: clamp(30px, 4.4vw, 50px);
+    line-height:1.1; letter-spacing:-.5px;
+  }
+  .hero h1 em { font-family:'Lora'; font-style:italic; font-weight:600; color:var(--paddy); }
+  .hero p.lead { margin-top:18px; font-size:17px; color:var(--ink-soft); max-width:38ch; }
+  .hero-actions { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+  .btn {
+    border:none; cursor:pointer; font-family:inherit; font-weight:600; font-size:15px;
+    padding:13px 22px; border-radius:12px; transition:.2s; text-decoration:none; display:inline-flex; align-items:center; gap:9px;
+  }
+  .btn-primary { background:var(--paddy); color:#fff; box-shadow:var(--shadow); }
+  .btn-primary:hover { background:var(--paddy-deep); transform:translateY(-1px); }
+  .btn-ghost { background:var(--white); color:var(--ink); border:1px solid var(--line); }
+  .btn-ghost:hover { border-color:var(--paddy); color:var(--paddy-deep); }
+  .hero-stats { margin-top:34px; display:flex; gap:28px; }
+  .hero-stats div b { display:block; font-size:22px; font-weight:700; color:var(--river-deep); font-family:'Lora'; }
+  .hero-stats div span { font-size:12px; color:var(--ink-soft); }
+
+  /* Hero art: bản đồ chấm điểm cách điệu */
+  .hero-art {
+    position:relative; aspect-ratio: 1/1; border-radius:24px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(232,184,75,.18), transparent 40%),
+      linear-gradient(160deg, #ffffff, #f3efe2);
+    border:1px solid var(--line); box-shadow: var(--shadow); overflow:hidden;
+  }
+  .hero-art svg { position:absolute; inset:0; width:100%; height:100%; }
+  .art-chip {
+    position:absolute; background:var(--white); border:1px solid var(--line);
+    border-radius:12px; padding:9px 13px; font-size:12px; font-weight:600;
+    box-shadow: var(--shadow); display:flex; align-items:center; gap:7px;
+  }
+  .art-chip .dot { width:8px; height:8px; border-radius:50%; }
+  .chip-1 { top:16%; left:10%; } .chip-1 .dot{ background:var(--paddy);}
+  .chip-2 { top:44%; right:8%; } .chip-2 .dot{ background:var(--river);}
+  .chip-3 { bottom:14%; left:22%; } .chip-3 .dot{ background:var(--rice);}
+
+  /* ── Section base ── */
+  section.block { max-width: 1120px; margin: 0 auto; padding: 56px 24px; }
+  .sec-head { margin-bottom: 32px; }
+  .sec-head .eyebrow { margin-bottom:12px; }
+  .sec-head h2 { font-size: clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.4px; }
+  .sec-head p { color:var(--ink-soft); margin-top:8px; max-width:56ch; }
+
+  /* ── Chat ── */
+  #tro-ly { background: linear-gradient(180deg, #fff 0%, #f7f3e8 100%); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .chat-wrap { max-width: 860px; margin:0 auto; }
+  .chat-card {
+    background:var(--white); border:1px solid var(--line); border-radius:20px;
+    box-shadow: var(--shadow); overflow:hidden; display:flex; flex-direction:column;
+    height: 560px;
+  }
+  .chat-top {
+    display:flex; align-items:center; gap:12px; padding:16px 20px;
+    border-bottom:1px solid var(--line); background:linear-gradient(120deg, var(--paddy-deep), var(--river-deep)); color:#fff;
+  }
+  .chat-top .avatar { width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.16); display:grid; place-items:center; font-weight:800; }
+  .chat-top b { font-size:15px; }
+  .chat-top span { font-size:12px; opacity:.85; display:flex; align-items:center; gap:6px; }
+  .chat-top .live { width:7px; height:7px; border-radius:50%; background:#7ee6a1; box-shadow:0 0 0 0 rgba(126,230,161,.6); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(126,230,161,.5);} 70%{box-shadow:0 0 0 8px rgba(126,230,161,0);} 100%{box-shadow:0 0 0 0 rgba(126,230,161,0);} }
+  .chat-body { flex:1; overflow-y:auto; padding:22px; display:flex; flex-direction:column; gap:16px; }
+  .msg { display:flex; gap:10px; max-width:88%; }
+  .msg .bubble { padding:12px 15px; border-radius:14px; font-size:14.5px; }
+  .msg.bot { align-self:flex-start; }
+  .msg.bot .bubble { background:#f1f4ef; border:1px solid #e2e9df; border-top-left-radius:4px; }
+  .msg.user { align-self:flex-end; flex-direction:row-reverse; }
+  .msg.user .bubble { background:var(--paddy); color:#fff; border-top-right-radius:4px; }
+  .msg .mini-av { width:30px; height:30px; border-radius:9px; flex-shrink:0; display:grid; place-items:center; font-size:13px; font-weight:700; }
+  .msg.bot .mini-av { background:linear-gradient(140deg,var(--paddy),var(--river)); color:#fff; }
+  .msg.user .mini-av { background:var(--rice); color:var(--ink); }
+  .bubble .src { margin-top:9px; padding-top:9px; border-top:1px dashed #cdd8c9; font-size:12px; color:var(--ink-soft); }
+  .bubble .src b { color:var(--paddy-deep); }
+  .bubble ul { margin:8px 0 2px; padding-left:18px; }
+  .bubble li { margin:3px 0; }
+  .bubble .qr-inline { margin-top:10px; display:flex; align-items:center; gap:12px; background:#faf7ef; border:1px solid var(--line); border-radius:10px; padding:10px; }
+  .bubble .qr-inline img { width:74px; height:74px; border-radius:6px; }
+  .bubble .qr-inline small { font-size:12px; color:var(--ink-soft); }
+  .typing span { display:inline-block; width:7px; height:7px; margin:0 1px; border-radius:50%; background:#9fb0a3; animation:blink 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s;} .typing span:nth-child(3){animation-delay:.4s;}
+  @keyframes blink { 0%,60%,100%{opacity:.3;} 30%{opacity:1;} }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; padding:12px 22px 0; }
+  .chip-q {
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:8px 14px; font-size:13px; font-weight:500; cursor:pointer; transition:.2s; color:var(--ink-soft);
+  }
+  .chip-q:hover { border-color:var(--paddy); color:var(--paddy-deep); background:#f6faf4; }
+  .chat-input { display:flex; gap:10px; padding:16px 22px; border-top:1px solid var(--line); }
+  .chat-input input {
+    flex:1; border:1px solid var(--line); border-radius:12px; padding:13px 16px;
+    font-family:inherit; font-size:14.5px; background:#fbfaf5; outline:none; transition:.2s;
+  }
+  .chat-input input:focus { border-color:var(--paddy); background:#fff; box-shadow:0 0 0 3px rgba(47,125,79,.1); }
+  .send-btn { background:var(--paddy); color:#fff; border:none; border-radius:12px; width:48px; cursor:pointer; display:grid; place-items:center; transition:.2s; }
+  .send-btn:hover { background:var(--paddy-deep); }
+
+  /* ── Procedures grid ── */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
+  .card {
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; transition:.2s; cursor:pointer; position:relative; overflow:hidden;
+  }
+  .card:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:#d3ead9; }
+  .card .cat { font-size:11px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:var(--river); }
+  .card h3 { font-size:17px; margin:8px 0 6px; font-weight:700; }
+  .card p { font-size:13.5px; color:var(--ink-soft); }
+  .card .meta { margin-top:14px; display:flex; gap:14px; font-size:12px; color:var(--ink-soft); }
+  .card .meta b { color:var(--paddy-deep); }
+  .card .arrow { position:absolute; top:20px; right:20px; color:var(--line); transition:.2s; }
+  .card:hover .arrow { color:var(--paddy); transform:translateX(3px); }
+
+  /* ── FAQ ── */
+  .faq-item { background:var(--white); border:1px solid var(--line); border-radius:12px; margin-bottom:12px; overflow:hidden; }
+  .faq-q { padding:16px 20px; font-weight:600; font-size:15px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .faq-q:hover { color:var(--paddy-deep); }
+  .faq-q .ic { transition:.3s; color:var(--paddy); flex-shrink:0; }
+  .faq-item.open .faq-q .ic { transform:rotate(45deg); }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0 20px; color:var(--ink-soft); font-size:14px; }
+  .faq-item.open .faq-a { max-height:220px; padding:0 20px 18px; }
+
+  /* ── Contact ── */
+  #lien-he { background:linear-gradient(135deg, var(--paddy-deep), var(--river-deep)); color:#fff; }
+  #lien-he .sec-head h2, #lien-he .sec-head p { color:#fff; }
+  #lien-he .sec-head p { opacity:.85; }
+  #lien-he .eyebrow { background:rgba(255,255,255,.14); color:#fff; }
+  #lien-he .eyebrow::before { background:var(--rice); }
+  .contact-grid { display:grid; grid-template-columns:1.3fr .7fr; gap:28px; }
+  .contact-list { display:grid; gap:14px; }
+  .contact-row { display:flex; gap:14px; align-items:flex-start; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:16px 18px; }
+  .contact-row .ci { width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,.14); display:grid; place-items:center; flex-shrink:0; }
+  .contact-row b { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.5px; opacity:.75; margin-bottom:2px; }
+  .contact-row span { font-size:15px; }
+  .contact-qr { background:var(--white); border-radius:16px; padding:22px; text-align:center; color:var(--ink); }
+  .contact-qr img { width:150px; height:150px; }
+  .contact-qr b { display:block; margin-top:12px; font-size:14px; }
+  .contact-qr small { color:var(--ink-soft); font-size:12px; }
+
+  /* ── Footer ── */
+  footer { background:var(--ink); color:#c8d0c9; padding:34px 24px; text-align:center; font-size:13px; }
+  footer b { color:#fff; }
+  footer .disc { max-width:640px; margin:12px auto 0; opacity:.7; font-size:12px; line-height:1.5; }
+
+  /* ── Modal ── */
+  .modal-bg { position:fixed; inset:0; background:rgba(20,30,24,.55); backdrop-filter:blur(3px); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
+  .modal-bg.show { display:flex; }
+  .modal {
+    background:var(--white); border-radius:20px; max-width:560px; width:100%;
+    max-height:88vh; overflow-y:auto; box-shadow:0 24px 60px rgba(0,0,0,.3);
+  }
+  .modal-top { padding:24px 28px 18px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; }
+  .modal-top .cat { font-size:11px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--river); }
+  .modal-top h3 { font-size:22px; margin-top:6px; }
+  .modal-top .x { position:absolute; top:22px; right:24px; background:#f1f4ef; border:none; width:34px; height:34px; border-radius:10px; cursor:pointer; font-size:18px; color:var(--ink-soft); }
+  .modal-body { padding:22px 28px 28px; }
+  .modal-body h4 { font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--paddy-deep); margin:18px 0 8px; }
+  .modal-body h4:first-child { margin-top:0; }
+  .modal-body ul { padding-left:20px; }
+  .modal-body li { margin:5px 0; font-size:14.5px; }
+  .info-pills { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+  .pill { background:#f4f7f2; border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; }
+  .pill b { display:block; color:var(--paddy-deep); font-size:12px; margin-bottom:2px; }
+  .modal-body .qr-box { margin-top:20px; display:flex; gap:16px; align-items:center; background:#faf7ef; border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .modal-body .qr-box img { width:96px; height:96px; }
+  .modal-body .qr-box b { font-size:14px; } .modal-body .qr-box small { color:var(--ink-soft); font-size:12.5px; }
+  .modal-cta { margin-top:18px; }
+
+  @media (max-width: 860px) {
+    .nav-links { display:none; }
+    .burger { display:block; }
+    .hero { grid-template-columns:1fr; padding-top:40px; gap:32px; }
+    .hero-art { max-width:360px; }
+    .contact-grid { grid-template-columns:1fr; }
+    .nav-links.mobile-open { display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:#fff; padding:12px; border-bottom:1px solid var(--line); gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <div class="seal">HT</div>
+      <div class="brand-text"><b>Hòa Tiến AI</b><span>Trợ lý hành chính số</span></div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#tro-ly">Trợ lý AI</a>
+      <a href="#thu-tuc">Thủ tục</a>
+      <a href="#faq">Hỏi đáp</a>
+      <a href="#lien-he">Liên hệ</a>
+      <a href="#tro-ly" class="nav-cta">Hỏi ngay</a>
+    </nav>
+    <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Xã Hòa Tiến · TP Đà Nẵng</span>
+    <h1>Hỏi một câu, <em>xong</em> thủ tục.</h1>
+    <p class="lead">Trợ lý AI giúp người dân Hòa Tiến tra cứu thủ tục hành chính, biết cần chuẩn bị hồ sơ gì và liên hệ đúng nơi — bằng tiếng Việt, ngay trên điện thoại.</p>
+    <div class="hero-actions">
+      <a href="#tro-ly" class="btn btn-primary">Trò chuyện với trợ lý →</a>
+      <a href="#thu-tuc" class="btn btn-ghost">Xem danh mục thủ tục</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>24/7</b><span>Hỗ trợ mọi lúc</span></div>
+      <div><b>0 đ</b><span>Miễn phí sử dụng</span></div>
+      <div><b>Có dẫn nguồn</b><span>Thông tin đáng tin</span></div>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 400 400" fill="none">
+      <path d="M40 300 Q120 250 200 290 T380 270" stroke="#1d6f8b" stroke-width="2.5" opacity=".35" fill="none"/>
+      <path d="M20 330 Q120 290 210 320 T390 300" stroke="#2f7d4f" stroke-width="2.5" opacity=".3" fill="none"/>
+      <circle cx="120" cy="150" r="5" fill="#2f7d4f"/>
+      <circle cx="250" cy="200" r="5" fill="#1d6f8b"/>
+      <circle cx="180" cy="280" r="5" fill="#e8b84b"/>
+      <line x1="120" y1="150" x2="250" y2="200" stroke="#2f7d4f" stroke-width="1.2" opacity=".3" stroke-dasharray="4 4"/>
+      <line x1="250" y1="200" x2="180" y2="280" stroke="#1d6f8b" stroke-width="1.2" opacity=".3" stroke-dasharray="4 4"/>
+    </svg>
+    <div class="art-chip chip-1"><span class="dot"></span>UBND xã</div>
+    <div class="art-chip chip-2"><span class="dot"></span>Bộ phận Một cửa</div>
+    <div class="art-chip chip-3"><span class="dot"></span>Dịch vụ công</div>
+  </div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1200 18" preserveAspectRatio="none"><path d="M0 9 Q30 0 60 9 T120 9 T180 9 T240 9 T300 9 T360 9 T420 9 T480 9 T540 9 T600 9 T660 9 T720 9 T780 9 T840 9 T900 9 T960 9 T1020 9 T1080 9 T1140 9 T1200 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+<!-- CHAT -->
+<section id="tro-ly" class="block">
+  <div class="sec-head" style="text-align:center;">
+    <span class="eyebrow" style="margin:0 auto 12px; display:inline-flex;">Trợ lý AI</span>
+    <h2>Hỏi bất cứ điều gì về thủ tục hành chính</h2>
+    <p style="margin:8px auto 0;">Ví dụ: “Làm khai sinh cho con cần giấy tờ gì?” — trợ lý trả lời kèm nguồn và mã QR.</p>
+  </div>
+  <div class="chat-wrap">
+    <div class="chat-card">
+      <div class="chat-top">
+        <div class="avatar">HT</div>
+        <div><b>Trợ lý Hòa Tiến</b><span><i class="live"></i> Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã</span></div>
+      </div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chips" id="quickChips"></div>
+      <div class="chat-input">
+        <input id="chatInput" type="text" placeholder="Nhập câu hỏi của bạn…" autocomplete="off" />
+        <button class="send-btn" id="sendBtn" aria-label="Gửi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCEDURES -->
+<section id="thu-tuc" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Dịch vụ công</span>
+    <h2>Danh mục thủ tục hành chính</h2>
+    <p>Nhấn vào từng thủ tục để xem hồ sơ cần chuẩn bị, lệ phí, thời gian xử lý và mã QR nộp trực tuyến.</p>
+  </div>
+  <div class="grid" id="procGrid"></div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1200 18" preserveAspectRatio="none"><path d="M0 9 Q30 0 60 9 T120 9 T180 9 T240 9 T300 9 T360 9 T420 9 T480 9 T540 9 T600 9 T660 9 T720 9 T780 9 T840 9 T900 9 T960 9 T1020 9 T1080 9 T1140 9 T1200 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+<!-- FAQ -->
+<section id="faq" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Hỏi đáp</span>
+    <h2>Câu hỏi thường gặp</h2>
+    <p>Những thắc mắc phổ biến của người dân về giờ làm việc, nộp hồ sơ trực tuyến và thông tin xã.</p>
+  </div>
+  <div id="faqList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="lien-he" class="block">
+  <div class="sec-head">
+    <span class="eyebrow">Liên hệ</span>
+    <h2>Ủy ban nhân dân xã Hòa Tiến</h2>
+    <p>Nếu trợ lý chưa trả lời được, hãy liên hệ trực tiếp bộ phận Một cửa của xã.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-list" id="contactList"></div>
+    <div class="contact-qr">
+      <img id="portalQr" alt="QR cổng thông tin xã" />
+      <b>Cổng thông tin xã Hòa Tiến</b>
+      <small>Quét để truy cập nhanh</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Hòa Tiến AI</b> · Trợ lý hành chính số — sản phẩm dự thi “Ý tưởng sáng tạo · Hòa Tiến số”.<br/>
+  <span class="disc" style="display:block;">Đây là sản phẩm demo. Dữ liệu thủ tục mang tính tham khảo, cần đối soát với UBND xã Hòa Tiến trước khi sử dụng chính thức. Trợ lý AI chỉ trả lời trong phạm vi dữ liệu của xã và luôn hướng người dân liên hệ UBND khi cần.</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+/* ============================================================
+   Hòa Tiến AI — Trợ lý hành chính số (demo, offline-first)
+   Kiến trúc tách lớp: KB → retrieve() → generate()/callLLM()
+   Dễ nâng cấp lên RAG thật: thay retrieve() bằng vector search,
+   thay generate() bằng callLLM() gọi LLM API.
+   ============================================================ */
+
+let KB = null;
+
+/* ---------- Nạp knowledge base ---------- */
+async function loadKB() {
+  try {
+    const res = await fetch('./data/knowledge-base.json');
+    if (!res.ok) throw new Error('fetch failed');
+    KB = await res.json();
+  } catch (e) {
+    KB = EMBEDDED_KB; // fallback khi mở file:// không fetch được
+  }
+  initUI();
+}
+
+/* ---------- Chuẩn hoá tiếng Việt để so khớp ---------- */
+function normalize(s) {
+  return (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+
+/* ---------- RETRIEVE: keyword/fuzzy scoring trên KB ----------
+   → Đây là điểm để nâng cấp thành vector similarity search.  */
+function retrieve(query, topK = 3) {
+  const q = normalize(query);
+  const qTokens = q.split(' ').filter(t => t.length > 1);
+  const docs = [];
+
+  KB.procedures.forEach(p => docs.push({ type: 'procedure', ref: p,
+    text: normalize([p.name, p.category, p.description, (p.keywords||[]).join(' ')].join(' ')) }));
+  KB.faq.forEach(f => docs.push({ type: 'faq', ref: f,
+    text: normalize([f.question, (f.keywords||[]).join(' '), f.answer].join(' ')) }));
+  docs.push({ type: 'contact', ref: KB.contact,
+    text: normalize('lien he dia chi so dien thoai gio lam viec ubnd tru so ' + KB.contact.address) });
+  docs.push({ type: 'commune', ref: KB.commune,
+    text: normalize('xa hoa tien thong tin dan so dien tich sap nhap ' + KB.commune.note) });
+
+  const scored = docs.map(d => {
+    let score = 0;
+    qTokens.forEach(t => {
+      if (d.text.includes(t)) score += 2;
+      d.text.split(' ').forEach(w => { if (w.startsWith(t) && w !== t) score += 0.5; });
+    });
+    // ưu tiên khớp cụm keyword
+    if (d.ref.keywords) d.ref.keywords.forEach(k => { if (q.includes(normalize(k))) score += 4; });
+    return { ...d, score };
+  }).filter(d => d.score > 0).sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, topK);
+}
+
+/* ---------- QR helper ---------- */
+function qr(data, size = 96) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=0&data=${encodeURIComponent(data)}`;
+}
+
+/* ---------- GENERATE: dựng câu trả lời từ ngữ cảnh đã retrieve ----------
+   → Thay bằng callLLM(query, context) để dùng LLM thật.  */
+function generate(query, hits) {
+  if (!hits.length) {
+    return {
+      html: `Xin lỗi, tôi chưa có thông tin cho câu hỏi này trong dữ liệu của xã Hòa Tiến. Bạn vui lòng liên hệ trực tiếp <b>Bộ phận Một cửa – UBND xã Hòa Tiến</b> qua số <b>${KB.contact.phone}</b> để được hỗ trợ chính xác nhất.`,
+      src: 'Nguyên tắc: không tự tạo thông tin ngoài dữ liệu xã.'
+    };
+  }
+  const top = hits[0];
+
+  if (top.type === 'procedure') {
+    const p = top.ref;
+    return {
+      html: `Về thủ tục <b>${p.name}</b>: ${p.description}<br/>
+        <b>Hồ sơ cần chuẩn bị:</b>
+        <ul>${p.documents.map(d => `<li>${d}</li>`).join('')}</ul>
+        <b>Lệ phí:</b> ${p.fee} · <b>Thời gian:</b> ${p.processingTime}<br/>
+        <b>Nơi nộp:</b> ${p.placeOfSubmission}
+        <div class="qr-inline">
+          <img src="${qr(p.onlineUrl, 74)}" alt="QR nộp trực tuyến"/>
+          <small>Quét mã để nộp hồ sơ trực tuyến qua Cổng Dịch vụ công.<br/>Xem chi tiết trong mục “Thủ tục”.</small>
+        </div>`,
+      src: `Nguồn: Danh mục thủ tục xã Hòa Tiến · ${p.legalBasis}`
+    };
+  }
+  if (top.type === 'faq') {
+    return { html: top.ref.answer, src: 'Nguồn: Mục Hỏi đáp – xã Hòa Tiến' };
+  }
+  if (top.type === 'contact') {
+    const c = KB.contact;
+    return {
+      html: `<b>${c.office}</b><br/>📍 ${c.address}<br/>☎️ ${c.phone}<br/>🕒 ${c.workingHours.weekdays}`,
+      src: 'Nguồn: Thông tin liên hệ UBND xã Hòa Tiến'
+    };
+  }
+  const cm = KB.commune;
+  return {
+    html: `${cm.note} Diện tích khoảng <b>${cm.area_km2} km²</b>, dân số khoảng <b>${cm.population.toLocaleString('vi-VN')}</b> người.`,
+    src: 'Nguồn: Thông tin chung xã Hòa Tiến'
+  };
+}
+
+/* ---------- Điểm nối LLM thật (production) ----------
+   async function callLLM(query, context) {
+     const res = await fetch('https://api.anthropic.com/v1/messages', {...});
+     ...
+   }  */
+
+/* ---------- Chat UI ---------- */
+function addMsg(role, contentHtml, src) {
+  const body = document.getElementById('chatBody');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+  const av = role === 'bot' ? 'AI' : 'Bạn';
+  wrap.innerHTML = `<div class="mini-av">${av}</div>
+    <div class="bubble">${contentHtml}${src ? `<div class="src"><b>ⓘ</b> ${src}</div>` : ''}</div>`;
+  body.appendChild(wrap);
+  body.scrollTop = body.scrollHeight;
+  return wrap;
+}
+
+function addTyping() {
+  const body = document.getElementById('chatBody');
+  const w = document.createElement('div');
+  w.className = 'msg bot'; w.id = 'typingRow';
+  w.innerHTML = `<div class="mini-av">AI</div><div class="bubble typing"><span></span><span></span><span></span></div>`;
+  body.appendChild(w); body.scrollTop = body.scrollHeight;
+}
+function removeTyping() { const t = document.getElementById('typingRow'); if (t) t.remove(); }
+
+function ask(query) {
+  if (!query.trim()) return;
+  addMsg('user', query);
+  document.getElementById('chatInput').value = '';
+  addTyping();
+  const hits = retrieve(query);        // ① RETRIEVE
+  setTimeout(() => {                    // giả lập độ trễ suy nghĩ
+    removeTyping();
+    const ans = generate(query, hits);  // ② GENERATE
+    addMsg('bot', ans.html, ans.src);
+  }, 550 + Math.random() * 350);
+}
+
+/* ---------- Khởi tạo UI ---------- */
+function initUI() {
+  // greeting
+  addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);
+
+  // quick chips
+  const chips = ['Làm khai sinh cần gì?', 'Đăng ký kết hôn', 'Giờ làm việc?', 'Chứng thực bản sao'];
+  const chipBox = document.getElementById('quickChips');
+  chips.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip-q'; b.textContent = c;
+    b.onclick = () => ask(c);
+    chipBox.appendChild(b);
+  });
+
+  // procedures grid
+  const grid = document.getElementById('procGrid');
+  KB.procedures.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cat">${p.category}</div>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <div class="meta"><span><b>Phí:</b> ${p.fee.split('(')[0]}</span><span><b>⏱</b> ${p.processingTime}</span></div>`;
+    card.onclick = () => openModal(p);
+    grid.appendChild(card);
+  });
+
+  // faq
+  const faqList = document.getElementById('faqList');
+  KB.faq.forEach(f => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `<div class="faq-q">${f.question}<span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></div>
+      <div class="faq-a">${f.answer}</div>`;
+    item.querySelector('.faq-q').onclick = () => item.classList.toggle('open');
+    faqList.appendChild(item);
+  });
+
+  // contact
+  const c = KB.contact;
+  const rows = [
+    ['📍', 'Địa chỉ', c.address],
+    ['☎️', 'Điện thoại', c.phone],
+    ['🕒', 'Giờ làm việc', c.workingHours.weekdays],
+    ['🌐', 'Cổng thông tin', c.portal]
+  ];
+  const cl = document.getElementById('contactList');
+  rows.forEach(([ic, label, val]) => {
+    const r = document.createElement('div');
+    r.className = 'contact-row';
+    r.innerHTML = `<div class="ci">${ic}</div><div><b>${label}</b><span>${val}</span></div>`;
+    cl.appendChild(r);
+  });
+  document.getElementById('portalQr').src = qr(c.portal, 150);
+}
+
+/* ---------- Modal chi tiết thủ tục ---------- */
+function openModal(p) {
+  const m = document.getElementById('modalContent');
+  m.innerHTML = `
+    <div class="modal-top">
+      <button class="x" onclick="closeModal()">✕</button>
+      <div class="cat">${p.category}</div>
+      <h3>${p.name}</h3>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--ink-soft);">${p.description}</p>
+      <h4>Hồ sơ cần chuẩn bị</h4>
+      <ul>${p.documents.map(d => `<li>${d}</li>`).join('')}</ul>
+      <h4>Thông tin xử lý</h4>
+      <div class="info-pills">
+        <div class="pill"><b>Lệ phí</b>${p.fee}</div>
+        <div class="pill"><b>Thời gian</b>${p.processingTime}</div>
+        <div class="pill"><b>Nơi nộp</b>${p.placeOfSubmission}</div>
+        <div class="pill"><b>Căn cứ</b>${p.legalBasis}</div>
+      </div>
+      <div class="qr-box">
+        <img src="${qr(p.onlineUrl, 96)}" alt="QR nộp trực tuyến"/>
+        <div><b>Nộp hồ sơ trực tuyến</b><br/><small>Quét mã QR để đến Cổng Dịch vụ công Quốc gia và nộp hồ sơ ${p.name.toLowerCase()}.</small></div>
+      </div>
+      <a href="#tro-ly" class="btn btn-primary modal-cta" onclick="closeModal()">Hỏi trợ lý về thủ tục này →</a>
+    </div>`;
+  document.getElementById('modalBg').classList.add('show');
+}
+function closeModal() { document.getElementById('modalBg').classList.remove('show'); }
+
+/* ---------- Events ---------- */
+document.getElementById('sendBtn').onclick = () => ask(document.getElementById('chatInput').value);
+document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') ask(e.target.value); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ---------- Embedded KB fallback (rút gọn, cho file://) ---------- */
+const EMBEDDED_KB = {
+  "version": "1.0.0",
+  "updatedAt": "2026-07-18",
+  "source": "Tổng hợp từ cổng thông tin và văn bản hành chính công khai. Dữ liệu mẫu phục vụ demo, cần đối soát với UBND xã trước khi sử dụng chính thức.",
+  "commune": {
+    "name": "Xã Hòa Tiến",
+    "city": "Thành phố Đà Nẵng",
+    "formedFrom": ["Xã Hòa Khương", "Xã Hòa Tiến"],
+    "effectiveDate": "2025-07-01",
+    "area_km2": 65.9,
+    "population": 38823,
+    "portal": "hoatien.danang.gov.vn",
+    "note": "Xã Hòa Tiến mới được thành lập theo Nghị quyết 1659/NQ-UBTVQH15, hoạt động từ 01/7/2025 trên cơ sở hợp nhất xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ)."
+  },
+  "contact": {
+    "office": "UBND xã Hòa Tiến",
+    "address": "Thôn Phú Sơn Tây (Quốc lộ 14B), xã Hòa Tiến, TP Đà Nẵng",
+    "phone": "(0236) 3846176",
+    "portal": "https://hoatien.danang.gov.vn",
+    "publicServicePortal": "https://dichvucong.gov.vn",
+    "workingHours": {
+      "weekdays": "Thứ 2 – Thứ 6: Sáng 07:30–11:30, Chiều 13:30–17:00",
+      "saturday": "Sáng thứ 7 làm việc theo lịch niêm yết (bộ phận một cửa)",
+      "sunday": "Nghỉ"
+    }
+  },
+  "procedures": [
+    {
+      "id": "KS-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký khai sinh",
+      "keywords": ["khai sinh", "giấy khai sinh", "đăng ký khai sinh", "trẻ mới sinh", "làm giấy cho con"],
+      "description": "Đăng ký khai sinh cho trẻ em sinh sống trên địa bàn xã. Nên thực hiện trong vòng 60 ngày kể từ ngày sinh.",
+      "documents": [
+        "Tờ khai đăng ký khai sinh (theo mẫu)",
+        "Giấy chứng sinh do cơ sở y tế cấp (nếu không có thì cần văn bản người làm chứng)",
+        "Giấy tờ tùy thân của cha, mẹ (CCCD/hộ chiếu)",
+        "Giấy chứng nhận kết hôn của cha mẹ (nếu có)"
+      ],
+      "fee": "Miễn phí (đăng ký đúng hạn)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hộ tịch 2014; Nghị định 123/2015/NĐ-CP"
+    },
+    {
+      "id": "KT-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký kết hôn",
+      "keywords": ["kết hôn", "đăng ký kết hôn", "giấy kết hôn", "làm giấy cưới", "đăng ký hôn nhân"],
+      "description": "Đăng ký kết hôn cho công dân cư trú tại xã. Hai bên nam nữ phải có mặt khi đăng ký.",
+      "documents": [
+        "Tờ khai đăng ký kết hôn (theo mẫu)",
+        "Giấy tờ tùy thân của hai bên (CCCD/hộ chiếu)",
+        "Giấy xác nhận tình trạng hôn nhân do nơi cư trú cấp",
+        "Quyết định/bản án ly hôn đã có hiệu lực (nếu đã từng kết hôn)"
+      ],
+      "fee": "Miễn phí (công dân Việt Nam trong nước)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hôn nhân và Gia đình 2014; Luật Hộ tịch 2014"
+    },
+    {
+      "id": "TT-01",
+      "category": "Hộ tịch",
+      "name": "Đăng ký khai tử",
+      "keywords": ["khai tử", "giấy chứng tử", "đăng ký khai tử", "người mất", "làm giấy khai tử"],
+      "description": "Đăng ký khai tử khi có người chết trên địa bàn xã. Nên thực hiện trong vòng 15 ngày.",
+      "documents": [
+        "Tờ khai đăng ký khai tử (theo mẫu)",
+        "Giấy báo tử hoặc giấy tờ thay thế do cơ quan có thẩm quyền cấp",
+        "Giấy tờ tùy thân của người đi khai tử"
+      ],
+      "fee": "Miễn phí (đăng ký đúng hạn)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Luật Hộ tịch 2014; Nghị định 123/2015/NĐ-CP"
+    },
+    {
+      "id": "CT-01",
+      "category": "Chứng thực",
+      "name": "Chứng thực bản sao từ bản chính",
+      "keywords": ["chứng thực", "sao y", "công chứng bản sao", "photo công chứng", "sao y bản chính"],
+      "description": "Chứng thực bản sao đúng với bản chính các giấy tờ, văn bản do cơ quan có thẩm quyền cấp.",
+      "documents": [
+        "Bản chính giấy tờ cần chứng thực để đối chiếu",
+        "Bản sao (bản photo) giấy tờ cần chứng thực"
+      ],
+      "fee": "2.000 đồng/trang (tham khảo, theo quy định phí hiện hành)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 23/2015/NĐ-CP"
+    },
+    {
+      "id": "CT-02",
+      "category": "Chứng thực",
+      "name": "Chứng thực chữ ký",
+      "keywords": ["chứng thực chữ ký", "ký công chứng", "xác nhận chữ ký", "chữ ký"],
+      "description": "Chứng thực chữ ký của người yêu cầu trên giấy tờ, văn bản.",
+      "documents": [
+        "Giấy tờ tùy thân của người yêu cầu (CCCD/hộ chiếu)",
+        "Giấy tờ, văn bản mà người yêu cầu sẽ ký vào"
+      ],
+      "fee": "10.000 đồng/trường hợp (tham khảo)",
+      "processingTime": "Trong ngày làm việc",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 23/2015/NĐ-CP"
+    },
+    {
+      "id": "XN-01",
+      "category": "Cư trú",
+      "name": "Xác nhận tình trạng hôn nhân",
+      "keywords": ["tình trạng hôn nhân", "xác nhận độc thân", "giấy độc thân", "chưa kết hôn", "xác nhận hôn nhân"],
+      "description": "Cấp giấy xác nhận tình trạng hôn nhân cho công dân cư trú tại xã (thường dùng để đăng ký kết hôn, giao dịch dân sự).",
+      "documents": [
+        "Tờ khai xác nhận tình trạng hôn nhân (theo mẫu)",
+        "Giấy tờ tùy thân (CCCD/hộ chiếu)",
+        "Giấy tờ chứng minh nơi cư trú (nếu cần)"
+      ],
+      "fee": "15.000 đồng/trường hợp (tham khảo)",
+      "processingTime": "Trong ngày hoặc tối đa 03 ngày làm việc nếu cần xác minh",
+      "placeOfSubmission": "Bộ phận Một cửa – UBND xã Hòa Tiến",
+      "onlineUrl": "https://dichvucong.gov.vn",
+      "legalBasis": "Nghị định 123/2015/NĐ-CP"
+    }
+  ],
+  "faq": [
+    {
+      "id": "FAQ-01",
+      "question": "Bộ phận Một cửa xã Hòa Tiến làm việc giờ nào?",
+      "keywords": ["giờ làm việc", "mấy giờ", "thời gian làm việc", "giờ mở cửa"],
+      "answer": "Bộ phận Một cửa làm việc từ thứ 2 đến thứ 6: sáng 07:30–11:30, chiều 13:30–17:00. Sáng thứ 7 làm việc theo lịch niêm yết. Chủ nhật nghỉ."
+    },
+    {
+      "id": "FAQ-02",
+      "question": "Tôi có thể nộp hồ sơ trực tuyến không?",
+      "keywords": ["trực tuyến", "online", "nộp online", "dịch vụ công", "qua mạng"],
+      "answer": "Nhiều thủ tục có thể nộp trực tuyến qua Cổng Dịch vụ công Quốc gia tại dichvucong.gov.vn. Bạn cần tài khoản định danh điện tử (VNeID) để đăng nhập và nộp hồ sơ."
+    },
+    {
+      "id": "FAQ-03",
+      "question": "Xã Hòa Tiến được thành lập từ đâu?",
+      "keywords": ["sáp nhập", "thành lập", "hòa khương", "lịch sử xã", "hình thành"],
+      "answer": "Xã Hòa Tiến mới hoạt động từ 01/7/2025, hình thành từ việc hợp nhất xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ), theo Nghị quyết 1659/NQ-UBTVQH15. Xã thuộc TP Đà Nẵng, diện tích khoảng 65,9 km², dân số khoảng 38.823 người."
+    },
+    {
+      "id": "FAQ-04",
+      "question": "Làm khai sinh cho con có mất phí không?",
+      "keywords": ["phí khai sinh", "khai sinh mất tiền", "lệ phí khai sinh"],
+      "answer": "Đăng ký khai sinh đúng hạn (trong vòng 60 ngày kể từ ngày sinh) được miễn lệ phí. Bạn cần mang theo giấy chứng sinh và giấy tờ tùy thân của cha mẹ."
+    }
+  ]
+}
+;
+
+loadKB();
+</script>
+</body>
+</html>
