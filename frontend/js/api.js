@@ -3,7 +3,7 @@
    Đổi API_BASE_URL trước khi deploy (trỏ tới domain Railway/Render).
    ============================================================ */
 
-const API_BASE_URL = window.__HOATIEN_API_BASE__ || "http://localhost:8000";
+const API_BASE_URL = window.__HOATIEN_API_BASE__ || "https://hoa-tien-ai-assistant-production.up.railway.app";
 
 const TOKEN_KEY = "hoatien_token";
 const USER_KEY = "hoatien_user";
