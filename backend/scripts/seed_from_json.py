@@ -14,7 +14,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from app.db.session import SessionLocal  # noqa: E402
 from app.models import Contact, Faq, Procedure  # noqa: E402
 
-SEED_PATH = Path(__file__).resolve().parents[2] / "data" / "seed-knowledge-base.json"
+SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "seed-knowledge-base.json"
 
 
 def seed():
