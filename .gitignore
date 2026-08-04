@@ -1,2 +1,7 @@
 .vercel
 CLAUDE.md
+
+.env
+
+.venv 
+.env*

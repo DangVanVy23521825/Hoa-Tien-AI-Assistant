@@ -9,12 +9,15 @@
 ```bash
 cd backend
 python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # điền DATABASE_URL, JWT_SECRET local
+pip install -r requirements.txt   # tải torch CPU + bge-m3 deps, có thể mất vài phút lần đầu
+cp .env.example .env   # điền DATABASE_URL, JWT_SECRET, GEMINI_API_KEY local
 alembic upgrade head
-python3 scripts/seed_from_json.py   # nạp data/seed-knowledge-base.json vào DB
+python3 scripts/seed_from_json.py            # nạp data/seed-knowledge-base.json vào DB, tự embed bằng bge-m3 (tải model ~2.2GB lần đầu, không cần GEMINI_API_KEY)
+python3 scripts/backfill_embeddings.py        # chỉ cần chạy nếu seed từng lỗi/bỏ sót embedding
 uvicorn app.main:app --reload --port 8000
 ```
+
+> Embedding dùng `BAAI/bge-m3` self-host qua `sentence-transformers` (không cần API key) — chỉ Gemini (generation) mới cần `GEMINI_API_KEY`. Lần chạy đầu tiên gọi tới embedding sẽ tải model từ HuggingFace Hub, cần mạng ổn định.
 
 ## Frontend
 
@@ -26,8 +29,10 @@ python3 -m http.server 5500
 
 ## Database local nhanh (Docker)
 
+Cần image có sẵn extension `pgvector` (RAG dùng embedding lưu trong PostgreSQL):
+
 ```bash
-docker run --name hoatien-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=hoatien -p 5432:5432 -d postgres:16
+docker run --name hoatien-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=hoatien -p 5432:5432 -d pgvector/pgvector:pg16
 ```
 
 ## Kiểm thử nhanh trước khi demo/deploy

@@ -12,9 +12,18 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from app.db.session import SessionLocal  # noqa: E402
-from app.models import Contact, Faq, Procedure  # noqa: E402
+from app.models import Contact, Faq, KnowledgeArticle, Procedure  # noqa: E402
+from app.services.embeddings import embed_text  # noqa: E402
 
 SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "seed-knowledge-base.json"
+
+
+def _try_embed(text: str) -> list[float] | None:
+    try:
+        return embed_text(text, "RETRIEVAL_DOCUMENT")
+    except Exception as exc:  # noqa: BLE001 — không chặn seed nếu load model/embed lỗi tạm thời
+        print(f"  ! lỗi embed, bỏ qua: {exc}")
+        return None
 
 
 def seed():
@@ -36,6 +45,10 @@ def seed():
                 online_url=p["onlineUrl"],
                 legal_basis=p["legalBasis"],
             )
+            embed_source = " ".join([fields["name"], fields["category"], fields["description"], " ".join(fields["keywords"])])
+            embedding = _try_embed(embed_source)
+            if embedding is not None:
+                fields["embedding"] = embedding
             if existing:
                 for k, v in fields.items():
                     setattr(existing, k, v)
@@ -48,6 +61,10 @@ def seed():
         for f in data["faq"]:
             existing = db.query(Faq).filter(Faq.question == f["question"]).first()
             fields = dict(keywords=f.get("keywords", []), answer=f["answer"])
+            embed_source = " ".join([f["question"], " ".join(fields["keywords"]), fields["answer"]])
+            embedding = _try_embed(embed_source)
+            if embedding is not None:
+                fields["embedding"] = embedding
             if existing:
                 for k, v in fields.items():
                     setattr(existing, k, v)
@@ -55,6 +72,27 @@ def seed():
             else:
                 db.add(Faq(question=f["question"], **fields))
                 print(f"  + thêm FAQ: {f['question'][:40]}...")
+
+        # Knowledge articles (lịch sử / địa danh / làng nghề)
+        for a in data.get("knowledge_articles", []):
+            existing = db.query(KnowledgeArticle).filter(KnowledgeArticle.title == a["title"]).first()
+            fields = dict(
+                category=a["category"],
+                keywords=a.get("keywords", []),
+                content=a["content"],
+                source_citation=a["source"],
+            )
+            embed_source = " ".join([a["title"], " ".join(fields["keywords"]), fields["content"]])
+            embedding = _try_embed(embed_source)
+            if embedding is not None:
+                fields["embedding"] = embedding
+            if existing:
+                for k, v in fields.items():
+                    setattr(existing, k, v)
+                print(f"  ~ cập nhật bài viết: {a['title'][:40]}...")
+            else:
+                db.add(KnowledgeArticle(title=a["title"], **fields))
+                print(f"  + thêm bài viết: {a['title'][:40]}...")
 
         # Contact (single-row)
         contact = db.query(Contact).first()

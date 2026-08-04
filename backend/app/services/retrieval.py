@@ -1,10 +1,8 @@
 """
-Retrieval offline (keyword/fuzzy scoring) — port trực tiếp từ legacy/index.html.
-Nguồn dữ liệu đổi từ JSON in-memory sang query PostgreSQL, thuật toán giữ nguyên.
-
-Nâng cấp lên RAG thật: thay hàm retrieve() bằng vector similarity search
-(bật pgvector trên cùng PostgreSQL này), giữ nguyên chữ ký hàm và Hit schema
-để generation.py và router chat.py không phải đổi.
+Retrieval hybrid: keyword/fuzzy scoring (port trực tiếp từ legacy/index.html) +
+semantic similarity qua embedding Gemini đã lưu sẵn (pgvector). Hai tín hiệu
+cộng dồn vào cùng một score, giữ nguyên MIN_MATCH_SCORE làm ngưỡng matched/fallback
+để không phá vỡ hành vi đã kiểm chứng (15/15 câu mẫu) khi chưa có embedding.
 """
 
 import re
@@ -12,11 +10,14 @@ import unicodedata
 from dataclasses import dataclass
 from typing import Literal
 
+import numpy as np
 from sqlalchemy.orm import Session
 
-from app.models import Contact, Faq, Procedure
+from app.core.config import settings
+from app.models import Contact, Faq, KnowledgeArticle, Procedure
+from app.services.embeddings import embed_text
 
-SourceType = Literal["procedure", "faq", "contact", "commune"]
+SourceType = Literal["procedure", "faq", "contact", "commune", "article"]
 
 
 @dataclass
@@ -71,23 +72,56 @@ def _score_doc(query_tokens: list[str], query_norm: str, text: str, keywords: li
     return score
 
 
+def _cosine_similarity(a: list[float], b: list[float]) -> float:
+    va, vb = np.asarray(a), np.asarray(b)
+    denom = np.linalg.norm(va) * np.linalg.norm(vb)
+    if denom == 0:
+        return 0.0
+    return float(np.dot(va, vb) / denom)
+
+
+def _semantic_score(query_embedding: list[float] | None, doc_embedding: list[float] | None) -> float:
+    """0 nếu chưa có embedding câu hỏi hoặc tài liệu (chưa backfill) — an toàn, không lỗi,
+    hành vi giống hệt bản keyword-only cũ khi thiếu dữ liệu embedding."""
+    if query_embedding is None or doc_embedding is None:
+        return 0.0
+    return _cosine_similarity(query_embedding, doc_embedding) * settings.rag_semantic_weight
+
+
+def _embed_query(query: str) -> list[float] | None:
+    try:
+        return embed_text(query, "RETRIEVAL_QUERY")
+    except Exception:
+        return None
+
+
 def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
     q_norm = normalize(query)
     q_tokens = _tokenize(q_norm)
+    q_embedding = _embed_query(query)
 
     hits: list[Hit] = []
 
     for p in db.query(Procedure).all():
         text = normalize(" ".join([p.name, p.category, p.description, " ".join(p.keywords or [])]))
         score = _score_doc(q_tokens, q_norm, text, p.keywords or [])
+        score += _semantic_score(q_embedding, p.embedding)
         if score > 0:
             hits.append(Hit(type="procedure", ref=p, score=score))
 
     for f in db.query(Faq).all():
         text = normalize(" ".join([f.question, " ".join(f.keywords or []), f.answer]))
         score = _score_doc(q_tokens, q_norm, text, f.keywords or [])
+        score += _semantic_score(q_embedding, f.embedding)
         if score > 0:
             hits.append(Hit(type="faq", ref=f, score=score))
+
+    for a in db.query(KnowledgeArticle).all():
+        text = normalize(" ".join([a.title, " ".join(a.keywords or []), a.content]))
+        score = _score_doc(q_tokens, q_norm, text, a.keywords or [])
+        score += _semantic_score(q_embedding, a.embedding)
+        if score > 0:
+            hits.append(Hit(type="article", ref=a, score=score))
 
     contact = db.query(Contact).first()
     if contact:

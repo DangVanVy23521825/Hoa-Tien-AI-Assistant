@@ -11,6 +11,11 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5500,http://127.0.0.1:5500"
     env: str = "development"
 
+    gemini_api_key: str = ""
+    gemini_generation_model: str = "gemini-2.5-flash"
+    embedding_model_name: str = "BAAI/bge-m3"
+    rag_semantic_weight: float = 4.0
+
     @property
     def cors_origins_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
