@@ -9,15 +9,15 @@
 ```bash
 cd backend
 python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt   # tải torch CPU + bge-m3 deps, có thể mất vài phút lần đầu
+pip install -r requirements.txt
 cp .env.example .env   # điền DATABASE_URL, JWT_SECRET, GEMINI_API_KEY local
 alembic upgrade head
-python3 scripts/seed_from_json.py            # nạp data/seed-knowledge-base.json vào DB, tự embed bằng bge-m3 (tải model ~2.2GB lần đầu, không cần GEMINI_API_KEY)
+python3 scripts/seed_from_json.py            # nạp data/seed-knowledge-base.json vào DB, tự embed bằng bge-m3 (mặc định self-host qua onnxruntime, tải model ~570MB lần đầu)
 python3 scripts/backfill_embeddings.py        # chỉ cần chạy nếu seed từng lỗi/bỏ sót embedding
 uvicorn app.main:app --reload --port 8000
 ```
 
-> Embedding dùng `BAAI/bge-m3` self-host qua `sentence-transformers` (không cần API key) — chỉ Gemini (generation) mới cần `GEMINI_API_KEY`. Lần chạy đầu tiên gọi tới embedding sẽ tải model từ HuggingFace Hub, cần mạng ổn định.
+> Embedding (`BAAI/bge-m3`) mặc định self-host qua `onnxruntime` (`EMBEDDING_PROVIDER=local_onnx`, không cần API key, tải model từ HuggingFace Hub lần đầu gọi). Đổi `EMBEDDING_PROVIDER=deepinfra` + `DEEPINFRA_API_KEY` nếu muốn gọi API ngoài thay vì self-host. Gemini (`GEMINI_API_KEY`) chỉ dùng cho generation, luôn cần dù chọn provider embedding nào. Thiếu key cần thiết: seed/CRUD vẫn chạy được nhưng bỏ qua bước tương ứng (embed hoặc gọi LLM), log cảnh báo — không crash.
 
 ## Frontend
 

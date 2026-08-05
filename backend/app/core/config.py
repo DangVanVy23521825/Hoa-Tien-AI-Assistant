@@ -13,7 +13,17 @@ class Settings(BaseSettings):
 
     gemini_api_key: str = ""
     gemini_generation_model: str = "gemini-2.5-flash"
-    embedding_model_name: str = "BAAI/bge-m3"
+
+    # "local_onnx" (self-host, quantized bge-m3, nhẹ hơn bản gốc nhưng vẫn cần RAM
+    # đáng kể) hoặc "deepinfra" (gọi API ngoài, backend nhẹ nhất, cần DEEPINFRA_API_KEY).
+    # Đổi biến này + redeploy là chuyển được ngay, không cần sửa code — dùng làm
+    # phương án dự phòng nếu local_onnx bị OOM trên Railway.
+    embedding_provider: str = "local_onnx"
+    local_embedding_model_repo: str = "gpahal/bge-m3-onnx-int8"
+    deepinfra_api_key: str = ""
+    deepinfra_embedding_model_name: str = "BAAI/bge-m3"
+    embedding_api_base_url: str = "https://api.deepinfra.com/v1/openai/embeddings"
+
     rag_semantic_weight: float = 4.0
 
     @property

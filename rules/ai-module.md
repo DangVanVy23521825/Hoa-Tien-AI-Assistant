@@ -3,8 +3,11 @@
 ## Luồng xử lý (contract) — RAG thật: bge-m3 embedding + Gemini generation
 
 Hai model khác nhau, hai vai trò khác nhau:
-- **Embedding (retrieval)**: `BAAI/bge-m3` — self-host trong chính backend qua `sentence-transformers`, chạy CPU, không gọi API ngoài, không cần API key.
-- **Generation**: Gemini (`gemini_generation_model`) — vẫn qua API, cần `GEMINI_API_KEY`.
+- **Embedding (retrieval)**: `BAAI/bge-m3`, qua 1 trong 2 provider chọn bằng `EMBEDDING_PROVIDER`:
+  - `local_onnx` (**mặc định**): self-host bản quantize int8 (`gpahal/bge-m3-onnx-int8`, ~570MB, ~1.4GB RAM lúc chạy) qua `onnxruntime`, không cần API key.
+  - `deepinfra`: gọi API DeepInfra (tương thích OpenAI), cần `DEEPINFRA_API_KEY`, backend nhẹ nhất nhưng có phí theo token.
+  - Đổi 1 biến `EMBEDDING_PROVIDER` + redeploy là chuyển được, không cần sửa code — dùng làm phương án dự phòng nếu `local_onnx` OOM trên Railway. Chi tiết lịch sử quyết định (đã thử bge-m3 full self-host → OOM, thử model nhẹ hơn (e5-small/e5-base) → chất lượng phân biệt kém) xem docstring `backend/app/services/embeddings.py`.
+- **Generation**: Gemini (`gemini_generation_model`) — qua API, cần `GEMINI_API_KEY`.
 
 ```
 POST /chat { question: string, [token?] }
@@ -23,7 +26,7 @@ POST /chat { question: string, [token?] }
 |-----|-------------|
 | `normalize(s)` | Chuẩn hoá tiếng Việt: bỏ dấu, đ→d, hạ thường |
 | `retrieve(db, query, topK)` | Hybrid: keyword scoring (như cũ) + semantic similarity (cosine, embedding lưu sẵn qua pgvector) |
-| `embed_text(text, task_type)` | `backend/app/services/embeddings.py` — chạy `BAAI/bge-m3` local (singleton, lazy-load lần đầu). `task_type` giữ lại cho tương thích chữ ký hàm nhưng không dùng — bge-m3 không cần prefix "query:"/"passage:" như một số model BGE đời trước |
+| `embed_text(text, task_type)` | `backend/app/services/embeddings.py` — định tuyến theo `EMBEDDING_PROVIDER` tới `_embed_local_onnx()` hoặc `_embed_deepinfra()`. `task_type` giữ lại cho tương thích chữ ký hàm nhưng không dùng — bge-m3 không cần prefix "query:"/"passage:" như một số model BGE đời trước |
 | `call_gemini(prompt)` | `backend/app/services/llm.py` — gọi Gemini generation, ép grounding qua system prompt, raise `LlmError` nếu lỗi/timeout để caller fallback |
 | `generate(query, hits)` | Gọi Gemini khi có hit, fallback `_generate_template()` khi Gemini lỗi hoặc trả refusal phrase |
 
@@ -59,7 +62,6 @@ Không được nới lỏng threshold ở lớp 1 với kỳ vọng lớp 2 "s�
 
 - `embedding` (cột `Vector(1024)`, pgvector — 1024 chiều vì đây là dimension gốc của bge-m3) được tính và lưu ở **write-time**: seed (`scripts/seed_from_json.py`) và admin CRUD (`routers/admin.py`) — không tính lại cho toàn bộ KB mỗi lần chat.
 - Sau khi apply migration thêm cột `embedding` lần đầu, chạy `python3 scripts/backfill_embeddings.py` để embed các record đã có sẵn trong DB.
-- Model bge-m3 chỉ tải về (lần đầu, từ HuggingFace Hub, ~2.2GB) khi hàm `embed_text()` được gọi lần đầu tiên (lazy singleton trong `embeddings.py`) — request đầu tiên gọi tới sẽ chậm hơn hẳn (tải + load model vào RAM), các lần sau dùng model đã cache trong tiến trình.
-- Nếu load/embed lỗi (hết RAM, mất mạng khi tải model lần đầu...): seed/admin CRUD vẫn chạy được (bỏ qua bước embed, log cảnh báo), retrieval tự động chỉ dùng keyword score cho các record chưa có embedding.
-- Đổi model embedding (`EMBEDDING_MODEL_NAME`) → phải chạy lại `backfill_embeddings.py --force` cho toàn bộ KB (embedding cũ và mới không so sánh được với nhau, và nếu dimension khác 1024 phải sửa lại cột `Vector()` qua migration mới).
-- **Chi phí tài nguyên**: `torch` + `sentence-transformers` + trọng số bge-m3 cần khoảng 2-3GB RAM khi model đã load — xem `rules/deploy.md` về yêu cầu Railway plan.
+- Provider `deepinfra` cần `DEEPINFRA_API_KEY` hợp lệ; provider `local_onnx` tự tải model từ HuggingFace Hub lần đầu gọi (không cần key nhưng cần mạng ổn định lúc đó). Lỗi ở cả 2 trường hợp: `embed_text()` raise lỗi, seed/admin CRUD bắt lỗi này và bỏ qua embed (log cảnh báo), retrieval tự động chỉ dùng keyword score cho các record chưa có embedding.
+- Đổi provider (`EMBEDDING_PROVIDER`) hoặc model → phải chạy lại `backfill_embeddings.py --force` cho toàn bộ KB (embedding từ model/provider khác nhau không so sánh trực tiếp được với nhau — dù cùng là bge-m3, bản quantize và bản gốc cho vector hơi khác nhau về mặt số học).
+- **Chi phí/tài nguyên**: `local_onnx` không tốn tiền nhưng cần ~1.4GB RAM cố định trên backend; `deepinfra` gần như không tốn RAM nhưng tính phí theo token (~$0.01/triệu token cho bge-m3, rất rẻ).
