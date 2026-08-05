@@ -316,14 +316,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // greeting + chips
   addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);
-  const chips = ['Làm khai sinh cần gì?', 'Đăng ký kết hôn', 'Giờ làm việc?', 'Chứng thực bản sao'];
-  const chipBox = document.getElementById('quickChips');
-  chips.forEach(c => {
-    const b = document.createElement('button');
-    b.className = 'chip-q'; b.textContent = c;
-    b.onclick = () => ask(c);
-    chipBox.appendChild(b);
-  });
+  const DEFAULT_CHIPS = ['Làm khai sinh cần gì?', 'Đăng ký kết hôn', 'Giờ làm việc?', 'Chứng thực bản sao'];
+  function renderChips(list) {
+    const chipBox = document.getElementById('quickChips');
+    chipBox.innerHTML = '';
+    list.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'chip-q'; b.textContent = c;
+      b.onclick = () => ask(c);
+      chipBox.appendChild(b);
+    });
+  }
+  renderChips(DEFAULT_CHIPS);
+
+  // Chips động theo thủ tục được hỏi nhiều + social proof — lỗi thì giữ mặc định.
+  // Ngưỡng: >=3 chips để không hiện lẻ loi, >=10 câu để hero không khoe con số quá nhỏ.
+  api.getPublicStats().then(s => {
+    if (s.top_questions && s.top_questions.length >= 3) renderChips(s.top_questions);
+    if (s.total_answered >= 10) {
+      document.getElementById('statAnsweredNum').textContent = s.total_answered.toLocaleString('vi-VN');
+      document.getElementById('statAnswered').style.display = '';
+    }
+  }).catch(() => {});
 
   document.getElementById('sendBtn').onclick = () => ask(document.getElementById('chatInput').value);
   document.getElementById('chatInput').addEventListener('keydown', e => {
