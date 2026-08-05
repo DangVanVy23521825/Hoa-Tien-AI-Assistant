@@ -27,17 +27,19 @@ def chat(
     hits = retrieve(db, payload.question, top_k=3)
     result = generate(payload.question, hits, fallback_phone=fallback_phone)
 
-    # Chỉ lưu lịch sử nếu người dùng đã đăng nhập (khách vãng lai không bị ép lưu)
-    if current_user is not None:
-        entry = ChatHistory(
-            user_id=current_user.id,
-            question=payload.question,
-            answer=result["answer_html"],
-            matched_source_type=result["matched_source_type"],
-            matched_source_id=result.get("matched_source_id"),
-        )
-        db.add(entry)
-        db.commit()
+    # Lưu mọi lượt chat (kể cả khách vãng lai, user_id=None) để thống kê câu hỏi
+    # phổ biến & câu chưa trả lời được. /chat/history vẫn lọc theo user_id nên
+    # khách ẩn danh không thấy gì thay đổi.
+    entry = ChatHistory(
+        user_id=current_user.id if current_user else None,
+        question=payload.question,
+        answer=result["answer_html"],
+        matched_source_type=result["matched_source_type"],
+        matched_source_id=result.get("matched_source_id"),
+    )
+    db.add(entry)
+    db.commit()
+    db.refresh(entry)
 
     return ChatResponse(
         answer_html=result["answer_html"],
@@ -45,6 +47,8 @@ def chat(
         matched=result["matched"],
         matched_source_type=result["matched_source_type"],
         online_url=result.get("online_url"),
+        message_id=entry.id,
+        matched_source_id=result.get("matched_source_id"),
     )
 
 

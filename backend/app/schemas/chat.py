@@ -15,6 +15,9 @@ class ChatResponse(BaseModel):
     matched_source_type: str
     # Chỉ có khi matched thủ tục — frontend dùng để sinh QR nộp hồ sơ trực tuyến
     online_url: str | None = None
+    # Frontend dùng message_id để gửi feedback 👍👎, matched_source_id (code thủ tục) để in checklist
+    message_id: uuid.UUID | None = None
+    matched_source_id: str | None = None
 
 
 class ChatHistoryOut(BaseModel):
