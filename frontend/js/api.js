@@ -54,6 +54,10 @@ const api = {
   getContacts: () => apiFetch("/contacts"),
   chat: (question) => apiFetch("/chat", { method: "POST", body: JSON.stringify({ question }) }),
   getHistory: () => apiFetch("/chat/history"),
+  sendFeedback: (messageId, helpful) =>
+    apiFetch("/chat/feedback", { method: "POST", body: JSON.stringify({ message_id: messageId, helpful }) }),
+  getPublicStats: () => apiFetch("/chat/stats/public"),
+  getAdminStats: () => apiFetch("/admin/stats"),
   register: (email, password, display_name) =>
     apiFetch("/auth/register", { method: "POST", body: JSON.stringify({ email, password, display_name }) }),
   login: (email, password) =>
