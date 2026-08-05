@@ -25,6 +25,31 @@ class FeedbackRequest(BaseModel):
     helpful: bool
 
 
+class PublicStatsOut(BaseModel):
+    total_answered: int
+    top_questions: list[str]
+
+
+class TopProcedureOut(BaseModel):
+    name: str
+    count: int
+
+
+class UnmatchedQuestionOut(BaseModel):
+    question: str
+    created_at: datetime
+
+
+class AdminStatsOut(BaseModel):
+    total: int
+    matched: int
+    unmatched: int
+    helpful: int
+    unhelpful: int
+    top_procedures: list[TopProcedureOut]
+    recent_unmatched: list[UnmatchedQuestionOut]
+
+
 class ChatHistoryOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: uuid.UUID

@@ -1,11 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.limiter import limiter
 from app.db.session import get_db
-from app.models import ChatHistory, Contact, User
-from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, FeedbackRequest
+from app.models import ChatHistory, Contact, Procedure, User
+from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, FeedbackRequest, PublicStatsOut
 from app.services.deps import get_current_user_optional, get_current_user_required
 from app.services.generation import generate
 from app.services.retrieval import retrieve
@@ -61,6 +62,26 @@ def chat_feedback(request: Request, payload: FeedbackRequest, db: Session = Depe
         raise HTTPException(status_code=404, detail="Không tìm thấy câu trả lời")
     entry.feedback_helpful = payload.helpful
     db.commit()
+
+
+def _top_procedures(db: Session, limit: int) -> list[tuple[str, int]]:
+    """[(tên thủ tục, số lượt hỏi)] xếp giảm dần, join qua code trong matched_source_id."""
+    rows = (
+        db.query(ChatHistory.matched_source_id, func.count().label("n"))
+        .filter(ChatHistory.matched_source_type == "procedure", ChatHistory.matched_source_id.isnot(None))
+        .group_by(ChatHistory.matched_source_id)
+        .order_by(func.count().desc())
+        .limit(limit)
+        .all()
+    )
+    names = {p.code: p.name for p in db.query(Procedure).filter(Procedure.code.in_([r[0] for r in rows]))}
+    return [(names[code], n) for code, n in rows if code in names]
+
+
+@router.get("/stats/public", response_model=PublicStatsOut)
+def public_stats(db: Session = Depends(get_db)):
+    total = db.query(ChatHistory).filter(ChatHistory.matched_source_type != "none").count()
+    return PublicStatsOut(total_answered=total, top_questions=[name for name, _ in _top_procedures(db, 4)])
 
 
 @router.get("/history", response_model=list[ChatHistoryOut])
