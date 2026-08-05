@@ -227,6 +227,27 @@ function renderContacts(c) {
   document.getElementById('portalQr').src = qr(c.portal_url, 150);
 }
 
+/* ---------- Focus trap cho modal (a11y) ---------- */
+let _lastFocused = null;
+function trapFocus(bgEl) {
+  _lastFocused = document.activeElement;
+  const focusables = () => bgEl.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
+  const first = focusables()[0];
+  if (first) first.focus();
+  bgEl.onkeydown = (e) => {
+    if (e.key !== 'Tab') return;
+    const list = Array.from(focusables()).filter(el => el.offsetParent !== null);
+    if (!list.length) return;
+    const firstEl = list[0], lastEl = list[list.length - 1];
+    if (e.shiftKey && document.activeElement === firstEl) { e.preventDefault(); lastEl.focus(); }
+    else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); firstEl.focus(); }
+  };
+}
+function releaseFocus(bgEl) {
+  bgEl.onkeydown = null;
+  if (_lastFocused) { _lastFocused.focus(); _lastFocused = null; }
+}
+
 /* ---------- Modal chi tiết thủ tục ---------- */
 function openModal(p) {
   const m = document.getElementById('modalContent');
@@ -255,8 +276,14 @@ function openModal(p) {
       <a href="#tro-ly" class="btn btn-primary modal-cta" onclick="closeModal()">Hỏi trợ lý về thủ tục này →</a>
     </div>`;
   document.getElementById('modalBg').classList.add('show');
+  trapFocus(document.getElementById('modalBg'));
 }
-function closeModal() { document.getElementById('modalBg').classList.remove('show'); }
+function closeModal() {
+  const bg = document.getElementById('modalBg');
+  if (!bg.classList.contains('show')) return; // Escape gọi mọi hàm close — bỏ qua modal đang đóng
+  bg.classList.remove('show');
+  releaseFocus(bg);
+}
 
 /* ============================================================
    AUTH
@@ -265,8 +292,15 @@ function openAuthModal(tab = 'login') {
   document.getElementById('authModalBg').classList.add('show');
   switchAuthTab(tab);
   document.getElementById('authError').classList.remove('show');
+  // trap SAU switchAuthTab để focus rơi vào input của form đang hiển thị
+  trapFocus(document.getElementById('authModalBg'));
 }
-function closeAuthModal() { document.getElementById('authModalBg').classList.remove('show'); }
+function closeAuthModal() {
+  const bg = document.getElementById('authModalBg');
+  if (!bg.classList.contains('show')) return;
+  bg.classList.remove('show');
+  releaseFocus(bg);
+}
 
 function switchAuthTab(tab) {
   document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));

@@ -163,12 +163,12 @@
 </footer>
 
 <!-- MODAL: chi tiết thủ tục -->
-<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-label="Chi tiết thủ tục" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalContent"></div>
 </div>
 
 <!-- MODAL: đăng nhập / đăng ký -->
-<div class="modal-bg" id="authModalBg" onclick="if(event.target===this)closeAuthModal()">
+<div class="modal-bg" id="authModalBg" role="dialog" aria-modal="true" aria-label="Đăng nhập hoặc đăng ký" onclick="if(event.target===this)closeAuthModal()">
   <div class="modal" style="max-width:400px;">
     <div class="modal-top">
       <button class="x" onclick="closeAuthModal()">✕</button>
