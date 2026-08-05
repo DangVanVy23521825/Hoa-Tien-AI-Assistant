@@ -20,6 +20,8 @@ class ChatHistory(Base):
     answer: Mapped[str] = mapped_column(Text, nullable=False)
     matched_source_type: Mapped[str] = mapped_column(String(50), nullable=False)
     matched_source_id: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    # 👍👎 của người dùng trên câu trả lời — null = chưa đánh giá
+    feedback_helpful: Mapped[bool | None] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
     user: Mapped["User"] = relationship(back_populates="chat_history")  # noqa: F821

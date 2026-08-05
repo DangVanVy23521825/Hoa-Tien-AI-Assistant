@@ -1,11 +1,11 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.limiter import limiter
 from app.db.session import get_db
 from app.models import ChatHistory, Contact, User
-from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse
+from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, FeedbackRequest
 from app.services.deps import get_current_user_optional, get_current_user_required
 from app.services.generation import generate
 from app.services.retrieval import retrieve
@@ -50,6 +50,17 @@ def chat(
         message_id=entry.id,
         matched_source_id=result.get("matched_source_id"),
     )
+
+
+@router.post("/feedback", status_code=204)
+@limiter.limit(settings.rate_limit_chat)
+def chat_feedback(request: Request, payload: FeedbackRequest, db: Session = Depends(get_db)):
+    """Ghi nhận 👍👎 — không cần đăng nhập, message_id là UUID không đoán được."""
+    entry = db.get(ChatHistory, payload.message_id)
+    if entry is None:
+        raise HTTPException(status_code=404, detail="Không tìm thấy câu trả lời")
+    entry.feedback_helpful = payload.helpful
+    db.commit()
 
 
 @router.get("/history", response_model=list[ChatHistoryOut])

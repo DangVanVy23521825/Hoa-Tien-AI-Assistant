@@ -20,6 +20,11 @@ class ChatResponse(BaseModel):
     matched_source_id: str | None = None
 
 
+class FeedbackRequest(BaseModel):
+    message_id: uuid.UUID
+    helpful: bool
+
+
 class ChatHistoryOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: uuid.UUID
