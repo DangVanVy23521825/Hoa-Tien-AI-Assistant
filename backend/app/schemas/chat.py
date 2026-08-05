@@ -13,6 +13,8 @@ class ChatResponse(BaseModel):
     source: str
     matched: bool
     matched_source_type: str
+    # Chỉ có khi matched thủ tục — frontend dùng để sinh QR nộp hồ sơ trực tuyến
+    online_url: str | None = None
 
 
 class ChatHistoryOut(BaseModel):

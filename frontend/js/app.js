@@ -39,14 +39,21 @@ function removeTyping() { const t = document.getElementById('typingRow'); if (t)
 
 function buildAnswerHtml(res) {
   let html = res.answer_html;
-  if (res.matched_source_type === 'procedure') {
-    // Bổ sung QR nếu backend trả kèm online_url (đã có trong response mở rộng)
+  // Thủ tục → kèm QR nộp hồ sơ trực tuyến (backend trả online_url, style .qr-inline có sẵn)
+  if (res.matched_source_type === 'procedure' && res.online_url) {
+    html += `<div class="qr-inline">
+      <img src="${qr(res.online_url, 74)}" alt="QR nộp trực tuyến"/>
+      <small>Quét mã để nộp hồ sơ trực tuyến qua Cổng Dịch vụ công.<br/>Xem chi tiết trong mục “Thủ tục”.</small>
+    </div>`;
   }
   return html;
 }
 
+let askInFlight = false;
+
 async function ask(query) {
-  if (!query.trim()) return;
+  if (!query.trim() || askInFlight) return;
+  askInFlight = true;
   addMsg('user', query);
   document.getElementById('chatInput').value = '';
   addTyping();
@@ -64,6 +71,8 @@ async function ask(query) {
     } else {
       addMsg('bot', 'Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại.');
     }
+  } finally {
+    askInFlight = false;
   }
 }
 
@@ -241,7 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('sendBtn').onclick = () => ask(document.getElementById('chatInput').value);
-  document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') ask(e.target.value); });
+  document.getElementById('chatInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) {
+      e.preventDefault();
+      ask(e.target.value);
+    }
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAuthModal(); } });
 
   // Auth trigger

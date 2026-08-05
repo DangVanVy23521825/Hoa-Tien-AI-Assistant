@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.core.limiter import limiter
 from app.db.session import get_db
 from app.models import ChatHistory, Contact, User
@@ -13,7 +14,7 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 
 
 @router.post("", response_model=ChatResponse)
-@limiter.limit("30/minute")
+@limiter.limit(settings.rate_limit_chat)
 def chat(
     request: Request,
     payload: ChatRequest,
@@ -43,6 +44,7 @@ def chat(
         source=result["source"],
         matched=result["matched"],
         matched_source_type=result["matched_source_type"],
+        online_url=result.get("online_url"),
     )
 
 

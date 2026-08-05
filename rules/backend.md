@@ -56,3 +56,4 @@ backend/
 4. `retrieve()`/`generate()` trong `services/` phải giữ cùng chữ ký hàm như bản offline cũ (`rules/ai-module.md`) để logic cũ dễ port sang.
 5. Lỗi trả về theo chuẩn: `{ "detail": "..." }`, đúng HTTP status code (400/401/403/404/500).
 6. Không log nội dung câu hỏi/trả lời chứa thông tin định danh cá nhân ra log thô nếu không cần thiết.
+7. Rate limit (slowapi, theo IP) cấu hình qua env `RATE_LIMIT_CHAT` / `RATE_LIMIT_LOGIN` (mặc định `120/minute` / `30/minute` — nới cho demo chung mạng NAT, siết lại khi cần).

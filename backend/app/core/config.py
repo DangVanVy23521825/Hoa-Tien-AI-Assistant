@@ -11,6 +11,12 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5500,http://127.0.0.1:5500"
     env: str = "development"
 
+    # Rate limit (slowapi, đếm theo IP). Mặc định nới cho kịch bản demo: cả hội
+    # trường có thể dùng chung 1 mạng wifi (1 IP NAT) nên limit phải đủ cho
+    # vài chục khán giả truy cập cùng lúc. Siết lại qua env nếu cần.
+    rate_limit_chat: str = "120/minute"
+    rate_limit_login: str = "30/minute"
+
     gemini_api_key: str = ""
     gemini_generation_model: str = "gemini-2.5-flash"
 
