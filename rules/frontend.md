@@ -38,6 +38,18 @@ async function apiGetHistory() { /* GET /chat/history, cần token */ }
 
 Token lưu ở `localStorage` (chấp nhận được cho MVP demo công khai — không chứa dữ liệu nhạy cảm).
 
+## Tính năng bổ sung (feature pack 2026-08)
+
+- **Voice input**: Web Speech API (`vi-VN`), nút mic cạnh ô chat — tự ẩn nếu trình duyệt không hỗ trợ.
+- **In checklist hồ sơ**: nút 🖨️ trong câu trả lời thủ tục + modal chi tiết; render vào `#printArea`, print CSS chỉ in phần này.
+- **Feedback 👍👎** dưới mỗi câu trả lời bot (`POST /chat/feedback` với `message_id`).
+- **Chips động** theo top thủ tục được hỏi (`GET /chat/stats/public`), fallback 4 chip mặc định; hero hiện "N câu hỏi đã trả lời" khi N ≥ 10.
+- **Chia sẻ**: `navigator.share` trên mobile (sheet có Zalo), desktop fallback popover QR + copy link.
+- **PWA**: `manifest.webmanifest` + `sw.js` (network-first shell tĩnh, không cache API) — mất mạng vẫn mở được shell. Đổi tên `CACHE` trong `sw.js` khi cần force refresh.
+- **Thống kê admin**: nút 📊 trong dropdown user (chỉ role admin) → modal đọc `GET /admin/stats`.
+- **A11y modal**: focus trap + trả focus (`trapFocus`/`releaseFocus`), card thủ tục focus + mở bằng Enter được.
+- **Lịch sử chat**: click item render lại answer đã lưu, không gọi lại `/chat`.
+
 ## Section mới cần thêm so với bản offline
 
 - **Đăng nhập / Đăng ký** (modal hoặc trang riêng nhỏ gọn).

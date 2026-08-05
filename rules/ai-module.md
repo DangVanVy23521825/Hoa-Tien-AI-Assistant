@@ -19,8 +19,10 @@ POST /chat { question: string, [token?] }
                    lỗi/timeout Gemini → fallback về _generate_template() (logic cũ)
                    refusal phrase → coi như unmatched (guardrail lớp 2)
    → (nếu có user) lưu vào chat_history
-   → response: { answer_html, source, matched: bool, matched_source_type, online_url? }
+   → response: { answer_html, source, matched: bool, matched_source_type, online_url?, message_id, matched_source_id? }
        online_url chỉ có khi matched thủ tục — frontend dùng sinh QR nộp hồ sơ trực tuyến
+       message_id: id bản ghi chat_history — frontend gửi feedback 👍👎 qua POST /chat/feedback
+       matched_source_id (code thủ tục) — frontend dùng in checklist hồ sơ
 ```
 
 | Hàm | Trách nhiệm |

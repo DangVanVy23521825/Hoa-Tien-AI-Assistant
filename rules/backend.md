@@ -42,8 +42,11 @@ backend/
 | GET | `/procedures/{id}` | — (public) | Chi tiết 1 thủ tục |
 | GET | `/faq` | — (public) | Danh sách FAQ |
 | GET | `/contacts` | — (public) | Thông tin liên hệ |
-| POST | `/chat` | optional | Gửi câu hỏi, nhận trả lời; nếu có JWT → lưu vào `chat_history` |
+| POST | `/chat` | optional | Gửi câu hỏi, nhận trả lời; **mọi lượt đều log vào `chat_history`** (khách vãng lai `user_id=NULL`) để thống kê; response kèm `message_id` + `matched_source_id` |
+| POST | `/chat/feedback` | — (public) | 👍👎 trên câu trả lời: `{message_id, helpful}` → 204 |
+| GET | `/chat/stats/public` | — (public) | `{total_answered, top_questions}` — chips động + social proof |
 | GET | `/chat/history` | user | Lấy lịch sử chat của user hiện tại |
+| GET | `/admin/stats` | admin | Thống kê: tổng/matched/unmatched, tỉ lệ 👍, top thủ tục, câu chưa trả lời được |
 | POST/PUT/DELETE | `/admin/procedures/*`, `/admin/faq/*`, `/admin/contacts/*` | admin | Quản trị nội dung |
 
 > **Khách vãng lai (giám khảo) không bắt buộc đăng nhập** để dùng `/chat`, `/procedures`, `/faq`, `/contacts` — chỉ cần đăng nhập nếu muốn lưu lịch sử. Đây là quyết định UX quan trọng: đừng chặn trải nghiệm demo bằng tường đăng nhập.

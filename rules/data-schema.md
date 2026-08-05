@@ -67,11 +67,12 @@ Có thể là 1 bảng single-row hoặc key-value đơn giản: `office, addres
 | Cột | Kiểu | Ghi chú |
 |---|---|---|
 | `id` | uuid/serial PK | |
-| `user_id` | FK → `users.id`, nullable | null nếu khách ẩn danh không lưu |
+| `user_id` | FK → `users.id`, nullable | null nếu khách ẩn danh (vẫn log để thống kê, không hiện trong `/chat/history` của ai) |
 | `question` | text | |
 | `answer` | text | |
 | `matched_source_type` | varchar | `procedure` / `faq` / `contact` / `commune` / `none` |
 | `matched_source_id` | varchar, nullable | |
+| `feedback_helpful` | boolean, nullable | 👍👎 của người dùng; null = chưa đánh giá |
 | `created_at` | timestamp | |
 
 ## Quan hệ
