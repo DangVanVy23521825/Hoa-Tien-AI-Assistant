@@ -102,7 +102,8 @@ async function ask(query) {
       botMsg.querySelector('.bubble').appendChild(pr);
     }
     showNetBanner(false);
-    if (getToken()) loadHistory(); // cập nhật panel lịch sử nếu đang mở
+    // Chỉ reload panel lịch sử khi nó đang mở
+    if (getToken() && document.getElementById('historyPanel').classList.contains('show')) loadHistory();
   } catch (e) {
     removeTyping();
     if (e instanceof ApiError && e.status === 0) {
@@ -288,13 +289,19 @@ async function loadHistory() {
       panel.innerHTML = '<div style="color:var(--ink-soft); font-size:13px;">Bạn chưa có câu hỏi nào được lưu.</div>';
       return;
     }
-    panel.innerHTML = items.map(h => `
-      <div class="history-item" data-q="${encodeURIComponent(h.question)}">
+    panel.innerHTML = items.map((h, i) => `
+      <div class="history-item" data-i="${i}">
         <div class="hq">${h.question}</div>
         <div class="ht">${new Date(h.created_at).toLocaleString('vi-VN')}</div>
       </div>`).join('');
     panel.querySelectorAll('.history-item').forEach(el => {
-      el.onclick = () => ask(decodeURIComponent(el.dataset.q));
+      el.onclick = () => {
+        // Hiển thị lại câu trả lời đã lưu — không gọi API hỏi lại (nhanh, không tốn quota, không đổi nội dung)
+        const h = items[Number(el.dataset.i)];
+        addMsg('user', h.question);
+        addMsg('bot', h.answer, 'Từ lịch sử đã lưu · ' + new Date(h.created_at).toLocaleDateString('vi-VN'));
+        panel.classList.remove('show');
+      };
     });
   } catch (e) {
     panel.innerHTML = '<div style="color:var(--ink-soft); font-size:13px;">Không tải được lịch sử.</div>';
