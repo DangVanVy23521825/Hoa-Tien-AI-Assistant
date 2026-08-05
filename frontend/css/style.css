@@ -313,6 +313,10 @@
   .history-item .hq { font-weight:600; }
   .history-item .ht { font-size:11px; color:var(--ink-soft); }
 
+  /* ── Thống kê admin ── */
+  .unmatched-list li { font-size:13.5px; margin:6px 0; }
+  .unmatched-list small { color:var(--ink-soft); font-size:11px; display:block; }
+
   /* ── Trạng thái tải / lỗi mạng ── */
   .net-banner {
     display:none; background:#fdf0ee; border:1px solid #f3d4cf; color:#8a332e;

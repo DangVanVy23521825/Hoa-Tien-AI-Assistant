@@ -325,6 +325,7 @@ function updateAuthUI() {
     document.getElementById('userName').textContent = user.display_name;
     document.getElementById('userEmail').textContent = user.email;
     historyToggle.style.display = 'inline-flex';
+    document.getElementById('statsBtn').style.display = user.role === 'admin' ? 'block' : 'none';
   } else {
     trigger.textContent = 'Đăng nhập';
     dropdown.classList.remove('show');
@@ -358,6 +359,40 @@ async function loadHistory() {
   } catch (e) {
     panel.innerHTML = '<div style="color:var(--ink-soft); font-size:13px;">Không tải được lịch sử.</div>';
   }
+}
+
+/* ---------- Thống kê (admin) ---------- */
+async function openStatsModal() {
+  document.getElementById('userDropdown').classList.remove('show');
+  const bg = document.getElementById('statsModalBg');
+  const body = document.getElementById('statsBody');
+  bg.classList.add('show');
+  trapFocus(bg);
+  body.innerHTML = '<p style="color:var(--ink-soft);">Đang tải…</p>';
+  try {
+    const s = await api.getAdminStats();
+    const pctHelpful = (s.helpful + s.unhelpful) ? Math.round(100 * s.helpful / (s.helpful + s.unhelpful)) : null;
+    body.innerHTML = `
+      <div class="info-pills">
+        <div class="pill"><b>Tổng câu hỏi</b>${s.total}</div>
+        <div class="pill"><b>Trả lời được</b>${s.matched}</div>
+        <div class="pill"><b>Chưa trả lời được</b>${s.unmatched}</div>
+        <div class="pill"><b>Đánh giá hữu ích</b>${pctHelpful === null ? 'Chưa có' : pctHelpful + '% (' + (s.helpful + s.unhelpful) + ' lượt)'}</div>
+      </div>
+      <h4>Thủ tục được hỏi nhiều nhất</h4>
+      ${s.top_procedures.length ? `<ul>${s.top_procedures.map(t => `<li><b>${t.count}×</b> — ${t.name}</li>`).join('')}</ul>` : '<p style="color:var(--ink-soft);">Chưa có dữ liệu.</p>'}
+      <h4>Câu hỏi chưa trả lời được (gần nhất)</h4>
+      ${s.recent_unmatched.length ? `<ul class="unmatched-list">${s.recent_unmatched.map(u => `<li>“${u.question}” <small>${new Date(u.created_at).toLocaleString('vi-VN')}</small></li>`).join('')}</ul>` : '<p style="color:var(--ink-soft);">Không có — trợ lý trả lời được hết 🎉</p>'}
+      <p style="font-size:12px; color:var(--ink-soft); margin-top:14px;">Dùng danh sách này để bổ sung thủ tục/FAQ còn thiếu — trợ lý sẽ “học” thêm ngay khi cập nhật dữ liệu.</p>`;
+  } catch (e) {
+    body.innerHTML = '<p style="color:var(--ink-soft);">Không tải được thống kê. Bạn cần tài khoản admin.</p>';
+  }
+}
+function closeStatsModal() {
+  const bg = document.getElementById('statsModalBg');
+  if (!bg.classList.contains('show')) return;
+  bg.classList.remove('show');
+  releaseFocus(bg);
 }
 
 /* ---------- Events ---------- */
@@ -399,7 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ask(e.target.value);
     }
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAuthModal(); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAuthModal(); closeStatsModal(); } });
+  document.getElementById('statsBtn').onclick = openStatsModal;
 
   // Auth trigger
   document.getElementById('authTrigger').onclick = () => {

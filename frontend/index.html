@@ -31,6 +31,7 @@
       <button class="auth-trigger" id="authTrigger">Đăng nhập</button>
       <div class="user-dropdown" id="userDropdown">
         <div class="who"><b id="userName"></b><span id="userEmail"></span></div>
+        <button id="statsBtn" style="display:none;">📊 Thống kê câu hỏi</button>
         <button id="logoutBtn">Đăng xuất</button>
       </div>
     </div>
@@ -201,6 +202,18 @@
         Bạn không cần đăng nhập để hỏi trợ lý hay tra cứu thủ tục — đăng nhập chỉ để lưu lại lịch sử câu hỏi của bạn.
       </p>
     </div>
+  </div>
+</div>
+
+<!-- MODAL: thống kê (admin) -->
+<div class="modal-bg" id="statsModalBg" role="dialog" aria-modal="true" aria-label="Thống kê câu hỏi" onclick="if(event.target===this)closeStatsModal()">
+  <div class="modal">
+    <div class="modal-top">
+      <button class="x" onclick="closeStatsModal()">✕</button>
+      <div class="cat">Dành cho cán bộ xã</div>
+      <h3>Người dân đang hỏi gì?</h3>
+    </div>
+    <div class="modal-body" id="statsBody"></div>
   </div>
 </div>
 
