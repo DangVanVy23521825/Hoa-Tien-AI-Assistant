@@ -144,6 +144,24 @@ function initVoiceInput() {
   };
 }
 
+/* ---------- Chia sẻ (Zalo / Web Share) ---------- */
+function initShare() {
+  const url = location.href.split('#')[0];
+  document.getElementById('shareBtn').onclick = async () => {
+    if (navigator.share) {
+      // Mobile: sheet hệ thống có sẵn Zalo/Messenger
+      try { await navigator.share({ title: 'Hòa Tiến AI · Trợ lý hành chính số', url }); } catch (_) {}
+      return;
+    }
+    const pop = document.getElementById('sharePop');
+    pop.classList.toggle('show');
+    document.getElementById('shareQr').src = qr(url, 110);
+  };
+  document.getElementById('copyLinkBtn').onclick = async (e) => {
+    try { await navigator.clipboard.writeText(url); e.target.textContent = 'Đã sao chép ✓'; } catch (_) {}
+  };
+}
+
 /* ---------- Khởi tạo dữ liệu tĩnh (procedures, faq, contacts) ---------- */
 async function initData() {
   try {
@@ -313,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initData();
   updateAuthUI();
   initVoiceInput();
+  initShare();
 
   // greeting + chips
   addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);

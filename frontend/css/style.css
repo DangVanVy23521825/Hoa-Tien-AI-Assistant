@@ -87,6 +87,11 @@
   .btn-primary:hover { background:var(--paddy-deep); transform:translateY(-1px); }
   .btn-ghost { background:var(--white); color:var(--ink); border:1px solid var(--line); }
   .btn-ghost:hover { border-color:var(--paddy); color:var(--paddy-deep); }
+  .share-pop { display:none; margin-top:14px; background:var(--white); border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:var(--shadow); align-items:center; gap:14px; max-width:360px; }
+  .share-pop.show { display:flex; }
+  .share-pop img { width:96px; height:96px; border-radius:8px; }
+  .share-pop b { display:block; font-size:14px; }
+  .share-pop small { display:block; color:var(--ink-soft); font-size:12px; margin:4px 0 10px; }
   .hero-stats { margin-top:34px; display:flex; gap:28px; }
   .hero-stats div b { display:block; font-size:22px; font-weight:700; color:var(--river-deep); font-family:'Lora'; }
   .hero-stats div span { font-size:12px; color:var(--ink-soft); }
