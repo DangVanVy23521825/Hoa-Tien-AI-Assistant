@@ -1,57 +1,50 @@
 """
-Sinh embedding bằng BAAI/bge-m3, qua 1 trong 2 provider chọn bằng `settings.embedding_provider`:
+Sinh embedding qua 1 trong 2 provider chọn bằng `settings.embedding_provider`:
 
-- "local_onnx" (mặc định): self-host bản quantize int8 (`gpahal/bge-m3-onnx-int8`,
-  ~570MB, ~1.4GB RAM lúc chạy) qua onnxruntime — không cần API key, nhưng vẫn
-  cần đủ RAM trên server chạy backend.
-- "deepinfra": gọi API DeepInfra (tương thích OpenAI) — backend nhẹ nhất, cần
-  DEEPINFRA_API_KEY, có phí theo token (rất thấp).
+- "local" (mặc định): self-host `paraphrase-multilingual-MiniLM-L12-v2` qua
+  `sentence-transformers` (~470MB tải về, ~700MB RAM lúc chạy) — không cần API key.
+  384 chiều.
+- "deepinfra": gọi API DeepInfra (tương thích OpenAI), model `BAAI/bge-m3`, cần
+  DEEPINFRA_API_KEY, backend nhẹ nhất nhưng có phí theo token. 1024 chiều.
 
-Lịch sử quyết định: bge-m3 full (~2.2GB, self-host qua sentence-transformers) gây
-OOM trên Railway Trial plan. Đã thử model nhẹ hơn (multilingual-e5-small/base) để
-né RAM nhưng chất lượng phân biệt kém hẳn (test thực tế: margin cosine similarity
-giữa tài liệu đúng/sai chỉ ~0.02-0.05, so với ~0.4 của bge-m3) — không dùng được.
-Bản quantize int8 giữ chất lượng gần bge-m3 gốc (margin ~0.17-0.25 khi test) với
-RAM thấp hơn nhiều — đang thử deploy thật; nếu vẫn OOM, đổi `EMBEDDING_PROVIDER=deepinfra`
-và redeploy là xong, không cần sửa code.
+QUAN TRỌNG: 2 provider ra vector KHÁC dimension (384 vs 1024) — đổi provider phải
+chạy migration đổi cột `Vector()` + `backfill_embeddings.py --force`, không chỉ
+đổi biến môi trường.
+
+Lịch sử quyết định (xem thêm `rules/deploy.md`): bge-m3 full self-host (torch,
+~2.5-3GB RAM) và cả bản quantize int8 (onnxruntime, ~1.4GB RAM) đều OOM-kill thật
+trên Railway Trial plan. Model nhẹ hơn cùng họ multilingual-e5 (small/base) né
+được RAM nhưng chất lượng phân biệt kém (margin cosine similarity ~0.02-0.05).
+Model tiếng Anh-only (bge-micro-v2) cho kết quả sai hẳn với tiếng Việt (tokenizer
+xé nát dấu, xếp hạng sai). `paraphrase-multilingual-MiniLM-L12-v2` là điểm cân
+bằng tốt nhất tìm được: ~700MB RAM (thấp hơn cả 2 lần OOM trước) và margin phân
+tách ~0.30-0.35 (tốt hơn cả bge-m3 gốc theo tỷ lệ tương đối, theo test thủ công).
 """
 
 from typing import Literal
 
 import httpx
-import numpy as np
-import onnxruntime as ort
-from huggingface_hub import hf_hub_download
-from transformers import AutoTokenizer
+from sentence_transformers import SentenceTransformer
 
 from app.core.config import settings
 
 TaskType = Literal["RETRIEVAL_DOCUMENT", "RETRIEVAL_QUERY"]
 
-EMBEDDING_DIM = 1024
+EMBEDDING_DIM = 384  # chiều của provider "local" (mặc định) — "deepinfra" là 1024
 
-_onnx_session: ort.InferenceSession | None = None
-_onnx_tokenizer: AutoTokenizer | None = None
-
-
-def _get_onnx_runtime() -> tuple[ort.InferenceSession, AutoTokenizer]:
-    global _onnx_session, _onnx_tokenizer
-    if _onnx_session is None:
-        repo = settings.local_embedding_model_repo
-        model_path = hf_hub_download(repo, "model_quantized.onnx")
-        _onnx_tokenizer = AutoTokenizer.from_pretrained(repo)
-        _onnx_session = ort.InferenceSession(model_path, providers=["CPUExecutionProvider"])
-    return _onnx_session, _onnx_tokenizer
+_local_model: SentenceTransformer | None = None
 
 
-def _embed_local_onnx(text: str) -> list[float]:
-    session, tokenizer = _get_onnx_runtime()
-    input_names = {i.name for i in session.get_inputs()}
-    encoded = tokenizer(text, return_tensors="np", padding=True, truncation=True, max_length=512)
-    feed = {k: v for k, v in encoded.items() if k in input_names}
-    dense_vecs = session.run(["dense_vecs"], feed)[0]
-    vector = dense_vecs[0]
-    return (vector / np.linalg.norm(vector)).tolist()
+def _get_local_model() -> SentenceTransformer:
+    global _local_model
+    if _local_model is None:
+        _local_model = SentenceTransformer(settings.local_embedding_model_name, device="cpu")
+    return _local_model
+
+
+def _embed_local(text: str) -> list[float]:
+    embedding = _get_local_model().encode(text, normalize_embeddings=True)
+    return embedding.tolist()
 
 
 def _embed_deepinfra(text: str) -> list[float]:
@@ -69,9 +62,8 @@ def _embed_deepinfra(text: str) -> list[float]:
 
 
 def embed_text(text: str, task_type: TaskType) -> list[float]:
-    """Trả về vector embedding (1024 chiều) cho `text`. `task_type` giữ lại cho
-    tương thích chữ ký hàm — bge-m3 không cần prefix "query:"/"passage:" như
-    model họ E5."""
+    """Trả về vector embedding cho `text`. `task_type` giữ lại cho tương thích
+    chữ ký hàm — cả 2 model hiện dùng đều không cần prefix "query:"/"passage:"."""
     if settings.embedding_provider == "deepinfra":
         return _embed_deepinfra(text)
-    return _embed_local_onnx(text)
+    return _embed_local(text)

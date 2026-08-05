@@ -25,6 +25,6 @@ class Procedure(Base):
     place_of_submission: Mapped[str] = mapped_column(String(255), nullable=False)
     online_url: Mapped[str] = mapped_column(String(500), nullable=False)
     legal_basis: Mapped[str] = mapped_column(String(500), nullable=False)
-    embedding: Mapped[list[float] | None] = mapped_column(Vector(1024), nullable=True)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(384), nullable=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())

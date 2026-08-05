@@ -1,18 +1,18 @@
 # rules/ai-module.md — Đặc tả module AI
 
-## Luồng xử lý (contract) — RAG thật: bge-m3 embedding + Gemini generation
+## Luồng xử lý (contract) — RAG thật: embedding self-host + Gemini generation
 
 Hai model khác nhau, hai vai trò khác nhau:
-- **Embedding (retrieval)**: `BAAI/bge-m3`, qua 1 trong 2 provider chọn bằng `EMBEDDING_PROVIDER`:
-  - `local_onnx` (**mặc định**): self-host bản quantize int8 (`gpahal/bge-m3-onnx-int8`, ~570MB, ~1.4GB RAM lúc chạy) qua `onnxruntime`, không cần API key.
-  - `deepinfra`: gọi API DeepInfra (tương thích OpenAI), cần `DEEPINFRA_API_KEY`, backend nhẹ nhất nhưng có phí theo token.
-  - Đổi 1 biến `EMBEDDING_PROVIDER` + redeploy là chuyển được, không cần sửa code — dùng làm phương án dự phòng nếu `local_onnx` OOM trên Railway. Chi tiết lịch sử quyết định (đã thử bge-m3 full self-host → OOM, thử model nhẹ hơn (e5-small/e5-base) → chất lượng phân biệt kém) xem docstring `backend/app/services/embeddings.py`.
+- **Embedding (retrieval)**: qua 1 trong 2 provider chọn bằng `EMBEDDING_PROVIDER`:
+  - `local` (**mặc định**): self-host `paraphrase-multilingual-MiniLM-L12-v2` (384 chiều, ~470MB tải về, ~700MB RAM lúc chạy) qua `sentence-transformers`, không cần API key.
+  - `deepinfra`: gọi API DeepInfra (tương thích OpenAI), model `BAAI/bge-m3` (1024 chiều), cần `DEEPINFRA_API_KEY`, backend nhẹ nhất nhưng có phí theo token.
+  - **2 provider ra vector khác dimension (384 vs 1024)** — đổi provider phải chạy migration đổi cột `Vector()` + `backfill_embeddings.py --force`, không chỉ đổi 1 biến env. Chi tiết lịch sử quyết định (đã thử bge-m3 full self-host → OOM thật trên Railway; bge-m3 quantize int8 → vẫn OOM; multilingual-e5-small/base → chất lượng phân biệt kém; bge-micro-v2 → tiếng Anh-only, xếp hạng sai với tiếng Việt) xem docstring `backend/app/services/embeddings.py`.
 - **Generation**: Gemini (`gemini_generation_model`) — qua API, cần `GEMINI_API_KEY`.
 
 ```
 POST /chat { question: string, [token?] }
    → retrieve(db, question, topK)  [backend/app/services/retrieval.py]  → hits
-       keyword score (giữ nguyên thuật toán cũ) + semantic score (embedding bge-m3, pgvector)
+       keyword score (giữ nguyên thuật toán cũ) + semantic score (embedding, pgvector)
    → generate(question, hits)      [backend/app/services/generation.py]
        không hit → fallback tĩnh, KHÔNG gọi Gemini
        có hit    → call_gemini(context, question) [backend/app/services/llm.py]
@@ -26,7 +26,7 @@ POST /chat { question: string, [token?] }
 |-----|-------------|
 | `normalize(s)` | Chuẩn hoá tiếng Việt: bỏ dấu, đ→d, hạ thường |
 | `retrieve(db, query, topK)` | Hybrid: keyword scoring (như cũ) + semantic similarity (cosine, embedding lưu sẵn qua pgvector) |
-| `embed_text(text, task_type)` | `backend/app/services/embeddings.py` — định tuyến theo `EMBEDDING_PROVIDER` tới `_embed_local_onnx()` hoặc `_embed_deepinfra()`. `task_type` giữ lại cho tương thích chữ ký hàm nhưng không dùng — bge-m3 không cần prefix "query:"/"passage:" như một số model BGE đời trước |
+| `embed_text(text, task_type)` | `backend/app/services/embeddings.py` — định tuyến theo `EMBEDDING_PROVIDER` tới `_embed_local()` hoặc `_embed_deepinfra()`. `task_type` giữ lại cho tương thích chữ ký hàm nhưng không dùng — cả 2 model hiện dùng không cần prefix "query:"/"passage:" |
 | `call_gemini(prompt)` | `backend/app/services/llm.py` — gọi Gemini generation, ép grounding qua system prompt, raise `LlmError` nếu lỗi/timeout để caller fallback |
 | `generate(query, hits)` | Gọi Gemini khi có hit, fallback `_generate_template()` khi Gemini lỗi hoặc trả refusal phrase |
 
@@ -60,8 +60,8 @@ Không được nới lỏng threshold ở lớp 1 với kỳ vọng lớp 2 "s�
 
 ## Vận hành embedding
 
-- `embedding` (cột `Vector(1024)`, pgvector — 1024 chiều vì đây là dimension gốc của bge-m3) được tính và lưu ở **write-time**: seed (`scripts/seed_from_json.py`) và admin CRUD (`routers/admin.py`) — không tính lại cho toàn bộ KB mỗi lần chat.
-- Sau khi apply migration thêm cột `embedding` lần đầu, chạy `python3 scripts/backfill_embeddings.py` để embed các record đã có sẵn trong DB.
-- Provider `deepinfra` cần `DEEPINFRA_API_KEY` hợp lệ; provider `local_onnx` tự tải model từ HuggingFace Hub lần đầu gọi (không cần key nhưng cần mạng ổn định lúc đó). Lỗi ở cả 2 trường hợp: `embed_text()` raise lỗi, seed/admin CRUD bắt lỗi này và bỏ qua embed (log cảnh báo), retrieval tự động chỉ dùng keyword score cho các record chưa có embedding.
-- Đổi provider (`EMBEDDING_PROVIDER`) hoặc model → phải chạy lại `backfill_embeddings.py --force` cho toàn bộ KB (embedding từ model/provider khác nhau không so sánh trực tiếp được với nhau — dù cùng là bge-m3, bản quantize và bản gốc cho vector hơi khác nhau về mặt số học).
-- **Chi phí/tài nguyên**: `local_onnx` không tốn tiền nhưng cần ~1.4GB RAM cố định trên backend; `deepinfra` gần như không tốn RAM nhưng tính phí theo token (~$0.01/triệu token cho bge-m3, rất rẻ).
+- `embedding` (cột `Vector(384)`, pgvector — 384 chiều vì đây là dimension của `paraphrase-multilingual-MiniLM-L12-v2`, provider mặc định) được tính và lưu ở **write-time**: seed (`scripts/seed_from_json.py`) và admin CRUD (`routers/admin.py`) — không tính lại cho toàn bộ KB mỗi lần chat.
+- Sau khi apply migration thêm/đổi cột `embedding`, chạy `python3 scripts/backfill_embeddings.py --force` để embed lại toàn bộ record trong DB.
+- Provider `deepinfra` cần `DEEPINFRA_API_KEY` hợp lệ; provider `local` tự tải model từ HuggingFace Hub lần đầu gọi (không cần key nhưng cần mạng ổn định lúc đó). Lỗi ở cả 2 trường hợp: `embed_text()` raise lỗi, seed/admin CRUD bắt lỗi này và bỏ qua embed (log cảnh báo), retrieval tự động chỉ dùng keyword score cho các record chưa có embedding.
+- Đổi provider (`EMBEDDING_PROVIDER`) → **bắt buộc migration đổi dimension cột `Vector()`** (384 ↔ 1024) rồi mới `backfill_embeddings.py --force` — 2 provider hiện tại ra vector khác chiều nên không thể chỉ đổi biến env.
+- **Chi phí/tài nguyên**: `local` không tốn tiền nhưng cần ~700MB RAM cố định trên backend; `deepinfra` gần như không tốn RAM nhưng tính phí theo token (~$0.01/triệu token cho bge-m3, rất rẻ).

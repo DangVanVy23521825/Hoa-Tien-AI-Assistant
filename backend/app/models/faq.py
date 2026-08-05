@@ -17,6 +17,6 @@ class Faq(Base):
     question: Mapped[str] = mapped_column(Text, nullable=False)
     keywords: Mapped[list] = mapped_column(JSON, default=list)
     answer: Mapped[str] = mapped_column(Text, nullable=False)
-    embedding: Mapped[list[float] | None] = mapped_column(Vector(1024), nullable=True)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(384), nullable=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())
