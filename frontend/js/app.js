@@ -185,6 +185,9 @@ function renderProcedures(procedures) {
   procedures.forEach(p => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.tabIndex = 0; // mở được bằng bàn phím (Enter) — focus trap trả focus về đúng card
+    card.setAttribute('role', 'button');
+    card.onkeydown = (e) => { if (e.key === 'Enter') openModal(p); };
     card.innerHTML = `
       <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="cat">${p.category}</div>
@@ -232,8 +235,11 @@ let _lastFocused = null;
 function trapFocus(bgEl) {
   _lastFocused = document.activeElement;
   const focusables = () => bgEl.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
-  const first = focusables()[0];
-  if (first) first.focus();
+  // Focus vào container thay vì nút đầu tiên: nếu focus thẳng vào nút ✕ thì phím
+  // Enter (đang mở modal từ card) sẽ kích hoạt luôn nút đó và đóng modal ngay.
+  const dialog = bgEl.querySelector('.modal') || bgEl;
+  dialog.tabIndex = -1;
+  dialog.focus();
   bgEl.onkeydown = (e) => {
     if (e.key !== 'Tab') return;
     const list = Array.from(focusables()).filter(el => el.offsetParent !== null);
