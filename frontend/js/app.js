@@ -49,6 +49,22 @@ function buildAnswerHtml(res) {
   return html;
 }
 
+function addFeedbackBar(msgEl, messageId) {
+  if (!messageId) return;
+  const bar = document.createElement('div');
+  bar.className = 'fb-bar';
+  bar.innerHTML = `<span>Câu trả lời có hữu ích?</span>
+    <button class="fb-btn" data-v="1" aria-label="Hữu ích">👍</button>
+    <button class="fb-btn" data-v="0" aria-label="Chưa hữu ích">👎</button>`;
+  bar.querySelectorAll('.fb-btn').forEach(btn => {
+    btn.onclick = async () => {
+      try { await api.sendFeedback(messageId, btn.dataset.v === '1'); } catch (_) {}
+      bar.innerHTML = `<span class="fb-done">Cảm ơn bạn đã góp ý! 🙏</span>`;
+    };
+  });
+  msgEl.querySelector('.bubble').appendChild(bar);
+}
+
 let askInFlight = false;
 
 async function ask(query) {
@@ -60,7 +76,8 @@ async function ask(query) {
   try {
     const res = await api.chat(query);
     removeTyping();
-    addMsg('bot', buildAnswerHtml(res), res.source);
+    const botMsg = addMsg('bot', buildAnswerHtml(res), res.source);
+    addFeedbackBar(botMsg, res.message_id);
     showNetBanner(false);
     if (getToken()) loadHistory(); // cập nhật panel lịch sử nếu đang mở
   } catch (e) {
