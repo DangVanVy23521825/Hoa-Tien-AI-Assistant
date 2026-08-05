@@ -172,6 +172,9 @@
   .chat-input input:focus { border-color:var(--paddy); background:#fff; box-shadow:0 0 0 3px rgba(47,125,79,.1); }
   .send-btn { background:var(--paddy); color:#fff; border:none; border-radius:12px; width:48px; cursor:pointer; display:grid; place-items:center; transition:.2s; }
   .send-btn:hover { background:var(--paddy-deep); }
+  .mic-btn { background:var(--white); color:var(--river-deep); border:1px solid var(--line); border-radius:12px; width:48px; cursor:pointer; display:grid; place-items:center; transition:.2s; flex-shrink:0; }
+  .mic-btn:hover { border-color:var(--paddy); color:var(--paddy-deep); }
+  .mic-btn.listening { background:var(--paddy); color:#fff; border-color:var(--paddy); animation:pulse 1.5s infinite; }
 
   /* ── Procedures grid ── */
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }

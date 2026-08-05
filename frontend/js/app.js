@@ -93,6 +93,33 @@ async function ask(query) {
   }
 }
 
+/* ---------- Voice input (Web Speech API) ---------- */
+function initVoiceInput() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const micBtn = document.getElementById('micBtn');
+  if (!SR) { micBtn.style.display = 'none'; return; }
+
+  const rec = new SR();
+  rec.lang = 'vi-VN';
+  rec.interimResults = true;
+  let listening = false;
+
+  rec.onresult = (e) => {
+    const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
+    document.getElementById('chatInput').value = transcript;
+    if (e.results[e.results.length - 1].isFinal) ask(transcript);
+  };
+  rec.onend = () => { listening = false; micBtn.classList.remove('listening'); };
+  rec.onerror = () => { listening = false; micBtn.classList.remove('listening'); };
+
+  micBtn.onclick = () => {
+    if (listening) { rec.stop(); return; }
+    listening = true;
+    micBtn.classList.add('listening');
+    rec.start();
+  };
+}
+
 /* ---------- Khởi tạo dữ liệu tĩnh (procedures, faq, contacts) ---------- */
 async function initData() {
   try {
@@ -254,6 +281,7 @@ async function loadHistory() {
 document.addEventListener('DOMContentLoaded', () => {
   initData();
   updateAuthUI();
+  initVoiceInput();
 
   // greeting + chips
   addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);
