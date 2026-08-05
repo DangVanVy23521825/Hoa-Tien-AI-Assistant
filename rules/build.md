@@ -12,12 +12,12 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env   # điền DATABASE_URL, JWT_SECRET, GEMINI_API_KEY local
 alembic upgrade head
-python3 scripts/seed_from_json.py            # nạp data/seed-knowledge-base.json vào DB, tự embed (mặc định self-host qua sentence-transformers, tải model ~470MB lần đầu)
+python3 scripts/seed_from_json.py            # nạp data/seed-knowledge-base.json vào DB, tự embed qua Gemini embedding API
 python3 scripts/backfill_embeddings.py        # chỉ cần chạy nếu seed từng lỗi/bỏ sót embedding
 uvicorn app.main:app --reload --port 8000
 ```
 
-> Embedding mặc định self-host `paraphrase-multilingual-MiniLM-L12-v2` qua `sentence-transformers` (`EMBEDDING_PROVIDER=local`, không cần API key, tải model từ HuggingFace Hub lần đầu gọi). Đổi `EMBEDDING_PROVIDER=deepinfra` + `DEEPINFRA_API_KEY` nếu muốn gọi API ngoài (bge-m3) thay vì self-host — lưu ý 2 provider ra vector khác dimension nên cần migration khi đổi, xem `rules/ai-module.md`. Gemini (`GEMINI_API_KEY`) chỉ dùng cho generation, luôn cần dù chọn provider embedding nào. Thiếu key cần thiết: seed/CRUD vẫn chạy được nhưng bỏ qua bước tương ứng (embed hoặc gọi LLM), log cảnh báo — không crash.
+> Embedding mặc định gọi Gemini embedding API (`EMBEDDING_PROVIDER=gemini`, dùng chung `GEMINI_API_KEY` với generation — không cần key riêng, không self-host). Đổi `EMBEDDING_PROVIDER=deepinfra` + `DEEPINFRA_API_KEY` nếu muốn chất lượng tốt hơn (bge-m3) — lưu ý 2 provider ra vector khác dimension nên cần migration khi đổi, xem `rules/ai-module.md`. Thiếu key cần thiết: seed/CRUD vẫn chạy được nhưng bỏ qua bước tương ứng (embed hoặc gọi LLM), log cảnh báo — không crash.
 
 ## Frontend
 

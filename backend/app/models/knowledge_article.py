@@ -21,6 +21,6 @@ class KnowledgeArticle(Base):
     keywords: Mapped[list] = mapped_column(JSON, default=list)
     content: Mapped[str] = mapped_column(Text, nullable=False)
     source_citation: Mapped[str] = mapped_column(String(500), nullable=False)
-    embedding: Mapped[list[float] | None] = mapped_column(Vector(384), nullable=True)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(768), nullable=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())

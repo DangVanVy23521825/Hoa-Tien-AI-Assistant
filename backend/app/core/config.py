@@ -14,12 +14,13 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_generation_model: str = "gemini-2.5-flash"
 
-    # "local" (self-host multilingual-MiniLM, 384 chiều, nhẹ) hoặc "deepinfra"
-    # (bge-m3 qua API ngoài, 1024 chiều, cần DEEPINFRA_API_KEY). Khác dimension
-    # nên đổi provider cần migration + backfill lại, không chỉ đổi env — dùng
-    # "deepinfra" làm phương án dự phòng nếu "local" vẫn OOM trên Railway.
-    embedding_provider: str = "local"
-    local_embedding_model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    # "gemini" (mặc định — API embedding của Google, tận dụng chung GEMINI_API_KEY,
+    # 768 chiều, không tự host nên không có rủi ro OOM) hoặc "deepinfra" (bge-m3
+    # qua API ngoài, 1024 chiều, chất lượng tốt hơn nhưng cần thêm DEEPINFRA_API_KEY).
+    # Khác dimension nên đổi provider cần migration + backfill lại, không chỉ đổi env.
+    embedding_provider: str = "gemini"
+    gemini_embedding_model: str = "gemini-embedding-001"
+    gemini_embedding_dim: int = 768
     deepinfra_api_key: str = ""
     deepinfra_embedding_model_name: str = "BAAI/bge-m3"
     embedding_api_base_url: str = "https://api.deepinfra.com/v1/openai/embeddings"
