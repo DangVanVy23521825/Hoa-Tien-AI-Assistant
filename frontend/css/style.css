@@ -315,3 +315,18 @@
   }
   .net-banner.show { display:block; }
   .net-banner a { color:#8a332e; font-weight:700; text-decoration:underline; }
+
+  /* ── In checklist hồ sơ ── */
+  .print-btn { margin-top:9px; display:inline-flex; background:var(--white); border:1px solid var(--line); border-radius:8px; padding:6px 12px; cursor:pointer; font-size:12.5px; font-family:inherit; font-weight:600; color:var(--ink); transition:.2s; }
+  .print-btn:hover { border-color:var(--paddy); color:var(--paddy-deep); }
+  #printArea { display:none; }
+  @media print {
+    body > *:not(#printArea) { display:none !important; }
+    #printArea { display:block !important; font-family:'Be Vietnam Pro', system-ui, sans-serif; color:#000; padding:24px; }
+    #printArea h1 { font-size:15px; text-transform:uppercase; letter-spacing:.5px; }
+    #printArea h2 { font-size:22px; margin:10px 0 6px; }
+    #printArea h3 { font-size:14px; margin:14px 0 6px; }
+    #printArea ul { list-style:none; padding-left:4px; }
+    #printArea li { margin:7px 0; font-size:14px; }
+    #printArea .print-foot { margin-top:20px; font-size:11px; color:#555; border-top:1px solid #ccc; padding-top:8px; }
+  }

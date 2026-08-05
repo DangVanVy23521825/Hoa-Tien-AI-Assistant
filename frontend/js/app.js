@@ -49,6 +49,22 @@ function buildAnswerHtml(res) {
   return html;
 }
 
+function printChecklist(code) {
+  const p = PROCEDURES.find(x => x.code === code);
+  if (!p) return;
+  document.getElementById('printArea').innerHTML = `
+    <h1>UBND xã Hòa Tiến — Checklist hồ sơ</h1>
+    <h2>${p.name}</h2>
+    <p>${p.description}</p>
+    <h3>Hồ sơ cần chuẩn bị (đánh dấu khi đã có):</h3>
+    <ul>${p.documents.map(d => `<li>☐ ${d}</li>`).join('')}</ul>
+    <p><b>Lệ phí:</b> ${p.fee} — <b>Thời gian xử lý:</b> ${p.processing_time}</p>
+    <p><b>Nơi nộp:</b> ${p.place_of_submission}</p>
+    <p><b>Nộp trực tuyến:</b> ${p.online_url}</p>
+    <p class="print-foot">In từ Trợ lý hành chính số Hòa Tiến AI · ${new Date().toLocaleDateString('vi-VN')} · Thông tin tham khảo, đối soát tại Bộ phận Một cửa.</p>`;
+  window.print();
+}
+
 function addFeedbackBar(msgEl, messageId) {
   if (!messageId) return;
   const bar = document.createElement('div');
@@ -78,6 +94,13 @@ async function ask(query) {
     removeTyping();
     const botMsg = addMsg('bot', buildAnswerHtml(res), res.source);
     addFeedbackBar(botMsg, res.message_id);
+    if (res.matched_source_type === 'procedure' && res.matched_source_id) {
+      const pr = document.createElement('button');
+      pr.className = 'print-btn';
+      pr.innerHTML = '🖨️ In checklist hồ sơ';
+      pr.onclick = () => printChecklist(res.matched_source_id);
+      botMsg.querySelector('.bubble').appendChild(pr);
+    }
     showNetBanner(false);
     if (getToken()) loadHistory(); // cập nhật panel lịch sử nếu đang mở
   } catch (e) {
@@ -209,6 +232,7 @@ function openModal(p) {
         <img src="${qr(p.online_url, 96)}" alt="QR nộp trực tuyến"/>
         <div><b>Nộp hồ sơ trực tuyến</b><br/><small>Quét mã QR để đến Cổng Dịch vụ công Quốc gia và nộp hồ sơ ${p.name.toLowerCase()}.</small></div>
       </div>
+      <button class="btn btn-ghost modal-cta" onclick="printChecklist('${p.code}')">🖨️ In checklist hồ sơ</button>
       <a href="#tro-ly" class="btn btn-primary modal-cta" onclick="closeModal()">Hỏi trợ lý về thủ tục này →</a>
     </div>`;
   document.getElementById('modalBg').classList.add('show');
