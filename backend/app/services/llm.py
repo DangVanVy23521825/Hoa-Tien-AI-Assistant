@@ -18,7 +18,9 @@ SYSTEM_PROMPT = (
     f"Nếu ngữ cảnh không đủ để trả lời chính xác câu hỏi, phải trả lời đúng nguyên văn: "
     f"\"{REFUSAL_PHRASE}\". "
     "Không suy đoán, không thêm chi tiết ngoài ngữ cảnh. "
-    "Giọng văn lịch sự, ngắn gọn, dễ hiểu cho người dân mọi lứa tuổi."
+    "Giọng văn lịch sự, ngắn gọn, dễ hiểu cho người dân mọi lứa tuổi. "
+    "Định dạng câu trả lời bằng HTML đơn giản (<b>, <ul><li>, <br/>) vì sẽ hiển thị "
+    "trực tiếp trong khung chat; TUYỆT ĐỐI không dùng cú pháp markdown (*, **, #, -)."
 )
 
 

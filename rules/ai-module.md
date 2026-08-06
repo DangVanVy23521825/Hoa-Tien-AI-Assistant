@@ -55,9 +55,11 @@ Không được nới lỏng threshold ở lớp 1 với kỳ vọng lớp 2 "s�
 - Lọc stop-word tiếng Việt trước khi tính điểm (từ như "làm", "có", "ở", "đâu"…) — tránh một từ phổ biến vô tình khớp nhầm nhiều tài liệu không liên quan.
 - Token câu hỏi khớp **nguyên từ** trong text tài liệu: **+2**/token (không dùng substring thô trên toàn chuỗi — dễ khớp nhầm, ví dụ "hộ" khớp nhầm "Hòa" nếu so substring).
 - Prefix match (từ bắt đầu bằng token, token ≥ 3 ký tự): **+0.5**.
-- Cụm keyword của tài liệu nằm trong câu hỏi: **+4** (tín hiệu mạnh nhất).
-- **Ngưỡng khớp tối thiểu: 4.0** — yêu cầu ít nhất 2 tín hiệu từ độc lập hoặc 1 cụm keyword khớp, để 1 từ đơn lẻ trùng ngẫu nhiên không đủ kích hoạt câu trả lời sai.
-- Đã kiểm thử 15/15 câu mẫu (10 câu hợp lệ khớp đúng, 5 câu ngoài phạm vi đều fallback đúng) — xem `docs/demo-script.md`.
+- Cụm keyword của tài liệu nằm trong câu hỏi: **+4** (tín hiệu mạnh nhất, đồng thời được miễn cổng cosine bên dưới).
+- **Điểm semantic đã trừ nền** (`SEMANTIC_FLOOR = 0.60` trong `retrieval.py`): cosine của gemini-embedding có "nền" ~0.5 giữa mọi cặp văn bản tiếng Việt kể cả không liên quan (đo trên KB production 08/2026: câu rác 0.48–0.625, đích đúng 0.66–0.82). Chỉ phần cosine vượt nền được rescale về `[0..rag_semantic_weight]` và cộng vào score — tài liệu không liên quan nhận ~0 điểm semantic thay vì ~0.5×weight "miễn phí".
+- **Cổng cosine per-hit** (`SEMANTIC_GATE_MIN_COS = 0.65`): doc có embedding mà cosine < 0.65 và câu hỏi không chứa nguyên cụm keyword nào của doc → loại hẳn khỏi kết quả, dù keyword score cao. Chặn token rác ("thu", "do", "gia"…) cộng dồn ≥4đ cho câu hoàn toàn ngoài phạm vi ("thủ đô của Pháp", "giá vàng hôm nay"…). Doc chưa có embedding (contact/commune, hoặc chưa backfill) bỏ qua cổng — giữ chế độ keyword-only cũ.
+- **Ngưỡng khớp tối thiểu: 4.0** trên tổng (keyword + semantic-đã-trừ-nền).
+- Đã kiểm thử 15/15 câu hợp lệ khớp đúng + 8/8 câu ngoài phạm vi fallback đúng trên DB production (08/2026) — script mẫu: đo lại bằng battery tương tự khi đổi ngưỡng/embedding provider.
 
 > Khi thêm thủ tục mới qua `/admin`, **bắt buộc điền `keywords`** đa dạng cách người dân hỏi (khẩu ngữ, viết tắt, từ đồng nghĩa) — vẫn cần dù đã có semantic search, vì keyword score vẫn là một phần của hybrid score.
 

@@ -1,8 +1,8 @@
 /* Service worker — cache shell tĩnh để "cài app" + mở được khi mất mạng.
    Network-first: deploy bản mới người dùng nhận ngay, offline mới rơi về cache.
    API backend (khác origin) không đi qua đây. Đổi tên CACHE khi cần force refresh. */
-const CACHE = 'hoatien-shell-v1';
-const SHELL = ['./', './index.html', './css/style.css', './js/api.js', './js/app.js', './manifest.webmanifest', './icons/icon.svg'];
+const CACHE = 'hoatien-shell-v2';
+const SHELL = ['./', './index.html', './css/style.css', './js/api.js', './js/app.js', './manifest.webmanifest', './icons/icon.svg', './legacy/index.html'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

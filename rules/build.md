@@ -42,7 +42,7 @@ docker run --name hoatien-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=hoatie
 3. Admin đăng nhập → thêm/sửa 1 thủ tục → kiểm tra `/procedures` phản ánh thay đổi ngay.
 4. Tắt backend giả lập sự cố → frontend hiển thị lỗi lịch sự, không trắng trang.
 5. Test trên mobile thật (không chỉ resize trình duyệt).
-6. Test `legacy/index.html` vẫn chạy độc lập làm phương án dự phòng.
+6. Test `frontend/legacy/index.html` vẫn chạy độc lập làm phương án dự phòng.
 
 ## Sau khi sửa dữ liệu seed
 

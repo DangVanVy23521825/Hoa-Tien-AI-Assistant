@@ -53,7 +53,7 @@ RAG_SEMANTIC_WEIGHT=4.0
 ## Kế hoạch dự phòng khi thuyết trình
 
 Deploy thật phụ thuộc mạng của địa điểm tổ chức. Luôn mang theo:
-- `legacy/index.html` (bản offline single-file) chạy trên máy trình bày, phòng khi mạng hội trại kém hoặc backend gặp sự cố.
+- `frontend/legacy/index.html` (bản offline single-file) chạy trên máy trình bày, phòng khi mạng hội trại kém hoặc backend gặp sự cố.
 - Ảnh chụp màn hình / video ngắn quay sẵn luồng chính (chat → thủ tục → QR) làm phương án C.
 
 ## Trước ngày thi — checklist
@@ -63,6 +63,6 @@ Deploy thật phụ thuộc mạng của địa điểm tổ chức. Luôn mang 
 - [ ] Tài khoản admin đã tạo, test CRUD.
 - [ ] Test đăng ký/đăng nhập user thường + xem lịch sử chat.
 - [ ] Rate limit không chặn nhầm khi nhiều người bấm thử cùng lúc tại gian trưng bày.
-- [ ] `legacy/index.html` vẫn chạy được như phương án dự phòng.
+- [ ] `frontend/legacy/index.html` vẫn chạy được như phương án dự phòng.
 - [x] Railway Postgres đã xác nhận `CREATE EXTENSION vector` chạy được (pgvector 0.8.5).
 - [ ] Test `/chat` với câu hỏi có match trên production không bị lỗi 502/500.

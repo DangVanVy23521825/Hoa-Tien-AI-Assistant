@@ -6,7 +6,7 @@
 - **Không chặn trải nghiệm bằng đăng nhập.** Chat, danh mục thủ tục, FAQ, liên hệ dùng được ngay không cần tài khoản. Đăng nhập chỉ mở khoá "lưu lịch sử chat".
 - **Responsive.** Phải chạy tốt trên điện thoại (người dùng chính) và màn hình lớn khi trưng bày.
 - **A11y tối thiểu.** Focus bàn phím nhìn thấy được, tương phản đủ, `aria-label` cho nút icon.
-- **Xử lý lỗi mạng rõ ràng.** Nếu backend không phản hồi (mất mạng/server sập), hiển thị thông báo lịch sự + gợi ý dùng bản dự phòng offline (`legacy/index.html`) nếu đang ở gian trưng bày.
+- **Xử lý lỗi mạng rõ ràng.** Nếu backend không phản hồi (mất mạng/server sập), hiển thị thông báo lịch sự + gợi ý dùng bản dự phòng offline (`frontend/legacy/index.html`) nếu đang ở gian trưng bày.
 
 ## Design tokens (CSS variables) — giữ nguyên
 
