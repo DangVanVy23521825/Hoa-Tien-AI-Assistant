@@ -43,9 +43,19 @@ MIN_MATCH_SCORE = 4.0  # yêu cầu ít nhất 2 từ khớp độc lập (2×2)
 # hoàn toàn không liên quan (đo trên KB production 08/2026: câu rác đạt 0.48–0.625,
 # đích đúng 0.66–0.82). Hai hằng số dưới tách phần nền đó ra khỏi score:
 # - SEMANTIC_FLOOR: chỉ phần cosine vượt nền mới được cộng điểm (rescale về [0..weight])
-# - SEMANTIC_GATE_MIN_COS: doc có embedding mà cosine dưới ngưỡng này và không khớp
-#   nguyên cụm keyword nào thì bị loại hẳn, dù keyword score cao (chặn token rác
-#   kiểu "thu"/"do"/"gia" cộng dồn 4đ+ cho câu ngoài phạm vi).
+# - SEMANTIC_GATE_MIN_COS: doc có embedding mà cosine dưới ngưỡng này thì bị loại hẳn,
+#   dù keyword score cao (chặn token rác kiểu "thu"/"do"/"gia" cộng dồn 4đ+ cho câu
+#   ngoài phạm vi).
+#
+# Trước đây doc khớp nguyên một cụm keyword được MIỄN cổng này. Đo lại 08/2026 trên
+# toàn bộ KB (15 câu hỏi chuẩn + 12 câu khẩu ngữ): doc đúng luôn có cosine 0.737–0.821,
+# tức không câu hợp lệ nào cần tới miễn cổng — trong khi miễn cổng chính là đường lọt
+# của mọi false-positive đo được ("đặt vé máy bay online" khớp cụm "online" của FAQ-02
+# ở cos 0.603; "vì sao ý kiến…" khớp cụm "sao y" của CT-01 ở cos 0.589; "giờ làm việc
+# của ngân hàng Vietcombank" khớp cụm "giờ làm việc" của FAQ-01 ở cos 0.633). Vì vậy
+# miễn cổng đã bị bỏ. Lưu ý cổng cosine KHÔNG tách được mọi câu rác: câu gần nghĩa thật
+# như "nộp thuế thu nhập cá nhân online" vẫn đạt cos 0.708 với FAQ-02 và lọt qua —
+# guardrail lớp 2 (refusal phrase của Gemini) mới là lưới cuối.
 SEMANTIC_FLOOR = 0.60
 SEMANTIC_GATE_MIN_COS = 0.65
 
@@ -66,9 +76,9 @@ def _tokenize(query_norm: str) -> list[str]:
 
 def _score_doc(
     query_tokens: list[str], query_norm: str, text: str, keywords: list[str]
-) -> tuple[float, bool]:
-    """Trả về (keyword_score, has_phrase_match) — has_phrase_match=True khi câu hỏi
-    chứa nguyên một cụm keyword của tài liệu (tín hiệu đủ mạnh để miễn cổng cosine)."""
+) -> float:
+    """Điểm keyword của một tài liệu: khớp nguyên từ +2, khớp prefix +0.5,
+    câu hỏi chứa nguyên một cụm keyword của tài liệu +4."""
     score = 0.0
     words = text.split()
     word_set = set(words)
@@ -80,12 +90,10 @@ def _score_doc(
                 if w.startswith(t) and len(t) >= 3:  # prefix chỉ tính khi token đủ dài, tránh khớp rác
                     score += 0.5
                     break
-    has_phrase = False
     for k in keywords:
         if normalize(k) in query_norm:
             score += 4
-            has_phrase = True
-    return score, has_phrase
+    return score
 
 
 def _cosine_similarity(a: list[float], b: list[float]) -> float:
@@ -114,13 +122,12 @@ def _semantic_score(cos: float | None) -> float:
     return max(0.0, cos - SEMANTIC_FLOOR) / (1.0 - SEMANTIC_FLOOR) * settings.rag_semantic_weight
 
 
-def _passes_semantic_gate(cos: float | None, has_phrase: bool) -> bool:
-    """Cổng lớp 1: doc có embedding phải đạt cosine tối thiểu, trừ khi câu hỏi chứa
-    nguyên cụm keyword của doc. Doc/câu hỏi chưa có embedding thì bỏ qua cổng
-    (chế độ keyword-only cũ)."""
+def _passes_semantic_gate(cos: float | None) -> bool:
+    """Cổng lớp 1: doc có embedding phải đạt cosine tối thiểu. Doc/câu hỏi chưa có
+    embedding thì bỏ qua cổng (chế độ keyword-only cũ)."""
     if cos is None:
         return True
-    return cos >= SEMANTIC_GATE_MIN_COS or has_phrase
+    return cos >= SEMANTIC_GATE_MIN_COS
 
 
 def _embed_query(query: str) -> list[float] | None:
@@ -128,6 +135,23 @@ def _embed_query(query: str) -> list[float] | None:
         return embed_text(query, "RETRIEVAL_QUERY")
     except Exception:
         return None
+
+
+# Contact/commune không có cột `embedding` trong DB như procedure/faq/article: text của
+# chúng được ghép tại query-time từ bảng contacts. Embed một lần rồi cache theo tiến
+# trình (text gần như không đổi) để chúng đi qua đúng cổng cosine như mọi nguồn khác —
+# trước đây 2 nguồn này bỏ qua cổng hoàn toàn, nên "giờ làm việc của ngân hàng
+# Vietcombank ở đâu?" khớp contact chỉ nhờ token "gio" + "viec" (4.0 = MIN_MATCH_SCORE).
+_static_doc_embeddings: dict[str, list[float] | None] = {}
+
+
+def _embed_static_doc(text: str) -> list[float] | None:
+    if text not in _static_doc_embeddings:
+        try:
+            _static_doc_embeddings[text] = embed_text(text, "RETRIEVAL_DOCUMENT")
+        except Exception:
+            _static_doc_embeddings[text] = None
+    return _static_doc_embeddings[text]
 
 
 def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
@@ -138,9 +162,9 @@ def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
     hits: list[Hit] = []
 
     def add_hit(source_type: SourceType, ref, text: str, keywords: list[str], embedding) -> None:
-        kw_score, has_phrase = _score_doc(q_tokens, q_norm, text, keywords)
+        kw_score = _score_doc(q_tokens, q_norm, text, keywords)
         cos = _cosine_or_none(q_embedding, embedding)
-        if not _passes_semantic_gate(cos, has_phrase):
+        if not _passes_semantic_gate(cos):
             return
         score = kw_score + _semantic_score(cos)
         if score > 0:
@@ -163,17 +187,13 @@ def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
         contact_text = normalize(
             "lien he dia chi so dien thoai gio lam viec ubnd tru so " + contact.address
         )
-        score, _ = _score_doc(q_tokens, q_norm, contact_text, [])
-        if score > 0:
-            hits.append(Hit(type="contact", ref=contact, score=score))
+        add_hit("contact", contact, contact_text, [], _embed_static_doc(contact_text))
 
         commune = contact.commune_info or {}
         commune_text = normalize(
             "xa hoa tien thong tin dan so dien tich sap nhap " + str(commune.get("note", ""))
         )
-        score, _ = _score_doc(q_tokens, q_norm, commune_text, [])
-        if score > 0:
-            hits.append(Hit(type="commune", ref=contact, score=score))
+        add_hit("commune", contact, commune_text, [], _embed_static_doc(commune_text))
 
     hits.sort(key=lambda h: h.score, reverse=True)
     hits = [h for h in hits if h.score >= MIN_MATCH_SCORE]
