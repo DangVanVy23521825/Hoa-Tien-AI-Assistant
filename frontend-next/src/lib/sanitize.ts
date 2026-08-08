@@ -8,12 +8,23 @@ const ALLOWED_TAGS = new Set([
   "B", "STRONG", "I", "EM", "U", "BR", "P", "UL", "OL", "LI", "SPAN", "SMALL", "CODE",
 ]);
 
+/* Gemini thỉnh thoảng trả về HTML đã escape ("&lt;b&gt;…") thay vì HTML thật, làm
+   câu trả lời hiện nguyên thẻ trên màn hình. Giải mã 1 lần khi CHẮC CHẮN cả chuỗi
+   không có thẻ thật — allowlist bên dưới vẫn chạy sau nên không mở thêm lỗ XSS. */
+function decodeIfFullyEscaped(html: string): string {
+  if (/<[a-z/!]/i.test(html)) return html;
+  if (!/&lt;|&gt;/.test(html)) return html;
+  const ta = document.createElement("textarea");
+  ta.innerHTML = html;
+  return ta.value;
+}
+
 /** Trả về chuỗi HTML chỉ còn các thẻ định dạng an toàn, không thuộc tính nào. */
 export function sanitizeHtml(html: string): string {
   if (typeof window === "undefined") return "";
 
   const template = document.createElement("template");
-  template.innerHTML = html;
+  template.innerHTML = decodeIfFullyEscaped(html);
 
   const walk = (node: Node) => {
     for (const child of Array.from(node.childNodes)) {
