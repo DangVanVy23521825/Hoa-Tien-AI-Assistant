@@ -10,6 +10,8 @@ from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, Feedback
 from app.services.deps import get_current_user_optional, get_current_user_required
 from app.services.generation import generate
 from app.services.retrieval import retrieve
+from app.services.smalltalk import SOURCE_TYPE as SMALLTALK_SOURCE_TYPE
+from app.services.smalltalk import respond as smalltalk_respond
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 
@@ -25,8 +27,13 @@ def chat(
     contact = db.query(Contact).first()
     fallback_phone = contact.phone if contact else ""
 
-    hits = retrieve(db, payload.question, top_k=3)
-    result = generate(payload.question, hits, fallback_phone=fallback_phone)
+    # Chào hỏi/cảm ơn xử lý trước retrieval: không có tài liệu nào là câu trả lời đúng
+    # cho "xin chào", để nó rơi vào fallback thì người dân nhận nguyên văn câu từ chối.
+    # Chặn ở đây còn tiết kiệm 1 lần gọi API embedding cho mỗi câu chào.
+    result = smalltalk_respond(payload.question)
+    if result is None:
+        hits = retrieve(db, payload.question, top_k=3)
+        result = generate(payload.question, hits, fallback_phone=fallback_phone)
 
     # Lưu mọi lượt chat (kể cả khách vãng lai, user_id=None) để thống kê câu hỏi
     # phổ biến & câu chưa trả lời được. /chat/history vẫn lọc theo user_id nên
@@ -80,7 +87,12 @@ def _top_procedures(db: Session, limit: int) -> list[tuple[str, int]]:
 
 @router.get("/stats/public", response_model=PublicStatsOut)
 def public_stats(db: Session = Depends(get_db)):
-    total = db.query(ChatHistory).filter(ChatHistory.matched_source_type != "none").count()
+    # Chỉ đếm lượt thực sự trả lời được từ dữ liệu xã — không tính chào hỏi/cảm ơn.
+    total = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.matched_source_type.notin_(["none", SMALLTALK_SOURCE_TYPE]))
+        .count()
+    )
     return PublicStatsOut(total_answered=total, top_questions=[name for name, _ in _top_procedures(db, 4)])
 
 

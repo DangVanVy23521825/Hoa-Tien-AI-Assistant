@@ -35,6 +35,29 @@ POST /chat { question: string, [token?] }
 
 > Retrieval hybrid giữ nguyên thuật toán keyword-scoring đã kiểm chứng (`_score_doc`) làm tín hiệu chính, cộng thêm điểm semantic — nếu record chưa có embedding (`embedding is None`, ví dụ chưa chạy `backfill_embeddings.py`) thì hành vi giống hệt bản keyword-only cũ, không lỗi.
 
+## Câu xã giao (chào hỏi / cảm ơn / hỏi trợ lý làm được gì)
+
+`backend/app/services/smalltalk.py` chặn nhóm này **trước khi vào retrieval** và trả lời
+bằng kịch bản cố định (giới thiệu + gợi ý câu hỏi), không gọi Gemini, không bịa thông tin
+hành chính nào.
+
+Vì sao cần lớp riêng: retrieval chấm điểm theo mức trùng khớp với KB, mà "xin chào" thì
+không có tài liệu nào là câu trả lời đúng — điểm keyword cao nhất chỉ ~2.0 so với
+`MIN_MATCH_SCORE` 4.0. Không có lớp này thì người dân chào một câu cũng nhận nguyên văn
+câu từ chối "tôi chưa có thông tin… liên hệ Bộ phận Một cửa".
+
+**Không được hạ `MIN_MATCH_SCORE` để "chữa" việc này** — vừa làm câu rác lọt lại, vừa
+không giải quyết được gốc vấn đề.
+
+- Chỉ nhận là xã giao khi phần còn lại của câu **không có nội dung thực chất**: "chào bạn,
+  tôi muốn làm khai sinh" vẫn đi vào retrieval bình thường. Khớp có neo biên từ nên "hi"
+  không dính trong "hiến", "chào" không dính trong "chào mừng năm mới có nghỉ làm việc không".
+- `matched=False`, `matched_source_type="smalltalk"`, `source=""` (frontend không hiện
+  dòng dẫn nguồn — câu xã giao không có nguồn để dẫn).
+- Thống kê tách riêng: `smalltalk` không tính vào `matched` lẫn `unmatched` của
+  `/admin/stats`, và không tính vào `total_answered` của `/chat/stats/public` — nếu không
+  danh sách "câu hỏi chưa có dữ liệu trả lời" (dùng để tìm chỗ thiếu trong KB) sẽ đầy câu chào.
+
 ## Guardrail chống hallucination (2 lớp)
 
 1. **Ngưỡng similarity/keyword** (`MIN_MATCH_SCORE` trong `retrieval.py`) — quyết định trước khi gọi Gemini, miễn phí, chặn câu hỏi hoàn toàn ngoài phạm vi KB.

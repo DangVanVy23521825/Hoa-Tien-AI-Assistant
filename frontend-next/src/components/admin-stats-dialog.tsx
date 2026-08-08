@@ -43,6 +43,7 @@ export default function AdminStatsDialog({
         { label: "Tổng lượt hỏi", value: stats.total },
         { label: "Khớp dữ liệu", value: stats.matched },
         { label: "Chưa có dữ liệu", value: stats.unmatched },
+        { label: "Chào hỏi, xã giao", value: stats.smalltalk ?? 0 },
         { label: "Đánh giá hữu ích", value: `${stats.helpful} 👍 / ${stats.unhelpful} 👎` },
       ]
     : [];

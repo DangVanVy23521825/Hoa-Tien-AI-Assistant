@@ -7,6 +7,7 @@ from app.db.session import get_db
 from app.models import ChatHistory, Contact, Faq, KnowledgeArticle, Procedure, User
 from app.routers.chat import _top_procedures
 from app.schemas.chat import AdminStatsOut, TopProcedureOut, UnmatchedQuestionOut
+from app.services.smalltalk import SOURCE_TYPE as SMALLTALK_SOURCE_TYPE
 from app.schemas.contact import ContactOut, ContactUpdate
 from app.schemas.faq import FaqCreate, FaqOut, FaqUpdate
 from app.schemas.knowledge_article import KnowledgeArticleCreate, KnowledgeArticleOut, KnowledgeArticleUpdate
@@ -41,6 +42,11 @@ def _article_embed_source(a: KnowledgeArticle) -> str:
 def admin_stats(db: Session = Depends(get_db)):
     total = db.query(ChatHistory).count()
     unmatched = db.query(ChatHistory).filter(ChatHistory.matched_source_type == "none").count()
+    # Lượt chào hỏi/cảm ơn không phải "đã khớp dữ liệu" mà cũng không phải chỗ thiếu
+    # trong KB — tách riêng để 2 con số kia không bị nhiễu.
+    smalltalk = (
+        db.query(ChatHistory).filter(ChatHistory.matched_source_type == SMALLTALK_SOURCE_TYPE).count()
+    )
     helpful = db.query(ChatHistory).filter(ChatHistory.feedback_helpful.is_(True)).count()
     unhelpful = db.query(ChatHistory).filter(ChatHistory.feedback_helpful.is_(False)).count()
     recent = (
@@ -52,8 +58,9 @@ def admin_stats(db: Session = Depends(get_db)):
     )
     return AdminStatsOut(
         total=total,
-        matched=total - unmatched,
+        matched=total - unmatched - smalltalk,
         unmatched=unmatched,
+        smalltalk=smalltalk,
         helpful=helpful,
         unhelpful=unhelpful,
         top_procedures=[TopProcedureOut(name=n, count=c) for n, c in _top_procedures(db, 10)],

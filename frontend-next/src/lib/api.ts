@@ -71,6 +71,8 @@ export interface AdminStats {
   total: number;
   matched: number;
   unmatched: number;
+  /** Lượt chào hỏi/cảm ơn — không tính vào matched lẫn unmatched */
+  smalltalk: number;
   helpful: number;
   unhelpful: number;
   top_procedures: { name: string; count: number }[];

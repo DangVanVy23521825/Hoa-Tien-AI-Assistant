@@ -44,6 +44,7 @@ class AdminStatsOut(BaseModel):
     total: int
     matched: int
     unmatched: int
+    smalltalk: int = 0
     helpful: int
     unhelpful: int
     top_procedures: list[TopProcedureOut]
