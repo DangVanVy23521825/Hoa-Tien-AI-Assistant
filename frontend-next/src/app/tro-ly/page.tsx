@@ -123,6 +123,22 @@ export default function TroLyPage() {
     }
   };
 
+  // Câu hỏi chuyển sang từ trang chủ (?q=...). Đọc từ window thay vì useSearchParams
+  // để trang này vẫn được prerender tĩnh, không cần bọc Suspense.
+  const handoffDone = useRef(false);
+  useEffect(() => {
+    if (handoffDone.current) return;
+    handoffDone.current = true;
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) {
+      window.history.replaceState(null, "", "/tro-ly");
+      // Chủ đích: hỏi ngay khi mount là toàn bộ mục đích của handoff từ trang chủ.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      ask(q);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.nativeEvent.isComposing) {
       e.preventDefault();
