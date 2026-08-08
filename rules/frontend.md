@@ -1,5 +1,42 @@
 # rules/frontend.md — Quy ước giao diện
 
+## Frontend chính hiện tại: `frontend-next/` (Next.js 16)
+
+Từ 08/2026, bản deploy chính là **`frontend-next/`** — Next.js 16 (App Router, Turbopack)
++ Tailwind CSS v4 + shadcn/ui (base-ui) + TypeScript. `frontend/` (vanilla HTML/CSS/JS)
+giữ lại làm tham chiếu; bản offline dự phòng nằm ở `frontend-next/public/legacy/index.html`
+(copy của `frontend/legacy/index.html`, phải giữ đồng bộ).
+
+| Route | Trang |
+|---|---|
+| `/` | Trang chủ (hero + số liệu + nút chia sẻ) |
+| `/tro-ly` | Trợ lý AI (chat, voice, feedback, lịch sử, chips động) |
+| `/thu-tuc` | Danh mục thủ tục |
+| `/thu-tuc/[code]` | Chi tiết thủ tục (QR + in checklist) — key là **`code`** ("KS-01"), không phải UUID `id` |
+| `/hoi-dap` | FAQ (accordion) |
+| `/lien-he` | Liên hệ + QR cổng dịch vụ công |
+| `/dang-nhap` | Đăng nhập / Đăng ký |
+
+Quy ước riêng của bản Next.js — **không phá**:
+
+- **Mọi page là client component** → không export `metadata` được. Metadata mỗi route
+  đặt trong `layout.tsx` cùng thư mục (`export const metadata`), title dùng template
+  `"%s · Hòa Tiến AI"` khai báo ở `app/layout.tsx`.
+- **`#printArea` phải là con TRỰC TIẾP của `<body>`** (đặt trong `app/layout.tsx`), vì
+  CSS `@media print` ẩn mọi anh em của nó. Dùng `lib/print.ts` → `printChecklist()`.
+- **Không render `answer_html` thẳng bằng `dangerouslySetInnerHTML`.** Dùng
+  `<SafeHtml>` (`components/safe-html.tsx`): lọc allowlist thẻ trong `lib/sanitize.ts`
+  rồi ghi `innerHTML` trong `useEffect` — chạy trong JSX sẽ ra bong bóng rỗng vì React
+  không ghi đè nội dung `dangerouslySetInnerHTML` lúc hydrate.
+- **Không đọc `localStorage` trong initializer của `useState`** (xem `auth-provider.tsx`)
+  — HTML prerender luôn ở trạng thái chưa đăng nhập, đọc sớm gây hydration mismatch.
+- API base URL: `NEXT_PUBLIC_API_BASE_URL`, mặc định trỏ domain Railway trong `lib/api.ts`.
+- Service worker đăng ký qua `components/pwa-register.tsx`; `public/sw.js` precache từng
+  file một (không `addAll`) để 1 file lỗi không làm hỏng cả lần cài.
+
+Phần dưới mô tả bản vanilla `frontend/` — vẫn đúng về design tokens, nguyên tắc UX và
+contract API, chỉ khác đường dẫn file.
+
 ## Nguyên tắc
 
 - **Giữ nguyên UI/UX đã thiết kế** (bản sắc Hòa Tiến). Thay đổi duy nhất khi chuyển kiến trúc: lớp dữ liệu đổi từ đọc JSON nhúng sang gọi API qua `frontend/js/api.js`.

@@ -3,5 +3,16 @@ CLAUDE.md
 
 .env
 
-.venv 
+.venv
 .env*
+
+# Python
+__pycache__/
+*.pyc
+backend/venv/
+
+# Node / Next.js
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
