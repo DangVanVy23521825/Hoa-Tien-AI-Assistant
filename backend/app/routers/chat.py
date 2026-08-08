@@ -9,9 +9,10 @@ from app.models import ChatHistory, Contact, Procedure, User
 from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, FeedbackRequest, PublicStatsOut
 from app.services.deps import get_current_user_optional, get_current_user_required
 from app.services.generation import generate
-from app.services.retrieval import retrieve
+from app.services.retrieval import embed_query, retrieve
 from app.services.smalltalk import SOURCE_TYPE as SMALLTALK_SOURCE_TYPE
 from app.services.smalltalk import respond as smalltalk_respond
+from app.services.smalltalk import respond_semantic as smalltalk_respond_semantic
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 
@@ -33,7 +34,13 @@ def chat(
     result = smalltalk_respond(payload.question)
     if result is None:
         hits = retrieve(db, payload.question, top_k=3)
-        result = generate(payload.question, hits, fallback_phone=fallback_phone)
+        if not hits:
+            # Tầng 2 chỉ chạy khi không tra cứu được gì, nên câu hỏi hợp lệ không bao
+            # giờ bị lớp xã giao cướp mất. embed_query có cache nên không tốn thêm
+            # lần gọi API nào — vector này retrieval vừa tính xong.
+            result = smalltalk_respond_semantic(embed_query(payload.question))
+        if result is None:
+            result = generate(payload.question, hits, fallback_phone=fallback_phone)
 
     # Lưu mọi lượt chat (kể cả khách vãng lai, user_id=None) để thống kê câu hỏi
     # phổ biến & câu chưa trả lời được. /chat/history vẫn lọc theo user_id nên

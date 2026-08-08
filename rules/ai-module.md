@@ -35,11 +35,10 @@ POST /chat { question: string, [token?] }
 
 > Retrieval hybrid giữ nguyên thuật toán keyword-scoring đã kiểm chứng (`_score_doc`) làm tín hiệu chính, cộng thêm điểm semantic — nếu record chưa có embedding (`embedding is None`, ví dụ chưa chạy `backfill_embeddings.py`) thì hành vi giống hệt bản keyword-only cũ, không lỗi.
 
-## Câu xã giao (chào hỏi / cảm ơn / hỏi trợ lý làm được gì)
+## Câu xã giao (chào hỏi / cảm ơn / hỏi trợ lý là ai / ừ, ok)
 
-`backend/app/services/smalltalk.py` chặn nhóm này **trước khi vào retrieval** và trả lời
-bằng kịch bản cố định (giới thiệu + gợi ý câu hỏi), không gọi Gemini, không bịa thông tin
-hành chính nào.
+`backend/app/services/smalltalk.py` trả lời nhóm này bằng kịch bản cố định (giới thiệu +
+gợi ý câu hỏi), không gọi Gemini, không bịa thông tin hành chính nào.
 
 Vì sao cần lớp riêng: retrieval chấm điểm theo mức trùng khớp với KB, mà "xin chào" thì
 không có tài liệu nào là câu trả lời đúng — điểm keyword cao nhất chỉ ~2.0 so với
@@ -49,14 +48,34 @@ câu từ chối "tôi chưa có thông tin… liên hệ Bộ phận Một cử
 **Không được hạ `MIN_MATCH_SCORE` để "chữa" việc này** — vừa làm câu rác lọt lại, vừa
 không giải quyết được gốc vấn đề.
 
-- Chỉ nhận là xã giao khi phần còn lại của câu **không có nội dung thực chất**: "chào bạn,
-  tôi muốn làm khai sinh" vẫn đi vào retrieval bình thường. Khớp có neo biên từ nên "hi"
-  không dính trong "hiến", "chào" không dính trong "chào mừng năm mới có nghỉ làm việc không".
+### Hai tầng nhận diện
+
+| | Chạy khi nào | Chi phí | Bắt được gì |
+|---|---|---|---|
+| 1. Khớp cụm từ (`detect`) | **Trước** retrieval | 0 (không gọi API) | Cụm liệt kê sẵn: "xin chào", "cảm ơn", "ok", "bạn là ai"… |
+| 2. Đối chiếu ngữ nghĩa (`detect_semantic`) | **Sau** retrieval, chỉ khi không có hit nào | 0 (dùng lại `embed_query` đã cache) | Biến thể ngoài danh sách: "chàooo", "ơi", "có ai ở đó không"… |
+
+Tầng 2 đặt **sau** retrieval là có chủ đích: câu tra cứu được thì không bao giờ bị lớp xã
+giao cướp mất. Câu mẫu (`_EXEMPLARS`) được embed **một lần cho cả tiến trình, gộp trong
+một lần gọi API** qua `embed_texts()`; provider lỗi thì tầng 2 tự tắt, tầng 1 vẫn chạy.
+
+- `SEMANTIC_MIN_COS = 0.68` — đo 08/2026 trên gemini-embedding: 27 biến thể xã giao đạt
+  cosine 0.626–1.000 với câu mẫu, 13 câu rác thật ngoài phạm vi chỉ đạt tối đa 0.640
+  ("giá vàng hôm nay"). 0.68 nằm trên toàn bộ nhóm rác với biên 0.04. Hai biến thể rơi
+  dưới ngưỡng ("good morning" 0.626, "ê" 0.646) đưa thẳng vào danh sách cụm từ tầng 1.
+- Tầng 1 chỉ nhận khi phần còn lại của câu **không có nội dung thực chất**: "chào bạn,
+  tôi muốn làm khai sinh" vẫn đi vào retrieval. Khớp có neo biên từ nên "hi" không dính
+  trong "hiến", "chào" không dính trong "chào mừng năm mới có nghỉ làm việc không".
+- Câu chỉ có emoji/dấu câu ("?", "😀") trả về lời mời đặt câu hỏi, không phải câu từ chối.
 - `matched=False`, `matched_source_type="smalltalk"`, `source=""` (frontend không hiện
   dòng dẫn nguồn — câu xã giao không có nguồn để dẫn).
 - Thống kê tách riêng: `smalltalk` không tính vào `matched` lẫn `unmatched` của
   `/admin/stats`, và không tính vào `total_answered` của `/chat/stats/public` — nếu không
   danh sách "câu hỏi chưa có dữ liệu trả lời" (dùng để tìm chỗ thiếu trong KB) sẽ đầy câu chào.
+- **Đo lại bằng `backend/scripts/eval_smalltalk.py`** (không cần DB, exit ≠ 0 khi sai).
+  Kết quả 08/2026: **81/81** — 50 câu xã giao nhận đúng, 12 câu tra cứu thật tầng 1 bỏ qua,
+  13 câu ngoài phạm vi cả 2 tầng bỏ qua. Chạy lại khi sửa danh sách cụm từ, câu mẫu,
+  ngưỡng, hoặc đổi provider embedding.
 
 ## Guardrail chống hallucination (2 lớp)
 

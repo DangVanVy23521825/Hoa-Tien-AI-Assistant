@@ -44,37 +44,46 @@ def _get_gemini_client() -> genai.Client:
     return _gemini_client
 
 
-def _embed_gemini(text: str, task_type: TaskType) -> list[float]:
+def _embed_gemini(texts: list[str], task_type: TaskType) -> list[list[float]]:
     if not settings.gemini_api_key:
         raise RuntimeError("GEMINI_API_KEY chưa được cấu hình")
 
     response = _get_gemini_client().models.embed_content(
         model=settings.gemini_embedding_model,
-        contents=text,
+        contents=texts,
         config=types.EmbedContentConfig(
             task_type=task_type,
             output_dimensionality=settings.gemini_embedding_dim,
         ),
     )
-    return response.embeddings[0].values
+    return [e.values for e in response.embeddings]
 
 
-def _embed_deepinfra(text: str) -> list[float]:
+def _embed_deepinfra(texts: list[str]) -> list[list[float]]:
     if not settings.deepinfra_api_key:
         raise RuntimeError("DEEPINFRA_API_KEY chưa được cấu hình")
 
     response = httpx.post(
         settings.embedding_api_base_url,
         headers={"Authorization": f"Bearer {settings.deepinfra_api_key}"},
-        json={"model": settings.deepinfra_embedding_model_name, "input": text, "encoding_format": "float"},
+        json={"model": settings.deepinfra_embedding_model_name, "input": texts, "encoding_format": "float"},
         timeout=15.0,
     )
     response.raise_for_status()
-    return response.json()["data"][0]["embedding"]
+    # DeepInfra có thể trả về không đúng thứ tự gửi đi — sắp lại theo `index`.
+    data = sorted(response.json()["data"], key=lambda d: d["index"])
+    return [d["embedding"] for d in data]
+
+
+def embed_texts(texts: list[str], task_type: TaskType) -> list[list[float]]:
+    """Embedding cho nhiều văn bản trong MỘT lần gọi API, giữ nguyên thứ tự đầu vào."""
+    if not texts:
+        return []
+    if settings.embedding_provider == "deepinfra":
+        return _embed_deepinfra(texts)
+    return _embed_gemini(texts, task_type)
 
 
 def embed_text(text: str, task_type: TaskType) -> list[float]:
     """Trả về vector embedding cho `text`."""
-    if settings.embedding_provider == "deepinfra":
-        return _embed_deepinfra(text)
-    return _embed_gemini(text, task_type)
+    return embed_texts([text], task_type)[0]

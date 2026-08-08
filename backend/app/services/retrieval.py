@@ -8,6 +8,7 @@ cộng dồn vào cùng một score, giữ nguyên MIN_MATCH_SCORE làm ngưỡn
 import re
 import unicodedata
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import Literal
 
 import numpy as np
@@ -130,7 +131,13 @@ def _passes_semantic_gate(cos: float | None) -> bool:
     return cos >= SEMANTIC_GATE_MIN_COS
 
 
-def _embed_query(query: str) -> list[float] | None:
+@lru_cache(maxsize=256)
+def embed_query(query: str) -> list[float] | None:
+    """Embedding của câu hỏi, None nếu provider lỗi (retrieval rơi về keyword-only).
+
+    Có cache để lớp xã giao ngữ nghĩa (services/smalltalk.py) dùng lại được vector
+    này sau khi retrieval chạy xong mà không tốn thêm một lần gọi API.
+    """
     try:
         return embed_text(query, "RETRIEVAL_QUERY")
     except Exception:
@@ -157,7 +164,7 @@ def _embed_static_doc(text: str) -> list[float] | None:
 def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
     q_norm = normalize(query)
     q_tokens = _tokenize(q_norm)
-    q_embedding = _embed_query(query)
+    q_embedding = embed_query(query)
 
     hits: list[Hit] = []
 
