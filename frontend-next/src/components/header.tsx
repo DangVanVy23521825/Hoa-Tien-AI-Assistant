@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "@/components/auth-provider";
@@ -34,9 +35,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-cream/92 backdrop-blur-md border-b border-line">
       <div className="max-w-6xl mx-auto px-6 py-3.5 flex items-center gap-3.5">
         <Link href="/" className="flex items-center gap-3 no-underline">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-paddy to-river grid place-items-center text-white font-extrabold text-lg shadow-lg">
-            HT
-          </div>
+          <Image
+            src="/mascot/mascot-face.png"
+            alt="Mascot Hòa Tiến AI"
+            width={40}
+            height={40}
+            priority
+            className="w-10 h-10 rounded-xl bg-white ring-1 ring-line object-cover shadow-sm"
+          />
           <div>
             <div className="font-semibold text-base tracking-tight text-ink">
               Hòa Tiến AI

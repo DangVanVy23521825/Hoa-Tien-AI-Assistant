@@ -59,6 +59,28 @@ contract API, chỉ khác đường dẫn file.
 
 Font: **Be Vietnam Pro** (display + body) + **Lora** italic (điểm nhấn).
 
+## Ảnh nền quê hương + mascot (2026-08-09)
+
+Nguồn gốc nằm ngoài repo build ở `images/`; bản dùng thật đã tối ưu trong `frontend-next/public/`.
+
+| File | Nguồn | Dùng ở đâu |
+|------|-------|-----------|
+| `public/bg/hoa-tien.jpg` | ảnh drone xã Hòa Tiến | Nền cố định toàn site |
+| `public/mascot/mascot.png` (900²) | mascot cú AI | Hero trang chủ |
+| `public/mascot/mascot-face.png` (512²) | crop đầu mascot | Logo header, avatar chat |
+| `public/icons/icon-192/512(-maskable).png` | mascot-face trên nền kem | Favicon + PWA |
+
+- **Nền**: `components/site-background.tsx` — layer `fixed inset-0 -z-10`, ảnh `blur-[3px] scale-105`
+  phủ `bg-cream/92`. Vì thế `body` phải giữ `bg-transparent` (màu kem đặt ở `html`); đặt lại
+  `bg-background` cho `body` sẽ che mất ảnh.
+- **Section full-bleed đục sẽ che nền.** Dải "Cách hoạt động" (trang chủ) và khung `/tro-ly`
+  dùng `from-white/75` và `/55`. Thêm section nền đục mới thì cân nhắc hạ opacity tương tự.
+  Ngoại lệ cố ý: hero xanh đậm ở `/lien-he` giữ đục.
+- **Avatar mascot**: dùng `components/mascot-avatar.tsx`, không tự viết `<Image>` mới. Component
+  đặt `width/height` bằng inline style vì hàng tin nhắn là flex `align-items: stretch` — thiếu
+  chiều cao tường minh thì ảnh bị kéo giãn dọc theo chiều cao bong bóng.
+- Layer nền là con trực tiếp của `<body>` nên `@media print` (`body > *:not(#printArea)`) tự ẩn nó.
+
 ## Lớp gọi API (`frontend/js/api.js`)
 
 ```js
@@ -86,6 +108,21 @@ Token lưu ở `localStorage` (chấp nhận được cho MVP demo công khai �
 - **Thống kê admin**: nút 📊 trong dropdown user (chỉ role admin) → modal đọc `GET /admin/stats`.
 - **A11y modal**: focus trap + trả focus (`trapFocus`/`releaseFocus`), card thủ tục focus + mở bằng Enter được.
 - **Lịch sử chat**: click item render lại answer đã lưu, không gọi lại `/chat`.
+
+## Cổng đăng ký + OTP (2026-08)
+
+- `lib/api.ts` tự sinh `hoatien_guest_id` (UUID trong localStorage) và gắn header
+  `X-Guest-Id` cho mọi request khi chưa có token. `ApiError` mang thêm `.code`, đọc từ
+  `detail = {code, message}` của backend.
+- `/tro-ly`: badge "Còn N lượt hỏi thử" ở header khung chat (chỉ khi chưa đăng nhập; lấy
+  từ `GET /chat/guest-quota` lúc mở trang, rồi từ `guest_turns_left` trong mỗi response
+  `/chat`). Gặp `code === "guest_quota_exceeded"` → thay cả hàng chips lẫn ô nhập bằng
+  khối CTA đăng ký.
+- `/dang-nhap`: tab Đăng ký là 2 bước — form → màn nhập mã 6 số (đếm ngược gửi lại 60s,
+  nút đổi email). Đăng nhập trả `code === "email_unverified"` cũng rơi vào màn này và tự
+  gọi `resend-otp`.
+- Trang chủ có demo chat **theo kịch bản, không gọi API**, nên không tiêu lượt hỏi thử;
+  ô nhập ở đó chuyển sang `/tro-ly?q=…` mới thực sự gọi backend.
 
 ## Section mới cần thêm so với bản offline
 

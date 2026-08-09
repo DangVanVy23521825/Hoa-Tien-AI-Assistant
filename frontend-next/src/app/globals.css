@@ -99,12 +99,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* Nền trong suốt: màu kem do lớp phủ của <SiteBackground> đảm nhiệm. */
+    @apply bg-transparent text-foreground;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
   html {
     scroll-behavior: smooth;
+    /* Giữ màu kem lúc ảnh nền chưa tải xong, tránh nháy trắng. */
+    background-color: var(--background);
   }
 }
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Send, RotateCcw, BookText } from "lucide-react";
+import MascotAvatar from "@/components/mascot-avatar";
 
 /* Demo có kịch bản, KHÔNG gọi API.
    Lý do: đây là thứ đầu tiên giám khảo/người dân nhìn thấy — nó phải hiện ra tức thì và
@@ -71,9 +72,7 @@ export default function DemoChat() {
       className="bg-white border border-line rounded-2xl shadow-xl overflow-hidden"
     >
       <div className="flex items-center gap-3 px-4 py-3 border-b border-line bg-gradient-to-r from-paddy-deep to-river-deep text-white">
-        <div className="w-8 h-8 rounded-lg bg-white/16 grid place-items-center font-extrabold text-sm">
-          HT
-        </div>
+        <MascotAvatar size={32} className="ring-white/25" />
         <div className="flex-1 min-w-0">
           <div className="font-semibold text-sm">Trợ lý Hòa Tiến</div>
           <div className="text-[11px] opacity-85 flex items-center gap-1.5">
@@ -105,9 +104,7 @@ export default function DemoChat() {
 
         {stage === 2 && (
           <div className="self-start flex gap-2 animate-rise">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-paddy to-river text-white grid place-items-center text-[11px] font-bold flex-shrink-0">
-              AI
-            </div>
+            <MascotAvatar />
             <div className="px-3.5 py-3 rounded-2xl rounded-tl-sm bg-[#f1f4ef] border border-[#e2e9df]">
               <span className="flex gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#9fb0a3] typing-dot" />
@@ -120,9 +117,7 @@ export default function DemoChat() {
 
         {stage === 3 && (
           <div className="self-start flex gap-2 max-w-[94%] animate-rise">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-paddy to-river text-white grid place-items-center text-[11px] font-bold flex-shrink-0">
-              AI
-            </div>
+            <MascotAvatar />
             <div className="px-3.5 py-3 rounded-2xl rounded-tl-sm bg-[#f1f4ef] border border-[#e2e9df] text-sm">
               <p className="font-semibold text-ink">Hồ sơ bạn cần chuẩn bị:</p>
               <ol className="mt-2 space-y-1.5">

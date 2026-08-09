@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ShareButton from "@/components/share-button";
@@ -53,7 +54,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 pt-14 pb-12 md:pt-18">
+      <section className="max-w-6xl mx-auto px-6 pt-14 pb-12 sm:pb-24 md:pt-18 overflow-x-clip">
         <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-10 md:gap-12 items-center">
           <div>
             <Badge
@@ -107,7 +108,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          <DemoChat />
+          {/* Mascot nhô ra sau khung chat — như đang đứng giới thiệu trợ lý.
+              Ẩn dưới sm để không chen chỗ trên điện thoại. */}
+          <div className="relative">
+            <DemoChat />
+            <Image
+              src="/mascot/mascot.png"
+              alt="Mascot cú Hòa Tiến AI"
+              width={288}
+              height={288}
+              priority
+              className="hidden sm:block absolute -bottom-24 -left-6 w-28 h-auto drop-shadow-xl pointer-events-none select-none"
+            />
+          </div>
         </div>
       </section>
 
@@ -156,7 +169,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Tại sao có thể tin tưởng? ────────────────────────── */}
-      <section className="bg-gradient-to-b from-white to-[#f7f3e8] border-t border-b border-line py-14 px-6">
+      <section className="bg-gradient-to-b from-white/75 to-[#f7f3e8]/75 border-t border-b border-line py-14 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <Badge

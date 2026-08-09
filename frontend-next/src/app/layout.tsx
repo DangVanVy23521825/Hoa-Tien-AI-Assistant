@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import PwaRegister from "@/components/pwa-register";
+import SiteBackground from "@/components/site-background";
 
 const SITE_URL = "https://hoa-tien-ai-assistant-nu.vercel.app";
 
@@ -44,7 +45,11 @@ export const metadata: Metadata = {
     images: ["/icons/og-image.png"],
   },
   icons: {
-    icon: "/icons/icon.svg",
+    icon: [
+      { url: "/icons/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/icons/icon-192.png",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -60,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${beVietnamPro.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SiteBackground />
         <AuthProvider>
           <TooltipProvider>
             <Header />
