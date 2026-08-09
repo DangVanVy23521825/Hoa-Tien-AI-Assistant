@@ -4,6 +4,7 @@ const API_BASE_URL =
 
 const TOKEN_KEY = "hoatien_token";
 const USER_KEY = "hoatien_user";
+const GUEST_KEY = "hoatien_guest_id";
 
 export interface User {
   id: string;
@@ -53,6 +54,20 @@ export interface ChatResponse {
   matched_source_id: string | null;
   online_url: string | null;
   message_id: string | null;
+  /** Số lượt hỏi thử còn lại của khách; null nếu đã đăng nhập (không giới hạn) */
+  guest_turns_left: number | null;
+}
+
+export interface GuestQuota {
+  limit: number;
+  used: number;
+  /** null = đã đăng nhập, không giới hạn */
+  remaining: number | null;
+}
+
+export interface OtpSent {
+  email: string;
+  expires_in_seconds: number;
 }
 
 export interface ChatHistoryItem {
@@ -81,9 +96,12 @@ export interface AdminStats {
 
 export class ApiError extends Error {
   status: number;
-  constructor(message: string, status: number) {
+  /** Mã lỗi máy đọc được từ backend (email_unverified, guest_quota_exceeded…) */
+  code: string | null;
+  constructor(message: string, status: number, code: string | null = null) {
     super(message);
     this.status = status;
+    this.code = code;
   }
 }
 
@@ -96,6 +114,17 @@ function getStoredUser(): User | null {
   if (typeof window === "undefined") return null;
   const raw = localStorage.getItem(USER_KEY);
   return raw ? JSON.parse(raw) : null;
+}
+
+/** UUID gắn với trình duyệt này, dùng để backend đếm lượt hỏi thử của khách. */
+function guestId(): string {
+  if (typeof window === "undefined") return "";
+  let id = localStorage.getItem(GUEST_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(GUEST_KEY, id);
+  }
+  return id;
 }
 
 function setSession(token: string, user: User) {
@@ -115,6 +144,9 @@ async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> 
   };
   const token = getToken();
   if (token) headers["Authorization"] = `Bearer ${token}`;
+  // Khách chưa đăng nhập được đếm lượt theo thiết bị chứ không theo IP: ở hội trại
+  // cả hội trường chung một IP NAT nên đếm theo IP sẽ chặn nhầm.
+  if (!token) headers["X-Guest-Id"] = guestId();
 
   let res: Response;
   try {
@@ -125,11 +157,18 @@ async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> 
 
   if (!res.ok) {
     let detail = "Đã có lỗi xảy ra";
+    let code: string | null = null;
     try {
       const body = await res.json();
-      detail = body.detail || detail;
+      // Lỗi có ý nghĩa với UI trả detail dạng {code, message}; lỗi thường vẫn là chuỗi.
+      if (body.detail && typeof body.detail === "object") {
+        detail = body.detail.message || detail;
+        code = body.detail.code ?? null;
+      } else if (body.detail) {
+        detail = body.detail;
+      }
     } catch {}
-    throw new ApiError(detail, res.status);
+    throw new ApiError(detail, res.status, code);
   }
 
   if (res.status === 204) return null as T;
@@ -154,10 +193,22 @@ export const api = {
     }),
   getPublicStats: () => apiFetch<PublicStats>("/chat/stats/public"),
   getAdminStats: () => apiFetch<AdminStats>("/admin/stats"),
+  getGuestQuota: () => apiFetch<GuestQuota>("/chat/guest-quota"),
+  /** Tạo tài khoản chưa xác thực + gửi OTP. Chưa có token cho tới khi verify. */
   register: (email: string, password: string, display_name: string) =>
-    apiFetch<AuthResponse>("/auth/register", {
+    apiFetch<OtpSent>("/auth/register", {
       method: "POST",
       body: JSON.stringify({ email, password, display_name }),
+    }),
+  verifyOtp: (email: string, code: string) =>
+    apiFetch<AuthResponse>("/auth/verify-otp", {
+      method: "POST",
+      body: JSON.stringify({ email, code }),
+    }),
+  resendOtp: (email: string) =>
+    apiFetch<OtpSent>("/auth/resend-otp", {
+      method: "POST",
+      body: JSON.stringify({ email }),
     }),
   login: (email: string, password: string) =>
     apiFetch<AuthResponse>("/auth/login", {
@@ -166,7 +217,7 @@ export const api = {
     }),
 };
 
-export { getToken, getStoredUser, setSession, clearSession };
+export { getToken, getStoredUser, setSession, clearSession, guestId };
 
 export function qr(data: string, size = 96) {
   return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=0&data=${encodeURIComponent(data)}`;

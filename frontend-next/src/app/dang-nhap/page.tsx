@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
 import { useAuth } from "@/components/auth-provider";
@@ -8,7 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, MailCheck } from "lucide-react";
+
+const RESEND_COOLDOWN = 60;
+
+function errorMessage(err: unknown) {
+  if (err instanceof ApiError) {
+    return err.status === 0 ? "Không kết nối được máy chủ." : err.message;
+  }
+  return "Đã có lỗi xảy ra";
+}
 
 export default function DangNhapPage() {
   const router = useRouter();
@@ -22,7 +31,24 @@ export default function DangNhapPage() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  // Bước xác thực OTP: vào từ đăng ký, hoặc từ đăng nhập bằng tài khoản chưa xác thực.
+  const [otpEmail, setOtpEmail] = useState("");
+  const [otpCode, setOtpCode] = useState("");
+  const [cooldown, setCooldown] = useState(0);
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setTimeout(() => setCooldown((c) => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [cooldown]);
+
+  const goToOtpStep = useCallback((email: string) => {
+    setOtpEmail(email);
+    setOtpCode("");
+    setCooldown(RESEND_COOLDOWN);
+  }, []);
+
+  const handleLogin = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -31,38 +57,146 @@ export default function DangNhapPage() {
       login(res.access_token, res.user);
       router.push("/tro-ly");
     } catch (err) {
-      setError(
-        err instanceof ApiError && err.status === 0
-          ? "Không kết nối được máy chủ."
-          : err instanceof ApiError
-          ? err.message
-          : "Đã có lỗi xảy ra"
-      );
+      // Tài khoản đăng ký dở chưa xác thực: đưa thẳng vào màn nhập mã, gửi lại mã luôn
+      // thay vì bắt người dùng tự mò sang tab đăng ký.
+      if (err instanceof ApiError && err.code === "email_unverified") {
+        goToOtpStep(loginEmail);
+        try {
+          await api.resendOtp(loginEmail);
+        } catch {
+          // Có thể vướng cooldown vì mã cũ vừa gửi — mã cũ vẫn dùng được.
+        }
+      } else {
+        setError(errorMessage(err));
+      }
     } finally {
       setLoading(false);
     }
   };
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
     try {
-      const res = await api.register(registerEmail, registerPassword, registerName);
-      login(res.access_token, res.user);
-      router.push("/tro-ly");
+      await api.register(registerEmail, registerPassword, registerName);
+      goToOtpStep(registerEmail);
     } catch (err) {
-      setError(
-        err instanceof ApiError && err.status === 0
-          ? "Không kết nối được máy chủ."
-          : err instanceof ApiError
-          ? err.message
-          : "Đã có lỗi xảy ra"
-      );
+      setError(errorMessage(err));
     } finally {
       setLoading(false);
     }
   };
+
+  const handleVerify = async (e: React.SubmitEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      const res = await api.verifyOtp(otpEmail, otpCode);
+      login(res.access_token, res.user);
+      router.push("/tro-ly");
+    } catch (err) {
+      setError(errorMessage(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResend = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      await api.resendOtp(otpEmail);
+      setCooldown(RESEND_COOLDOWN);
+    } catch (err) {
+      setError(errorMessage(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const errorBanner = error && (
+    <div className="mb-4 bg-[#fdf0ee] border border-[#f3d4cf] text-[#b3413c] text-sm px-3 py-2.5 rounded-lg flex items-center gap-2">
+      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+      {error}
+    </div>
+  );
+
+  if (otpEmail) {
+    return (
+      <section className="max-w-md mx-auto px-6 py-14">
+        <div className="bg-white border border-line rounded-2xl shadow-lg overflow-hidden">
+          <div className="px-7 pt-6 pb-4 border-b border-line">
+            <div className="text-[11px] font-bold tracking-wider uppercase text-river">
+              Xác thực email
+            </div>
+            <h1 className="text-xl font-bold mt-1.5">Nhập mã gồm 6 chữ số</h1>
+          </div>
+
+          <div className="p-7">
+            <div className="mb-5 flex items-start gap-2.5 text-sm text-ink-soft">
+              <MailCheck className="w-4.5 h-4.5 flex-shrink-0 mt-0.5 text-paddy" />
+              <p>
+                Chúng tôi đã gửi mã xác thực tới <b className="text-ink">{otpEmail}</b>. Mã có
+                hiệu lực trong 10 phút. Nếu không thấy, hãy kiểm tra cả hộp thư rác.
+              </p>
+            </div>
+
+            {errorBanner}
+
+            <form onSubmit={handleVerify} className="space-y-4">
+              <div>
+                <Label htmlFor="otpCode" className="text-sm font-semibold text-ink-soft">
+                  Mã xác thực
+                </Label>
+                <Input
+                  id="otpCode"
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  value={otpCode}
+                  onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                  required
+                  autoFocus
+                  placeholder="000000"
+                  className="mt-1.5 border-line focus:border-paddy focus:ring-paddy/10 text-center text-2xl font-bold tracking-[0.4em]"
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={loading || otpCode.length !== 6}
+                className="w-full bg-paddy hover:bg-paddy-deep mt-2"
+              >
+                {loading ? "Đang xác thực..." : "Xác thực và vào trợ lý"}
+              </Button>
+            </form>
+
+            <div className="mt-5 flex items-center justify-between text-sm">
+              <button
+                type="button"
+                onClick={handleResend}
+                disabled={loading || cooldown > 0}
+                className="text-paddy font-semibold disabled:text-ink-soft disabled:font-normal"
+              >
+                {cooldown > 0 ? `Gửi lại mã sau ${cooldown}s` : "Gửi lại mã"}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setOtpEmail("");
+                  setError("");
+                }}
+                className="text-ink-soft hover:text-ink"
+              >
+                Đổi email
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="max-w-md mx-auto px-6 py-14">
@@ -91,12 +225,7 @@ export default function DangNhapPage() {
               </TabsTrigger>
             </TabsList>
 
-            {error && (
-              <div className="mb-4 bg-[#fdf0ee] border border-[#f3d4cf] text-[#b3413c] text-sm px-3 py-2.5 rounded-lg flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                {error}
-              </div>
-            )}
+            {errorBanner}
 
             <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-4">
@@ -166,6 +295,9 @@ export default function DangNhapPage() {
                     autoComplete="email"
                     className="mt-1.5 border-line focus:border-paddy focus:ring-paddy/10"
                   />
+                  <p className="text-xs text-ink-soft mt-1.5">
+                    Chúng tôi sẽ gửi mã xác thực 6 số tới email này.
+                  </p>
                 </div>
                 <div>
                   <Label htmlFor="registerPassword" className="text-sm font-semibold text-ink-soft">
@@ -194,8 +326,8 @@ export default function DangNhapPage() {
           </Tabs>
 
           <p className="text-xs text-ink-soft mt-5 text-center">
-            Bạn không cần đăng nhập để hỏi trợ lý hay tra cứu thủ tục — đăng
-            nhập chỉ để lưu lại lịch sử câu hỏi của bạn.
+            Bạn được hỏi thử trợ lý vài câu mà không cần tài khoản. Đăng ký để hỏi
+            không giới hạn và lưu lại lịch sử câu hỏi của mình.
           </p>
         </div>
       </div>

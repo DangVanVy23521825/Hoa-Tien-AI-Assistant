@@ -4,12 +4,14 @@ import { useState, useRef, useEffect } from "react";
 import { api, ApiError, qr, Procedure } from "@/lib/api";
 import { stripTags } from "@/lib/sanitize";
 import SafeHtml from "@/components/safe-html";
+import MascotAvatar from "@/components/mascot-avatar";
 import { printChecklist } from "@/lib/print";
 import { useAuth } from "@/components/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Send, Mic, Printer, ThumbsUp, ThumbsDown, History, AlertCircle } from "lucide-react";
+import Link from "next/link";
+import { Send, Mic, Printer, ThumbsUp, ThumbsDown, History, AlertCircle, Lock } from "lucide-react";
 
 interface Message {
   role: "user" | "bot";
@@ -48,6 +50,11 @@ export default function TroLyPage() {
   const [showHistory, setShowHistory] = useState(false);
   const [listening, setListening] = useState(false);
   const [procedures, setProcedures] = useState<Procedure[]>([]);
+  // Hạn mức hỏi thử của khách chưa đăng nhập. null = chưa biết hoặc đã đăng nhập.
+  const [turnsLeft, setTurnsLeft] = useState<number | null>(null);
+  // Dẫn xuất chứ không phải state riêng: về 0 là chặn ngay, không để người dùng gõ
+  // thêm một câu nữa rồi mới ăn lỗi 403.
+  const quotaBlocked = !user && turnsLeft === 0;
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -72,13 +79,23 @@ export default function TroLyPage() {
   }, []);
 
   useEffect(() => {
+    // Người đã đăng nhập không có hạn mức; badge và cổng chặn đều lọc theo `user`
+    // nên không cần dọn state ở đây.
+    if (user) return;
+    api
+      .getGuestQuota()
+      .then((q) => setTurnsLeft(q.remaining))
+      .catch(() => {});
+  }, [user]);
+
+  useEffect(() => {
     if (chatBodyRef.current) {
       chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
     }
   }, [messages]);
 
   const ask = async (query: string) => {
-    if (!query.trim() || loading) return;
+    if (!query.trim() || loading || quotaBlocked) return;
     setLoading(true);
     setMessages((prev) => [...prev, { role: "user", content: query }]);
     setInput("");
@@ -99,8 +116,19 @@ export default function TroLyPage() {
         },
       ]);
       setNetworkError(false);
+      setTurnsLeft(res.guest_turns_left);
     } catch (e) {
-      if (e instanceof ApiError && e.status === 0) {
+      if (e instanceof ApiError && e.code === "guest_quota_exceeded") {
+        setTurnsLeft(0);
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            content:
+              "Bạn đã dùng hết lượt hỏi thử. Đăng ký tài khoản miễn phí để hỏi không giới hạn và lưu lại lịch sử câu hỏi của mình.",
+          },
+        ]);
+      } else if (e instanceof ApiError && e.status === 0) {
         setNetworkError(true);
         setMessages((prev) => [
           ...prev,
@@ -196,7 +224,7 @@ export default function TroLyPage() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-white to-[#f7f3e8] border-t border-b border-line py-14 px-6">
+    <section className="bg-gradient-to-b from-white/55 to-[#f7f3e8]/55 border-t border-b border-line py-14 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <Badge
@@ -217,9 +245,7 @@ export default function TroLyPage() {
 
         <div className="bg-white border border-line rounded-2xl shadow-lg overflow-hidden flex flex-col h-[560px]">
           <div className="flex items-center gap-3 px-5 py-4 border-b border-line bg-gradient-to-r from-paddy-deep to-river-deep text-white">
-            <div className="w-9 h-9 rounded-xl bg-white/16 grid place-items-center font-extrabold">
-              HT
-            </div>
+            <MascotAvatar size={36} className="rounded-xl ring-white/25" />
             <div className="flex-1">
               <div className="font-semibold text-sm">Trợ lý Hòa Tiến</div>
               <div className="text-xs opacity-85 flex items-center gap-1.5">
@@ -227,7 +253,7 @@ export default function TroLyPage() {
                 Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã
               </div>
             </div>
-            {user && (
+            {user ? (
               <button
                 onClick={() => {
                   setShowHistory(!showHistory);
@@ -238,6 +264,12 @@ export default function TroLyPage() {
                 <History className="w-3.5 h-3.5" />
                 Lịch sử
               </button>
+            ) : (
+              turnsLeft !== null && (
+                <span className="text-xs font-semibold bg-white/16 rounded-full px-2.5 py-1 whitespace-nowrap">
+                  Còn {turnsLeft} lượt hỏi thử
+                </span>
+              )
             )}
           </div>
 
@@ -300,15 +332,13 @@ export default function TroLyPage() {
                     : "self-start"
                 }`}
               >
-                <div
-                  className={`w-7 h-7 rounded-lg grid place-items-center text-xs font-bold flex-shrink-0 ${
-                    msg.role === "bot"
-                      ? "bg-gradient-to-br from-paddy to-river text-white"
-                      : "bg-rice text-ink"
-                  }`}
-                >
-                  {msg.role === "bot" ? "AI" : "Bạn"}
-                </div>
+                {msg.role === "bot" ? (
+                  <MascotAvatar />
+                ) : (
+                  <div className="w-7 h-7 rounded-lg grid place-items-center text-xs font-bold flex-shrink-0 bg-rice text-ink">
+                    Bạn
+                  </div>
+                )}
                 <div
                   className={`px-3.5 py-3 rounded-2xl text-[14.5px] ${
                     msg.role === "bot"
@@ -379,9 +409,7 @@ export default function TroLyPage() {
             ))}
             {loading && (
               <div className="flex gap-2.5 self-start">
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-paddy to-river text-white grid place-items-center text-xs font-bold flex-shrink-0">
-                  AI
-                </div>
+                <MascotAvatar />
                 <div className="px-3.5 py-3 rounded-2xl bg-[#f1f4ef] border border-[#e2e9df] rounded-tl-sm">
                   <span className="flex gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#9fb0a3] typing-dot" />
@@ -393,6 +421,40 @@ export default function TroLyPage() {
             )}
           </div>
 
+          {quotaBlocked ? (
+            <div className="border-t border-line p-5 bg-[#f6faf4]">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-xl bg-paddy/12 text-paddy-deep grid place-items-center flex-shrink-0">
+                  <Lock className="w-4.5 h-4.5" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-bold text-[15px]">
+                    Hết lượt hỏi thử miễn phí
+                  </div>
+                  <p className="text-sm text-ink-soft mt-0.5">
+                    Đăng ký tài khoản (miễn phí, chỉ cần email) để hỏi không giới hạn
+                    và xem lại toàn bộ lịch sử câu hỏi của bạn.
+                  </p>
+                  <div className="flex gap-2.5 mt-3">
+                    <Link href="/dang-nhap">
+                      <Button className="bg-paddy hover:bg-paddy-deep rounded-xl">
+                        Đăng ký miễn phí
+                      </Button>
+                    </Link>
+                    <Link href="/dang-nhap">
+                      <Button
+                        variant="outline"
+                        className="rounded-xl border-line text-river-deep hover:border-paddy hover:text-paddy-deep"
+                      >
+                        Tôi đã có tài khoản
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+          <>
           <div className="flex gap-2 flex-wrap px-5 pt-3">
             {chips.map((chip) => (
               <button
@@ -437,6 +499,8 @@ export default function TroLyPage() {
               <Send className="w-5 h-5" />
             </Button>
           </div>
+          </>
+          )}
         </div>
       </div>
     </section>

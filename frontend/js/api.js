@@ -7,6 +7,19 @@ const API_BASE_URL = window.__HOATIEN_API_BASE__ || "https://hoa-tien-ai-assista
 
 const TOKEN_KEY = "hoatien_token";
 const USER_KEY = "hoatien_user";
+const GUEST_KEY = "hoatien_guest_id";
+
+/* UUID gắn với trình duyệt này — backend đếm lượt hỏi thử của khách theo nó.
+   Đếm theo thiết bị chứ không theo IP vì cả hội trường dùng chung wifi NAT. */
+function guestId() {
+  let id = localStorage.getItem(GUEST_KEY);
+  if (!id) {
+    id = (crypto.randomUUID && crypto.randomUUID()) ||
+      `g-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    localStorage.setItem(GUEST_KEY, id);
+  }
+  return id;
+}
 
 function getToken() { return localStorage.getItem(TOKEN_KEY); }
 function getStoredUser() {
@@ -23,13 +36,14 @@ function clearSession() {
 }
 
 class ApiError extends Error {
-  constructor(message, status) { super(message); this.status = status; }
+  constructor(message, status, code = null) { super(message); this.status = status; this.code = code; }
 }
 
 async function apiFetch(path, options = {}) {
   const headers = { "Content-Type": "application/json", ...(options.headers || {}) };
   const token = getToken();
   if (token) headers["Authorization"] = `Bearer ${token}`;
+  if (!token) headers["X-Guest-Id"] = guestId();
 
   let res;
   try {
@@ -40,8 +54,18 @@ async function apiFetch(path, options = {}) {
 
   if (!res.ok) {
     let detail = "Đã có lỗi xảy ra";
-    try { detail = (await res.json()).detail || detail; } catch (_) {}
-    throw new ApiError(detail, res.status);
+    let code = null;
+    try {
+      const body = await res.json();
+      // Lỗi có ý nghĩa với UI trả detail dạng {code, message}; lỗi thường vẫn là chuỗi.
+      if (body.detail && typeof body.detail === "object") {
+        detail = body.detail.message || detail;
+        code = body.detail.code || null;
+      } else if (body.detail) {
+        detail = body.detail;
+      }
+    } catch (_) {}
+    throw new ApiError(detail, res.status, code);
   }
   if (res.status === 204) return null;
   return res.json();
