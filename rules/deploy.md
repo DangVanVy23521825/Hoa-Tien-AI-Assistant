@@ -26,7 +26,26 @@ DEEPINFRA_API_KEY=<khóa API DeepInfra>
 DEEPINFRA_EMBEDDING_MODEL_NAME=BAAI/bge-m3
 EMBEDDING_API_BASE_URL=https://api.deepinfra.com/v1/openai/embeddings
 RAG_SEMANTIC_WEIGHT=4.0
+
+# Xác thực email bằng OTP (rules/auth.md). Production KHÔNG được để "console" —
+# mã sẽ chỉ in ra log, người dân không nhận được mail và không đăng ký được.
+EMAIL_PROVIDER=smtp
+SMTP_USER=<địa chỉ Gmail dùng để gửi>
+SMTP_PASSWORD=<App Password 16 ký tự, KHÔNG phải mật khẩu Gmail>
+SMTP_FROM_NAME=Trợ lý hành chính số Hòa Tiến
+FREE_GUEST_TURNS=3
 ```
+
+### Chọn provider gửi mail
+
+| Provider | Khi nào dùng | Ràng buộc |
+|---|---|---|
+| `console` | Chỉ dev/local | Mã in ra log, không gửi mail thật |
+| `smtp` | **Bản dự thi hiện tại** | Gmail + App Password (phải bật 2FA trước mới tạo được App Password ở myaccount.google.com/apppasswords). Gửi được cho **mọi** địa chỉ, không cần domain. Giới hạn ~500 mail/ngày, dễ vào thư rác hơn |
+| `resend` | Khi đã có domain riêng | Với `onboarding@resend.dev` mail **chỉ tới được đúng email chủ tài khoản Resend** — muốn gửi cho người dân phải thêm domain và xác thực DNS |
+
+`SMTP_FROM_EMAIL` để trống là đúng: Gmail từ chối gửi hộ địa chỉ khác nên hệ thống tự
+dùng chính `SMTP_USER`.
 
 ## Deploy pgvector + embedding trên Railway
 
