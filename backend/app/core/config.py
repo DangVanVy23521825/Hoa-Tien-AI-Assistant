@@ -16,6 +16,34 @@ class Settings(BaseSettings):
     # vài chục khán giả truy cập cùng lúc. Siết lại qua env nếu cần.
     rate_limit_chat: str = "120/minute"
     rate_limit_login: str = "30/minute"
+    # Đăng ký/gửi lại mã cũng bị đếm theo IP nên phải nới tương tự; chống spam thật
+    # nằm ở cooldown theo email trong services/otp.py, không phải ở đây.
+    rate_limit_otp: str = "60/minute"
+
+    # Xác thực email bằng OTP
+    otp_ttl_minutes: int = 10
+    otp_max_attempts: int = 5
+    otp_resend_cooldown_seconds: int = 60
+    otp_max_sends_per_hour: int = 5
+
+    # Gửi mail: "console" (dev — in mã ra log, không cần mạng), "smtp" (Gmail App
+    # Password — gửi được cho mọi địa chỉ mà không cần domain riêng) hoặc "resend"
+    # (cần domain đã xác thực DNS, nếu không chỉ gửi được về đúng email chủ tài khoản).
+    email_provider: str = "console"
+    resend_api_key: str = ""
+    resend_from: str = "Hòa Tiến AI <onboarding@resend.dev>"
+
+    smtp_host: str = "smtp.gmail.com"
+    smtp_port: int = 587
+    smtp_user: str = ""
+    # Gmail: App Password 16 ký tự (cần bật 2FA), KHÔNG phải mật khẩu đăng nhập.
+    smtp_password: str = ""
+    smtp_from_name: str = "Trợ lý hành chính số Hòa Tiến"
+    # Để trống thì dùng chính SMTP_USER làm địa chỉ gửi (Gmail bắt buộc như vậy).
+    smtp_from_email: str = ""
+
+    # Số câu hỏi khách chưa đăng nhập được hỏi thử trước khi bị yêu cầu đăng ký.
+    free_guest_turns: int = 3
 
     gemini_api_key: str = ""
     gemini_generation_model: str = "gemini-2.5-flash"

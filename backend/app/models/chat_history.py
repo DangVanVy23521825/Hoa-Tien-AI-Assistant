@@ -16,6 +16,9 @@ class ChatHistory(Base):
     user_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True
     )
+    # Khách chưa đăng nhập: UUID do trình duyệt sinh, dùng để đếm hạn mức hỏi thử.
+    # Câu xã giao lưu với guest_id = NULL để không trừ lượt của khách.
+    guest_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
     question: Mapped[str] = mapped_column(Text, nullable=False)
     answer: Mapped[str] = mapped_column(Text, nullable=False)
     matched_source_type: Mapped[str] = mapped_column(String(50), nullable=False)

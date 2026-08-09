@@ -1,12 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
+from app.core.errors import api_error
 from app.core.limiter import limiter
 from app.db.session import get_db
 from app.models import ChatHistory, Contact, Procedure, User
-from app.schemas.chat import ChatHistoryOut, ChatRequest, ChatResponse, FeedbackRequest, PublicStatsOut
+from app.schemas.chat import (
+    ChatHistoryOut,
+    ChatRequest,
+    ChatResponse,
+    FeedbackRequest,
+    GuestQuotaOut,
+    PublicStatsOut,
+)
 from app.services.deps import get_current_user_optional, get_current_user_required
 from app.services.generation import generate
 from app.services.retrieval import embed_query, retrieve
@@ -17,6 +25,32 @@ from app.services.smalltalk import respond_semantic as smalltalk_respond_semanti
 router = APIRouter(prefix="/chat", tags=["chat"])
 
 
+def _guest_turns_used(db: Session, guest_id: str) -> int:
+    """Số lượt tra cứu khách này đã dùng. Câu xã giao lưu guest_id=NULL nên không tính."""
+    return (
+        db.query(ChatHistory)
+        .filter(ChatHistory.guest_id == guest_id, ChatHistory.user_id.is_(None))
+        .count()
+    )
+
+
+@router.get("/guest-quota", response_model=GuestQuotaOut)
+def guest_quota(
+    db: Session = Depends(get_db),
+    x_guest_id: str | None = Header(default=None),
+    current_user: User | None = Depends(get_current_user_optional),
+):
+    """Frontend gọi lúc mở trang để hiện badge 'còn N lượt hỏi thử'."""
+    if current_user is not None:
+        return GuestQuotaOut(limit=settings.free_guest_turns, used=0, remaining=None)
+    used = _guest_turns_used(db, x_guest_id) if x_guest_id else 0
+    return GuestQuotaOut(
+        limit=settings.free_guest_turns,
+        used=used,
+        remaining=max(0, settings.free_guest_turns - used),
+    )
+
+
 @router.post("", response_model=ChatResponse)
 @limiter.limit(settings.rate_limit_chat)
 def chat(
@@ -24,6 +58,7 @@ def chat(
     payload: ChatRequest,
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user_optional),
+    x_guest_id: str | None = Header(default=None),
 ):
     contact = db.query(Contact).first()
     fallback_phone = contact.phone if contact else ""
@@ -32,6 +67,23 @@ def chat(
     # cho "xin chào", để nó rơi vào fallback thì người dân nhận nguyên văn câu từ chối.
     # Chặn ở đây còn tiết kiệm 1 lần gọi API embedding cho mỗi câu chào.
     result = smalltalk_respond(payload.question)
+
+    # Cổng hạn mức khách: chỉ chặn câu tra cứu thật. Câu chào hỏi bắt được ở tầng rẻ
+    # phía trên đi thẳng xuống dưới, không tốn lượt — người dân chào một câu rồi mới
+    # hỏi không bị mất lượt oan.
+    is_guest_turn = current_user is None and result is None
+    if is_guest_turn:
+        if not x_guest_id:
+            raise api_error(
+                400, "guest_id_required", "Thiếu mã phiên khách. Vui lòng tải lại trang."
+            )
+        if _guest_turns_used(db, x_guest_id) >= settings.free_guest_turns:
+            raise api_error(
+                403,
+                "guest_quota_exceeded",
+                "Bạn đã dùng hết lượt hỏi thử. Đăng ký miễn phí để hỏi tiếp và lưu lịch sử.",
+            )
+
     if result is None:
         hits = retrieve(db, payload.question, top_k=3)
         if not hits:
@@ -47,6 +99,8 @@ def chat(
     # khách ẩn danh không thấy gì thay đổi.
     entry = ChatHistory(
         user_id=current_user.id if current_user else None,
+        # Chỉ gắn guest_id cho lượt có tính phí hạn mức — đây cũng chính là bộ đếm.
+        guest_id=x_guest_id if is_guest_turn else None,
         question=payload.question,
         answer=result["answer_html"],
         matched_source_type=result["matched_source_type"],
@@ -56,6 +110,10 @@ def chat(
     db.commit()
     db.refresh(entry)
 
+    guest_turns_left = None
+    if current_user is None and x_guest_id:
+        guest_turns_left = max(0, settings.free_guest_turns - _guest_turns_used(db, x_guest_id))
+
     return ChatResponse(
         answer_html=result["answer_html"],
         source=result["source"],
@@ -64,6 +122,7 @@ def chat(
         online_url=result.get("online_url"),
         message_id=entry.id,
         matched_source_id=result.get("matched_source_id"),
+        guest_turns_left=guest_turns_left,
     )
 
 

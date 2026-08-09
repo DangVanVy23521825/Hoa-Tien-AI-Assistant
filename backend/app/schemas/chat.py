@@ -18,6 +18,15 @@ class ChatResponse(BaseModel):
     # Frontend dùng message_id để gửi feedback 👍👎, matched_source_id (code thủ tục) để in checklist
     message_id: uuid.UUID | None = None
     matched_source_id: str | None = None
+    # Số lượt hỏi thử còn lại của khách chưa đăng nhập; null = đã đăng nhập (không giới hạn)
+    guest_turns_left: int | None = None
+
+
+class GuestQuotaOut(BaseModel):
+    limit: int
+    used: int
+    # null = đã đăng nhập, không giới hạn
+    remaining: int | None = None
 
 
 class FeedbackRequest(BaseModel):

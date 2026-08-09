@@ -14,6 +14,22 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class VerifyOtpRequest(BaseModel):
+    email: EmailStr
+    code: str = Field(pattern=r"^\d{6}$")
+
+
+class ResendOtpRequest(BaseModel):
+    email: EmailStr
+
+
+class OtpSentResponse(BaseModel):
+    """Trả sau khi đăng ký / gửi lại mã — chưa có token, phải xác thực OTP đã."""
+
+    email: EmailStr
+    expires_in_seconds: int
+
+
 class UserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: uuid.UUID
