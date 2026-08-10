@@ -2064,5 +2064,347 @@
       "title": "Di tích Khu căn cứ Cách mạng Huyện ủy Hòa Vang",
       "content": "Khu căn cứ Cách mạng Huyện ủy Hòa Vang là một di tích lịch sử. Du khách có thể trải nghiệm di tích này một cách chân thực thông qua công nghệ VR360."
     }
+  },
+  {
+    "id": "0acd71985e7d362b",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://XN-01",
+    "source_title": "Xác nhận tình trạng hôn nhân",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai xác nhận tình trạng hôn nhân (theo mẫu); Giấy tờ tùy thân (CCCD/hộ chiếu); Giấy tờ chứng minh nơi cư trú (nếu cần)",
+    "record": {
+      "question": "Muốn xin giấy xác nhận tình trạng hôn nhân thì cần chuẩn bị những giấy tờ gì?",
+      "answer": "Để xin giấy xác nhận tình trạng hôn nhân, anh/chị cần chuẩn bị Tờ khai xác nhận tình trạng hôn nhân (theo mẫu), Giấy tờ tùy thân (CCCD/hộ chiếu), và Giấy tờ chứng minh nơi cư trú (nếu cần).",
+      "keywords": [
+        "giấy tờ xin xác nhận tình trạng hôn nhân",
+        "làm giấy độc thân cần gì",
+        "hồ sơ xác nhận độc thân",
+        "mang gì đi xin giấy xác nhận hôn nhân",
+        "chuẩn bị gì để xin giấy độc thân"
+      ]
+    }
+  },
+  {
+    "id": "22151b32a54acca9",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-01",
+    "source_title": "Chứng thực bản sao từ bản chính",
+    "evidence_quote": "Thời gian giải quyết: Trong ngày làm việc",
+    "record": {
+      "question": "Chứng thực bản sao giấy tờ có được lấy trong ngày không?",
+      "answer": "Vâng, việc chứng thực bản sao giấy tờ sẽ được giải quyết trong ngày làm việc.",
+      "keywords": [
+        "bao lâu thì có bản sao công chứng",
+        "chứng thực bản sao mất bao lâu",
+        "lấy bản sao công chứng trong ngày",
+        "thời gian chờ công chứng",
+        "công chứng có nhanh không"
+      ]
+    }
+  },
+  {
+    "id": "24b10edd9adf27e8",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-02",
+    "source_title": "Chứng thực chữ ký",
+    "evidence_quote": "Nơi nộp: Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến",
+    "record": {
+      "question": "Tôi có thể đến đâu để chứng thực chữ ký?",
+      "answer": "Anh/chị có thể đến Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến để chứng thực chữ ký.",
+      "keywords": [
+        "nộp hồ sơ chứng thực chữ ký ở đâu",
+        "làm chứng thực chữ ký ở đâu",
+        "địa điểm chứng thực chữ ký",
+        "nơi xác nhận chữ ký",
+        "ủy ban xã có chứng thực chữ ký không"
+      ]
+    }
+  },
+  {
+    "id": "27e8b89ab5dd427e",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://TT-01",
+    "source_title": "Đăng ký khai tử",
+    "evidence_quote": "Lệ phí: Miễn phí (đăng ký đúng hạn)",
+    "record": {
+      "question": "Đăng ký khai tử có mất phí không?",
+      "answer": "Nếu đăng ký đúng hạn, việc đăng ký khai tử là miễn phí.",
+      "keywords": [
+        "phí làm khai tử",
+        "làm giấy khai tử có tốn tiền không",
+        "đăng ký khai tử miễn phí",
+        "lệ phí khai tử",
+        "khai tử có mất phí không"
+      ]
+    }
+  },
+  {
+    "id": "369b29c01277f1e5",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://TT-01",
+    "source_title": "Đăng ký khai tử",
+    "evidence_quote": "Nên thực hiện trong vòng 15 ngày.",
+    "record": {
+      "question": "Nên làm giấy khai tử trong bao lâu kể từ khi có người mất?",
+      "answer": "Anh/chị nên thực hiện đăng ký khai tử trong vòng 15 ngày kể từ khi có người mất.",
+      "keywords": [
+        "thời gian làm khai tử",
+        "hạn làm giấy khai tử",
+        "bao lâu phải làm khai tử",
+        "đăng ký khai tử trong bao lâu",
+        "khai tử trong 15 ngày"
+      ]
+    }
+  },
+  {
+    "id": "4a81c87ab9ab994a",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KT-01",
+    "source_title": "Đăng ký kết hôn",
+    "evidence_quote": "Hai bên nam nữ phải có mặt khi đăng ký.",
+    "record": {
+      "question": "Khi đi đăng ký kết hôn, cả hai người có cần phải có mặt không?",
+      "answer": "Vâng, cả hai bên nam nữ phải có mặt khi đăng ký kết hôn.",
+      "keywords": [
+        "đăng ký kết hôn có cần cả hai",
+        "cả hai vợ chồng có mặt khi đăng ký kết hôn",
+        "ai phải có mặt khi kết hôn",
+        "có cần đi cùng nhau không",
+        "bắt buộc có mặt khi đăng ký"
+      ]
+    }
+  },
+  {
+    "id": "54b13db10082abb7",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KS-01",
+    "source_title": "Đăng ký khai sinh",
+    "evidence_quote": "Nơi nộp: Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến",
+    "record": {
+      "question": "Tôi có thể nộp hồ sơ làm giấy khai sinh cho con ở đâu?",
+      "answer": "Anh/chị nộp hồ sơ tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến.",
+      "keywords": [
+        "nộp hồ sơ khai sinh ở đâu",
+        "làm khai sinh ở đâu",
+        "địa điểm làm khai sinh",
+        "nơi đăng ký khai sinh",
+        "ủy ban xã có làm khai sinh không"
+      ]
+    }
+  },
+  {
+    "id": "5a333d7bd89b5dcf",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KT-01",
+    "source_title": "Đăng ký kết hôn",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký kết hôn (theo mẫu); Giấy tờ tùy thân của hai bên (CCCD/hộ chiếu); Giấy xác nhận tình trạng hôn nhân do nơi cư trú cấp; Quyết định/bản án ly hôn đã có hiệu lực (nếu đã từng kết hôn)",
+    "record": {
+      "question": "Muốn đăng ký kết hôn thì cần chuẩn bị những giấy tờ gì?",
+      "answer": "Để đăng ký kết hôn, hai bên cần chuẩn bị Tờ khai đăng ký kết hôn (theo mẫu), Giấy tờ tùy thân của hai bên (CCCD/hộ chiếu), và Giấy xác nhận tình trạng hôn nhân do nơi cư trú cấp. Nếu đã từng kết hôn, cần có thêm Quyết định hoặc bản án ly hôn đã có hiệu lực.",
+      "keywords": [
+        "giấy tờ đăng ký kết hôn",
+        "làm giấy kết hôn cần gì",
+        "hồ sơ kết hôn",
+        "chuẩn bị gì để kết hôn",
+        "thủ tục đăng ký kết hôn"
+      ]
+    }
+  },
+  {
+    "id": "774cdc7748442215",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://XN-01",
+    "source_title": "Xác nhận tình trạng hôn nhân",
+    "evidence_quote": "Thời gian giải quyết: Trong ngày hoặc tối đa 03 ngày làm việc nếu cần xác minh",
+    "record": {
+      "question": "Xin giấy xác nhận tình trạng hôn nhân bao lâu thì có?",
+      "answer": "Việc giải quyết có thể trong ngày, hoặc tối đa 03 ngày làm việc nếu cần xác minh.",
+      "keywords": [
+        "bao lâu thì có giấy độc thân",
+        "xin giấy xác nhận hôn nhân mất bao lâu",
+        "lấy giấy độc thân trong ngày",
+        "thời gian chờ giấy xác nhận hôn nhân",
+        "giấy độc thân có nhanh không"
+      ]
+    }
+  },
+  {
+    "id": "7aa116b25c94b5f4",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KS-01",
+    "source_title": "Đăng ký khai sinh",
+    "evidence_quote": "Nên thực hiện trong vòng 60 ngày kể từ ngày sinh.",
+    "record": {
+      "question": "Nên làm giấy khai sinh cho bé trong bao lâu kể từ khi sinh ra?",
+      "answer": "Anh/chị nên thực hiện đăng ký khai sinh trong vòng 60 ngày kể từ ngày bé sinh ra.",
+      "keywords": [
+        "thời gian làm khai sinh",
+        "hạn làm giấy khai sinh",
+        "bao lâu phải làm khai sinh",
+        "đăng ký khai sinh trong bao lâu",
+        "khai sinh cho con trong 60 ngày"
+      ]
+    }
+  },
+  {
+    "id": "7ff2aaa0c300d52f",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-02",
+    "source_title": "Chứng thực chữ ký",
+    "evidence_quote": "Lệ phí: 10.000 đồng/trường hợp (tham khảo)",
+    "record": {
+      "question": "Chứng thực chữ ký hết bao nhiêu tiền?",
+      "answer": "Lệ phí chứng thực chữ ký là 10.000 đồng mỗi trường hợp.",
+      "keywords": [
+        "phí chứng thực chữ ký",
+        "công chứng chữ ký bao nhiêu tiền",
+        "giá xác nhận chữ ký",
+        "lệ phí chứng thực chữ ký",
+        "chứng thực chữ ký giá bao nhiêu"
+      ]
+    }
+  },
+  {
+    "id": "9ad5e7316a3d53f6",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-01",
+    "source_title": "Chứng thực bản sao từ bản chính",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Bản chính giấy tờ cần chứng thực để đối chiếu; Bản sao (bản photo) giấy tờ cần chứng thực",
+    "record": {
+      "question": "Muốn chứng thực bản sao giấy tờ thì cần mang theo những gì?",
+      "answer": "Anh/chị cần mang theo bản chính giấy tờ cần chứng thực để đối chiếu và bản sao (bản photo) của giấy tờ đó.",
+      "keywords": [
+        "giấy tờ chứng thực bản sao",
+        "công chứng giấy tờ cần gì",
+        "hồ sơ sao y bản chính",
+        "mang gì đi công chứng",
+        "photo công chứng cần gì"
+      ]
+    }
+  },
+  {
+    "id": "a8046c3462baead8",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://XN-01",
+    "source_title": "Xác nhận tình trạng hôn nhân",
+    "evidence_quote": "Lệ phí: 15.000 đồng/trường hợp (tham khảo)",
+    "record": {
+      "question": "Xin giấy xác nhận tình trạng hôn nhân hết bao nhiêu tiền?",
+      "answer": "Lệ phí để xin giấy xác nhận tình trạng hôn nhân là 15.000 đồng mỗi trường hợp.",
+      "keywords": [
+        "phí xin giấy độc thân",
+        "làm giấy xác nhận hôn nhân bao nhiêu tiền",
+        "giá giấy xác nhận độc thân",
+        "lệ phí xác nhận tình trạng hôn nhân",
+        "xin giấy độc thân có tốn tiền không"
+      ]
+    }
+  },
+  {
+    "id": "b8d0a51928aa68f6",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-01",
+    "source_title": "Chứng thực bản sao từ bản chính",
+    "evidence_quote": "Lệ phí: 2.000 đồng/trang (tham khảo, theo quy định phí hiện hành)",
+    "record": {
+      "question": "Chứng thực bản sao giấy tờ hết bao nhiêu tiền một trang?",
+      "answer": "Lệ phí chứng thực bản sao là 2.000 đồng mỗi trang.",
+      "keywords": [
+        "phí chứng thực bản sao",
+        "công chứng giấy tờ bao nhiêu tiền",
+        "giá sao y bản chính",
+        "lệ phí photo công chứng",
+        "chứng thực bản sao giá bao nhiêu"
+      ]
+    }
+  },
+  {
+    "id": "d43564bf61047f30",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://CT-02",
+    "source_title": "Chứng thực chữ ký",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Giấy tờ tùy thân của người yêu cầu (CCCD/hộ chiếu); Giấy tờ, văn bản mà người yêu cầu sẽ ký vào",
+    "record": {
+      "question": "Muốn chứng thực chữ ký thì cần mang theo những giấy tờ gì?",
+      "answer": "Anh/chị cần mang theo Giấy tờ tùy thân (CCCD/hộ chiếu) và Giấy tờ, văn bản mà anh/chị sẽ ký vào.",
+      "keywords": [
+        "giấy tờ chứng thực chữ ký",
+        "công chứng chữ ký cần gì",
+        "hồ sơ xác nhận chữ ký",
+        "mang gì đi công chứng chữ ký",
+        "chuẩn bị gì để chứng thực chữ ký"
+      ]
+    }
+  },
+  {
+    "id": "de187a1bc6580315",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KT-01",
+    "source_title": "Đăng ký kết hôn",
+    "evidence_quote": "Lệ phí: Miễn phí (công dân Việt Nam trong nước)",
+    "record": {
+      "question": "Đăng ký kết hôn có mất tiền không?",
+      "answer": "Đối với công dân Việt Nam trong nước, việc đăng ký kết hôn là miễn phí.",
+      "keywords": [
+        "phí đăng ký kết hôn",
+        "làm giấy kết hôn có tốn tiền không",
+        "đăng ký kết hôn miễn phí",
+        "lệ phí kết hôn",
+        "kết hôn có mất phí không"
+      ]
+    }
+  },
+  {
+    "id": "e28df43d3a47c093",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://TT-01",
+    "source_title": "Đăng ký khai tử",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký khai tử (theo mẫu); Giấy báo tử hoặc giấy tờ thay thế do cơ quan có thẩm quyền cấp; Giấy tờ tùy thân của người đi khai tử",
+    "record": {
+      "question": "Muốn làm giấy khai tử thì cần mang theo những giấy tờ gì?",
+      "answer": "Để làm giấy khai tử, anh/chị cần chuẩn bị Tờ khai đăng ký khai tử (theo mẫu), Giấy báo tử hoặc giấy tờ thay thế do cơ quan có thẩm quyền cấp, và Giấy tờ tùy thân của người đi khai tử.",
+      "keywords": [
+        "giấy tờ làm khai tử",
+        "làm giấy khai tử cần gì",
+        "hồ sơ khai tử",
+        "giấy tờ đăng ký khai tử",
+        "chuẩn bị gì khi làm khai tử"
+      ]
+    }
+  },
+  {
+    "id": "fbd2f24ebdd69bf7",
+    "status": "pending",
+    "kind": "faq",
+    "source_url": "kb://KS-01",
+    "source_title": "Đăng ký khai sinh",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký khai sinh (theo mẫu); Giấy chứng sinh do cơ sở y tế cấp (nếu không có thì cần văn bản người làm chứng); Giấy tờ tùy thân của cha, mẹ (CCCD/hộ chiếu); Giấy chứng nhận kết hôn của cha mẹ (nếu có)",
+    "record": {
+      "question": "Muốn làm giấy khai sinh cho con thì cần mang theo những giấy tờ gì?",
+      "answer": "Để làm giấy khai sinh cho con, anh/chị cần chuẩn bị Tờ khai đăng ký khai sinh (theo mẫu), Giấy chứng sinh do cơ sở y tế cấp (nếu không có thì cần văn bản người làm chứng), Giấy tờ tùy thân của cha, mẹ (CCCD/hộ chiếu), và Giấy chứng nhận kết hôn của cha mẹ (nếu có).",
+      "keywords": [
+        "giấy tờ làm khai sinh",
+        "làm giấy khai sinh cần gì",
+        "hồ sơ khai sinh cho bé",
+        "giấy tờ đăng ký khai sinh",
+        "chuẩn bị gì khi làm khai sinh"
+      ]
+    }
   }
 ]

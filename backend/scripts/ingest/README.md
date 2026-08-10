@@ -15,12 +15,47 @@ source venv/bin/activate
 
 python3 scripts/ingest/1_crawl.py       # → data/ingest/raw/*.json      (có cache)
 python3 scripts/ingest/2_extract.py     # → data/ingest/candidates.json (gọi Gemini)
+python3 scripts/ingest/5_gen_faq.py     # sinh FAQ từ KB đã có (không cần nguồn web)
+python3 scripts/ingest/verify_quotes.py # cổng chống bịa TỰ ĐỘNG — chạy trước khi duyệt tay
 python3 scripts/ingest/3_review.py      # duyệt tay: y / n / s / e / q
 python3 scripts/ingest/4_merge.py       # → seed-knowledge-base.json (ghi cả 2 bản)
 
 python3 scripts/eval_retrieval.py       # BẮT BUỘC — xem mục dưới
 python3 scripts/seed_from_json.py       # nạp DB + sinh embedding
 ```
+
+`5_gen_faq.py` và `verify_quotes.py` không bắt buộc theo thứ tự trên — `5_gen_faq` chạy
+lúc nào cũng được (nó đọc KB chứ không đọc web), `verify_quotes` nên chạy lại mỗi khi có
+ứng viên mới.
+
+## `verify_quotes.py` — cổng chống bịa tự động
+
+Đối chiếu `evidence_quote` của từng ứng viên với nguồn thật (trang đã crawl, hoặc bản ghi
+KB với ứng viên `kb://`). Ba kết quả:
+
+| Kết quả | Nghĩa | Xử lý |
+|---|---|---|
+| `verbatim` | quote nằm liền mạch trong nguồn | tin được |
+| `stitched` | mọi mảnh đều có trong nguồn nhưng model ghép các đoạn cách xa nhau | người duyệt tự quyết |
+| `missing` | có chỗ không tìm được trong nguồn — model tự viết, hoặc gõ sai chữ so với nguồn | `--reject` để loại thẳng |
+
+So khớp bỏ khoảng trắng và dấu câu (model hay nuốt ký tự xuống dòng khi trích), nhưng
+**giữ nguyên chữ** — nên sai khác chữ vẫn bị bắt. Đã bắt được thật một ca model gõ
+"MẶN TRẬN" trong khi trang nguồn ghi "MẶT TRẬN".
+
+Người duyệt không thể tự nhớ 87 trang nguồn; máy thì tra được. Chạy `--reject` trước rồi
+mới ngồi duyệt tay để khỏi mất công đọc những bản vốn đã không có căn cứ.
+
+## `5_gen_faq.py` — sinh FAQ từ KB, không cần nguồn mới
+
+Retrieval là hybrid keyword + semantic, mà người dân hỏi bằng khẩu ngữ ("làm giấy cho con",
+"sổ đỏ sang tên") chứ không dùng tên thủ tục trong văn bản. Mỗi FAQ sinh ra là một cách hỏi
+khác được neo vào đúng bản ghi đã có — **tăng tỉ lệ khớp mà không thêm sự thật mới nào**.
+
+Khác căn bản với bước 2: nguồn ở đây là KB đã duyệt, không phải trang web lạ. Vì vậy rủi ro
+thấp hơn hẳn, nhưng vẫn phải qua `verify_quotes.py` và vẫn phải duyệt tay.
+
+Chi phí: ~5 lượt API cho 30 bản ghi (gộp 6 bản ghi/lượt, 3 FAQ mỗi bản ghi).
 
 ## Hạn mức Gemini free tier — đọc trước khi chạy bước 2
 
