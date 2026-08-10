@@ -19,3 +19,8 @@ next-env.d.ts
 
 # eval retrieval embedding cache
 backend/.cache/
+
+# Dữ liệu trung gian của pipeline ingest (HTML đã crawl, ca-bundle sinh ra lúc chạy).
+# candidates.json thì GIỮ: nó mang quyết định duyệt tay, mất là phải duyệt lại từ đầu.
+data/ingest/raw/
+data/ingest/ca-bundle.pem

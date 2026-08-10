@@ -1,0 +1,47 @@
+{
+  "_note": [
+    "Whitelist nguồn crawl. Mọi URL ở đây đã được kiểm tay 11/08/2026 (fetch được, đúng xã Hòa Tiến TP Đà Nẵng).",
+    "KHÔNG thêm domain lạ vào đây mà chưa mở ra xem: 'Hòa Tiến' là tên trùng của nhiều xã ở tỉnh khác.",
+    "dichvucong.gov.vn đã thử và LOẠI: là SPA, HTML trả về 0 ký tự text. Link nộp trực tuyến vẫn dùng trong onlineUrl của thủ tục, chỉ là không crawl được."
+  ],
+  "sites": [
+    {
+      "name": "Cổng thông tin điện tử xã Hòa Tiến",
+      "allow_domain": "hoatien.danang.gov.vn",
+      "follow_pattern": "(view|categoryview)\\.aspx\\?(ID|cid)=",
+      "max_follow_per_seed": 30,
+      "seeds": [
+        {"url": "https://hoatien.danang.gov.vn/", "note": "trang chủ"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=169&title=dat_va_nguoi_hoa_tien", "note": "Đất và người — địa danh, thôn, con người"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=170&title=di_tich_lich_su", "note": "Di tích lịch sử"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=182&title=cai_cach_hanh_chinh", "note": "Cải cách hành chính — thủ tục"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=163&title=quy_hoach_dat_dai_va_cac_chinh_sach_moi", "note": "Quy hoạch đất đai, chính sách mới"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=91&title=tiep_can_thong_tin", "note": "Tiếp cận thông tin"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=212&title=chuyen_doi_so", "note": "Chuyển đổi số"},
+        {"url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=36&title=tin_tuc___su_kien", "note": "Tin tức - sự kiện"},
+        {"url": "https://hoatien.danang.gov.vn/bomaytochuc.aspx", "note": "Bộ máy tổ chức — danh bạ cán bộ"},
+        {"url": "https://hoatien.danang.gov.vn/hoidaplist.aspx", "note": "Hỏi đáp — nguồn FAQ tốt nhất, đúng giọng người dân hỏi"},
+        {"url": "https://hoatien.danang.gov.vn/vanbanlist.aspx", "note": "Văn bản chỉ đạo điều hành"}
+      ]
+    },
+    {
+      "name": "Wikipedia tiếng Việt",
+      "allow_domain": "vi.wikipedia.org",
+      "follow_pattern": null,
+      "max_follow_per_seed": 0,
+      "seeds": [
+        {"url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn", "note": "Xã Hòa Tiến, TP Đà Nẵng — ĐÃ KIỂM: đúng xã (65,9 km², 38.823 người), không phải Hòa Tiến tỉnh khác"},
+        {"url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Vang", "note": "Huyện Hòa Vang cũ — bối cảnh lịch sử trước sáp nhập"}
+      ]
+    },
+    {
+      "name": "Cổng thông tin điện tử TP Đà Nẵng",
+      "allow_domain": "cttdt.danangportal.gov.vn",
+      "follow_pattern": null,
+      "max_follow_per_seed": 0,
+      "seeds": [
+        {"url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1", "note": "Trang giới thiệu xã — nguồn đã dùng cho bài LS-01 trong KB hiện tại"}
+      ]
+    }
+  ]
+}
