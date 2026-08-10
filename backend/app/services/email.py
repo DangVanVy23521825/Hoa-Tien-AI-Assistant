@@ -1,9 +1,13 @@
 """Gửi email — hiện chỉ dùng cho mã OTP xác thực tài khoản.
 
-Ba provider chọn qua env `EMAIL_PROVIDER`:
+Bốn provider chọn qua env `EMAIL_PROVIDER`:
   - "console" (mặc định, dev): in mã ra log, không cần mạng, không tốn quota.
-  - "smtp":    Gmail + App Password. Gửi được tới **mọi** địa chỉ mà không cần domain
-               riêng, giới hạn ~500 mail/ngày — đây là lựa chọn cho bản dự thi.
+  - "gas":     **provider của production**. Đẩy mail qua một Web App Google Apps Script
+               chạy dưới danh nghĩa chính Gmail của dự án, gọi bằng HTTPS cổng 443.
+               Lý do phải làm vậy: Railway CHẶN cổng SMTP ra ngoài (25/465/587) —
+               container báo "[Errno 101] Network is unreachable" khi nối smtp.gmail.com.
+  - "smtp":    Gmail + App Password. Chạy tốt ở local nhưng KHÔNG dùng được trên
+               Railway vì lý do trên. Giữ lại cho môi trường không chặn SMTP.
   - "resend":  API Resend. Chỉ dùng được thật khi đã có domain xác thực DNS; với
                `onboarding@resend.dev` mail chỉ tới được đúng email chủ tài khoản
                Resend, nên KHÔNG dùng cho người dân khi chưa có domain.
@@ -79,10 +83,44 @@ def _send_via_smtp(email: str, code: str, display_name: str, ttl: int) -> None:
     logger.info("[OTP] Đã gửi mã tới %s qua SMTP", email)
 
 
+def _send_via_gas(email: str, code: str, display_name: str, ttl: int) -> None:
+    if not settings.gas_webapp_url or not settings.gas_shared_secret:
+        logger.error("[OTP] EMAIL_PROVIDER=gas nhưng thiếu GAS_WEBAPP_URL/GAS_SHARED_SECRET")
+        return
+
+    res = httpx.post(
+        settings.gas_webapp_url,
+        json={
+            "secret": settings.gas_shared_secret,
+            "to": email,
+            "subject": _otp_subject(code),
+            "html": _otp_html(code, display_name, ttl),
+            "text": _otp_text(code, ttl),
+            "fromName": settings.smtp_from_name,
+        },
+        timeout=30.0,
+        # Apps Script trả 302 sang script.googleusercontent.com rồi mới chạy thật.
+        follow_redirects=True,
+    )
+    body = res.text[:300]
+    # Apps Script trả 200 cả khi script lỗi, nên phải soi nội dung chứ không tin status.
+    if res.status_code >= 400 or '"ok":true' not in body.replace(" ", ""):
+        logger.error("[OTP] Apps Script không gửi được tới %s: %s %s", email, res.status_code, body)
+    else:
+        logger.info("[OTP] Đã gửi mã tới %s qua Apps Script", email)
+
+
 def send_otp_email(email: str, code: str, display_name: str) -> None:
     """Gửi mã OTP. Không bao giờ raise — lỗi chỉ được log lại."""
     ttl = settings.otp_ttl_minutes
     provider = settings.email_provider
+
+    if provider == "gas":
+        try:
+            _send_via_gas(email, code, display_name, ttl)
+        except Exception as exc:  # noqa: BLE001 — mail hỏng không được làm hỏng đăng ký
+            logger.error("[OTP] Gọi Apps Script thất bại tới %s: %s", email, exc)
+        return
 
     if provider not in ("smtp", "resend"):
         # Chế độ dev: mã in thẳng ra log để test local không cần hộp thư thật.

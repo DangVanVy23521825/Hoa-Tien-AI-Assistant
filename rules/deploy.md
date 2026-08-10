@@ -29,20 +29,30 @@ RAG_SEMANTIC_WEIGHT=4.0
 
 # Xác thực email bằng OTP (rules/auth.md). Production KHÔNG được để "console" —
 # mã sẽ chỉ in ra log, người dân không nhận được mail và không đăng ký được.
-EMAIL_PROVIDER=smtp
-SMTP_USER=<địa chỉ Gmail dùng để gửi>
-SMTP_PASSWORD=<App Password 16 ký tự, KHÔNG phải mật khẩu Gmail>
+EMAIL_PROVIDER=gas
+GAS_WEBAPP_URL=<Web app URL của Apps Script, dạng https://script.google.com/macros/s/.../exec>
+GAS_SHARED_SECRET=<chuỗi ngẫu nhiên, phải khớp SHARED_SECRET trong script>
 SMTP_FROM_NAME=Trợ lý hành chính số Hòa Tiến
 FREE_GUEST_TURNS=3
 ```
 
 ### Chọn provider gửi mail
 
+> ⚠️ **Railway chặn cổng SMTP ra ngoài (25/465/587).** Đã kiểm chứng trên production:
+> container báo `[Errno 101] Network is unreachable` khi nối `smtp.gmail.com:587`, trong
+> khi HTTPS 443 (Gemini) vẫn thông. Vì vậy **mọi cách gửi mail ở production phải đi qua
+> HTTP API cổng 443**, không dùng được SMTP.
+
 | Provider | Khi nào dùng | Ràng buộc |
 |---|---|---|
 | `console` | Chỉ dev/local | Mã in ra log, không gửi mail thật |
-| `smtp` | **Bản dự thi hiện tại** | Gmail + App Password (phải bật 2FA trước mới tạo được App Password ở myaccount.google.com/apppasswords). Gửi được cho **mọi** địa chỉ, không cần domain. Giới hạn ~500 mail/ngày, dễ vào thư rác hơn |
+| `gas` | **Production hiện tại** | Relay qua Google Apps Script chạy dưới danh nghĩa Gmail của dự án. Không cần domain, không cần xác minh SĐT, không có token hết hạn. Hạn mức Gmail thường ~100 mail/ngày. Cách dựng: `backend/scripts/gmail_relay.gs` |
+| `smtp` | Local, hoặc hạ tầng không chặn SMTP | Gmail + App Password (cần bật 2FA). Chạy tốt ở máy local nhưng **không dùng được trên Railway** |
 | `resend` | Khi đã có domain riêng | Với `onboarding@resend.dev` mail **chỉ tới được đúng email chủ tài khoản Resend** — muốn gửi cho người dân phải thêm domain và xác thực DNS |
+
+Đã cân nhắc và loại: **Brevo** (đăng ký bắt xác minh SMS, không gửi được về số Việt Nam),
+**Gmail API + OAuth** (ở chế độ Testing refresh token hết hạn sau 7 ngày — quá rủi ro cho
+đúng dịp thi).
 
 `SMTP_FROM_EMAIL` để trống là đúng: Gmail từ chối gửi hộ địa chỉ khác nên hệ thống tự
 dùng chính `SMTP_USER`.

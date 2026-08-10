@@ -42,6 +42,11 @@ class Settings(BaseSettings):
     # Để trống thì dùng chính SMTP_USER làm địa chỉ gửi (Gmail bắt buộc như vậy).
     smtp_from_email: str = ""
 
+    # Relay qua Google Apps Script (provider "gas"): dùng khi hạ tầng chặn cổng SMTP
+    # — Railway chặn 25/465/587 nên smtp không dùng được ở production.
+    gas_webapp_url: str = ""
+    gas_shared_secret: str = ""
+
     # Số câu hỏi khách chưa đăng nhập được hỏi thử trước khi bị yêu cầu đăng ký.
     free_guest_turns: int = 3
 

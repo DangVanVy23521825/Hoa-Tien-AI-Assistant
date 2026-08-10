@@ -34,9 +34,10 @@ Cooldown đếm theo **email**, không theo IP — ở hội trại cả hội t
 nên giới hạn theo IP sẽ chặn nhầm người thật.
 
 Gửi mail: `app/services/email.py`, chọn provider qua `EMAIL_PROVIDER` — `console`
-(dev: in mã ra log), `smtp` (Gmail + App Password, **đang dùng cho bản dự thi** vì gửi
-được cho mọi địa chỉ mà không cần domain) hoặc `resend` (chỉ dùng thật được khi đã có
-domain xác thực DNS — xem bảng so sánh trong `rules/deploy.md`).
+(dev: in mã ra log), **`gas`** (production: relay qua Google Apps Script chạy dưới danh
+nghĩa Gmail dự án, vì **Railway chặn cổng SMTP**), `smtp` (Gmail App Password — chỉ chạy
+ở local) hoặc `resend` (cần domain xác thực DNS). Xem bảng so sánh và lý do loại từng
+phương án trong `rules/deploy.md`.
 **Mail hỏng không được làm hỏng đăng ký**:
 mọi lỗi gửi mail đều nuốt lại và log, người dùng bấm "Gửi lại mã".
 
