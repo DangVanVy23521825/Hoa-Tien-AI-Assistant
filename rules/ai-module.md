@@ -109,6 +109,27 @@ Không được nới lỏng threshold ở lớp 1 với kỳ vọng lớp 2 "s�
 
 > Khi thêm thủ tục mới qua `/admin`, **bắt buộc điền `keywords`** đa dạng cách người dân hỏi (khẩu ngữ, viết tắt, từ đồng nghĩa) — vẫn cần dù đã có semantic search, vì keyword score vẫn là một phần của hybrid score.
 
+## Mở rộng KB bằng pipeline ingest
+
+Công cụ chạy tay ở `backend/scripts/ingest/` (crawl → trích xuất → duyệt tay → gộp).
+Hướng dẫn vận hành: `backend/scripts/ingest/README.md`. Thiết kế:
+`docs/superpowers/specs/2026-08-11-kb-ingest-pipeline-design.md`.
+
+Hai điều liên quan trực tiếp tới module AI:
+
+1. **KB dày lên là phải đo lại retrieval.** Ba ngưỡng ở mục trên được hiệu chỉnh trên KB
+   49 bản ghi. Thêm hàng trăm bản ghi làm câu rác có nhiều "hàng xóm gần nghĩa" hơn, và
+   làm câu hành chính dễ bị bài văn hoá cướp mất (cùng token "thôn", "ở đâu"). Chạy
+   `eval_retrieval.py` sau **mỗi** lần merge, và mở rộng battery cho nội dung mới.
+   Câu trong nhóm "ngoài phạm vi" mà nay KB đã có dữ liệu thật thì **chuyển sang nhóm hợp
+   lệ**, không phải hạ ngưỡng cho vừa.
+
+2. **Quota Gemini là tài nguyên chung.** `gemini-2.5-flash` free tier chỉ
+   **20 request/ngày** trên mỗi project (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`,
+   đo thật 11/08/2026). `generate()` của trợ lý và bước trích xuất của ingest dùng chung
+   model đó. Chạy ingest bằng đúng key production sẽ đốt hết lượt của người dân và trợ lý
+   tụt xuống `_generate_template()` cho tới hết ngày — **dùng key riêng cho ingest**.
+
 ## Vận hành embedding
 
 - `embedding` (cột `Vector(768)`, pgvector — 768 chiều vì đây là dimension đã chọn cho `gemini-embedding-001`, provider mặc định) được tính và lưu ở **write-time**: seed (`scripts/seed_from_json.py`) và admin CRUD (`routers/admin.py`) — không tính lại cho toàn bộ KB mỗi lần chat.
