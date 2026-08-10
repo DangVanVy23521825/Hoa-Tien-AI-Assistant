@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import re
 import sys
 import time
@@ -118,12 +119,48 @@ class Extracted(BaseModel):
 _client: genai.Client | None = None
 
 
+def _from_dotenv(name: str) -> str:
+    """Đọc 1 biến từ backend/.env.
+
+    `settings` nạp .env qua pydantic-settings chứ không đổ vào os.environ, mà thêm field
+    ingest-only vào app config thì bẩn — nên script tự đọc lấy.
+    """
+    path = common.BACKEND_DIR / ".env"
+    if not path.exists():
+        return ""
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith(f"{name}="):
+            return line.split("=", 1)[1].strip().strip("'\"")
+    return ""
+
+
+def api_key() -> tuple[str, str]:
+    """→ (key, tên biến đã dùng). Ưu tiên `INGEST_GEMINI_API_KEY`, fallback `GEMINI_API_KEY`.
+
+    Nên đặt key riêng: free tier chỉ 20 request/ngày mỗi project, mà trợ lý production
+    cũng gọi đúng model này. Dùng chung key là ingest ăn hết lượt hỏi của người dân và
+    trợ lý âm thầm tụt xuống câu trả lời template cho tới hết ngày.
+    """
+    ingest = os.environ.get("INGEST_GEMINI_API_KEY") or _from_dotenv("INGEST_GEMINI_API_KEY")
+    if ingest:
+        return ingest, "INGEST_GEMINI_API_KEY"
+    return settings.gemini_api_key, "GEMINI_API_KEY"
+
+
 def client() -> genai.Client:
     global _client
     if _client is None:
-        if not settings.gemini_api_key:
-            sys.exit("Thiếu GEMINI_API_KEY — đặt trong backend/.env rồi chạy lại.")
-        _client = genai.Client(api_key=settings.gemini_api_key)
+        key, which = api_key()
+        if not key:
+            sys.exit(
+                "Thiếu API key. Đặt INGEST_GEMINI_API_KEY (khuyến nghị — key riêng cho "
+                "ingest) hoặc GEMINI_API_KEY trong backend/.env rồi chạy lại."
+            )
+        print(f"Dùng {which} (…{key[-6:]})")
+        if which == "GEMINI_API_KEY":
+            print("  ! Đang dùng chung key với trợ lý production — xem README mục hạn mức.")
+        _client = genai.Client(api_key=key)
     return _client
 
 

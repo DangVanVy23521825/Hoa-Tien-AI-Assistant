@@ -5,13 +5,17 @@
   "commune": {
     "name": "Xã Hòa Tiến",
     "city": "Thành phố Đà Nẵng",
-    "formedFrom": ["Xã Hòa Khương", "Xã Hòa Tiến"],
+    "formedFrom": [
+      "Xã Hòa Khương",
+      "Xã Hòa Tiến"
+    ],
     "effectiveDate": "2025-07-01",
     "area_km2": 65.9,
     "population": 38823,
-    "villageCount": 22,
+    "villageCount": 15,
     "portal": "hoatien.danang.gov.vn",
-    "note": "Xã Hòa Tiến mới được thành lập theo Nghị quyết 1659/NQ-UBTVQH15, hoạt động từ 01/7/2025 trên cơ sở nhập nguyên trạng xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ). Xã được phong tặng 03 danh hiệu Anh hùng."
+    "note": "Xã Hòa Tiến mới được thành lập theo Nghị quyết 1659/NQ-UBTVQH15, hoạt động từ 01/7/2025 trên cơ sở nhập nguyên trạng xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ). Xã được phong tặng 03 danh hiệu Anh hùng.",
+    "villageCountNote": "15 thôn sau sắp xếp, theo thông tin UBND xã công bố 07/7/2026. Trang giới thiệu xã trên cổng TP Đà Nẵng còn ghi 22 thôn (số liệu cũ hơn)."
   },
   "contact": {
     "office": "UBND xã Hòa Tiến",
@@ -30,7 +34,13 @@
       "id": "KS-01",
       "category": "Hộ tịch",
       "name": "Đăng ký khai sinh",
-      "keywords": ["khai sinh", "giấy khai sinh", "đăng ký khai sinh", "trẻ mới sinh", "làm giấy cho con"],
+      "keywords": [
+        "khai sinh",
+        "giấy khai sinh",
+        "đăng ký khai sinh",
+        "trẻ mới sinh",
+        "làm giấy cho con"
+      ],
       "description": "Đăng ký khai sinh cho trẻ em sinh sống trên địa bàn xã. Nên thực hiện trong vòng 60 ngày kể từ ngày sinh.",
       "documents": [
         "Tờ khai đăng ký khai sinh (theo mẫu)",
@@ -48,7 +58,13 @@
       "id": "KT-01",
       "category": "Hộ tịch",
       "name": "Đăng ký kết hôn",
-      "keywords": ["kết hôn", "đăng ký kết hôn", "giấy kết hôn", "làm giấy cưới", "đăng ký hôn nhân"],
+      "keywords": [
+        "kết hôn",
+        "đăng ký kết hôn",
+        "giấy kết hôn",
+        "làm giấy cưới",
+        "đăng ký hôn nhân"
+      ],
       "description": "Đăng ký kết hôn cho công dân cư trú tại xã. Hai bên nam nữ phải có mặt khi đăng ký.",
       "documents": [
         "Tờ khai đăng ký kết hôn (theo mẫu)",
@@ -66,7 +82,13 @@
       "id": "TT-01",
       "category": "Hộ tịch",
       "name": "Đăng ký khai tử",
-      "keywords": ["khai tử", "giấy chứng tử", "đăng ký khai tử", "người mất", "làm giấy khai tử"],
+      "keywords": [
+        "khai tử",
+        "giấy chứng tử",
+        "đăng ký khai tử",
+        "người mất",
+        "làm giấy khai tử"
+      ],
       "description": "Đăng ký khai tử khi có người chết trên địa bàn xã. Nên thực hiện trong vòng 15 ngày.",
       "documents": [
         "Tờ khai đăng ký khai tử (theo mẫu)",
@@ -83,7 +105,13 @@
       "id": "CT-01",
       "category": "Chứng thực",
       "name": "Chứng thực bản sao từ bản chính",
-      "keywords": ["chứng thực", "sao y", "công chứng bản sao", "photo công chứng", "sao y bản chính"],
+      "keywords": [
+        "chứng thực",
+        "sao y",
+        "công chứng bản sao",
+        "photo công chứng",
+        "sao y bản chính"
+      ],
       "description": "Chứng thực bản sao đúng với bản chính các giấy tờ, văn bản do cơ quan có thẩm quyền cấp.",
       "documents": [
         "Bản chính giấy tờ cần chứng thực để đối chiếu",
@@ -99,7 +127,12 @@
       "id": "CT-02",
       "category": "Chứng thực",
       "name": "Chứng thực chữ ký",
-      "keywords": ["chứng thực chữ ký", "ký công chứng", "xác nhận chữ ký", "chữ ký"],
+      "keywords": [
+        "chứng thực chữ ký",
+        "ký công chứng",
+        "xác nhận chữ ký",
+        "chữ ký"
+      ],
       "description": "Chứng thực chữ ký của người yêu cầu trên giấy tờ, văn bản.",
       "documents": [
         "Giấy tờ tùy thân của người yêu cầu (CCCD/hộ chiếu)",
@@ -115,7 +148,13 @@
       "id": "XN-01",
       "category": "Cư trú",
       "name": "Xác nhận tình trạng hôn nhân",
-      "keywords": ["tình trạng hôn nhân", "xác nhận độc thân", "giấy độc thân", "chưa kết hôn", "xác nhận hôn nhân"],
+      "keywords": [
+        "tình trạng hôn nhân",
+        "xác nhận độc thân",
+        "giấy độc thân",
+        "chưa kết hôn",
+        "xác nhận hôn nhân"
+      ],
       "description": "Cấp giấy xác nhận tình trạng hôn nhân cho công dân cư trú tại xã (thường dùng để đăng ký kết hôn, giao dịch dân sự).",
       "documents": [
         "Tờ khai xác nhận tình trạng hôn nhân (theo mẫu)",
@@ -132,7 +171,13 @@
       "id": "HT-02",
       "category": "Hộ tịch",
       "name": "Đăng ký nhận cha, mẹ, con",
-      "keywords": ["nhận cha", "nhận con", "nhận mẹ", "xác nhận cha con", "làm giấy nhận con"],
+      "keywords": [
+        "nhận cha",
+        "nhận con",
+        "nhận mẹ",
+        "xác nhận cha con",
+        "làm giấy nhận con"
+      ],
       "description": "Đăng ký việc nhận cha, mẹ, con khi các bên còn sống và tự nguyện, không có tranh chấp, để bổ sung/xác lập quan hệ cha-mẹ-con trong hồ sơ hộ tịch.",
       "documents": [
         "Tờ khai đăng ký nhận cha, mẹ, con (theo mẫu)",
@@ -149,7 +194,12 @@
       "id": "HT-03",
       "category": "Hộ tịch",
       "name": "Đăng ký giám hộ",
-      "keywords": ["giám hộ", "đăng ký giám hộ", "người giám hộ", "làm giấy giám hộ"],
+      "keywords": [
+        "giám hộ",
+        "đăng ký giám hộ",
+        "người giám hộ",
+        "làm giấy giám hộ"
+      ],
       "description": "Đăng ký việc giám hộ cho người chưa thành niên hoặc người mất/hạn chế năng lực hành vi dân sự không còn cha, mẹ hoặc cha mẹ không đủ điều kiện chăm sóc.",
       "documents": [
         "Tờ khai đăng ký giám hộ (theo mẫu)",
@@ -166,7 +216,13 @@
       "id": "HT-04",
       "category": "Hộ tịch",
       "name": "Đăng ký thay đổi, cải chính hộ tịch, bổ sung thông tin hộ tịch",
-      "keywords": ["cải chính hộ tịch", "sửa giấy khai sinh", "thay đổi tên", "bổ sung hộ tịch", "sửa thông tin khai sinh"],
+      "keywords": [
+        "cải chính hộ tịch",
+        "sửa giấy khai sinh",
+        "thay đổi tên",
+        "bổ sung hộ tịch",
+        "sửa thông tin khai sinh"
+      ],
       "description": "Đăng ký thay đổi họ, tên, chữ đệm; cải chính thông tin sai sót; hoặc bổ sung thông tin còn thiếu trong sổ hộ tịch/giấy tờ hộ tịch đã cấp.",
       "documents": [
         "Tờ khai đăng ký thay đổi, cải chính, bổ sung hộ tịch (theo mẫu)",
@@ -183,7 +239,13 @@
       "id": "CT-03",
       "category": "Chứng thực",
       "name": "Chứng thực hợp đồng, giao dịch",
-      "keywords": ["chứng thực hợp đồng", "chứng thực giao dịch", "công chứng hợp đồng", "hợp đồng mua bán", "chứng thực ủy quyền"],
+      "keywords": [
+        "chứng thực hợp đồng",
+        "chứng thực giao dịch",
+        "công chứng hợp đồng",
+        "hợp đồng mua bán",
+        "chứng thực ủy quyền"
+      ],
       "description": "Chứng thực hợp đồng, giao dịch (như hợp đồng ủy quyền, hợp đồng tặng cho, văn bản thỏa thuận...) theo quy định pháp luật về chứng thực tại cấp xã.",
       "documents": [
         "Dự thảo hợp đồng, giao dịch cần chứng thực",
@@ -200,7 +262,13 @@
       "id": "CU-01",
       "category": "Cư trú",
       "name": "Đăng ký thường trú",
-      "keywords": ["đăng ký thường trú", "nhập hộ khẩu", "làm hộ khẩu", "chuyển hộ khẩu", "thường trú"],
+      "keywords": [
+        "đăng ký thường trú",
+        "nhập hộ khẩu",
+        "làm hộ khẩu",
+        "chuyển hộ khẩu",
+        "thường trú"
+      ],
       "description": "Đăng ký thường trú cho công dân có chỗ ở hợp pháp thuộc trường hợp được đăng ký thường trú trên địa bàn xã.",
       "documents": [
         "Tờ khai thay đổi thông tin cư trú (theo mẫu)",
@@ -217,7 +285,12 @@
       "id": "CU-02",
       "category": "Cư trú",
       "name": "Đăng ký tạm trú",
-      "keywords": ["đăng ký tạm trú", "làm tạm trú", "khai báo tạm trú", "tạm trú"],
+      "keywords": [
+        "đăng ký tạm trú",
+        "làm tạm trú",
+        "khai báo tạm trú",
+        "tạm trú"
+      ],
       "description": "Đăng ký tạm trú cho công dân sinh sống tại địa điểm thuộc xã ngoài nơi thường trú, từ đủ 30 ngày trở lên.",
       "documents": [
         "Tờ khai thay đổi thông tin cư trú (theo mẫu)",
@@ -233,7 +306,12 @@
       "id": "CU-03",
       "category": "Cư trú",
       "name": "Tách hộ",
-      "keywords": ["tách hộ", "tách khẩu", "làm sổ hộ khẩu riêng", "tách hộ khẩu"],
+      "keywords": [
+        "tách hộ",
+        "tách khẩu",
+        "làm sổ hộ khẩu riêng",
+        "tách hộ khẩu"
+      ],
       "description": "Thực hiện tách hộ cho thành viên hộ gia đình có nhu cầu đăng ký thường trú thành hộ riêng khi đủ điều kiện theo Luật Cư trú.",
       "documents": [
         "Tờ khai thay đổi thông tin cư trú (theo mẫu)",
@@ -249,7 +327,12 @@
       "id": "CU-04",
       "category": "Cư trú",
       "name": "Khai báo tạm vắng",
-      "keywords": ["tạm vắng", "khai báo tạm vắng", "đi khỏi địa phương", "báo tạm vắng"],
+      "keywords": [
+        "tạm vắng",
+        "khai báo tạm vắng",
+        "đi khỏi địa phương",
+        "báo tạm vắng"
+      ],
       "description": "Khai báo tạm vắng áp dụng cho một số trường hợp đặc biệt (đang trong thời gian bị điều tra, thi hành nghĩa vụ...) khi tạm thời đi khỏi nơi thường trú/tạm trú.",
       "documents": [
         "Tờ khai báo tạm vắng (theo mẫu)",
@@ -265,7 +348,13 @@
       "id": "DD-01",
       "category": "Đất đai",
       "name": "Đăng ký biến động đất đai (chuyển nhượng, tặng cho, thừa kế quyền sử dụng đất)",
-      "keywords": ["sang tên sổ đỏ", "chuyển nhượng đất", "tặng cho đất", "biến động đất đai", "sang tên đất"],
+      "keywords": [
+        "sang tên sổ đỏ",
+        "chuyển nhượng đất",
+        "tặng cho đất",
+        "biến động đất đai",
+        "sang tên đất"
+      ],
       "description": "Đăng ký biến động khi quyền sử dụng đất, tài sản gắn liền với đất thay đổi do chuyển nhượng, tặng cho, thừa kế... thuộc thẩm quyền giải quyết tại cấp xã theo phân cấp mới.",
       "documents": [
         "Đơn đăng ký biến động đất đai, tài sản gắn liền với đất (theo mẫu)",
@@ -283,7 +372,13 @@
       "id": "DD-02",
       "category": "Đất đai",
       "name": "Cấp đổi, cấp lại Giấy chứng nhận quyền sử dụng đất",
-      "keywords": ["cấp lại sổ đỏ", "sổ đỏ bị mất", "cấp đổi sổ đỏ", "sổ đỏ rách", "làm lại sổ đỏ"],
+      "keywords": [
+        "cấp lại sổ đỏ",
+        "sổ đỏ bị mất",
+        "cấp đổi sổ đỏ",
+        "sổ đỏ rách",
+        "làm lại sổ đỏ"
+      ],
       "description": "Cấp đổi Giấy chứng nhận quyền sử dụng đất khi giấy cũ bị ố, nhòe, rách, hư hỏng hoặc cấp lại khi bị mất, theo phân cấp giải quyết tại cấp xã.",
       "documents": [
         "Đơn đề nghị cấp đổi/cấp lại Giấy chứng nhận (theo mẫu)",
@@ -301,7 +396,12 @@
       "id": "DD-03",
       "category": "Đất đai",
       "name": "Đăng ký đất đai, cấp Giấy chứng nhận quyền sử dụng đất lần đầu",
-      "keywords": ["làm sổ đỏ lần đầu", "cấp sổ đỏ mới", "đăng ký đất đai lần đầu", "xin cấp giấy chứng nhận đất"],
+      "keywords": [
+        "làm sổ đỏ lần đầu",
+        "cấp sổ đỏ mới",
+        "đăng ký đất đai lần đầu",
+        "xin cấp giấy chứng nhận đất"
+      ],
       "description": "Đăng ký đất đai và cấp Giấy chứng nhận quyền sử dụng đất, quyền sở hữu tài sản gắn liền với đất lần đầu cho hộ gia đình, cá nhân đủ điều kiện theo quy định.",
       "documents": [
         "Đơn đăng ký đất đai, cấp Giấy chứng nhận (theo mẫu)",
@@ -318,7 +418,13 @@
       "id": "DD-04",
       "category": "Đất đai",
       "name": "Tách thửa, hợp thửa đất",
-      "keywords": ["tách thửa đất", "hợp thửa đất", "chia đất", "gộp thửa đất", "tách sổ đỏ"],
+      "keywords": [
+        "tách thửa đất",
+        "hợp thửa đất",
+        "chia đất",
+        "gộp thửa đất",
+        "tách sổ đỏ"
+      ],
       "description": "Thực hiện thủ tục tách một thửa đất thành nhiều thửa hoặc hợp nhiều thửa đất liền kề thành một thửa, kèm cấp Giấy chứng nhận tương ứng.",
       "documents": [
         "Đơn đề nghị tách thửa hoặc hợp thửa đất (theo mẫu)",
@@ -335,7 +441,13 @@
       "id": "LD-01",
       "category": "Lao động - Xã hội",
       "name": "Trợ cấp xã hội hàng tháng cho đối tượng bảo trợ xã hội",
-      "keywords": ["trợ cấp xã hội", "trợ cấp người khuyết tật", "trợ cấp người già", "bảo trợ xã hội", "trợ cấp neo đơn"],
+      "keywords": [
+        "trợ cấp xã hội",
+        "trợ cấp người khuyết tật",
+        "trợ cấp người già",
+        "bảo trợ xã hội",
+        "trợ cấp neo đơn"
+      ],
       "description": "Xét duyệt, chi trả trợ cấp xã hội hàng tháng cho các đối tượng bảo trợ xã hội tại cộng đồng (người khuyết tật nặng, người cao tuổi neo đơn, trẻ mồ côi...) theo quy định.",
       "documents": [
         "Tờ khai đề nghị hưởng trợ cấp xã hội (theo mẫu)",
@@ -353,121 +465,220 @@
     {
       "id": "FAQ-01",
       "question": "Bộ phận Một cửa xã Hòa Tiến làm việc giờ nào?",
-      "keywords": ["giờ làm việc", "mấy giờ", "thời gian làm việc", "giờ mở cửa"],
+      "keywords": [
+        "giờ làm việc",
+        "mấy giờ",
+        "thời gian làm việc",
+        "giờ mở cửa"
+      ],
       "answer": "Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến làm việc từ thứ 2 đến thứ 6: sáng 07:30–11:30, chiều 13:30–17:00. Sáng thứ 7 làm việc theo lịch niêm yết. Chủ nhật nghỉ."
     },
     {
       "id": "FAQ-02",
       "question": "Tôi có thể nộp hồ sơ trực tuyến không?",
-      "keywords": ["trực tuyến", "online", "nộp online", "dịch vụ công", "qua mạng"],
+      "keywords": [
+        "trực tuyến",
+        "online",
+        "nộp online",
+        "dịch vụ công",
+        "qua mạng"
+      ],
       "answer": "Nhiều thủ tục có thể nộp trực tuyến qua Cổng Dịch vụ công Quốc gia tại dichvucong.gov.vn. Bạn cần tài khoản định danh điện tử (VNeID) để đăng nhập và nộp hồ sơ."
     },
     {
       "id": "FAQ-03",
       "question": "Xã Hòa Tiến được thành lập từ đâu?",
-      "keywords": ["sáp nhập", "thành lập", "hòa khương", "lịch sử xã", "hình thành"],
-      "answer": "Xã Hòa Tiến mới hoạt động từ 01/7/2025, hình thành từ việc nhập nguyên trạng xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ), theo Nghị quyết 1659/NQ-UBTVQH15. Xã thuộc TP Đà Nẵng, diện tích khoảng 65,9 km², dân số khoảng 38.823 người, gồm 22 thôn."
+      "keywords": [
+        "sáp nhập",
+        "thành lập",
+        "hòa khương",
+        "lịch sử xã",
+        "hình thành"
+      ],
+      "answer": "Xã Hòa Tiến mới hoạt động từ 01/7/2025, hình thành từ việc nhập nguyên trạng xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ), theo Nghị quyết 1659/NQ-UBTVQH15. Xã thuộc TP Đà Nẵng, diện tích khoảng 65,9 km², dân số khoảng 38.823 người, gồm 15 thôn (sau sắp xếp, công bố 07/7/2026)."
     },
     {
       "id": "FAQ-04",
       "question": "Làm khai sinh cho con có mất phí không?",
-      "keywords": ["phí khai sinh", "khai sinh mất tiền", "lệ phí khai sinh"],
+      "keywords": [
+        "phí khai sinh",
+        "khai sinh mất tiền",
+        "lệ phí khai sinh"
+      ],
       "answer": "Đăng ký khai sinh đúng hạn (trong vòng 60 ngày kể từ ngày sinh) được miễn lệ phí. Bạn cần mang theo giấy chứng sinh và giấy tờ tùy thân của cha mẹ."
     },
     {
       "id": "FAQ-05",
       "question": "Tài khoản định danh điện tử VNeID đăng ký ở đâu?",
-      "keywords": ["vneid", "định danh điện tử", "tài khoản định danh", "đăng ký vneid"],
+      "keywords": [
+        "vneid",
+        "định danh điện tử",
+        "tài khoản định danh",
+        "đăng ký vneid"
+      ],
       "answer": "Tài khoản định danh điện tử (VNeID) do cơ quan Công an cấp, đăng ký qua ứng dụng VNeID hoặc tại Công an xã/phường nơi cư trú. UBND xã không trực tiếp cấp tài khoản này nhưng có thể hướng dẫn bạn đến đúng nơi hỗ trợ."
     },
     {
       "id": "FAQ-06",
       "question": "Trung tâm Phục vụ hành chính công cấp xã là gì?",
-      "keywords": ["trung tâm phục vụ hành chính công", "hành chính công cấp xã", "bộ phận một cửa mới"],
+      "keywords": [
+        "trung tâm phục vụ hành chính công",
+        "hành chính công cấp xã",
+        "bộ phận một cửa mới"
+      ],
       "answer": "Từ 01/7/2025, mô hình Bộ phận Một cửa cấp xã được chuyển thành Trung tâm Phục vụ hành chính công cấp xã theo Nghị định 118/2025/NĐ-CP, là đầu mối tiếp nhận, hướng dẫn hồ sơ, số hóa và thu phí/lệ phí cho toàn bộ thủ tục hành chính thuộc thẩm quyền cấp xã."
     },
     {
       "id": "FAQ-07",
       "question": "Mất Căn cước công dân có làm lại tại UBND xã được không?",
-      "keywords": ["mất cccd", "làm lại cccd", "cấp lại căn cước", "mất căn cước", "cmnd", "mất cmnd", "làm lại cmnd", "chứng minh nhân dân", "chứng minh thư", "căn cước công dân"],
+      "keywords": [
+        "mất cccd",
+        "làm lại cccd",
+        "cấp lại căn cước",
+        "mất căn cước",
+        "cmnd",
+        "mất cmnd",
+        "làm lại cmnd",
+        "chứng minh nhân dân",
+        "chứng minh thư",
+        "căn cước công dân"
+      ],
       "answer": "UBND xã không cấp/cấp lại Căn cước công dân. Bạn cần liên hệ Công an xã Hòa Tiến hoặc đội Cảnh sát quản lý hành chính về trật tự xã hội để làm thủ tục cấp lại."
     },
     {
       "id": "FAQ-08",
       "question": "Muốn xin giấy xác nhận hộ nghèo, hộ cận nghèo thì làm ở đâu?",
-      "keywords": ["hộ nghèo", "hộ cận nghèo", "xác nhận hộ nghèo", "giấy hộ nghèo"],
+      "keywords": [
+        "hộ nghèo",
+        "hộ cận nghèo",
+        "xác nhận hộ nghèo",
+        "giấy hộ nghèo"
+      ],
       "answer": "Việc rà soát, công nhận hộ nghèo/hộ cận nghèo thực hiện theo quy trình bình xét tại thôn và xét duyệt tại UBND xã theo Nghị định 07/2021/NĐ-CP. Bạn liên hệ Trung tâm Phục vụ hành chính công cấp xã hoặc cán bộ phụ trách lao động - xã hội của thôn để được hướng dẫn quy trình bình xét."
     },
     {
       "id": "FAQ-09",
       "question": "Phí chứng thực hợp đồng, giao dịch bao nhiêu?",
-      "keywords": ["phí chứng thực hợp đồng", "lệ phí chứng thực giao dịch", "giá chứng thực hợp đồng"],
+      "keywords": [
+        "phí chứng thực hợp đồng",
+        "lệ phí chứng thực giao dịch",
+        "giá chứng thực hợp đồng"
+      ],
       "answer": "Phí chứng thực hợp đồng, giao dịch áp dụng theo Thông tư quy định mức thu phí chứng thực hiện hành, tùy loại hợp đồng/giao dịch. Bạn nên liên hệ trực tiếp Trung tâm Phục vụ hành chính công cấp xã để được báo mức phí chính xác cho từng trường hợp cụ thể."
     },
     {
       "id": "FAQ-10",
       "question": "Sổ đỏ bị mất hoặc rách, mờ thì phải làm sao?",
-      "keywords": ["sổ đỏ bị mất", "sổ đỏ rách", "mất giấy chứng nhận đất", "làm lại sổ đỏ"],
+      "keywords": [
+        "sổ đỏ bị mất",
+        "sổ đỏ rách",
+        "mất giấy chứng nhận đất",
+        "làm lại sổ đỏ"
+      ],
       "answer": "Nếu Giấy chứng nhận quyền sử dụng đất bị mất, bạn cần trình báo và làm thủ tục cấp lại. Nếu giấy bị ố, nhòe, rách, hư hỏng thì làm thủ tục cấp đổi. Cả hai đều nộp hồ sơ tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến."
     },
     {
       "id": "FAQ-11",
       "question": "Muốn chuyển nhượng hoặc tặng cho đất thì cần làm thủ tục gì trước?",
-      "keywords": ["chuyển nhượng đất", "tặng cho đất", "sang tên đất", "mua bán đất cần giấy gì"],
+      "keywords": [
+        "chuyển nhượng đất",
+        "tặng cho đất",
+        "sang tên đất",
+        "mua bán đất cần giấy gì"
+      ],
       "answer": "Trước tiên hai bên cần lập hợp đồng chuyển nhượng/tặng cho quyền sử dụng đất và công chứng/chứng thực theo quy định, sau đó nộp hồ sơ đăng ký biến động đất đai tại Trung tâm Phục vụ hành chính công cấp xã để được sang tên trên Giấy chứng nhận."
     },
     {
       "id": "FAQ-12",
       "question": "Xã Hòa Tiến có bao nhiêu thôn?",
-      "keywords": ["bao nhiêu thôn", "số thôn hòa tiến", "danh sách thôn"],
-      "answer": "Xã Hòa Tiến hiện có 22 thôn, hình thành sau khi nhập nguyên trạng xã Hòa Khương và xã Hòa Tiến (huyện Hòa Vang cũ) từ 01/7/2025."
+      "keywords": [
+        "15 thôn",
+        "bao nhiêu thôn",
+        "danh sách thôn",
+        "số thôn hòa tiến",
+        "tên các thôn"
+      ],
+      "answer": "Sau khi sắp xếp lại, xã Hòa Tiến có <b>15 thôn</b> (theo thông tin UBND xã công bố ngày 07/7/2026): Phú Sơn Nam, Phú Sơn, Phú Sơn Bắc, Đồng Nghệ, Hương Lam, La Châu, An Trạch, Lệ Sơn, La Bông, Dương Sơn, Cẩm Nê, Yến Nê Đông, Yến Nê Tây, Lệ Sơn Bắc, Lệ Sơn Nam."
     },
     {
       "id": "FAQ-13",
       "question": "Xã Hòa Tiến có di tích lịch sử nào nổi bật?",
-      "keywords": ["di tích hòa tiến", "di tích lịch sử", "di tích văn hóa", "địa danh nổi tiếng"],
+      "keywords": [
+        "di tích hòa tiến",
+        "di tích lịch sử",
+        "di tích văn hóa",
+        "địa danh nổi tiếng"
+      ],
       "answer": "Xã Hòa Tiến có 16 di tích lịch sử - văn hóa, gồm 1 di tích cấp quốc gia (mộ Đỗ Thúc Tịnh) và 7 di tích cấp thành phố như đình Cẩm Nê, đình Yến Nê, cụm đình - miếu La Bông, văn chỉ La Châu, đài chiến thắng Gò Hà."
     },
     {
       "id": "FAQ-14",
       "question": "Làng nghề truyền thống nào nổi tiếng ở Hòa Tiến?",
-      "keywords": ["làng nghề hòa tiến", "làng nghề truyền thống", "chiếu cẩm nê"],
+      "keywords": [
+        "làng nghề hòa tiến",
+        "làng nghề truyền thống",
+        "chiếu cẩm nê"
+      ],
       "answer": "Nổi bật nhất là làng nghề dệt chiếu Cẩm Nê, một nghề truyền thống lâu đời của xã Hòa Tiến, nơi du khách có thể trải nghiệm dệt chiếu thủ công."
     },
     {
       "id": "FAQ-15",
       "question": "Hồ Đồng Nghệ ở đâu, có gì đặc biệt?",
-      "keywords": ["hồ đồng nghệ", "hồ đồng nghê", "địa điểm du lịch hòa tiến"],
+      "keywords": [
+        "hồ đồng nghệ",
+        "hồ đồng nghê",
+        "địa điểm du lịch hòa tiến"
+      ],
       "answer": "Hồ Đồng Nghệ là hồ nước lớn thuộc địa bàn xã Hòa Tiến, được xem là tài nguyên cảnh quan - văn hóa - lịch sử của xã, hiện đang trong quá trình hoàn tất thủ tục để kêu gọi đầu tư phát triển du lịch."
     },
     {
       "id": "FAQ-16",
       "question": "Người khuyết tật, người cao tuổi neo đơn được hỗ trợ gì?",
-      "keywords": ["trợ cấp người khuyết tật", "trợ cấp người già neo đơn", "hỗ trợ người cao tuổi"],
+      "keywords": [
+        "trợ cấp người khuyết tật",
+        "trợ cấp người già neo đơn",
+        "hỗ trợ người cao tuổi"
+      ],
       "answer": "Người khuyết tật nặng, người cao tuổi neo đơn thuộc diện bảo trợ xã hội có thể được xét hưởng trợ cấp xã hội hàng tháng theo Nghị định 20/2021/NĐ-CP. Bạn nộp hồ sơ đề nghị tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến."
     },
     {
       "id": "FAQ-17",
       "question": "Khi nào cần khai báo tạm vắng?",
-      "keywords": ["tạm vắng khi nào", "khai báo tạm vắng", "đi xa có cần báo không"],
+      "keywords": [
+        "tạm vắng khi nào",
+        "khai báo tạm vắng",
+        "đi xa có cần báo không"
+      ],
       "answer": "Khai báo tạm vắng áp dụng cho một số trường hợp đặc biệt theo Luật Cư trú (như người trong diện bị điều tra, thi hành nghĩa vụ...) khi tạm thời rời khỏi nơi cư trú. Người dân đi làm ăn, du lịch thông thường không bắt buộc phải khai báo tạm vắng."
     },
     {
       "id": "FAQ-18",
       "question": "Con sinh ra khi cha mẹ chưa đăng ký kết hôn có làm khai sinh được không?",
-      "keywords": ["con ngoài giá thú", "chưa đăng ký kết hôn có khai sinh được không", "khai sinh không có giấy kết hôn"],
+      "keywords": [
+        "con ngoài giá thú",
+        "chưa đăng ký kết hôn có khai sinh được không",
+        "khai sinh không có giấy kết hôn"
+      ],
       "answer": "Có. Trẻ vẫn được đăng ký khai sinh bình thường. Nếu muốn ghi tên cha trong giấy khai sinh mà cha mẹ chưa đăng ký kết hôn, gia đình có thể làm thủ tục nhận cha, mẹ, con kết hợp cùng lúc với đăng ký khai sinh."
     },
     {
       "id": "FAQ-19",
       "question": "Đã ly hôn, muốn đăng ký kết hôn lại cần thêm giấy tờ gì?",
-      "keywords": ["ly hôn kết hôn lại", "tái hôn cần giấy gì", "kết hôn lại sau ly hôn"],
+      "keywords": [
+        "ly hôn kết hôn lại",
+        "tái hôn cần giấy gì",
+        "kết hôn lại sau ly hôn"
+      ],
       "answer": "Ngoài các giấy tờ đăng ký kết hôn thông thường, bạn cần nộp thêm quyết định hoặc bản án ly hôn đã có hiệu lực pháp luật của cuộc hôn nhân trước đó."
     },
     {
       "id": "FAQ-20",
       "question": "Hồ sơ đất đai có nộp trực tuyến được không?",
-      "keywords": ["nộp hồ sơ đất đai online", "thủ tục đất đai trực tuyến", "đăng ký đất đai qua mạng"],
+      "keywords": [
+        "nộp hồ sơ đất đai online",
+        "thủ tục đất đai trực tuyến",
+        "đăng ký đất đai qua mạng"
+      ],
       "answer": "Một số thủ tục đất đai có thể nộp trực tuyến qua Cổng Dịch vụ công Quốc gia hoặc Cổng Dịch vụ công thành phố Đà Nẵng, tuy nhiên với các hồ sơ cần đối chiếu bản gốc (như Giấy chứng nhận quyền sử dụng đất), bạn vẫn cần đến nộp trực tiếp tại Trung tâm Phục vụ hành chính công cấp xã."
     }
   ],
@@ -476,15 +687,25 @@
       "id": "LS-01",
       "category": "history",
       "title": "Lịch sử hình thành xã Hòa Tiến (sau sáp nhập 01/7/2025)",
-      "keywords": ["lịch sử xã hòa tiến", "hình thành xã hòa tiến", "sáp nhập xã", "hòa khương hòa tiến", "nghị quyết 1659"],
-      "content": "Xã Hòa Tiến (mới) được thành lập trên cơ sở nhập nguyên trạng xã Hòa Tiến và xã Hòa Khương (thuộc huyện Hòa Vang cũ), theo Nghị quyết số 1659/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội (ban hành 16/6/2025), chính thức hoạt động từ ngày 01/7/2025. Xã có tổng diện tích tự nhiên 65,9 km², dân số khoảng 38.823 người, gồm 22 thôn. Trụ sở Đảng ủy đặt tại đường ĐT605, thôn Dương Sơn; trụ sở UBND đặt tại Quốc lộ 14B, thôn Phú Sơn Tây.",
+      "keywords": [
+        "lịch sử xã hòa tiến",
+        "hình thành xã hòa tiến",
+        "sáp nhập xã",
+        "hòa khương hòa tiến",
+        "nghị quyết 1659"
+      ],
+      "content": "Xã Hòa Tiến (mới) được thành lập trên cơ sở nhập nguyên trạng xã Hòa Tiến và xã Hòa Khương (thuộc huyện Hòa Vang cũ), theo Nghị quyết số 1659/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội (ban hành 16/6/2025), chính thức hoạt động từ ngày 01/7/2025. Xã có tổng diện tích tự nhiên 65,9 km², dân số khoảng 38.823 người, gồm 15 thôn (sau sắp xếp, theo công bố ngày 07/7/2026 của UBND xã). Trụ sở Đảng ủy đặt tại đường ĐT605, thôn Dương Sơn; trụ sở UBND đặt tại Quốc lộ 14B, thôn Phú Sơn Tây.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1"
     },
     {
       "id": "LS-02",
       "category": "history",
       "title": "Truyền thống cách mạng và danh hiệu Anh hùng của xã Hòa Tiến",
-      "keywords": ["anh hùng lực lượng vũ trang", "truyền thống cách mạng", "danh hiệu anh hùng hòa tiến"],
+      "keywords": [
+        "anh hùng lực lượng vũ trang",
+        "truyền thống cách mạng",
+        "danh hiệu anh hùng hòa tiến"
+      ],
       "content": "Hòa Tiến là địa phương giàu truyền thống cách mạng, được Nhà nước phong tặng 3 danh hiệu Anh hùng: Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ đổi mới, và Anh hùng Lực lượng vũ trang Công an xã. Đây là một trong những địa phương hiếm hoi của TP Đà Nẵng hội tụ đủ cả ba danh hiệu Anh hùng ở các lĩnh vực khác nhau.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1"
     },
@@ -492,7 +713,11 @@
       "id": "DT-01",
       "category": "landmark",
       "title": "Di tích mộ Đỗ Thúc Tịnh (di tích cấp quốc gia)",
-      "keywords": ["mộ đỗ thúc tịnh", "di tích cấp quốc gia hòa tiến", "đỗ thúc tịnh"],
+      "keywords": [
+        "mộ đỗ thúc tịnh",
+        "di tích cấp quốc gia hòa tiến",
+        "đỗ thúc tịnh"
+      ],
       "content": "Mộ Đỗ Thúc Tịnh là di tích lịch sử - văn hóa cấp quốc gia duy nhất trên địa bàn xã Hòa Tiến, trong tổng số 16 di tích lịch sử - văn hóa của xã (gồm 1 di tích cấp quốc gia, 7 di tích cấp thành phố, 8 di tích chưa xếp hạng). Đỗ Thúc Tịnh là danh nhân được thờ phụng, gắn với truyền thống lịch sử - văn hóa lâu đời của vùng đất Hòa Vang cũ.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1"
     },
@@ -500,7 +725,11 @@
       "id": "DT-02",
       "category": "landmark",
       "title": "Đình làng Cẩm Nê",
-      "keywords": ["đình cẩm nê", "đình làng cẩm nê", "di tích cẩm nê"],
+      "keywords": [
+        "đình cẩm nê",
+        "đình làng cẩm nê",
+        "di tích cẩm nê"
+      ],
       "content": "Đình Cẩm Nê là một trong 7 di tích cấp thành phố của xã Hòa Tiến, thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, khu vực nổi tiếng với hệ thống di tích lịch sử - tâm linh (đình làng, lăng mộ, nhà thờ tộc) gắn liền với làng nghề dệt chiếu truyền thống Cẩm Nê.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://danang.gov.vn/en/w/xa-hoa-tien-phat-trien-du-lich-gan-voi-cac-di-tich-lich-su-lang-nghe-truyen-thong"
     },
@@ -508,7 +737,11 @@
       "id": "DT-03",
       "category": "landmark",
       "title": "Đình làng Yến Nê",
-      "keywords": ["đình yến nê", "đình làng yến nê", "di tích yến nê"],
+      "keywords": [
+        "đình yến nê",
+        "đình làng yến nê",
+        "di tích yến nê"
+      ],
       "content": "Đình Yến Nê là một trong 7 di tích cấp thành phố tại xã Hòa Tiến, nằm trong cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu ven khu vực hồ Đồng Nghệ — vùng đất được đánh giá có tài nguyên văn hóa, lịch sử, cảnh quan phong phú của xã.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://danang.gov.vn/en/w/xa-hoa-tien-phat-trien-du-lich-gan-voi-cac-di-tich-lich-su-lang-nghe-truyen-thong"
     },
@@ -516,7 +749,11 @@
       "id": "DT-04",
       "category": "landmark",
       "title": "Cụm đình - miếu La Bông",
-      "keywords": ["đình miếu la bông", "la bông", "di tích la bông"],
+      "keywords": [
+        "đình miếu la bông",
+        "la bông",
+        "di tích la bông"
+      ],
       "content": "Cụm đình - miếu La Bông là một trong 7 di tích cấp thành phố trên địa bàn xã Hòa Tiến, thuộc quần thể di tích lịch sử - tâm linh của cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, gắn với đời sống văn hóa tín ngưỡng lâu đời của cư dân địa phương.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://danang.gov.vn/en/w/xa-hoa-tien-phat-trien-du-lich-gan-voi-cac-di-tich-lich-su-lang-nghe-truyen-thong"
     },
@@ -524,7 +761,11 @@
       "id": "DT-05",
       "category": "landmark",
       "title": "Văn chỉ La Châu",
-      "keywords": ["văn chỉ la châu", "bia đá la châu", "la châu"],
+      "keywords": [
+        "văn chỉ la châu",
+        "bia đá la châu",
+        "la châu"
+      ],
       "content": "Văn chỉ La Châu là một trong 7 di tích cấp thành phố của xã Hòa Tiến, thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu. Đây là công trình thờ tự truyền thống ghi nhận truyền thống hiếu học của làng; khu vực phụ cận văn chỉ nằm trong định hướng nâng cấp hạ tầng gắn với phát triển du lịch của xã.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://danang.gov.vn/en/w/xa-hoa-tien-phat-trien-du-lich-gan-voi-cac-di-tich-lich-su-lang-nghe-truyen-thong"
     },
@@ -532,7 +773,11 @@
       "id": "DT-06",
       "category": "landmark",
       "title": "Đài chiến thắng Gò Hà",
-      "keywords": ["đài chiến thắng gò hà", "gò hà", "chiến thắng gò hà"],
+      "keywords": [
+        "đài chiến thắng gò hà",
+        "gò hà",
+        "chiến thắng gò hà"
+      ],
       "content": "Đài chiến thắng Gò Hà là một trong 7 di tích cấp thành phố tại xã Hòa Tiến, ghi dấu truyền thống đấu tranh cách mạng của địa phương — phù hợp với bề dày lịch sử cách mạng của xã (được phong 3 danh hiệu Anh hùng).",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1"
     },
@@ -540,7 +785,11 @@
       "id": "DD-LS-07",
       "category": "landmark",
       "title": "Hồ Đồng Nghệ",
-      "keywords": ["hồ đồng nghệ", "hồ đồng nghê", "khu du lịch hồ đồng nghệ"],
+      "keywords": [
+        "hồ đồng nghệ",
+        "hồ đồng nghê",
+        "khu du lịch hồ đồng nghệ"
+      ],
       "content": "Hồ Đồng Nghệ là hồ nước lớn thuộc xã Hòa Tiến, được xác định là khu vực có tài nguyên văn hóa, lịch sử và cảnh quan phong phú, gắn liền với cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu. Khu du lịch hồ Đồng Nghệ hiện đang trong giai đoạn hoàn tất thủ tục để kêu gọi nhà đầu tư phát triển du lịch.",
       "source": "Cổng thông tin điện tử TP Đà Nẵng — https://danang.gov.vn/en/w/xa-hoa-tien-phat-trien-du-lich-gan-voi-cac-di-tich-lich-su-lang-nghe-truyen-thong"
     },
@@ -548,9 +797,31 @@
       "id": "LN-01",
       "category": "craft_village",
       "title": "Làng nghề dệt chiếu Cẩm Nê",
-      "keywords": ["làng nghề cẩm nê", "chiếu cẩm nê", "dệt chiếu", "làng chiếu"],
+      "keywords": [
+        "làng nghề cẩm nê",
+        "chiếu cẩm nê",
+        "dệt chiếu",
+        "làng chiếu"
+      ],
       "content": "Làng nghề dệt chiếu Cẩm Nê là làng nghề truyền thống nổi tiếng thuộc xã Hòa Tiến, TP Đà Nẵng (lưu ý phân biệt với làng bánh tráng Túy Loan, thuộc xã Hòa Phong — không phải Hòa Tiến). Du khách đến Cẩm Nê có thể trải nghiệm xâu cói vào khung dệt và học các họa tiết dệt chiếu truyền thống. Đây là một trong những sản phẩm được xã định hướng gắn phát triển du lịch với bảo tồn di tích và làng nghề.",
       "source": "Báo Tuổi Trẻ, các trang du lịch Đà Nẵng (2trip.vn, diff.vn) — khảo sát tháng 3/2025"
+    },
+    {
+      "id": "TH-01",
+      "category": "village",
+      "title": "Danh sách 15 thôn của xã Hòa Tiến sau sắp xếp",
+      "keywords": [
+        "xã hòa tiến có bao nhiêu thôn",
+        "danh sách thôn hòa tiến",
+        "tên các thôn ở hòa tiến",
+        "15 thôn hòa tiến",
+        "thôn nào thuộc xã hòa tiến",
+        "diện tích các thôn hòa tiến",
+        "số hộ dân từng thôn hòa tiến",
+        "xã hòa tiến gồm những thôn nào"
+      ],
+      "content": "Theo thông tin UBND xã Hòa Tiến công bố ngày 07/7/2026, sau khi sắp xếp lại, xã Hòa Tiến có 15 thôn (diện tích · số hộ dân): 1. Phú Sơn Nam (489,9015 ha · 617 hộ); 2. Phú Sơn (232,7869 ha · 677 hộ); 3. Phú Sơn Bắc (217,1948 ha · 733 hộ); 4. Đồng Nghệ (3.772,0162 ha · 580 hộ); 5. Hương Lam (149,5415 ha · 511 hộ); 6. La Châu (246,1582 ha · 671 hộ); 7. An Trạch (218,8859 ha · 659 hộ); 8. Lệ Sơn (294,4688 ha · 713 hộ); 9. La Bông (204,6558 ha · 794 hộ); 10. Dương Sơn (53,3590 ha · 496 hộ); 11. Cẩm Nê (240,5526 ha · 640 hộ); 12. Yến Nê Đông (96,6337 ha · 647 hộ); 13. Yến Nê Tây (176,9345 ha · 815 hộ); 14. Lệ Sơn Bắc (93,8582 ha · 668 hộ); 15. Lệ Sơn Nam (102,9324 ha · 541 hộ). Trụ sở UBND xã đặt tại Quốc lộ 14B, thôn Phú Sơn Tây.",
+      "source": "UBND xã Hòa Tiến — https://hoatien.danang.gov.vn/view.aspx?ID=11800&title=hoa_tien_cung_cap_thong_tin_15_thon_sau_sap_xep"
     }
   ]
 }

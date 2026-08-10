@@ -135,6 +135,11 @@ VALID = [
     ("UBND xã Hòa Tiến ở đâu, số điện thoại bao nhiêu?", "CONTACT"),
     ("Trụ sở ủy ban xã địa chỉ nào?", "CONTACT"),
     ("Xã Hòa Tiến rộng bao nhiêu, dân số bao nhiêu?", "COMMUNE|FAQ|ART"),
+    # Danh sách 15 thôn (TH-01, thêm 11/08/2026 sau khi phát hiện KB ghi sai 22 thôn).
+    # Cũng là nhóm dễ bị bài văn hoá cướp mất câu hành chính vì chung token "thôn".
+    # Bài viết đối chiếu bằng TIÊU ĐỀ (nhãn là "ART <title>", không có mã) — khác FAQ/thủ tục.
+    ("Kể tên các thôn ở xã Hòa Tiến", "FAQ-12|Danh sách 15 thôn"),
+    ("Thôn Cẩm Nê có bao nhiêu hộ dân?", "Danh sách 15 thôn"),
 ]
 
 JUNK = [
