@@ -179,8 +179,21 @@ def chunks(text: str, size: int = MAX_CHARS_PER_CALL) -> list[str]:
     return out
 
 
+def stamp() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%S")
+
+
 class QuotaExhausted(Exception):
     """Hết quota theo NGÀY — chạy tiếp cũng chỉ nhận thêm 429, phải dừng cả mẻ."""
+
+
+#: Lỗi tạm thời đáng thử lại. 503 "high demand" và timeout gặp thật 11/08/2026: 4 mẻ
+#: hỏng = 24 trang mất trắng chỉ vì trước đó chỉ retry mỗi 429.
+_TRANSIENT = ("503", "UNAVAILABLE", "high demand", "timed out", "ReadTimeout", "500", "INTERNAL")
+
+
+def _is_transient(message: str) -> bool:
+    return any(marker.lower() in message.lower() for marker in _TRANSIENT)
 
 
 def _retry_delay_s(error: Exception) -> float | None:
@@ -199,20 +212,23 @@ def _call(prompt: str, attempts: int = 4) -> list[Extracted]:
                     temperature=0.1,
                     response_mime_type="application/json",
                     response_schema=list[Extracted],
-                    http_options=types.HttpOptions(timeout=120_000),
+                    # 240s: mẻ 6 trang (~18k ký tự) sinh nhiều bản ghi, 120s đã timeout thật.
+                    http_options=types.HttpOptions(timeout=240_000),
                 ),
             )
             return response.parsed or []
         except Exception as exc:  # noqa: BLE001
             message = str(exc)
-            if "RESOURCE_EXHAUSTED" not in message and "429" not in message:
-                raise
-            if "PerDay" in message:
+            rate_limited = "RESOURCE_EXHAUSTED" in message or "429" in message
+            if rate_limited and "PerDay" in message:
                 raise QuotaExhausted(message) from exc
+            if not rate_limited and not _is_transient(message):
+                raise
             if attempt == attempts:
                 raise
             delay = _retry_delay_s(exc) or min(60.0, 5.0 * 2 ** (attempt - 1))
-            print(f"      429 — chờ {delay:.0f}s rồi thử lại ({attempt}/{attempts - 1})")
+            reason = "429" if rate_limited else type(exc).__name__
+            print(f"      {reason} — chờ {delay:.0f}s rồi thử lại ({attempt}/{attempts - 1})")
             time.sleep(delay + 1)
     return []
 
@@ -313,9 +329,14 @@ def main() -> None:
 
     existing = common.read_json(common.CANDIDATES_PATH, default=[]) or []
     by_id = {c["id"]: c for c in existing}
-    done_urls = {c["source_url"] for c in existing}
 
-    todo = [p for p in pages if args.force or p["url"] not in done_urls]
+    processed: dict = common.read_json(common.PROCESSED_PATH, default={}) or {}
+    # Lần chạy trước chưa có processed.json → suy tạm từ candidates để không trích lại
+    # những trang đã ra bản ghi. Trang ra 0 bản ghi vẫn sẽ chạy lại đúng một lần nữa.
+    if not processed:
+        processed = {c["source_url"]: {"records": -1, "at": "trước khi có processed.json"} for c in existing}
+
+    todo = [p for p in pages if args.force or p["url"] not in processed]
     todo.sort(key=priority)
     if args.limit:
         todo = todo[: args.limit]
@@ -329,6 +350,8 @@ def main() -> None:
         if len(batch) == 1 and len(batch[0][1]) < MIN_CLEAN_LEN:
             page, text = batch[0]
             done += 1
+            # Ghi nhận đã xử lý: trang này sẽ không bao giờ có nội dung, đừng thử lại.
+            processed[page["url"]] = {"records": 0, "at": stamp(), "note": "quá ngắn sau lọc"}
             print(f"[{done}/{len(todo)}] - bỏ (còn {len(text)} ký tự sau lọc): "
                   f"{(page['title'] or page['url'])[:56]}")
             continue
@@ -374,15 +397,20 @@ def main() -> None:
         for (page, _), added in zip(batch, added_per_page):
             done += 1
             new_count += added
+            processed[page["url"]] = {"records": added, "at": stamp()}
             print(f"[{done}/{len(todo)}] + {added:2d} ứng viên  {(page['title'] or page['url'])[:56]}")
 
-        # Lưu sau từng mẻ: hết quota giữa chừng vẫn giữ được phần đã làm.
+        # Lưu sau từng mẻ: hết quota hoặc lỗi giữa chừng vẫn giữ được phần đã làm.
         common.write_json(
             common.CANDIDATES_PATH, sorted(by_id.values(), key=lambda c: (c["kind"], c["id"]))
         )
+        common.write_json(common.PROCESSED_PATH, processed)
 
     common.write_json(common.CANDIDATES_PATH, sorted(by_id.values(), key=lambda c: (c["kind"], c["id"])))
-    print(f"\nĐã dùng {calls} lần gọi API.")
+    common.write_json(common.PROCESSED_PATH, processed)
+    remaining = len([p for p in pages if p["url"] not in processed])
+    print(f"\nĐã dùng {calls} lần gọi API. Còn {remaining} trang chưa trích "
+          f"(lỗi mạng/API — chạy lại lệnh này để thử tiếp).")
     print(
         f"\nXong. Thêm {new_count} ứng viên, tổng {len(by_id)}."
         f"\nFile: {common.CANDIDATES_PATH}"

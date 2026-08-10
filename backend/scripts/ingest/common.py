@@ -27,6 +27,12 @@ SOURCES_PATH = INGEST_DIR / "sources.json"
 RAW_DIR = REPO_ROOT / "data" / "ingest" / "raw"
 CANDIDATES_PATH = REPO_ROOT / "data" / "ingest" / "candidates.json"
 
+#: URL đã trích xong, kể cả trang ra 0 bản ghi.
+#: KHÔNG được suy "đã xử lý" từ source_url của candidates: trang trích ra 0 bản ghi
+#: (mục lục, trang tin ngắn) sẽ không có candidate nào, nên lần chạy sau lại gọi API
+#: cho đúng những trang đó — đốt quota vĩnh viễn mà không thêm được gì.
+PROCESSED_PATH = REPO_ROOT / "data" / "ingest" / "processed.json"
+
 #: Hai bản seed phải giống hệt nhau — Railway deploy từ backend/ nên có bản copy riêng.
 SEED_PATHS = (
     REPO_ROOT / "data" / "seed-knowledge-base.json",
