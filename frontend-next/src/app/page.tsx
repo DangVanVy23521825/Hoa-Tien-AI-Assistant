@@ -13,6 +13,7 @@ import {
   MapPin,
   BookText,
   ArrowRight,
+  Phone,
 } from "lucide-react";
 
 const CAPABILITIES = [
@@ -235,15 +236,18 @@ export default function HomePage() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/lien-he">
+            {/* Trang /lien-he đã bỏ — thông tin liên hệ nằm ở footer, nên nút
+                này gọi thẳng Bộ phận Một cửa thay vì điều hướng thêm một bước. */}
+            <a href="tel:02363846176">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/35 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                className="border-white/35 bg-transparent text-white hover:bg-white/10 hover:text-white gap-2"
               >
-                Liên hệ UBND xã
+                <Phone className="w-4 h-4" />
+                Gọi UBND xã
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

@@ -16,13 +16,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AdminStatsDialog from "@/components/admin-stats-dialog";
-import { Menu, User, LogOut, BarChart3 } from "lucide-react";
+import { Menu, User, LogOut, BarChart3, Info } from "lucide-react";
 
 const navLinks = [
   { href: "/tro-ly", label: "Trợ lý AI" },
   { href: "/thu-tuc", label: "Thủ tục" },
   { href: "/hoi-dap", label: "Hỏi đáp" },
-  { href: "/lien-he", label: "Liên hệ" },
 ];
 
 export default function Header() {
@@ -32,8 +31,31 @@ export default function Header() {
   const [statsOpen, setStatsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-cream/92 backdrop-blur-md border-b border-line">
-      <div className="max-w-6xl mx-auto px-6 py-3.5 flex items-center gap-3.5">
+    <header className="sticky top-0 z-50 border-b border-line">
+      <div className="relative bg-cream/92 backdrop-blur-md overflow-hidden">
+        {/* Ảnh quê hương chiếm nửa phải header. Lớp kem phủ dày ở mép trái rồi
+            loãng dần sang phải, cộng quầng sáng ở chỗ nối, để ảnh "loang" ra từ
+            tên ứng dụng thay vì cắt khối. Ẩn dưới sm: điện thoại chỉ đủ chỗ cho
+            tên app + nút. */}
+        <div
+          aria-hidden="true"
+          className="hidden sm:block absolute inset-y-0 right-0 w-[64%] pointer-events-none select-none"
+        >
+          <Image
+            src="/header/hoa-tien-band.jpg"
+            alt=""
+            fill
+            priority
+            sizes="64vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/45 to-cream/10" />
+          {/* Mép trái: vừa mờ vừa chói, tan dần vào nền kem. */}
+          <div className="absolute inset-y-0 left-0 w-48 backdrop-blur-[6px] [mask-image:linear-gradient(to_right,black_10%,transparent)]" />
+          <div className="absolute inset-y-0 -left-20 w-64 bg-[radial-gradient(ellipse_at_left,rgba(255,255,255,0.9),transparent_72%)] blur-lg" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-5 flex items-center gap-3.5">
         <Link href="/" className="flex items-center gap-3 no-underline">
           <Image
             src="/mascot/mascot-face.png"
@@ -47,13 +69,16 @@ export default function Header() {
             <div className="font-semibold text-base tracking-tight text-ink">
               Hòa Tiến AI
             </div>
-            <div className="text-[11px] text-ink-soft tracking-widest uppercase">
+            {/* Ẩn dưới sm: chỗ hẹp thì dòng này xuống hàng, header cao vống lên. */}
+            <div className="hidden sm:block text-[11px] text-ink-soft tracking-widest uppercase whitespace-nowrap">
               Trợ lý hành chính số
             </div>
           </div>
         </Link>
 
-        <nav className="ml-auto hidden md:flex items-center gap-1.5">
+        {/* Nav nằm đè lên ảnh nên phải có nền kem mờ riêng, không thì chữ ink
+            chìm vào mái nhà/ruộng sáng trong ảnh. */}
+        <nav className="ml-auto hidden md:flex items-center gap-1.5 bg-cream/70 backdrop-blur-sm rounded-2xl p-1 ring-1 ring-white/50">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -82,7 +107,7 @@ export default function Header() {
                 render={
                   <Button
                     variant="outline"
-                    className="gap-2 border-line hover:border-paddy"
+                    className="gap-2 border-line bg-cream/80 backdrop-blur-sm hover:border-paddy"
                   />
                 }
               >
@@ -117,7 +142,7 @@ export default function Header() {
             <Link href="/dang-nhap">
               <Button
                 variant="outline"
-                className="gap-2 border-line hover:border-paddy"
+                className="gap-2 border-line bg-cream/80 backdrop-blur-sm hover:border-paddy"
               >
                 <User className="w-4 h-4" />
                 Đăng nhập
@@ -165,6 +190,25 @@ export default function Header() {
             </nav>
           </SheetContent>
         </Sheet>
+        </div>
+      </div>
+
+      {/* Thông báo phạm vi sử dụng — trước ở footer, đưa lên đây để giám khảo và
+          người dân đọc được ngay trước khi hỏi, không phải cuộn xuống cuối trang. */}
+      <div className="bg-paddy-deep text-white/85 text-[11px] sm:text-xs">
+        <div className="max-w-7xl mx-auto px-6 py-1.5 flex items-start gap-2">
+          <Info className="w-3.5 h-3.5 mt-px shrink-0 text-rice" />
+          <p className="leading-snug">
+            <span className="font-semibold text-white">
+              Hệ thống thử nghiệm phục vụ dự thi &ldquo;Ý tưởng sáng tạo · Hòa
+              Tiến số&rdquo;.
+            </span>{" "}
+            <span className="hidden sm:inline">
+              Dữ liệu thủ tục mang tính tham khảo, cần đối soát với UBND xã Hòa
+              Tiến trước khi sử dụng chính thức.
+            </span>
+          </p>
+        </div>
       </div>
 
       {user?.role === "admin" && (

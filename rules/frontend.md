@@ -69,17 +69,43 @@ Nguồn gốc nằm ngoài repo build ở `images/`; bản dùng thật đã t�
 | `public/mascot/mascot.png` (900²) | mascot cú AI | Hero trang chủ |
 | `public/mascot/mascot-face.png` (512²) | crop đầu mascot | Logo header, avatar chat |
 | `public/icons/icon-192/512(-maskable).png` | mascot-face trên nền kem | Favicon + PWA |
+| `public/header/hoa-tien-band.jpg` (622×280) | ảnh xóm làng nhìn từ trên cao | Dải ảnh nửa phải header |
 
 - **Nền**: `components/site-background.tsx` — layer `fixed inset-0 -z-10`, ảnh `blur-[3px] scale-105`
   phủ `bg-cream/92`. Vì thế `body` phải giữ `bg-transparent` (màu kem đặt ở `html`); đặt lại
   `bg-background` cho `body` sẽ che mất ảnh.
 - **Section full-bleed đục sẽ che nền.** Dải "Cách hoạt động" (trang chủ) và khung `/tro-ly`
   dùng `from-white/75` và `/55`. Thêm section nền đục mới thì cân nhắc hạ opacity tương tự.
-  Ngoại lệ cố ý: hero xanh đậm ở `/lien-he` giữ đục.
 - **Avatar mascot**: dùng `components/mascot-avatar.tsx`, không tự viết `<Image>` mới. Component
   đặt `width/height` bằng inline style vì hàng tin nhắn là flex `align-items: stretch` — thiếu
   chiều cao tường minh thì ảnh bị kéo giãn dọc theo chiều cao bong bóng.
 - Layer nền là con trực tiếp của `<body>` nên `@media print` (`body > *:not(#printArea)`) tự ẩn nó.
+
+## Header + footer (2026-08-10)
+
+Header (`components/header.tsx`) rộng `max-w-7xl` (rộng hơn nội dung trang `max-w-6xl` là cố ý)
+và gồm 2 tầng:
+
+1. **Thanh chính** — trái là mascot + tên app, nửa phải là `hoa-tien-band.jpg` phủ gradient kem
+   `from-cream via-cream/45 to-cream/10` cộng một lớp `backdrop-blur` + quầng sáng trắng ở mép
+   trái, để ảnh loang ra từ tên app chứ không cắt khối. Chỉnh 3 lớp này phải xem lại bằng mắt,
+   không đoán theo số.
+   - Nav và nút đăng nhập **nằm đè lên ảnh** nên phải giữ nền riêng (`bg-cream/70` cho nav pill,
+     `bg-cream/80` cho nút). Bỏ nền đi là chữ chìm vào mái nhà sáng trong ảnh.
+   - Dải ảnh ẩn dưới `sm`; dòng "TRỢ LÝ HÀNH CHÍNH SỐ" cũng ẩn dưới `sm` vì hẹp thì xuống hàng
+     làm header cao vống.
+2. **Dải thông báo xanh** — câu miễn trừ ("hệ thống thử nghiệm phục vụ dự thi…"). Trước ở footer,
+   chuyển lên header để giám khảo/người dân đọc trước khi hỏi. Header sticky nên dải này phải
+   **luôn gọn 1 dòng ở desktop**; câu thứ hai `hidden sm:inline`.
+
+Footer (`components/footer.tsx`) giờ là **khối liên hệ UBND** (địa chỉ, SĐT bấm gọi được, giờ làm
+việc, cổng thông tin + QR), cộng một dòng chân trang ghi sản phẩm dự thi. Đây là client component
+gọi `GET /contacts`, khởi tạo bằng hằng `FALLBACK` chép từ `data/seed-knowledge-base.json` —
+backend chết thì người dân vẫn thấy số điện thoại xã. **Sửa seed thì sửa luôn `FALLBACK`.**
+
+Trang `/lien-he` **đã xoá** (2026-08-10) vì trùng hoàn toàn với footer; mục "Liên hệ" cũng đã bỏ
+khỏi nav, nút CTA trang chủ đổi thành `tel:` gọi thẳng UBND. Bản offline dự phòng
+`public/legacy/index.html` vẫn giữ mục `#lien-he` của riêng nó — không đụng vào.
 
 ## Lớp gọi API (`frontend/js/api.js`)
 
