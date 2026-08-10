@@ -128,7 +128,7 @@ Token lưu ở `localStorage` (chấp nhận được cho MVP demo công khai �
 - **Voice input**: Web Speech API (`vi-VN`), nút mic cạnh ô chat — tự ẩn nếu trình duyệt không hỗ trợ.
 - **In checklist hồ sơ**: nút 🖨️ trong câu trả lời thủ tục + modal chi tiết; render vào `#printArea`, print CSS chỉ in phần này.
 - **Feedback 👍👎** dưới mỗi câu trả lời bot (`POST /chat/feedback` với `message_id`).
-- **Chips động** theo top thủ tục được hỏi (`GET /chat/stats/public`), fallback 4 chip mặc định; hero hiện "N câu hỏi đã trả lời" khi N ≥ 10.
+- **Chips gợi ý** dưới nhãn "Bạn có thể hỏi:" — mặc định là 5 câu hỏi hoàn chỉnh đã biên tập, mỗi câu **đã thử trên API thật và khớp dữ liệu**; thêm câu mới thì phải thử trước, chip rơi vào câu từ chối là mất điểm ngay trước mặt người dùng (ví dụ "Thủ tục cấp CCCD?" không khớp — xã không cấp CCCD). Điện thoại chỉ hiện 3 chip. `GET /chat/stats/public` trả `top_questions` nhưng đó là **tên thủ tục**, không phải câu hỏi, nên chỉ nhận khi đúng dạng câu hỏi ngắn (kết thúc "?", ≤52 ký tự); muốn chip động thật thì backend phải trả câu người dùng gõ. Hero hiện "N câu hỏi đã trả lời" khi N ≥ 10.
 - **Chia sẻ**: `navigator.share` trên mobile (sheet có Zalo), desktop fallback popover QR + copy link.
 - **PWA**: `manifest.webmanifest` + `sw.js` (network-first shell tĩnh, không cache API) — mất mạng vẫn mở được shell. Đổi tên `CACHE` trong `sw.js` khi cần force refresh.
 - **Thống kê admin**: nút 📊 trong dropdown user (chỉ role admin) → modal đọc `GET /admin/stats`.

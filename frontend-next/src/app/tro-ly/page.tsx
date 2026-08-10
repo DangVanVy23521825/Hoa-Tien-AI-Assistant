@@ -24,11 +24,18 @@ interface Message {
   onlineUrl?: string | null;
 }
 
+/**
+ * Câu gợi ý mặc định — viết thành câu hỏi hoàn chỉnh để người dân bấm là hiểu
+ * ngay mình đang hỏi gì. Cả 5 câu đều đã kiểm trên API thật và khớp dữ liệu
+ * (procedure/faq/contact); đừng thêm câu nào chưa thử, chip rơi vào câu từ chối
+ * là mất điểm ngay trước mặt người dùng.
+ */
 const DEFAULT_CHIPS = [
-  "Làm khai sinh cần gì?",
-  "Đăng ký kết hôn",
-  "Giờ làm việc?",
-  "Chứng thực bản sao",
+  "Đăng ký khai sinh cần giấy tờ gì?",
+  "Mất CCCD thì làm lại ở đâu?",
+  "Đăng ký thường trú ở đâu?",
+  "Cần giấy tờ gì để chứng thực bản sao?",
+  "UBND xã làm việc giờ nào?",
 ];
 
 export default function TroLyPage() {
@@ -64,9 +71,15 @@ export default function TroLyPage() {
     api
       .getPublicStats()
       .then((s) => {
-        if (s.top_questions && s.top_questions.length >= 3) {
-          setChips(s.top_questions);
-        }
+        // `top_questions` thực chất là TÊN thủ tục được hỏi nhiều nhất, không
+        // phải câu hỏi: "Đăng ký biến động đất đai (chuyển nhượng, tặng cho,
+        // thừa kế quyền sử dụng đất)" đắp nguyên vào chip thì vừa dài vừa không
+        // ra một câu hỏi. Chỉ nhận khi backend trả đúng dạng câu hỏi ngắn, còn
+        // lại giữ danh sách đã biên tập.
+        const usable = (s.top_questions ?? []).filter(
+          (q) => q.trim().endsWith("?") && q.length <= 52,
+        );
+        if (usable.length >= 3) setChips(usable);
       })
       .catch(() => {});
 
@@ -246,11 +259,19 @@ export default function TroLyPage() {
         <div className="bg-white border border-line rounded-2xl shadow-lg overflow-hidden flex flex-col h-[560px]">
           <div className="flex items-center gap-3 px-5 py-4 border-b border-line bg-gradient-to-r from-paddy-deep to-river-deep text-white">
             <MascotAvatar size={36} className="rounded-xl ring-white/25" />
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div className="font-semibold text-sm">Trợ lý Hòa Tiến</div>
               <div className="text-xs opacity-85 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7ee6a1] animate-pulse-dot" />
-                Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã
+                <span className="w-1.5 h-1.5 rounded-full bg-[#7ee6a1] animate-pulse-dot shrink-0" />
+                {/* Vế sau ẩn trên điện thoại: để nguyên thì dòng này xuống 3
+                    hàng, đội cao thanh tiêu đề và đè lên tin nhắn đầu tiên. */}
+                <span className="truncate">
+                  Đang trực tuyến
+                  <span className="hidden sm:inline">
+                    {" "}
+                    · Trả lời trong phạm vi dữ liệu xã
+                  </span>
+                </span>
               </div>
             </div>
             {user ? (
@@ -455,16 +476,23 @@ export default function TroLyPage() {
             </div>
           ) : (
           <>
-          <div className="flex gap-2 flex-wrap px-5 pt-3">
-            {chips.map((chip) => (
-              <button
-                key={chip}
-                onClick={() => ask(chip)}
-                className="bg-white border border-line rounded-full px-3.5 py-2 text-[13px] font-medium text-ink-soft hover:border-paddy hover:text-paddy-deep hover:bg-[#f6faf4] transition-colors"
-              >
-                {chip}
-              </button>
-            ))}
+          <div className="px-5 pt-3.5">
+            <div className="text-xs font-semibold uppercase tracking-wider text-ink-soft mb-2">
+              Bạn có thể hỏi:
+            </div>
+            <div className="flex gap-2 flex-wrap">
+              {chips.map((chip, i) => (
+                <button
+                  key={chip}
+                  onClick={() => ask(chip)}
+                  /* Điện thoại chỉ hiện 3 câu: mỗi chip chiếm trọn một hàng,
+                     để đủ 5 là ô nhập câu hỏi bị đẩy khỏi màn hình. */
+                  className={`${i >= 3 ? "hidden sm:block" : ""} bg-white border border-line rounded-full px-3.5 py-2 text-[13px] font-medium text-ink-soft hover:border-paddy hover:text-paddy-deep hover:bg-[#f6faf4] transition-colors`}
+                >
+                  {chip}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="flex gap-2.5 p-4 border-t border-line">
