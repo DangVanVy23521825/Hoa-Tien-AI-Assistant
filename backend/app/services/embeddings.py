@@ -22,11 +22,14 @@ kém với tiếng Việt. Chuyển hẳn sang API hosted (Gemini, tận dụng 
 né triệt để vấn đề RAM.
 """
 
+import re
+import time
 from typing import Literal
 
 import httpx
 from google import genai
 from google.genai import types
+from google.genai import errors as genai_errors
 
 from app.core.config import settings
 
@@ -75,15 +78,47 @@ def _embed_deepinfra(texts: list[str]) -> list[list[float]]:
     return [d["embedding"] for d in data]
 
 
-def embed_texts(texts: list[str], task_type: TaskType) -> list[list[float]]:
-    """Embedding cho nhiều văn bản trong MỘT lần gọi API, giữ nguyên thứ tự đầu vào."""
+#: Hạn mức embedding free tier là 100 request/PHÚT (không phải theo ngày như generation).
+#: API trả kèm `retryDelay` trong thân lỗi 429; chờ đúng khoảng đó rồi gọi lại là qua.
+_RETRY_DELAY = re.compile(r"retry in ([\d.]+)s|'retryDelay': '(\d+)s'")
+_QUOTA_MAX_ATTEMPTS = 4
+
+
+def _sleep_for_quota(exc: Exception) -> float:
+    match = _RETRY_DELAY.search(str(exc))
+    if not match:
+        return 30.0
+    return min(float(match.group(1) or match.group(2)) + 2.0, 90.0)
+
+
+def embed_texts(
+    texts: list[str], task_type: TaskType, *, wait_on_quota: bool = False
+) -> list[list[float]]:
+    """Embedding cho nhiều văn bản trong MỘT lần gọi API, giữ nguyên thứ tự đầu vào.
+
+    `wait_on_quota` chỉ dành cho SCRIPT chạy tay (seed, eval, backfill): gặp 429 thì ngủ
+    theo `retryDelay` rồi thử lại. Đường chạy runtime của `/chat` phải để mặc định False —
+    người dân đang chờ câu trả lời, ngủ 60 giây trong request là hỏng hơn cả lỗi.
+    """
     if not texts:
         return []
     if settings.embedding_provider == "deepinfra":
         return _embed_deepinfra(texts)
-    return _embed_gemini(texts, task_type)
+
+    for attempt in range(1, _QUOTA_MAX_ATTEMPTS + 1):
+        try:
+            return _embed_gemini(texts, task_type)
+        except genai_errors.ClientError as exc:
+            quota_error = getattr(exc, "code", None) == 429
+            if not (wait_on_quota and quota_error) or attempt == _QUOTA_MAX_ATTEMPTS:
+                raise
+            delay = _sleep_for_quota(exc)
+            print(f"  … chạm hạn mức embedding, chờ {delay:.0f}s rồi thử lại "
+                  f"(lần {attempt}/{_QUOTA_MAX_ATTEMPTS - 1})")
+            time.sleep(delay)
+    raise RuntimeError("không tới đây được")  # pragma: no cover
 
 
-def embed_text(text: str, task_type: TaskType) -> list[float]:
+def embed_text(text: str, task_type: TaskType, *, wait_on_quota: bool = False) -> list[float]:
     """Trả về vector embedding cho `text`."""
-    return embed_texts([text], task_type)[0]
+    return embed_texts([text], task_type, wait_on_quota=wait_on_quota)[0]

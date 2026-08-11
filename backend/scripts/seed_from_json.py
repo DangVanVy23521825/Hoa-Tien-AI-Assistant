@@ -18,12 +18,35 @@ from app.services.embeddings import embed_text  # noqa: E402
 SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "seed-knowledge-base.json"
 
 
-def _try_embed(text: str) -> list[float] | None:
+#: Bản ghi seed được nhưng không có embedding — đếm để báo to ở cuối, xem `_report_failures`.
+_embed_failures: list[str] = []
+
+
+def _try_embed(text: str, label: str) -> list[float] | None:
+    """Embedding cho một bản ghi. `wait_on_quota` vì hạn mức là 100 request/phút và
+    KB đã hơn 200 bản ghi — không chờ thì quá nửa số bản ghi seed xong mà không có vector.
+    """
     try:
-        return embed_text(text, "RETRIEVAL_DOCUMENT")
-    except Exception as exc:  # noqa: BLE001 — không chặn seed nếu load model/embed lỗi tạm thời
+        return embed_text(text, "RETRIEVAL_DOCUMENT", wait_on_quota=True)
+    except Exception as exc:  # noqa: BLE001 — lỗi tạm thời không nên bỏ dở cả mẻ seed
         print(f"  ! lỗi embed, bỏ qua: {exc}")
+        _embed_failures.append(label)
         return None
+
+
+def _report_failures() -> None:
+    """Bản ghi thiếu embedding vẫn tra được bằng keyword nên KHÔNG có lỗi nào hiện ra —
+    trợ lý chỉ âm thầm kém đi ở đúng những bản ghi đó. Phải báo to, và thoát khác 0 để
+    người chạy không tưởng là xong việc.
+    """
+    if not _embed_failures:
+        return
+    print(f"\n!!! {len(_embed_failures)} bản ghi đã seed NHƯNG KHÔNG CÓ EMBEDDING:")
+    for label in _embed_failures:
+        print(f"  - {label}")
+    print("Chúng chỉ khớp được bằng keyword, không khớp ngữ nghĩa. "
+          "Chạy lại script này để bù (idempotent) trước khi demo.")
+    sys.exit(1)
 
 
 def seed():
@@ -46,7 +69,7 @@ def seed():
                 legal_basis=p["legalBasis"],
             )
             embed_source = " ".join([fields["name"], fields["category"], fields["description"], " ".join(fields["keywords"])])
-            embedding = _try_embed(embed_source)
+            embedding = _try_embed(embed_source, f"thủ tục {p['id']}")
             if embedding is not None:
                 fields["embedding"] = embedding
             if existing:
@@ -62,7 +85,7 @@ def seed():
             existing = db.query(Faq).filter(Faq.question == f["question"]).first()
             fields = dict(keywords=f.get("keywords", []), answer=f["answer"])
             embed_source = " ".join([f["question"], " ".join(fields["keywords"]), fields["answer"]])
-            embedding = _try_embed(embed_source)
+            embedding = _try_embed(embed_source, f"FAQ {f['question'][:50]}")
             if embedding is not None:
                 fields["embedding"] = embedding
             if existing:
@@ -83,7 +106,7 @@ def seed():
                 source_citation=a["source"],
             )
             embed_source = " ".join([a["title"], " ".join(fields["keywords"]), fields["content"]])
-            embedding = _try_embed(embed_source)
+            embedding = _try_embed(embed_source, f"bài viết {a['title'][:50]}")
             if embedding is not None:
                 fields["embedding"] = embedding
             if existing:
@@ -117,6 +140,7 @@ def seed():
 
         db.commit()
         print("Seed hoàn tất.")
+        _report_failures()
     finally:
         db.close()
 
