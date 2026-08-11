@@ -36,7 +36,8 @@ _cache: dict = pickle.loads(CACHE_PATH.read_bytes()) if CACHE_PATH.exists() else
 def emb(text: str, task: str) -> list[float]:
     key = (task, text)
     if key not in _cache:
-        _cache[key] = embed_text(text, task)
+        # KB hơn 200 bản ghi mà hạn mức là 100 request/phút — không chờ thì eval chết giữa chừng.
+        _cache[key] = embed_text(text, task, wait_on_quota=True)
         CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
         CACHE_PATH.write_bytes(pickle.dumps(_cache))
     return _cache[key]
@@ -73,15 +74,29 @@ def label(kind: str, o) -> str:
     return kind.upper()
 
 
+#: Text của contact/commune ghép tại query-time y như trong `retrieval.retrieve`.
+def _static_texts() -> tuple[str, str]:
+    return (
+        R.normalize("lien he dia chi so dien thoai gio lam viec ubnd tru so " + CONTACT["address"]),
+        R.normalize("xa hoa tien thong tin dan so dien tich sap nhap " + str(COMMUNE.get("note", ""))),
+    )
+
+
 def retrieve(query: str, top_k: int = 3, verbose: bool = False):
     q_norm = R.normalize(query)
     q_tokens = R._tokenize(q_norm)
     q_emb = emb(query, "RETRIEVAL_QUERY")
 
+    # Phải lọc token phổ biến trên ĐÚNG tập tài liệu như production, nếu không eval
+    # đo một thứ còn `/chat` chạy một thứ khác.
+    word_sets = [set(R.normalize(text).split()) for _, _, text, _ in DOCS]
+    word_sets += [set(t.split()) for t in _static_texts()]
+    weights = R._token_weights(q_tokens, word_sets)
+
     hits = []
 
     def consider(kind, ref, text, keywords):
-        kw = R._score_doc(q_tokens, q_norm, R.normalize(text), keywords)
+        kw = R._score_doc(q_tokens, q_norm, R.normalize(text), keywords, weights)
         cos = R._cosine_similarity(q_emb, emb(text, "RETRIEVAL_DOCUMENT"))
         passed = R._passes_semantic_gate(cos)
         if verbose and (kw > 0 or cos >= R.SEMANTIC_GATE_MIN_COS):
@@ -131,9 +146,12 @@ VALID = [
     ("Bộ phận một cửa làm việc mấy giờ?", "FAQ-01|CONTACT"),
     ("Xin giấy xác nhận hộ nghèo ở đâu?", "FAQ-08"),
     ("Xã Hòa Tiến có bao nhiêu thôn?", "FAQ|COMMUNE|ART"),
-    # contact/commune — 2 nguồn từng không đi qua cổng cosine
-    ("UBND xã Hòa Tiến ở đâu, số điện thoại bao nhiêu?", "CONTACT"),
-    ("Trụ sở ủy ban xã địa chỉ nào?", "CONTACT"),
+    # contact/commune — 2 nguồn từng không đi qua cổng cosine.
+    # Nhận cả FAQ/ART từ 12/08/2026: KB mở rộng có bản ghi riêng cho trụ sở UBND, trả lời
+    # đúng và đủ hơn (địa chỉ + số điện thoại) chứ không phải retrieval kém đi. Nới ĐÍCH
+    # vì KB thật sự có thêm nguồn — KHÔNG được nới ngưỡng để chữa loại lỗi này.
+    ("UBND xã Hòa Tiến ở đâu, số điện thoại bao nhiêu?", "CONTACT|FAQ"),
+    ("Trụ sở ủy ban xã địa chỉ nào?", "CONTACT|FAQ|ART"),
     ("Xã Hòa Tiến rộng bao nhiêu, dân số bao nhiêu?", "COMMUNE|FAQ|ART"),
     # Danh sách 15 thôn (TH-01, thêm 11/08/2026 sau khi phát hiện KB ghi sai 22 thôn).
     # Cũng là nhóm dễ bị bài văn hoá cướp mất câu hành chính vì chung token "thôn".

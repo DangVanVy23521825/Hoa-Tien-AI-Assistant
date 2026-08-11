@@ -75,21 +75,68 @@ def _tokenize(query_norm: str) -> list[str]:
     return [t for t in query_norm.split(" ") if len(t) > 1 and t not in STOPWORDS]
 
 
+#: Token có mặt ở quá tỉ lệ này số tài liệu thì coi như không mang thông tin (trọng số 0).
+UBIQUITOUS_TOKEN_RATIO = 0.5
+
+
+def _token_weights(q_tokens: list[str], word_sets: list[set[str]]) -> dict[str, float]:
+    """Trọng số 0/1 theo độ phổ biến của token trong KB.
+
+    STOPWORDS là danh sách cắm cứng cho từ nối tiếng Việt. Cái này khác: nó đo trên
+    chính KB. Hai lỗi thật ở KB hơn 200 bản ghi mà nó chữa:
+
+    - "xa", "hoa", "tien" có trong gần hết bản ghi, nên câu nào nhắc "xã Hòa Tiến" cũng
+      cho không +6 điểm cho MỌI tài liệu.
+    - Bỏ dấu làm "số/sổ/sơ" → "so" và "điện/diện" → "dien", nên bài dài vô tình nhặt
+      được token phổ thông rồi cướp mất câu trả lời đúng: câu hỏi trụ sở UBND từng rơi
+      vào "Kế hoạch cải cách hành chính nhà nước".
+
+    Đo theo KB nên KB dày lên thì tự chỉnh, không phải sửa ngưỡng bằng tay.
+
+    Đã thử trọng số IDF liên tục (log(n/df)/log(n)) và ĐÃ BỎ: nó co nhỏ điểm của cả
+    token hiếm, làm "Thôn Cẩm Nê có bao nhiêu hộ dân?" tụt xuống dưới MIN_MATCH_SCORE
+    rồi fallback. Ngưỡng 4.0 được hiệu chỉnh cho mức +2 phẳng; sửa trọng số mà giữ
+    ngưỡng là phá vỡ hiệu chỉnh đó, còn hạ ngưỡng thì mở lại đường cho câu rác.
+    """
+    n = len(word_sets)
+    if n == 0:
+        return {t: 1.0 for t in q_tokens}
+    limit = n * UBIQUITOUS_TOKEN_RATIO
+    weights: dict[str, float] = {}
+    for t in set(q_tokens):
+        df = sum(1 for ws in word_sets if t in ws)
+        weights[t] = 0.0 if 0 < df and df > limit else 1.0
+    return weights
+
+
 def _score_doc(
-    query_tokens: list[str], query_norm: str, text: str, keywords: list[str]
+    query_tokens: list[str],
+    query_norm: str,
+    text: str,
+    keywords: list[str],
+    token_weights: dict[str, float] | None = None,
 ) -> float:
     """Điểm keyword của một tài liệu: khớp nguyên từ +2, khớp prefix +0.5,
-    câu hỏi chứa nguyên một cụm keyword của tài liệu +4."""
+    câu hỏi chứa nguyên một cụm keyword của tài liệu +4.
+
+    `token_weights` nhân vào phần khớp từ đơn (xem `_token_weights`); không truyền thì
+    mọi token nặng như nhau — giữ nguyên hành vi cũ cho chỗ gọi lẻ và cho test.
+    Cụm keyword vẫn +4 nguyên vẹn: cụm khớp là tín hiệu chủ đích của người viết bản ghi,
+    không phải trùng chữ ngẫu nhiên.
+    """
     score = 0.0
     words = text.split()
     word_set = set(words)
     for t in query_tokens:
+        weight = 1.0 if token_weights is None else token_weights.get(t, 1.0)
+        if weight == 0.0:
+            continue
         if t in word_set:
-            score += 2  # khớp nguyên từ
+            score += 2 * weight  # khớp nguyên từ
         else:
             for w in words:
                 if w.startswith(t) and len(t) >= 3:  # prefix chỉ tính khi token đủ dài, tránh khớp rác
-                    score += 0.5
+                    score += 0.5 * weight
                     break
     for k in keywords:
         if normalize(k) in query_norm:
@@ -167,40 +214,46 @@ def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
     q_embedding = embed_query(query)
 
     hits: list[Hit] = []
+    docs: list[tuple[SourceType, object, str, list[str], object]] = []
 
-    def add_hit(source_type: SourceType, ref, text: str, keywords: list[str], embedding) -> None:
-        kw_score = _score_doc(q_tokens, q_norm, text, keywords)
-        cos = _cosine_or_none(q_embedding, embedding)
-        if not _passes_semantic_gate(cos):
-            return
-        score = kw_score + _semantic_score(cos)
-        if score > 0:
-            hits.append(Hit(type=source_type, ref=ref, score=score))
+    def add_doc(source_type: SourceType, ref, text: str, keywords: list[str], embedding) -> None:
+        docs.append((source_type, ref, text, keywords, embedding))
 
     for p in db.query(Procedure).all():
         text = normalize(" ".join([p.name, p.category, p.description, " ".join(p.keywords or [])]))
-        add_hit("procedure", p, text, p.keywords or [], p.embedding)
+        add_doc("procedure", p, text, p.keywords or [], p.embedding)
 
     for f in db.query(Faq).all():
         text = normalize(" ".join([f.question, " ".join(f.keywords or []), f.answer]))
-        add_hit("faq", f, text, f.keywords or [], f.embedding)
+        add_doc("faq", f, text, f.keywords or [], f.embedding)
 
     for a in db.query(KnowledgeArticle).all():
         text = normalize(" ".join([a.title, " ".join(a.keywords or []), a.content]))
-        add_hit("article", a, text, a.keywords or [], a.embedding)
+        add_doc("article", a, text, a.keywords or [], a.embedding)
 
     contact = db.query(Contact).first()
     if contact:
         contact_text = normalize(
             "lien he dia chi so dien thoai gio lam viec ubnd tru so " + contact.address
         )
-        add_hit("contact", contact, contact_text, [], _embed_static_doc(contact_text))
+        add_doc("contact", contact, contact_text, [], _embed_static_doc(contact_text))
 
         commune = contact.commune_info or {}
         commune_text = normalize(
             "xa hoa tien thong tin dan so dien tich sap nhap " + str(commune.get("note", ""))
         )
-        add_hit("commune", contact, commune_text, [], _embed_static_doc(commune_text))
+        add_doc("commune", contact, commune_text, [], _embed_static_doc(commune_text))
+
+    # Trọng số tính trên toàn bộ tài liệu nên phải gom đủ docs trước khi chấm điểm.
+    weights = _token_weights(q_tokens, [set(d[2].split()) for d in docs])
+
+    for source_type, ref, text, keywords, embedding in docs:
+        cos = _cosine_or_none(q_embedding, embedding)
+        if not _passes_semantic_gate(cos):
+            continue
+        score = _score_doc(q_tokens, q_norm, text, keywords, weights) + _semantic_score(cos)
+        if score > 0:
+            hits.append(Hit(type=source_type, ref=ref, score=score))
 
     hits.sort(key=lambda h: h.score, reverse=True)
     hits = [h for h in hits if h.score >= MIN_MATCH_SCORE]
