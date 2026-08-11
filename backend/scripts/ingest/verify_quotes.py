@@ -94,20 +94,13 @@ def classify(quote: str, source: str) -> str:
 
 
 def kb_bodies() -> dict[str, str]:
+    """Nguồn đối chiếu cho `kb://<id>` — đúng chuỗi mà bước sinh đưa cho model xem.
+
+    Phải là `common.kb_rows`, không phải một bản ghép field tự chế: quote hợp lệ hay
+    kèm nhãn trường ("Lệ phí: …; Nơi nộp: …") vì model đọc được nhãn trong nguồn.
+    """
     seed = common.read_json(common.SEED_PATHS[0]) or {}
-    bodies: dict[str, str] = {}
-    for p in seed.get("procedures", []):
-        bodies[p["id"]] = norm(
-            " ".join(
-                [
-                    p["name"], p["category"], p["description"],
-                    "; ".join(p.get("documents") or []),
-                    p["fee"], p["processingTime"], p["placeOfSubmission"], p["legalBasis"],
-                ]
-            )
-        )
-    for a in seed.get("knowledge_articles", []):
-        bodies[a["id"]] = norm(f"{a['title']} {a['content']}")
+    bodies: dict[str, str] = {row["id"]: norm(row["body"]) for row in common.kb_rows(seed)}
     for f in seed.get("faq", []):
         bodies[f["id"]] = norm(f"{f['question']} {f['answer']}")
     return bodies

@@ -271,3 +271,33 @@ def load_raw_pages() -> list[dict]:
         return []
     pages = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(RAW_DIR.glob("*.json"))]
     return sorted(pages, key=lambda p: p["url"])
+
+
+def kb_rows(seed: dict) -> list[dict]:
+    """KB → bản ghi phẳng có nhãn trường, dùng làm nguồn cho `kb://<id>`.
+
+    Một hàm duy nhất cho cả bên sinh (`5_gen_faq`) lẫn bên kiểm (`verify_quotes`):
+    model trích dẫn từ đúng chuỗi này, nên đối chiếu cũng phải với đúng chuỗi này.
+    Hai bản khác nhau thì quote chép nguyên nhãn "Lệ phí:" sẽ bị chấm là bịa.
+
+    Bỏ qua `faq` — bước sinh FAQ không lấy FAQ cũ làm nguồn.
+    """
+    rows: list[dict] = []
+    for p in seed.get("procedures", []):
+        body = (
+            f"Thủ tục: {p['name']} (nhóm {p['category']})\n"
+            f"Mô tả: {p['description']}\n"
+            f"Hồ sơ cần chuẩn bị: {'; '.join(p.get('documents') or []) or 'không nêu'}\n"
+            f"Lệ phí: {p['fee']}\nThời gian giải quyết: {p['processingTime']}\n"
+            f"Nơi nộp: {p['placeOfSubmission']}\nCăn cứ pháp lý: {p['legalBasis']}"
+        )
+        rows.append({"id": p["id"], "label": p["name"], "body": body})
+    for a in seed.get("knowledge_articles", []):
+        rows.append(
+            {
+                "id": a["id"],
+                "label": a["title"],
+                "body": f"Bài viết: {a['title']} (loại {a['category']})\nNội dung: {a['content']}",
+            }
+        )
+    return rows

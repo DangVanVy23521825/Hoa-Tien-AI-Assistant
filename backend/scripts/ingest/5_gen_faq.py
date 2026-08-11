@@ -87,26 +87,11 @@ class GeneratedFaq(BaseModel):
 
 
 def flatten(seed: dict) -> list[dict]:
-    """KB → danh sách bản ghi phẳng để sinh FAQ. Bỏ qua contact (đã có FAQ riêng)."""
-    rows: list[dict] = []
-    for p in seed["procedures"]:
-        body = (
-            f"Thủ tục: {p['name']} (nhóm {p['category']})\n"
-            f"Mô tả: {p['description']}\n"
-            f"Hồ sơ cần chuẩn bị: {'; '.join(p.get('documents') or []) or 'không nêu'}\n"
-            f"Lệ phí: {p['fee']}\nThời gian giải quyết: {p['processingTime']}\n"
-            f"Nơi nộp: {p['placeOfSubmission']}\nCăn cứ pháp lý: {p['legalBasis']}"
-        )
-        rows.append({"id": p["id"], "label": p["name"], "body": body})
-    for a in seed["knowledge_articles"]:
-        rows.append(
-            {
-                "id": a["id"],
-                "label": a["title"],
-                "body": f"Bài viết: {a['title']} (loại {a['category']})\nNội dung: {a['content']}",
-            }
-        )
-    return rows
+    """KB → danh sách bản ghi phẳng để sinh FAQ. Bỏ qua contact (đã có FAQ riêng).
+
+    Dùng chung `common.kb_rows` với `verify_quotes.py` — xem docstring ở đó.
+    """
+    return common.kb_rows(seed)
 
 
 def chunk(rows: list[dict], size: int) -> list[list[dict]]:
