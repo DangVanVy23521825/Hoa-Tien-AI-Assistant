@@ -7,6 +7,23 @@ Từ 08/2026, bản deploy chính là **`frontend-next/`** — Next.js 16 (App R
 giữ lại làm tham chiếu; bản offline dự phòng nằm ở `frontend-next/public/legacy/index.html`
 (copy của `frontend/legacy/index.html`, phải giữ đồng bộ).
 
+### Bản dự phòng offline — ngưỡng retrieval RIÊNG, cố ý khác bản online
+
+Cập nhật 12/08/2026 khi KB tăng lên 225 bản ghi:
+
+- KB nhúng trong `index.html` nay là **toàn bộ** `data/seed-knowledge-base.json` (~180 KB),
+  kèm `legacy/data/knowledge-base.json` cho trường hợp còn mạng nhưng backend sập. Trước đó
+  bản nhúng chỉ có ~7 KB và **thiếu hẳn `knowledge_articles`** — mất 97/225 bản ghi.
+- `retrieve()` chỉ đánh chỉ mục **tiêu đề + từ khoá**, không lấy toàn văn nội dung.
+- Ngưỡng: `MIN_MATCH_SCORE = 10` và `MIN_COVERAGE = 0.5` — **cao hơn hẳn bản online (4.0)**.
+  Bản online còn cổng cosine chặn câu rác, bản này chỉ có keyword; bỏ dấu xong "phở bò"
+  trùng token với "phổ biến / bộ" nên câu rác nào cũng nhặt được 4–8 điểm. Đo trên đúng bộ
+  câu của `eval_retrieval.py`: ngưỡng 10 + phủ 50% cho **20/20 câu hợp lệ · 14/14 câu rác
+  fallback**; hạ xuống 8 thì lọt 1 câu rác.
+
+Sửa KB mà quên đồng bộ 3 chỗ (`frontend/legacy/`, `frontend-next/public/legacy/`, và file
+`data/knowledge-base.json` trong cả hai) thì bản dự phòng trả lời thiếu so với bản live.
+
 | Route | Trang |
 |---|---|
 | `/` | Trang chủ (hero + số liệu + nút chia sẻ) |
