@@ -1,7 +1,7 @@
 [
   {
     "id": "003a3532189b4e88",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=135",
     "source_title": "Lịch tiếp công dân",
@@ -29,8 +29,70 @@
     }
   },
   {
+    "id": "068dc54645113ee9",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11900",
+    "source_title": "XÃ HÒA TIẾN TỔ CHỨC ĐẠI HỘI ĐẠI BIỂU CÁC HỘI QUẦN CHÚNG DO ĐẢNG, NHÀ NƯỚC GIAO NHIỆM VỤ LẦN THỨ I, NHIỆM KỲ 2026 – 2031",
+    "evidence_quote": "Sáng ngày 31/7/2026, xã Hòa Tiến long trọng tổ chức Đại hội đại biểu các hội quần chúng do Đảng, Nhà nước giao nhiệm vụ lần thứ I, nhiệm kỳ 2026 – 2031.",
+    "record": {
+      "keywords": [
+        "đại hội hội quần chúng hòa tiến",
+        "hội người cao tuổi",
+        "khuyến học hòa tiến",
+        "công tác nhân đạo xã",
+        "bảo vệ trẻ em",
+        "nạn nhân chất độc da cam",
+        "cựu thanh niên xung phong",
+        "y học cổ truyền xã"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "XÃ HÒA TIẾN TỔ CHỨC ĐẠI HỘI ĐẠI BIỂU CÁC HỘI QUẦN CHÚNG DO ĐẢNG, NHÀ NƯỚC GIAO NHIỆM VỤ LẦN THỨ I, NHIỆM KỲ 2026 – 2031",
+      "content": "Sáng ngày 31/7/2026, xã Hòa Tiến đã tổ chức Đại hội đại biểu các hội quần chúng do Đảng, Nhà nước giao nhiệm vụ lần thứ I, nhiệm kỳ 2026 – 2031. Đại hội đã đánh giá toàn diện kết quả hoạt động của các hội trong nhiệm kỳ vừa qua, ghi nhận sự ổn định tổ chức và vai trò tập hợp hội viên, tích cực tham gia thực hiện các nhiệm vụ chính trị của địa phương sau khi được kiện toàn theo mô hình chính quyền địa phương mới. Các hoạt động nổi bật bao gồm chăm lo người cao tuổi, khuyến học - khuyến tài, công tác nhân đạo, từ thiện, bảo vệ quyền trẻ em, chăm lo nạn nhân chất độc da cam, phát huy truyền thống cựu thanh niên xung phong, cựu Công an nhân dân và phát triển y học cổ truyền. Thông qua sự chung tay của các tổ chức, doanh nghiệp, nhà hảo tâm và hội viên, các hội đã huy động nguồn lực xã hội hóa với tổng giá trị hàng tỷ đồng để thực hiện công tác an sinh xã hội, hỗ trợ xây dựng và sửa chữa nhà ở, trao học bổng, xe lăn, xe đạp, khám chữa bệnh, cấp thuốc miễn phí, chăm lo người nghèo, người yếu thế và các đối tượng có hoàn cảnh khó khăn. Đại hội đã đề ra phương hướng, mục tiêu và các nhiệm vụ trọng tâm nhiệm kỳ 2026 – 2031, quyết tâm xây dựng các hội quần chúng ngày càng vững mạnh, đổi mới nội dung và phương thức hoạt động, nâng cao hiệu quả phối hợp, góp phần thực hiện thắng lợi các nhiệm vụ phát triển kinh tế - xã hội, bảo đảm quốc phòng - an ninh và xây dựng xã Hòa Tiến ngày càng phát triển bền vững."
+    }
+  },
+  {
+    "id": "08bb9ce9159258af",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=185&title=hoat_dong_dang_uy_xa",
+    "source_title": "Đảng ủy",
+    "evidence_quote": "Kế hoạch hành động 100 ngày: Quyết tâm tạo bứt phá chuyển đổi số tại xã Hòa Tiến",
+    "record": {
+      "keywords": [
+        "chuyển đổi số hòa tiến",
+        "kế hoạch chuyển đổi số",
+        "số hóa hòa tiến",
+        "chính sách chuyển đổi số",
+        "đẩy mạnh chuyển đổi số",
+        "hòa tiến số"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Kế hoạch hành động 100 ngày về chuyển đổi số tại xã Hòa Tiến",
+      "content": "Xã Hòa Tiến đã ban hành kế hoạch hành động 100 ngày nhằm tạo ra sự bứt phá trong công tác chuyển đổi số trên địa bàn xã."
+    }
+  },
+  {
     "id": "08d0dff6eec7b71a",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11873",
     "source_title": "HÒA TIẾN BÀN GIAO MÁY VI TÍNH, MÁY IN CHO 15 THÔN TRÊN ĐỊA BÀN XÃ NHẰM ĐẨY MẠNH CHUYỂN ĐỔI SỐ TỪ CƠ SỞ",
@@ -62,7 +124,7 @@
   },
   {
     "id": "1020ac0f52f1e888",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1671",
     "source_title": "Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã Hòa Tiến giai đoạn 2026-2030",
@@ -91,7 +153,7 @@
   },
   {
     "id": "114fbd055fa16455",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -121,8 +183,69 @@
     }
   },
   {
+    "id": "12605972519dfaa0",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11897",
+    "source_title": "Ký kết quy chế phối hợp công tác giữa Thường trực HĐND, UBND và Ban Thường trực Ủy ban MTTQ Việt Nam xã Hòa Tiến",
+    "evidence_quote": "Chiều ngày 30/7/2026, Thường trực HĐND xã Hòa Tiến phối hợp với UBND xã và Ban Thường trực Ủy ban MTTQ Việt Nam xã tổ chức họp thường trực HĐND xã thường kỳ để triển khai nhiệm vụ trọng tâm tháng 8/2026 và ký kết Quy chế phối hợp công tác giữa Thường trực HĐND, UBND và Ban Thường trực Ủy ban MTTQ Việt Nam xã Hòa Tiến.",
+    "record": {
+      "keywords": [
+        "quy chế phối hợp hòa tiến",
+        "hđnd ubnd mttq hòa tiến",
+        "hợp tác chính quyền xã",
+        "hoạt động hội đồng nhân dân",
+        "ủy ban nhân dân xã",
+        "mặt trận tổ quốc xã",
+        "cơ cấu tổ chức xã",
+        "bộ máy chính quyền hòa tiến"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Ký kết quy chế phối hợp công tác giữa Thường trực HĐND, UBND và Ban Thường trực Ủy ban MTTQ Việt Nam xã Hòa Tiến",
+      "content": "Chiều ngày 30/7/2026, Thường trực HĐND xã Hòa Tiến phối hợp với UBND xã và Ban Thường trực Ủy ban MTTQ Việt Nam xã đã tổ chức họp thường kỳ và ký kết Quy chế phối hợp công tác. Quy chế này xác định rõ nguyên tắc, nội dung, trách nhiệm và phương thức phối hợp giữa Thường trực HĐND, UBND và Ban Thường trực Ủy ban MTTQ Việt Nam xã trong thực hiện nhiệm vụ theo chức năng, quyền hạn của mỗi cơ quan. Nội dung phối hợp tập trung vào công tác bầu cử, chuẩn bị và tổ chức các kỳ họp HĐND, tiếp xúc cử tri, tiếp công dân, giám sát, phản biện xã hội, giải quyết đơn thư khiếu nại, tố cáo, kiến nghị, phản ánh của công dân. Ngoài ra, quy chế còn đề cập đến việc xây dựng văn bản quy phạm pháp luật, thực hiện lấy phiếu tín nhiệm, cung cấp và trao đổi thông tin, tuyên truyền vận động Nhân dân, xây dựng khối đại đoàn kết toàn dân, triển khai xây dựng chính quyền điện tử, chuyển đổi số và phối hợp thực hiện hiệu quả các nhiệm vụ phát triển kinh tế - xã hội, quốc phòng, an ninh trên địa bàn. Việc ký kết Quy chế này là cơ sở quan trọng để tăng cường mối quan hệ phối hợp chặt chẽ, đồng bộ giữa các cơ quan trong hệ thống chính trị, góp phần nâng cao hiệu lực, hiệu quả hoạt động của chính quyền địa phương."
+    }
+  },
+  {
+    "id": "12d973dbc44f8915",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1624",
+    "source_title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "evidence_quote": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "record": {
+      "keywords": [
+        "quy hoạch hồ đồng nghệ",
+        "phê duyệt quy hoạch du lịch",
+        "quy hoạch sinh thái hòa tiến",
+        "quy hoạch 1/2000 hồ đồng nghệ",
+        "quy hoạch khu du lịch đà nẵng"
+      ],
+      "category": "legal",
+      "name": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+      "description": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây với tỉ lệ 1/2000. Văn bản phê duyệt có thể được tải về từ đường dẫn /Uploads/890%20qd.signed.PDF.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây với tỉ lệ 1/2000. Văn bản phê duyệt có thể được tải về từ đường dẫn /Uploads/890%20qd.signed.PDF. Thông tin này được đăng tải vào ngày 26/03/2026 bởi Văn phòng HĐND và UBND xã."
+    }
+  },
+  {
     "id": "166920b3ce93d72e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11908",
     "source_title": "Triển khai Khảo sát nhu cầu khai thác dữ liệu mở",
@@ -153,8 +276,39 @@
     }
   },
   {
+    "id": "1b78ee6cb2cec472",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11826&title=thong_bao_lich_tiep_cong_dan_6_thang_cuoi_nam_2026_cua_thuong_truc_hdnd_xa__dai_bieu_hdnd_xa_nhiem_ky_2026___2031",
+    "source_title": "Thông báo lịch tiếp công dân 6 tháng cuối năm 2026 của Thường trực HĐND xã, đại biểu HĐND xã nhiệm kỳ 2026 - 2031",
+    "evidence_quote": "Thông báo lịch tiếp công dân 6 tháng cuối năm 2026 của Thường trực HĐND xã, đại biểu HĐND xã nhiệm kỳ 2026 - 2031.",
+    "record": {
+      "keywords": [
+        "lịch tiếp dân hòa tiến",
+        "hội đồng nhân dân hòa tiến",
+        "tiếp công dân xã",
+        "lịch làm việc hđnd",
+        "khiếu nại hòa tiến",
+        "gặp đại biểu hđnd",
+        "lịch tiếp dân cuối năm"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Lịch tiếp công dân của Thường trực HĐND xã Hòa Tiến 6 tháng cuối năm 2026",
+      "content": "UBND xã Hòa Tiến thông báo lịch tiếp công dân của Thường trực Hội đồng nhân dân xã và đại biểu Hội đồng nhân dân xã nhiệm kỳ 2026 - 2031 trong 6 tháng cuối năm 2026. Thông báo này nhằm đảm bảo quyền và lợi ích hợp pháp của công dân, tạo điều kiện cho người dân trình bày ý kiến, kiến nghị, phản ánh về các vấn đề liên quan đến hoạt động của chính quyền địa phương. Công dân có thể tham khảo thông báo chi tiết để biết thời gian và địa điểm tiếp công dân cụ thể."
+    }
+  },
+  {
     "id": "1b9106bc601a3163",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11840",
     "source_title": "XÃ HÒA TIẾN BAN HÀNH KẾ HOẠCH CẢI CÁCH HÀNH CHÍNH NHÀ NƯỚC GIAI ĐOẠN 2026-2030",
@@ -186,7 +340,7 @@
   },
   {
     "id": "1f0f726e38874e27",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -217,8 +371,38 @@
     }
   },
   {
+    "id": "20831371067de1db",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=211&title=bao_cao_kinh_te_xa_hoi_6_thang__bao_cao_nam",
+    "source_title": "Báo cáo kinh tế xã hội 6 tháng, báo cáo năm",
+    "evidence_quote": "Kết quả kiểm kê đất đai năm 2024 trên địa bàn xã Hòa Tiến",
+    "record": {
+      "keywords": [
+        "kiểm kê đất đai hòa tiến",
+        "kết quả kiểm kê đất",
+        "tình hình sử dụng đất",
+        "đất đai hòa tiến 2024",
+        "báo cáo đất đai",
+        "thông tin đất đai xã"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Kết quả kiểm kê đất đai năm 2024 tại xã Hòa Tiến",
+      "content": "Xã Hòa Tiến đã công bố kết quả kiểm kê đất đai thực hiện trong năm 2024 trên toàn địa bàn xã. Thông tin này cung cấp cái nhìn tổng quan về tình hình sử dụng đất."
+    }
+  },
+  {
     "id": "21a5226c5698f30f",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1738",
     "source_title": "Bản tin Cải cách hành chính tháng 5",
@@ -249,7 +433,7 @@
   },
   {
     "id": "2621cc25c874e311",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,163,196,160&title=mat_tran_va_cac_doan_the",
     "source_title": "",
@@ -277,8 +461,38 @@
     }
   },
   {
+    "id": "265efbc842a32524",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=193&title=hoat_dong_hoi_dong_nhan_dan_xa",
+    "source_title": "Hội đồng nhân dân",
+    "evidence_quote": "Nghị quyết công bố người trúng cử đại biểu Hội đồng nhân dân xã Hòa Tiến lần thứ XIV, nhiệm kỳ 2026 -2031",
+    "record": {
+      "keywords": [
+        "nghị quyết trúng cử hđnd",
+        "đại biểu hđnd hòa tiến",
+        "kết quả bầu cử hđnd",
+        "danh sách trúng cử hđnd",
+        "hđnd hòa tiến nhiệm kỳ 2026-2031",
+        "bầu cử đại biểu xã"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Nghị quyết công bố người trúng cử đại biểu Hội đồng nhân dân xã Hòa Tiến nhiệm kỳ 2026-2031",
+      "content": "Hội đồng nhân dân xã Hòa Tiến đã ban hành Nghị quyết công bố danh sách những người trúng cử đại biểu HĐND xã lần thứ XIV, nhiệm kỳ 2026-2031."
+    }
+  },
+  {
     "id": "269c18476348a918",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -309,8 +523,70 @@
     }
   },
   {
+    "id": "29643dc6c098700f",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1262",
+    "source_title": "Bảo tồn, phát huy di tích Văn chỉ La Châu",
+    "evidence_quote": "Văn chỉ La Châu là di tích văn hóa tiêu biểu, thiết chế quy mô lớn, có giá trị quan trọng đối với nhân dân và tiến trình lịch sử địa phương. Hiện trên địa bàn Thành phố, Văn chỉ La Châu là văn chỉ duy nhất còn sót lại. Ban biên tập Trang TTĐT xã Hòa Tiến xin trân trọng giới thiệu bài viết \"Bảo tồn, phát huy di tích Văn chỉ La Châu\" đăng trên Báo Đà Nẵng ngày 20/8/2022",
+    "record": {
+      "keywords": [
+        "văn chỉ la châu",
+        "di tích la châu",
+        "bảo tồn văn chỉ",
+        "di tích hòa tiến",
+        "văn hóa hòa tiến",
+        "di tích đà nẵng",
+        "văn chỉ duy nhất"
+      ],
+      "category": "landmark",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Bảo tồn, phát huy di tích Văn chỉ La Châu",
+      "content": "Văn chỉ La Châu là một di tích văn hóa tiêu biểu và có quy mô lớn, mang giá trị quan trọng đối với người dân và lịch sử địa phương. Đây là văn chỉ duy nhất còn tồn tại trên địa bàn Thành phố Đà Nẵng. Ban biên tập Trang TTĐT xã Hòa Tiến đã giới thiệu bài viết này, vốn được đăng trên Báo Đà Nẵng vào ngày 20/8/2022, nhằm nhấn mạnh tầm quan trọng của việc bảo tồn và phát huy giá trị của di tích."
+    }
+  },
+  {
+    "id": "2a55e1c5ac75cdd4",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1676",
+    "source_title": "XÃ HÒA TIẾN: TIẾP TỤC LAN TỎA \"VIỆC LÀM TỐT, HÀNH ĐỘNG ĐẸP\"",
+    "evidence_quote": "Vào khoảng 18h50 ngày 20/4/2026, trên đường đi học về, em Trần Thị Bảo Ngân (SN: 2009 trú thôn Phú Sơn Nam, xã Hòa Tiến, TP Đà Nẵng) và em Hồ Thị Bích Ngọc (SN: 2009, trú thôn Phú Sơn 2, xã Hòa Tiến, TP Đà Nẵng) đã nhặt được 01 ví da bên trong có một số giấy tờ tùy thân và 3.800.000 đồng tiền mặt nên nhanh chóng mang đến trụ sở Công an xã Hòa Tiến để giao nộp.",
+    "record": {
+      "keywords": [
+        "việc tốt hòa tiến",
+        "hành động đẹp hòa tiến",
+        "nhặt của rơi trả lại",
+        "học sinh trung thực hòa tiến",
+        "công an xã hòa tiến",
+        "gương người tốt việc tốt",
+        "phẩm chất học sinh"
+      ],
+      "category": "organization",
+      "name": "Xã Hòa Tiến: Tiếp tục lan tỏa 'Việc làm tốt, hành động đẹp'",
+      "description": "Hai học sinh Trần Thị Bảo Ngân và Hồ Thị Bích Ngọc, trú tại xã Hòa Tiến, TP Đà Nẵng, đã nhặt được một ví da chứa giấy tờ tùy thân và 3.800.000 đồng tiền mặt. Các em đã nhanh chóng mang đến trụ sở Công an xã Hòa Tiến để giao nộp. Sau khi xác minh, Công an xã đã trao trả lại tài sản cho chủ sở hữu là chị Trần Thị Thu Thắm, trú thôn Hương Lam, xã Hòa Tiến. Hành động trung thực và trách nhiệm này của hai em học sinh được ghi nhận và biểu dương, góp phần lan tỏa những giá trị tốt đẹp trong cộng đồng và thế hệ trẻ.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Xã Hòa Tiến: Tiếp tục lan tỏa 'Việc làm tốt, hành động đẹp'",
+      "content": "Vào khoảng 18h50 ngày 20/4/2026, trên đường đi học về, em Trần Thị Bảo Ngân (SN: 2009 trú thôn Phú Sơn Nam, xã Hòa Tiến, TP Đà Nẵng) và em Hồ Thị Bích Ngọc (SN: 2009, trú thôn Phú Sơn 2, xã Hòa Tiến, TP Đà Nẵng) đều là học sinh Trường THPT Ông Ích Khiêm, xã Hòa Vang, TP Đà Nẵng đã nhặt được 01 ví da bên trong có một số giấy tờ tùy thân và 3.800.000 đồng tiền mặt nên nhanh chóng mang đến trụ sở Công an xã Hòa Tiến để giao nộp và nhờ lực lượng Công an trả lại cho người đã mất. Qua xác minh, Công an xã làm rõ được chủ sỡ hữu tài sản trên và đã trao trả lại cho chị Trần Thị Thu Thắm (SN 1994, trú thôn Hương Lam, xã Hòa Tiến, TP Đà Nẵng). Hành động trung thực, đầy trách nhiệm của 2 em Trần Thị Bảo Ngân và Hồ Thị Bích Ngọc rất đáng ghi nhận và biểu dương, cần được lan toả rộng rãi để nhân lên những giá trị tốt đẹp trong xã hội."
+    }
+  },
+  {
     "id": "2dea86a3a586422f",
-    "status": "pending",
+    "status": "rejected",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -342,7 +618,7 @@
   },
   {
     "id": "3d1092dad2499072",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=216&title=cong_khai_ngan_sach",
     "source_title": "Công khai ngân sách, tài sản công",
@@ -373,7 +649,7 @@
   },
   {
     "id": "3d28d6650b2560cd",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/vanbanlist.aspx",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -403,7 +679,7 @@
   },
   {
     "id": "404824112fa379ea",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1668",
     "source_title": "Đảm bảo tiến độ dự án đường sắt tốc độ cao: Hòa Tiến công bố quy hoạch tái định cư",
@@ -434,7 +710,7 @@
   },
   {
     "id": "41f2200c8ad853ce",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11907",
     "source_title": "HÒA TIẾN TIẾP TỤC NÂNG CAO HIỆU QUẢ TÍN DỤNG CHÍNH SÁCH, HƯỚNG ĐẾN TĂNG TRƯỞNG BỀN VỮNG",
@@ -466,7 +742,7 @@
   },
   {
     "id": "4333d9a8cb70b6dd",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -495,7 +771,7 @@
   },
   {
     "id": "45248f4fb26c4b77",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -525,7 +801,7 @@
   },
   {
     "id": "4de9ef51880d1a15",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1738",
     "source_title": "Bản tin Cải cách hành chính tháng 5",
@@ -555,7 +831,7 @@
   },
   {
     "id": "4e984bd1368ef7e7",
-    "status": "pending",
+    "status": "rejected",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -587,7 +863,7 @@
   },
   {
     "id": "4eab973f6e9fdd1e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11877",
     "source_title": "Các chi, đảng bộ trực thuộc Đảng bộ xã lan tỏa đạo lý \"Uống nước, nhớ nguồn\"",
@@ -618,8 +894,40 @@
     }
   },
   {
+    "id": "52297c99595295c7",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1261",
+    "source_title": "Đình làng Hương Lam: Nơi lòng người hội tụ",
+    "evidence_quote": "Ngắm nhìn mái đình cong vút uy nghi in vẻ đẹp hiền hòa lên nền bầu trời trong vắt, bao quanh là các cánh đồng lúa chín trong buổi sớm mai an lành, mọi người con của làng ở địa phương hay xa quê về đều có chung một cảm nhận “tình người - tình quê hương” thật vô cùng ấm áp sâu lắng, đầy ý nghĩa. Từ nay, ngôi đình khang trang, tôn nghiêm này sẽ mãi mãi là nơi linh khí triệu bồi, lòng người hội tụ! Ban Biên tập Trang TTĐT xã Hòa Tiến xin giới thiệu bài viết \"Đình làng Hương Lam: Nơi lòng người hội tụ\" đăng trên Trang TTĐT Thành ủy Đà Nẵng ngày 28/5/2025.",
+    "record": {
+      "keywords": [
+        "đình hương lam",
+        "đình làng",
+        "di tích hương lam",
+        "di tích hòa tiến",
+        "văn hóa hòa tiến",
+        "đình hòa tiến",
+        "làng hương lam",
+        "di tích đà nẵng"
+      ],
+      "category": "landmark",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Đình làng Hương Lam: Nơi lòng người hội tụ",
+      "content": "Đình làng Hương Lam là một di tích uy nghi, mang vẻ đẹp hiền hòa giữa cánh đồng lúa chín. Nơi đây gợi lên cảm xúc về tình người và tình quê hương sâu sắc cho mọi người con của làng, dù ở địa phương hay xa quê. Ngôi đình khang trang, tôn nghiêm này được xem là nơi linh khí triệu bồi và lòng người hội tụ. Bài viết này được Ban Biên tập Trang TTĐT xã Hòa Tiến giới thiệu, ban đầu đăng trên Trang TTĐT Thành ủy Đà Nẵng vào ngày 28/5/2025."
+    }
+  },
+  {
     "id": "538b3708ec8e46b8",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11838",
     "source_title": "XÃ HÒA TIẾN RA QUÂN CÀI ĐẶT CHỮ KÝ SỐ CHO NGƯỜI DÂN TRÊN ĐỊA BÀN XÃ",
@@ -649,8 +957,37 @@
     }
   },
   {
+    "id": "557e06cb7bed5929",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=134",
+    "source_title": "Lịch công tác",
+    "evidence_quote": "Lịch công tác của lãnh đạo UBND xã tuần 33 năm 2026",
+    "record": {
+      "keywords": [
+        "lịch công tác ubnd hòa tiến",
+        "lịch làm việc lãnh đạo xã",
+        "lịch tiếp dân hòa tiến",
+        "lịch tuần ubnd xã",
+        "lịch làm việc xã hòa tiến"
+      ],
+      "category": "organization",
+      "name": "Lịch công tác của lãnh đạo UBND xã Hòa Tiến",
+      "description": "UBND xã Hòa Tiến công bố lịch công tác của lãnh đạo xã hàng tuần. Ví dụ, lịch công tác của lãnh đạo UBND xã tuần 33 năm 2026 được đăng tải vào ngày 10/08/2026. Các lịch công tác khác cũng được cập nhật định kỳ, bao gồm tuần 32 (03/08/2026), tuần 31 (27/07/2026), tuần 30 (21/07/2026), tuần 29 (14/07/2026), tuần 28 (07/07/2026), tuần 27 (29/06/2026), tuần 26 (22/06/2026), tuần 25 (15/06/2026) và tuần 24 (08/06/2026).",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Lịch công tác của lãnh đạo UBND xã Hòa Tiến",
+      "content": "UBND xã Hòa Tiến công bố lịch công tác của lãnh đạo xã hàng tuần. Ví dụ, lịch công tác của lãnh đạo UBND xã tuần 33 năm 2026 được đăng tải vào ngày 10/08/2026. Các lịch công tác khác cũng được cập nhật định kỳ, bao gồm tuần 32 (03/08/2026), tuần 31 (27/07/2026), tuần 30 (21/07/2026), tuần 29 (14/07/2026), tuần 28 (07/07/2026), tuần 27 (29/06/2026), tuần 26 (22/06/2026), tuần 25 (15/06/2026) và tuần 24 (08/06/2026)."
+    }
+  },
+  {
     "id": "5868d2c57b5e46d8",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,163,196,160&title=mat_tran_va_cac_doan_the",
     "source_title": "",
@@ -679,7 +1016,7 @@
   },
   {
     "id": "59f8d06c4ec8724f",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11905",
     "source_title": "Xã Hòa Tiến quyết tâm không để đất nông nghiệp bị lãng phí",
@@ -711,7 +1048,7 @@
   },
   {
     "id": "5d3ff3beca9644d4",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -742,7 +1079,7 @@
   },
   {
     "id": "631ae4fb67be8024",
-    "status": "pending",
+    "status": "rejected",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -773,8 +1110,38 @@
     }
   },
   {
+    "id": "63798052ee3df15d",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=211&title=bao_cao_kinh_te_xa_hoi_6_thang__bao_cao_nam",
+    "source_title": "Báo cáo kinh tế xã hội 6 tháng, báo cáo năm",
+    "evidence_quote": "Sơ kết tình hình, kết quả triển khai thực hiện Đề án 06 giai đoạn 2020-2025",
+    "record": {
+      "keywords": [
+        "đề án 06 hòa tiến",
+        "sơ kết đề án 06",
+        "kết quả đề án 06",
+        "triển khai đề án 06",
+        "chính sách đề án 06",
+        "báo cáo đề án 06"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Sơ kết triển khai Đề án 06 giai đoạn 2020-2025 tại xã Hòa Tiến",
+      "content": "Xã Hòa Tiến đã tiến hành sơ kết tình hình và đánh giá kết quả triển khai thực hiện Đề án 06 trong giai đoạn từ năm 2020 đến năm 2025. Báo cáo này tổng hợp các thành tựu và thách thức trong quá trình thực hiện đề án."
+    }
+  },
+  {
     "id": "641cfee6c287353c",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -806,7 +1173,7 @@
   },
   {
     "id": "67fa26081ec4c63c",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=135",
     "source_title": "Lịch tiếp công dân",
@@ -835,7 +1202,7 @@
   },
   {
     "id": "6a4a7c4cc2bcd7b9",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/vanbanlist.aspx",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -866,7 +1233,7 @@
   },
   {
     "id": "6ae2763bb8e37401",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1670",
     "source_title": "Độc đáo lễ hội 10 năm mới có một lần ở Đà Nẵng",
@@ -891,12 +1258,12 @@
       "question": "",
       "answer": "",
       "title": "Độc đáo lễ hội 10 năm mới có một lần ở Đà Nẵng",
-      "content": "Làng Cẩm Nê, thuộc xã Hòa Tiến, huyện Hòa Vang, TP Đà Nẵng, vẫn duy trì một lễ hội truyền thống đặc sắc, được tổ chức định kỳ 10 năm một lần. Lễ hội này mang đậm nét văn hóa làng quê, tạo điểm nhấn độc đáo giữa bối cảnh đô thị hóa nhanh chóng của Đà Nẵng."
+      "content": "Làng Cẩm Nê, thuộc xã Hòa Tiến, TP Đà Nẵng, vẫn duy trì một lễ hội truyền thống đặc sắc, được tổ chức định kỳ 10 năm một lần. Lễ hội này mang đậm nét văn hóa làng quê, tạo điểm nhấn độc đáo giữa bối cảnh đô thị hóa nhanh chóng của Đà Nẵng."
     }
   },
   {
     "id": "6c0d4b9b1212fcb5",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11862",
     "source_title": "XÃ HÒA TIẾN TỔ CHỨC TẬP HUẤN ỨNG DỤNG TRÍ TUỆ NHÂN TẠO (AI) TRONG QUẢN LÝ VÀ DẠY HỌC CHO ĐỘI NGŨ CÁN BỘ, GIÁO VIÊN",
@@ -927,7 +1294,7 @@
   },
   {
     "id": "6c9932400514eff8",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11841",
     "source_title": "BẢN TIN CẢI CÁCH HÀNH CHÍNH THÁNG 7 NĂM 2026",
@@ -958,7 +1325,7 @@
   },
   {
     "id": "704cc3d9067db0e0",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -989,7 +1356,7 @@
   },
   {
     "id": "7312fe6ece8243b1",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1625",
     "source_title": "Đất và Người Hòa Tiến",
@@ -1021,7 +1388,7 @@
   },
   {
     "id": "751ed40078ab0d1e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=226",
     "source_title": "Phổ biến giáo dục pháp luật",
@@ -1051,8 +1418,37 @@
     }
   },
   {
+    "id": "75ba9c4a869c2193",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1624",
+    "source_title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "evidence_quote": "Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã Hòa Tiến giai đoạn 2026-2030",
+    "record": {
+      "keywords": [
+        "kế hoạch hạ tầng hòa tiến",
+        "phát triển đô thị hòa tiến",
+        "hạ tầng xã hòa tiến 2026-2030",
+        "quy hoạch phát triển hòa tiến",
+        "kế hoạch xây dựng hòa tiến"
+      ],
+      "category": "legal",
+      "name": "Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã Hòa Tiến giai đoạn 2026-2030",
+      "description": "Xã Hòa Tiến, thành phố Đà Nẵng đã công bố Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã cho giai đoạn từ năm 2026 đến năm 2030. Kế hoạch này được đăng tải vào ngày 28/04/2026.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã Hòa Tiến giai đoạn 2026-2030",
+      "content": "Xã Hòa Tiến, thành phố Đà Nẵng đã công bố Kế hoạch Phát triển hạ tầng đô thị đồng bộ trên địa bàn xã cho giai đoạn từ năm 2026 đến năm 2030. Kế hoạch này được đăng tải vào ngày 28/04/2026."
+    }
+  },
+  {
     "id": "7a6dda1df1504819",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11865",
     "source_title": "XÃ HÒA TIẾN TRIỂN KHAI DỰ ÁN “VĂN PHÒNG SỐ THÔNG MINH”",
@@ -1084,7 +1480,7 @@
   },
   {
     "id": "7fe09435f67aa062",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,205,204,188,184,177,122,209,178,122&title=uy_ban_nhan_dan_xa",
     "source_title": "",
@@ -1114,7 +1510,7 @@
   },
   {
     "id": "808218f7194ff7f9",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -1145,8 +1541,40 @@
     }
   },
   {
+    "id": "8086ca944f943f89",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11800&title=hoa_tien_cung_cap_thong_tin_15_thon_sau_sap_xep",
+    "source_title": "Hòa Tiến cung cấp thông tin 15 thôn sau sắp xếp",
+    "evidence_quote": "UBND xã Hòa Tiến thông tin về bản đồ hiện trạng, diện tích, số hộ dân của 15 thôn xã Hòa Tiến để Nhân dân được biết! Thông tin về diện tích, số hộ dân của 15 thôn thuộc xã Hòa Tiến như sau:",
+    "record": {
+      "keywords": [
+        "thông tin thôn hòa tiến",
+        "diện tích thôn hòa tiến",
+        "số hộ dân hòa tiến",
+        "các thôn xã hòa tiến",
+        "bản đồ thôn hòa tiến",
+        "dân số hòa tiến",
+        "thôn phú sơn nam",
+        "thôn đồng nghệ"
+      ],
+      "category": "village",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Thông tin 15 thôn thuộc xã Hòa Tiến sau sắp xếp",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng, cung cấp thông tin chi tiết về 15 thôn sau khi sắp xếp, bao gồm diện tích và số hộ dân của từng thôn. Các thôn bao gồm: Phú Sơn Nam (diện tích: 489,9015 ha; số hộ dân: 617), Phú Sơn (diện tích: 232,7869 ha; số hộ dân: 677), Phú Sơn Bắc (diện tích: 217,1948 ha; số hộ dân: 733), Đồng Nghệ (diện tích: 3772,0162 ha; số hộ dân: 580), Hương Lam (diện tích: 149,5415 ha; số hộ dân: 511), La Châu (diện tích: 246,1582 ha; số hộ dân: 671), An Trạch (diện tích: 218,8859 ha; số hộ dân: 659), Lệ Sơn (diện tích: 294,4688 ha; số hộ dân: 713), La Bông (diện tích: 204,6558 ha; số hộ dân: 794), Dương Sơn (diện tích: 53,3590 ha; số hộ dân: 496), Cẩm Nê (diện tích: 240,5526 ha; số hộ dân: 640), Yến Nê Đông (diện tích: 96,6337 ha; số hộ dân: 647), Yến Nê Tây (diện tích: 176,9345 ha; số hộ dân: 815), Lệ Sơn Bắc (diện tích: 93,8582 ha; số hộ dân: 668), và Lệ Sơn Nam (diện tích 102,9324 ha; số hộ dân: 541)."
+    }
+  },
+  {
     "id": "824f4e630ef5b4d9",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -1177,8 +1605,38 @@
     }
   },
   {
+    "id": "8289e473c9b6f3cf",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=193&title=hoat_dong_hoi_dong_nhan_dan_xa",
+    "source_title": "Hội đồng nhân dân",
+    "evidence_quote": "Hội đồng nhân dân xã Hòa Tiến thông qua Đề án thành lập phường Hòa Tiến",
+    "record": {
+      "keywords": [
+        "thành lập phường hòa tiến",
+        "đề án phường hòa tiến",
+        "chuyển đổi xã thành phường",
+        "hòa tiến lên phường",
+        "quyết định thành lập phường",
+        "phường hòa tiến"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Đề án thành lập phường Hòa Tiến",
+      "content": "Hội đồng nhân dân xã Hòa Tiến đã thông qua Đề án thành lập phường Hòa Tiến. Đây là một bước quan trọng trong quá trình chuyển đổi hành chính của xã."
+    }
+  },
+  {
     "id": "868835844294ff99",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11901",
     "source_title": "HÒA TIẾN THỰC TẬP PHƯƠNG ÁN PHÒNG CHÁY, CHỮA CHÁY RỪNG NĂM 2026",
@@ -1210,7 +1668,7 @@
   },
   {
     "id": "89d6b5c183205031",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,163,196,160&title=mat_tran_va_cac_doan_the",
     "source_title": "",
@@ -1238,8 +1696,127 @@
     }
   },
   {
+    "id": "8a69cc3590f2b735",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=211&title=bao_cao_kinh_te_xa_hoi_6_thang__bao_cao_nam",
+    "source_title": "Báo cáo kinh tế xã hội 6 tháng, báo cáo năm",
+    "evidence_quote": "Báo cáo về việc cung cấp số liệu kiểm kê đất đai và lập bản đồ hiện trạng sử dụng đất năm 2024 cấp xã trước khi thực hiện sắp xếp đơn vị hành chính",
+    "record": {
+      "keywords": [
+        "số liệu đất đai sắp xếp hành chính",
+        "kiểm kê đất trước sáp nhập",
+        "bản đồ đất đai trước sáp nhập",
+        "sắp xếp đơn vị hành chính hòa tiến",
+        "báo cáo đất đai hành chính",
+        "thông tin đất đai sáp nhập"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Báo cáo số liệu kiểm kê đất đai trước sắp xếp đơn vị hành chính",
+      "content": "Báo cáo cung cấp số liệu kiểm kê đất đai và lập bản đồ hiện trạng sử dụng đất năm 2024 cấp xã, được thực hiện trước khi tiến hành sắp xếp đơn vị hành chính. Đây là tài liệu quan trọng phục vụ cho công tác quản lý và chuyển đổi hành chính."
+    }
+  },
+  {
+    "id": "8ef3964a006260e5",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=210&title=mat_tran_va_cac_doan_the",
+    "source_title": "Mặt trận - Hội, đoàn thể",
+    "evidence_quote": "KHAI GIẢNG LỚP DẠY BƠI AN TOÀN VÀ PHÒNG CHỐNG ĐUỐI NƯỚC Ở TRẺ EM TRONG DỊP HÈ NĂM 2026",
+    "record": {
+      "keywords": [
+        "lớp học bơi hòa tiến",
+        "dạy bơi trẻ em",
+        "phòng chống đuối nước",
+        "học bơi an toàn",
+        "lớp bơi mùa hè",
+        "kỹ năng bơi cho bé"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Lớp dạy bơi an toàn và phòng chống đuối nước cho trẻ em tại xã Hòa Tiến",
+      "content": "Xã Hòa Tiến tổ chức khai giảng lớp dạy bơi an toàn và các kỹ năng phòng chống đuối nước dành cho trẻ em trong dịp hè năm 2026. Chương trình nhằm trang bị kiến thức và kỹ năng cần thiết để bảo vệ trẻ em khỏi nguy cơ đuối nước."
+    }
+  },
+  {
+    "id": "9a898a3c645356db",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1624",
+    "source_title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "evidence_quote": "Nnghị quyết ban hành Kế hoạch phát triển KTXH, QPAN xã Hòa Tiến giai đoạn 2026 - 2030",
+    "record": {
+      "keywords": [
+        "kế hoạch phát triển kinh tế hòa tiến",
+        "kế hoạch qpan hòa tiến",
+        "nghị quyết phát triển xã hòa tiến",
+        "ktxh hòa tiến 2026-2030",
+        "phát triển xã hội hòa tiến"
+      ],
+      "category": "legal",
+      "name": "Nghị quyết ban hành Kế hoạch phát triển KTXH, QPAN xã Hòa Tiến giai đoạn 2026 - 2030",
+      "description": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã ban hành Nghị quyết về Kế hoạch phát triển kinh tế - xã hội (KTXH) và quốc phòng - an ninh (QPAN) của xã trong giai đoạn từ năm 2026 đến năm 2030. Nghị quyết này được công bố vào ngày 09/03/2026.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Nghị quyết ban hành Kế hoạch phát triển KTXH, QPAN xã Hòa Tiến giai đoạn 2026 - 2030",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã ban hành Nghị quyết về Kế hoạch phát triển kinh tế - xã hội (KTXH) và quốc phòng - an ninh (QPAN) của xã trong giai đoạn từ năm 2026 đến năm 2030. Nghị quyết này được công bố vào ngày 09/03/2026."
+    }
+  },
+  {
+    "id": "a08d44ec52cda544",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=160",
+    "source_title": "Dự án, hạng mục đầu tư, đấu thầu, mua sắm công",
+    "evidence_quote": "QĐ phê duyệt Nhiệm vụ quy hoạch chi tiết, TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ dự án Đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến",
+    "record": {
+      "keywords": [
+        "quy hoạch tái định cư hòa tiến",
+        "dự án đường sắt tốc độ cao",
+        "khu tái định cư hòa tiến",
+        "quy hoạch 1/500 hòa tiến",
+        "đất tái định cư hòa tiến",
+        "quyết định quy hoạch hòa tiến"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Quyết định phê duyệt Nhiệm vụ quy hoạch chi tiết Khu tái định cư phục vụ dự án Đường sắt tốc độ cao",
+      "content": "Quyết định phê duyệt Nhiệm vụ quy hoạch chi tiết, tỷ lệ 1/500 cho Tiểu dự án 3: Khu tái định cư. Khu tái định cư này được quy hoạch để phục vụ dự án Đường sắt tốc độ cao trên trục Bắc - Nam và nằm trên địa bàn xã Hòa Tiến."
+    }
+  },
+  {
     "id": "a28ec8d506b4917d",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1738",
     "source_title": "Bản tin Cải cách hành chính tháng 5",
@@ -1268,8 +1845,67 @@
     }
   },
   {
+    "id": "a4a6a0d20390fa10",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=210&title=mat_tran_va_cac_doan_the",
+    "source_title": "Mặt trận - Hội, đoàn thể",
+    "evidence_quote": "HÒA TIẾN: Tổ chức hội nghị ký kết chương trình phối hợp phát huy vai trò các tôn giáo tham gia bảo vệ môi trường và ứng phó với biến đổi khí hậu giai đoạn 2025–2030",
+    "record": {
+      "keywords": [
+        "bảo vệ môi trường hòa tiến",
+        "ứng phó biến đổi khí hậu",
+        "tôn giáo bảo vệ môi trường",
+        "chương trình môi trường xã",
+        "chính sách môi trường hòa tiến",
+        "phối hợp bảo vệ môi trường"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Chương trình phối hợp bảo vệ môi trường và ứng phó biến đổi khí hậu giai đoạn 2025-2030",
+      "content": "Xã Hòa Tiến đã tổ chức hội nghị ký kết chương trình phối hợp nhằm phát huy vai trò của các tôn giáo trong việc tham gia bảo vệ môi trường và ứng phó với biến đổi khí hậu. Chương trình này sẽ được triển khai trong giai đoạn 2025-2030."
+    }
+  },
+  {
+    "id": "a73103aefc2cdec7",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1624",
+    "source_title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "evidence_quote": "THÔNG BÁO VỀ VIỆC CÔNG KHAI KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025",
+    "record": {
+      "keywords": [
+        "kế hoạch sử dụng đất hòa tiến 2025",
+        "công khai đất hòa tiến",
+        "thông báo đất đai hòa tiến",
+        "quy hoạch đất hòa tiến",
+        "đất nông nghiệp hòa tiến"
+      ],
+      "category": "legal",
+      "name": "Thông báo về việc công khai Kế hoạch sử dụng đất năm 2025",
+      "description": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã phát hành thông báo về việc công khai Kế hoạch sử dụng đất cho năm 2025. Thông báo này được đăng tải vào ngày 21/07/2025.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Thông báo về việc công khai Kế hoạch sử dụng đất năm 2025",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã phát hành thông báo về việc công khai Kế hoạch sử dụng đất cho năm 2025. Thông báo này được đăng tải vào ngày 21/07/2025."
+    }
+  },
+  {
     "id": "a80d8e2002c9608e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=135",
     "source_title": "Lịch tiếp công dân",
@@ -1297,8 +1933,38 @@
     }
   },
   {
+    "id": "b54619af6a2ae29f",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1664",
+    "source_title": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến Thuộc Dự án thành phần 1: Bồi thường, hỗ trợ và tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng",
+    "evidence_quote": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến Thuộc Dự án thành phần 1: Bồi thường, hỗ trợ và tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng",
+    "record": {
+      "keywords": [
+        "quy hoạch tái định cư hòa tiến",
+        "khu tái định cư đường sắt",
+        "quy hoạch 1/500 hòa tiến",
+        "dự án đường sắt bắc nam đà nẵng",
+        "bồi thường tái định cư hòa tiến",
+        "hồ sơ quy hoạch tái định cư"
+      ],
+      "category": "legal",
+      "name": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến",
+      "description": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã công bố quy hoạch chi tiết tỉ lệ 1/500 cho Tiểu dự án 3: Khu tái định cư. Khu tái định cư này phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam, thuộc Dự án thành phần 1 về bồi thường, hỗ trợ và tái định cư trong khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng. Các tài liệu liên quan bao gồm '555.QD.UBND PD quy hoach chi tiet 1.500 khu TĐC ĐS toc do cao BN' và 'Hồ Sơ Quy hoạch tái dự án 3'. Thông tin này được đăng tải vào ngày 22/04/2026.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã công bố quy hoạch chi tiết tỉ lệ 1/500 cho Tiểu dự án 3: Khu tái định cư. Khu tái định cư này phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam, thuộc Dự án thành phần 1 về bồi thường, hỗ trợ và tái định cư trong khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng. Các tài liệu liên quan bao gồm '555.QD.UBND PD quy hoach chi tiet 1.500 khu TĐC ĐS toc do cao BN' và 'Hồ Sơ Quy hoạch tái dự án 3'. Thông tin này được đăng tải vào ngày 22/04/2026 bởi Phòng Kinh tế."
+    }
+  },
+  {
     "id": "b583232ce27ff04e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1625",
     "source_title": "Đất và Người Hòa Tiến",
@@ -1330,11 +1996,11 @@
   },
   {
     "id": "b6423051c9a3745e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/bomaytochuc.aspx",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
-    "evidence_quote": "Chịu trách nhiệm chính: Đ/c Đặng Quang Hùng - Chủ tịch UBND xã Hòa Tiến Địa chỉ: Đường ĐT 605, thôn Dương Sơn, xã Hòa Tiến, huyện Hòa Vang, TP Đà Nẵng Điện thoại: (+84.236).3.846.176",
+    "evidence_quote": "Địa chỉ: Đường ĐT 605, thôn Dương Sơn, xã Hòa Tiến, huyện Hòa Vang, TP Đà Nẵng Điện thoại: (+84.236).3.846.176",
     "record": {
       "keywords": [
         "ubnd hòa tiến",
@@ -1355,13 +2021,13 @@
       "legal_basis": "",
       "question": "",
       "answer": "",
-      "title": "Thông tin liên hệ và lãnh đạo UBND xã Hòa Tiến",
-      "content": "Ủy ban nhân dân xã Hòa Tiến, thành phố Đà Nẵng có địa chỉ tại Đường ĐT 605, thôn Dương Sơn, xã Hòa Tiến, huyện Hòa Vang. Số điện thoại liên hệ là (+84.236).3.846.176. Đ/c Đặng Quang Hùng hiện là Chủ tịch UBND xã Hòa Tiến và chịu trách nhiệm chính."
+      "title": "Địa chỉ và số điện thoại UBND xã Hòa Tiến",
+      "content": "Ủy ban nhân dân xã Hòa Tiến, thành phố Đà Nẵng có địa chỉ tại Đường ĐT 605, thôn Dương Sơn, xã Hòa Tiến. Số điện thoại liên hệ: (0236) 3846176."
     }
   },
   {
     "id": "b9489833fc3b7eb4",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -1393,7 +2059,7 @@
   },
   {
     "id": "bb3791db7691c1a0",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11909",
     "source_title": "XÃ HÒA TIẾN TRIỂN KHAI KẾ HOẠCH HÀNH ĐỘNG 100 NGÀY XỬ LÝ CÁC ĐIỂM NGHẼN VỀ CHUYỂN ĐỔI SỐ",
@@ -1425,7 +2091,7 @@
   },
   {
     "id": "bb75ed1bffb5b57c",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -1455,7 +2121,7 @@
   },
   {
     "id": "bc9fdc66c909fddf",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,163,196,160&title=mat_tran_va_cac_doan_the",
     "source_title": "",
@@ -1483,8 +2149,38 @@
     }
   },
   {
+    "id": "c166701d6734be2d",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=185&title=hoat_dong_dang_uy_xa",
+    "source_title": "Đảng ủy",
+    "evidence_quote": "ĐOÀN CÔNG TÁC THÀNH ỦY ĐÀ NẴNG ĐẶT VÒNG HOA, DÂNG HƯƠNG TẠI KHU DI TÍCH LỊCH SỬ CHIẾN THẮNG GÒ HÀ",
+    "record": {
+      "keywords": [
+        "di tích gò hà",
+        "khu di tích hòa tiến",
+        "gò hà đà nẵng",
+        "di tích lịch sử hòa tiến",
+        "chiến thắng gò hà",
+        "tham quan gò hà"
+      ],
+      "category": "landmark",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Khu Di tích Lịch sử Chiến thắng Gò Hà",
+      "content": "Đoàn công tác Thành ủy Đà Nẵng đã đặt vòng hoa và dâng hương tại Khu Di tích Lịch sử Chiến thắng Gò Hà. Đây là một di tích lịch sử quan trọng trên địa bàn xã Hòa Tiến."
+    }
+  },
+  {
     "id": "c907c627b7d6c506",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -1512,8 +2208,69 @@
     }
   },
   {
+    "id": "cb2af774a703dd55",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11899",
+    "source_title": "HÒA TIẾN TẬP HUẤN KỸ NĂNG SỐ CHO HỌC SINH THCS: NÂNG CAO NĂNG LỰC ỨNG DỤNG AI VÀ AN TOÀN THÔNG TIN",
+    "evidence_quote": "Nhằm trang bị kỹ năng số, thúc đẩy ứng dụng trí tuệ nhân tạo (AI) trong học tập và nâng cao nhận thức về an toàn thông tin cho học sinh, Phòng Văn hóa - Xã hội phối hợp với Đoàn Thanh niên xã và các trường THCS trên địa bàn đã tổ chức thành công chương trình tập huấn \"Ứng dụng trí tuệ nhân tạo (AI) trong học tập và bảo đảm an toàn thông tin\" dành cho hơn 150 học sinh của Trường THCS Nguyễn Phú Hường và Trường THCS Đỗ Thúc Tịnh.",
+    "record": {
+      "keywords": [
+        "tập huấn kỹ năng số hòa tiến",
+        "học sinh thcs hòa tiến",
+        "ứng dụng ai trong học tập",
+        "an toàn thông tin mạng",
+        "phòng văn hóa xã hội hòa tiến",
+        "đoàn thanh niên xã",
+        "giáo dục số",
+        "trường nguyễn phú hường"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "HÒA TIẾN TẬP HUẤN KỸ NĂNG SỐ CHO HỌC SINH THCS: NÂNG CAO NĂNG LỰC ỨNG DỤNG AI VÀ AN TOÀN THÔNG TIN",
+      "content": "Phòng Văn hóa - Xã hội phối hợp với Đoàn Thanh niên xã Hòa Tiến và các trường THCS trên địa bàn đã tổ chức thành công chương trình tập huấn \"Ứng dụng trí tuệ nhân tạo (AI) trong học tập và bảo đảm an toàn thông tin\" cho hơn 150 học sinh của Trường THCS Nguyễn Phú Hường và Trường THCS Đỗ Thúc Tịnh. Chương trình nhằm trang bị kỹ năng số, thúc đẩy ứng dụng AI trong học tập và nâng cao nhận thức về an toàn thông tin cho học sinh. Các em được hướng dẫn kỹ năng xây dựng câu lệnh (Prompt) để khai thác hiệu quả các công cụ AI như ChatGPT và Gemini trong hỗ trợ học tập, đặc biệt là môn Toán. Học sinh cũng được học cách sử dụng NotebookLM để tổng hợp, hệ thống hóa kiến thức từ các nguồn tài liệu chính thống và ứng dụng Canva AI nhằm trực quan hóa nội dung học tập, nâng cao khả năng sáng tạo và trình bày. Bên cạnh đó, chương trình còn quán triệt các nguyên tắc bảo đảm an toàn thông tin, kỹ năng nhận diện rủi ro trên không gian mạng và định hướng sử dụng AI một cách an toàn, có trách nhiệm và đúng quy định. Chương trình góp phần nâng cao năng lực số cho học sinh, lan tỏa tinh thần học tập chủ động, sáng tạo, từng bước xây dựng môi trường giáo dục thích ứng với xu thế chuyển đổi số, phát triển nguồn nhân lực số cho địa phương."
+    }
+  },
+  {
+    "id": "cb323d5fb5033c44",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1624",
+    "source_title": "Phê duyệt quy hoạch phân khu xây dựng Khu du lịch Khu vực hồ Đồng Nghệ thuộc phân khu Sinh thái phía Tây tỉ lệ 1/2000",
+    "evidence_quote": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến Thuộc Dự án thành phần 1: Bồi thường, hỗ trợ và tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng",
+    "record": {
+      "keywords": [
+        "quy hoạch tái định cư hòa tiến",
+        "khu tái định cư đường sắt",
+        "quy hoạch 1/500 hòa tiến",
+        "dự án đường sắt bắc nam đà nẵng",
+        "bồi thường tái định cư hòa tiến"
+      ],
+      "category": "legal",
+      "name": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến",
+      "description": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã công bố quy hoạch chi tiết tỉ lệ 1/500 cho Tiểu dự án 3: Khu tái định cư. Khu tái định cư này phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam, thuộc Dự án thành phần 1 về bồi thường, hỗ trợ và tái định cư trong khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng. Thông tin này được đăng tải vào ngày 22/04/2026.",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Công bố quy hoạch chi tiết TL 1/500 Tiểu dự án 3: Khu tái định cư phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam trên địa bàn xã Hòa Tiến",
+      "content": "UBND xã Hòa Tiến, thành phố Đà Nẵng đã công bố quy hoạch chi tiết tỉ lệ 1/500 cho Tiểu dự án 3: Khu tái định cư. Khu tái định cư này phục vụ Dự án đường sắt tốc độ cao trên trục Bắc - Nam, thuộc Dự án thành phần 1 về bồi thường, hỗ trợ và tái định cư trong khu vực từ sông Thu Bồn về phía Bắc đến hết ranh giới thành phố Đà Nẵng. Thông tin này được đăng tải vào ngày 22/04/2026."
+    }
+  },
+  {
     "id": "ce5c299b0a412a90",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11874",
     "source_title": "Mặt trận xã Hòa Tiến tổ chức các hoạt động tri ân nhân kỷ niệm 79 năm Ngày Thương binh - Liệt sĩ",
@@ -1545,7 +2302,7 @@
   },
   {
     "id": "d091bba6cc7d6c9d",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -1574,7 +2331,7 @@
   },
   {
     "id": "d0db3f4e7b846512",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11904",
     "source_title": "Kế hoạch hành động 100 ngày: Quyết tâm tạo bứt phá chuyển đổi số tại xã Hòa Tiến",
@@ -1606,7 +2363,7 @@
   },
   {
     "id": "d139e0a742be5dee",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1625",
     "source_title": "Đất và Người Hòa Tiến",
@@ -1638,7 +2395,7 @@
   },
   {
     "id": "d2f9d081f3a0fee5",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -1667,7 +2424,7 @@
   },
   {
     "id": "d64cbeccc6c48251",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/",
     "source_title": "Ủy ban nhân dân xã Hòa Tiến",
@@ -1696,7 +2453,7 @@
   },
   {
     "id": "d9c3c8507c230a15",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=215&title=gop_y___phan_anh",
     "source_title": "Điểm đến du lịch",
@@ -1726,7 +2483,7 @@
   },
   {
     "id": "d9c7b7c5f751b82f",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://cttdt.danangportal.gov.vn/vi/web/dng/w/xa-hoa-tien-1",
     "source_title": "Xã Hòa Tiến - Cổng Thông tin điện tử thành phố Đà Nẵng - Cổng thông tin thành phố Đà Nẵng",
@@ -1758,7 +2515,7 @@
   },
   {
     "id": "da7925e383f5e6ec",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11825",
     "source_title": "Đà Nẵng đưa vào vận hành Hệ thống khảo sát mức độ hài lòng của người dân, doanh nghiệp",
@@ -1789,7 +2546,7 @@
   },
   {
     "id": "df17715efe50588b",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1544",
     "source_title": "XÃ HÒA TIẾN TỔ CHỨC HỘI NGHỊ CÔNG BỐ, CÔNG KHAI RANH GIỚI PHẠM VI QUY HOẠCH VÀ LẤY Ý KIẾN CỘNG ĐỒNG DÂN CƯ QUY HOẠCH CHI TIẾT KHU TÁI ĐỊNH CƯ PHỤC VỤ DỰ ÁN ĐƯỜNG SẮT TỐC ĐỘ CAO TRÊN TRỤC BẮC – NAM TRÊN ĐỊA BÀN  XÃ HOÀ TIẾN",
@@ -1821,7 +2578,7 @@
   },
   {
     "id": "e066630604311ea2",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1738",
     "source_title": "Bản tin Cải cách hành chính tháng 5",
@@ -1851,7 +2608,7 @@
   },
   {
     "id": "e567bfaa5a7b47c6",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11841",
     "source_title": "BẢN TIN CẢI CÁCH HÀNH CHÍNH THÁNG 7 NĂM 2026",
@@ -1882,7 +2639,7 @@
   },
   {
     "id": "e7086edb6ee03b2a",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11906",
     "source_title": "HÒA TIẾN QUYẾT LIỆT LẬP LẠI TRẬT TỰ ĐÔ THỊ, XỬ PHẠT 5 TRƯỜNG HỢP VI PHẠM SAU 03 NGÀY RA QUÂN",
@@ -1913,8 +2670,40 @@
     }
   },
   {
+    "id": "e76076a1c831e292",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11898",
+    "source_title": "Từ lễ kết nạp Đảng đến những việc làm vì Nhân dân",
+    "evidence_quote": "Sáng 02/8/2026, tại Bia Chiến thắng Lệ Sơn, Chi bộ thôn Lệ Sơn Bắc đã tổ chức Lễ kết nạp Đảng cho 2 quần chúng ưu tú và phát động triển khai mô hình Dân vận khéo “Đảng viên giúp đỡ hộ nghèo”.",
+    "record": {
+      "keywords": [
+        "lễ kết nạp đảng hòa tiến",
+        "chi bộ lệ sơn bắc",
+        "dân vận khéo",
+        "đảng viên giúp hộ nghèo",
+        "an sinh xã hội hòa tiến",
+        "giảm nghèo bền vững",
+        "hoạt động đảng xã",
+        "hỗ trợ người dân hòa tiến"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Từ lễ kết nạp Đảng đến những việc làm vì Nhân dân",
+      "content": "Sáng ngày 02/8/2026, Chi bộ thôn Lệ Sơn Bắc, xã Hòa Tiến đã tổ chức Lễ kết nạp Đảng cho 2 quần chúng ưu tú tại Bia Chiến thắng Lệ Sơn. Ngay sau buổi lễ, Chi bộ đã phát động triển khai mô hình Dân vận khéo “Đảng viên giúp đỡ hộ nghèo”. Mô hình này thể hiện quyết tâm đưa tinh thần tiên phong, gương mẫu của đảng viên thành những hành động cụ thể, thiết thực, đồng hành cùng các hộ nghèo vượt qua khó khăn, ổn định cuộc sống, góp phần thực hiện hiệu quả công tác an sinh xã hội và giảm nghèo bền vững trên địa bàn. Tại chương trình, Chi bộ đã trao 4 sổ tiết kiệm với tổng trị giá 36 triệu đồng cho các hộ nghèo và trao 4 suất quà, mỗi suất trị giá 500.000 đồng, đến các em học sinh có hoàn cảnh khó khăn. Những phần quà này chứa đựng tình cảm, trách nhiệm và sự sẻ chia của cán bộ, đảng viên đối với Nhân dân, tiếp thêm động lực để các gia đình và các em vươn lên trong cuộc sống và học tập. Chương trình đã tạo nên một sự kiện giàu ý nghĩa, thể hiện sinh động phương châm \"xây dựng Đảng gắn với chăm lo đời sống Nhân dân\", lan tỏa hình ảnh người đảng viên tiên phong, trách nhiệm, gần dân, vì dân, góp phần xây dựng tổ chức cơ sở đảng trong sạch, vững mạnh và củng cố niềm tin của Nhân dân đối với Đảng."
+    }
+  },
+  {
     "id": "e938bf9b41137f77",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=0,163,196,160&title=mat_tran_va_cac_doan_the",
     "source_title": "",
@@ -1942,8 +2731,68 @@
     }
   },
   {
+    "id": "ee2b3f03fbeffb8a",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=185&title=hoat_dong_dang_uy_xa",
+    "source_title": "Đảng ủy",
+    "evidence_quote": "Xã Hòa Tiến quyết tâm không để đất nông nghiệp bị lãng phí",
+    "record": {
+      "keywords": [
+        "đất nông nghiệp hòa tiến",
+        "chống lãng phí đất",
+        "quản lý đất nông nghiệp",
+        "sử dụng đất hòa tiến",
+        "chính sách đất đai",
+        "đất bỏ hoang"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Chính sách không để đất nông nghiệp bị lãng phí tại xã Hòa Tiến",
+      "content": "Xã Hòa Tiến thể hiện quyết tâm trong việc quản lý và sử dụng đất nông nghiệp, đảm bảo không để xảy ra tình trạng lãng phí tài nguyên đất."
+    }
+  },
+  {
+    "id": "ef83970a80dedc77",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=211&title=bao_cao_kinh_te_xa_hoi_6_thang__bao_cao_nam",
+    "source_title": "Báo cáo kinh tế xã hội 6 tháng, báo cáo năm",
+    "evidence_quote": "Thuyết minh bản đồ hiện trạng sử dụng đất năm 2024 xã Hòa Tiến",
+    "record": {
+      "keywords": [
+        "bản đồ sử dụng đất hòa tiến",
+        "hiện trạng đất hòa tiến",
+        "thuyết minh bản đồ đất",
+        "quy hoạch đất đai xã",
+        "bản đồ địa chính hòa tiến",
+        "tình hình đất đai"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Thuyết minh bản đồ hiện trạng sử dụng đất năm 2024 xã Hòa Tiến",
+      "content": "Tài liệu thuyết minh chi tiết về bản đồ hiện trạng sử dụng đất của xã Hòa Tiến trong năm 2024 đã được công bố. Đây là cơ sở quan trọng cho công tác quản lý và quy hoạch đất đai."
+    }
+  },
+  {
     "id": "f193600497adabe3",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11825",
     "source_title": "Đà Nẵng đưa vào vận hành Hệ thống khảo sát mức độ hài lòng của người dân, doanh nghiệp",
@@ -1974,7 +2823,7 @@
   },
   {
     "id": "f2f504f7ba7cb102",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=1625",
     "source_title": "Đất và Người Hòa Tiến",
@@ -2004,8 +2853,40 @@
     }
   },
   {
+    "id": "f40a217907742d64",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/view.aspx?ID=11772",
+    "source_title": "XÃ HÒA TIẾN: TOẠ ĐỘ ĐẦU TƯ MỚI GIÀU TIỀM NĂNG",
+    "evidence_quote": "Việc UBND TP.Đà Nẵng chấp thuận chủ trương cập nhật quy hoạch 2 cụm công nghiệp (CCN) Hòa Tiến 1 và Hòa Tiến 2 đang mở ra dư địa phát triển mới cho xã Hòa Tiến. Không chỉ tạo động lực chuyển dịch cơ cấu kinh tế địa phương, quyết định này được kỳ vọng đưa Hòa Tiến trở thành điểm đến mới của các ngành logistics, chế biến thủy sản, công nghiệp sạch và công nghệ cao tại khu vực phía Nam thành phố.",
+    "record": {
+      "keywords": [
+        "tiềm năng hòa tiến",
+        "quy hoạch hòa tiến",
+        "phát triển kinh tế hòa tiến",
+        "cụm công nghiệp hòa tiến",
+        "đô thị vệ tinh hòa tiến",
+        "đầu tư hòa tiến",
+        "logistics hòa tiến",
+        "công nghiệp sạch hòa tiến"
+      ],
+      "category": "legal",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Xã Hòa Tiến: Tiềm năng phát triển công nghiệp, logistics và đô thị vệ tinh",
+      "content": "Xã Hòa Tiến, thành phố Đà Nẵng đang đứng trước cơ hội phát triển lớn nhờ việc UBND TP.Đà Nẵng chấp thuận cập nhật quy hoạch 2 cụm công nghiệp Hòa Tiến 1 và Hòa Tiến 2 tại thôn Phú Sơn Nam và thôn 5. Các cụm công nghiệp này sẽ tập trung vào logistics, chế biến nông - thủy sản, công nghiệp sạch và công nghệ cao, góp phần chuyển dịch cơ cấu kinh tế và giải quyết vấn đề di dời cơ sở sản xuất nội đô. Hòa Tiến có vị trí chiến lược ở cửa ngõ phía Nam Đà Nẵng, kết nối thuận lợi với các tuyến giao thông huyết mạch và cảng Liên Chiểu, sân bay quốc tế Đà Nẵng. Xã còn sở hữu quỹ đất rộng, định hướng quy hoạch rõ ràng, bao gồm các vùng sản xuất nông nghiệp công nghệ cao. Trong giai đoạn 2026-2027, Hòa Tiến được định hướng trở thành đô thị vệ tinh phía Nam Đà Nẵng, tập trung đầu tư hạ tầng, chuyển đổi số, cải cách hành chính để thu hút doanh nghiệp và người lao động chất lượng cao. Lãnh đạo xã cam kết tạo điều kiện thuận lợi nhất cho nhà đầu tư."
+    }
+  },
+  {
     "id": "f5585663181813cc",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://vi.wikipedia.org/wiki/H%C3%B2a_Ti%E1%BA%BFn",
     "source_title": "Hòa Tiến – Wikipedia tiếng Việt",
@@ -2036,8 +2917,38 @@
     }
   },
   {
+    "id": "fb7d4be368f0aad7",
+    "status": "accepted",
+    "kind": "article",
+    "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=193&title=hoat_dong_hoi_dong_nhan_dan_xa",
+    "source_title": "Hội đồng nhân dân",
+    "evidence_quote": "Ban Thường trực Ủy ban MTTQ Việt Nam xã Hòa Tiến đã phối hợp với Thường trực HĐND xã tổ chức 08 hội nghị tiếp xúc cử tri tại 22 thôn địa bàn xã",
+    "record": {
+      "keywords": [
+        "tiếp xúc cử tri hòa tiến",
+        "hội nghị cử tri xã",
+        "hđnd tiếp dân",
+        "mặt trận tổ quốc hòa tiến",
+        "lịch tiếp xúc cử tri",
+        "gặp gỡ cử tri"
+      ],
+      "category": "organization",
+      "name": "",
+      "description": "",
+      "documents": [],
+      "fee": "",
+      "processing_time": "",
+      "place_of_submission": "",
+      "legal_basis": "",
+      "question": "",
+      "answer": "",
+      "title": "Hoạt động tiếp xúc cử tri của Hội đồng nhân dân xã Hòa Tiến",
+      "content": "Ban Thường trực Ủy ban Mặt trận Tổ quốc Việt Nam xã Hòa Tiến đã phối hợp với Thường trực Hội đồng nhân dân xã tổ chức 08 hội nghị tiếp xúc cử tri. Các hội nghị này diễn ra tại 22 thôn trên địa bàn xã, tạo điều kiện cho cử tri gặp gỡ và phản ánh ý kiến với đại biểu."
+    }
+  },
+  {
     "id": "fc4d9df5447cd43f",
-    "status": "pending",
+    "status": "accepted",
     "kind": "article",
     "source_url": "https://hoatien.danang.gov.vn/categoryview.aspx?cid=215&title=gop_y___phan_anh",
     "source_title": "Điểm đến du lịch",
@@ -2066,8 +2977,65 @@
     }
   },
   {
+    "id": "0239ab278afda26b",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-01",
+    "source_title": "Đăng ký biến động đất đai (chuyển nhượng, tặng cho, thừa kế quyền sử dụng đất)",
+    "evidence_quote": "Lệ phí: Theo biểu phí, lệ phí đất đai địa phương (tham khảo)",
+    "record": {
+      "question": "Sang tên sổ đỏ do mua bán, cho tặng hay thừa kế có tốn tiền không?",
+      "answer": "Có lệ phí theo biểu phí, lệ phí đất đai quy định của địa phương.",
+      "keywords": [
+        "phí sang tên sổ đỏ",
+        "chuyển nhượng đất tốn bao nhiêu",
+        "cho tặng đất có mất phí không",
+        "lệ phí thừa kế đất",
+        "sang tên đất hết bao nhiêu"
+      ]
+    }
+  },
+  {
+    "id": "0628fa6c394e7ee3",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-03",
+    "source_title": "Tách hộ",
+    "evidence_quote": "Lệ phí: Theo mức lệ phí địa phương quy định (tham khảo); Nơi nộp: Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến / Cổng Dịch vụ công",
+    "record": {
+      "question": "Tách hộ khẩu có phải đóng tiền không và nộp ở đâu?",
+      "answer": "Có lệ phí theo mức quy định của địa phương. Bạn có thể nộp hồ sơ tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến hoặc qua Cổng Dịch vụ công.",
+      "keywords": [
+        "tách hộ tốn bao nhiêu",
+        "phí tách hộ khẩu",
+        "nộp hồ sơ tách hộ ở đâu",
+        "tách hộ nộp online được không",
+        "chỗ nộp tách hộ"
+      ]
+    }
+  },
+  {
+    "id": "0991c4055be524dc",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-04",
+    "source_title": "Đăng ký thay đổi, cải chính hộ tịch, bổ sung thông tin hộ tịch",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký thay đổi, cải chính, bổ sung hộ tịch (theo mẫu); Giấy tờ hộ tịch gốc cần thay đổi/cải chính/bổ sung; Giấy tờ, tài liệu chứng minh nội dung đề nghị thay đổi/cải chính là có căn cứ",
+    "record": {
+      "question": "Muốn thay đổi, cải chính hay bổ sung thông tin hộ tịch thì cần giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị Tờ khai đăng ký thay đổi, cải chính, bổ sung hộ tịch (theo mẫu), Giấy tờ hộ tịch gốc cần thay đổi/cải chính/bổ sung, và Giấy tờ, tài liệu chứng minh nội dung đề nghị thay đổi/cải chính là có căn cứ.",
+      "keywords": [
+        "giấy tờ đổi tên",
+        "hồ sơ sửa thông tin khai sinh",
+        "cần gì để bổ sung hộ tịch",
+        "giấy tờ cải chính hộ tịch",
+        "thủ tục thay đổi họ tên cần gì"
+      ]
+    }
+  },
+  {
     "id": "0acd71985e7d362b",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://XN-01",
     "source_title": "Xác nhận tình trạng hôn nhân",
@@ -2085,8 +3053,103 @@
     }
   },
   {
+    "id": "107a9e3fc5f2ecb9",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-02",
+    "source_title": "Đăng ký tạm trú",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 03 ngày làm việc kể từ ngày nhận đủ hồ sơ",
+    "record": {
+      "question": "Làm thủ tục đăng ký tạm trú mất bao lâu?",
+      "answer": "Thời gian giải quyết tối đa là 03 ngày làm việc kể từ ngày nhận đủ hồ sơ.",
+      "keywords": [
+        "bao lâu thì xong đăng ký tạm trú",
+        "thời gian giải quyết tạm trú",
+        "mấy ngày có kết quả đăng ký tạm trú",
+        "đăng ký tạm trú bao lâu",
+        "làm giấy tạm trú mất mấy ngày"
+      ]
+    }
+  },
+  {
+    "id": "122d4669ce8aa8fe",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-LS-07",
+    "source_title": "Hồ Đồng Nghệ",
+    "evidence_quote": "được xác định là khu vực có tài nguyên văn hóa, lịch sử và cảnh quan phong phú, gắn liền với cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu.",
+    "record": {
+      "question": "Hồ Đồng Nghệ có liên quan gì đến văn hóa, lịch sử địa phương không?",
+      "answer": "Hồ Đồng Nghệ được xác định là khu vực có tài nguyên văn hóa, lịch sử và cảnh quan phong phú, gắn liền với cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu.",
+      "keywords": [
+        "hồ đồng nghệ và làng cổ",
+        "văn hóa hồ đồng nghệ",
+        "lịch sử hồ đồng nghệ",
+        "cụm làng cổ hồ đồng nghệ",
+        "di tích hồ đồng nghệ"
+      ]
+    }
+  },
+  {
+    "id": "13c705be86849eb7",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-04",
+    "source_title": "Đăng ký thay đổi, cải chính hộ tịch, bổ sung thông tin hộ tịch",
+    "evidence_quote": "Mô tả: Đăng ký thay đổi họ, tên, chữ đệm; cải chính thông tin sai sót; hoặc bổ sung thông tin còn thiếu trong sổ hộ tịch/giấy tờ hộ tịch đã cấp.",
+    "record": {
+      "question": "Tôi có thể thay đổi những thông tin gì trong hộ tịch?",
+      "answer": "Bạn có thể đăng ký thay đổi họ, tên, chữ đệm; cải chính thông tin sai sót; hoặc bổ sung thông tin còn thiếu trong sổ hộ tịch/giấy tờ hộ tịch đã cấp.",
+      "keywords": [
+        "đổi tên được không",
+        "sửa ngày sinh trên giấy khai sinh",
+        "bổ sung thông tin trên giấy khai sinh",
+        "cải chính hộ tịch là gì",
+        "thay đổi thông tin hộ tịch được những gì"
+      ]
+    }
+  },
+  {
+    "id": "1c4356675afd9681",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-05",
+    "source_title": "Văn chỉ La Châu",
+    "evidence_quote": "Đây là công trình thờ tự truyền thống ghi nhận truyền thống hiếu học của làng",
+    "record": {
+      "question": "Văn chỉ La Châu có ý nghĩa gì đặc biệt không?",
+      "answer": "Văn chỉ La Châu là công trình thờ tự truyền thống, ghi nhận truyền thống hiếu học của làng.",
+      "keywords": [
+        "ý nghĩa văn chỉ la châu",
+        "văn chỉ la châu thờ ai",
+        "truyền thống văn chỉ la châu",
+        "di tích hiếu học la châu",
+        "giá trị văn chỉ la châu"
+      ]
+    }
+  },
+  {
+    "id": "1f8cce581f838c5e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-01",
+    "source_title": "Lịch sử hình thành xã Hòa Tiến (sau sáp nhập 01/7/2025)",
+    "evidence_quote": "Trụ sở Đảng ủy đặt tại đường ĐT605, thôn Dương Sơn; trụ sở UBND đặt tại Quốc lộ 14B, thôn Phú Sơn Tây.",
+    "record": {
+      "question": "Trụ sở UBND xã Hòa Tiến mới đặt ở đâu?",
+      "answer": "Trụ sở UBND xã Hòa Tiến mới đặt tại Quốc lộ 14B, thuộc thôn Phú Sơn Tây.",
+      "keywords": [
+        "ubnd hòa tiến ở đâu",
+        "trụ sở xã hòa tiến",
+        "địa chỉ ubnd hòa tiến",
+        "văn phòng xã hòa tiến",
+        "ubnd hòa tiến thôn nào"
+      ]
+    }
+  },
+  {
     "id": "22151b32a54acca9",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-01",
     "source_title": "Chứng thực bản sao từ bản chính",
@@ -2105,7 +3168,7 @@
   },
   {
     "id": "24b10edd9adf27e8",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-02",
     "source_title": "Chứng thực chữ ký",
@@ -2124,7 +3187,7 @@
   },
   {
     "id": "27e8b89ab5dd427e",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://TT-01",
     "source_title": "Đăng ký khai tử",
@@ -2142,8 +3205,66 @@
     }
   },
   {
+    "id": "2e08c2f374e6e2dc",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-02",
+    "source_title": "Cấp đổi, cấp lại Giấy chứng nhận quyền sử dụng đất",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 15 ngày làm việc",
+    "record": {
+      "question": "Làm lại hoặc đổi sổ đỏ mất bao lâu?",
+      "answer": "Thời gian giải quyết việc cấp đổi hoặc cấp lại Giấy chứng nhận quyền sử dụng đất là tối đa 15 ngày làm việc.",
+      "keywords": [
+        "bao lâu có sổ đỏ mới",
+        "thời gian cấp lại sổ đỏ",
+        "đổi sổ đỏ mất mấy ngày",
+        "làm lại sổ đỏ bao lâu",
+        "cấp đổi sổ đỏ nhanh không"
+      ]
+    }
+  },
+  {
+    "id": "31d811366cca7879",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-04",
+    "source_title": "Tách thửa, hợp thửa đất",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Đơn đề nghị tách thửa hoặc hợp thửa đất (theo mẫu); Giấy chứng nhận quyền sử dụng đất (bản gốc); Sơ đồ/bản trích đo địa chính thửa đất sau khi tách/hợp (nếu có yêu cầu)",
+    "record": {
+      "question": "Tách thửa hoặc gộp thửa đất thì cần chuẩn bị những giấy tờ gì?",
+      "answer": "Để tách thửa hoặc hợp thửa đất, bạn cần chuẩn bị Đơn đề nghị tách thửa hoặc hợp thửa đất, bản gốc Giấy chứng nhận quyền sử dụng đất và nếu có yêu cầu thì cả sơ đồ hoặc bản trích đo địa chính thửa đất sau khi tách/hợp.",
+      "keywords": [
+        "giấy tờ tách thửa đất",
+        "hồ sơ hợp thửa đất",
+        "tách đất cần giấy gì",
+        "gộp đất cần giấy tờ gì",
+        "thủ tục tách thửa"
+      ]
+    }
+  },
+  {
+    "id": "321bbf67db7eb972",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LD-01",
+    "source_title": "Trợ cấp xã hội hàng tháng cho đối tượng bảo trợ xã hội",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đề nghị hưởng trợ cấp xã hội (theo mẫu); Giấy tờ chứng minh thuộc diện đối tượng (giấy xác nhận khuyết tật, giấy khai sinh, giấy chứng tử cha/mẹ...); Giấy tờ tùy thân, sổ hộ khẩu/xác nhận cư trú",
+    "record": {
+      "question": "Muốn làm hồ sơ nhận trợ cấp xã hội hàng tháng thì cần chuẩn bị những giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị tờ khai đề nghị hưởng trợ cấp xã hội (theo mẫu), các giấy tờ chứng minh thuộc diện đối tượng như giấy xác nhận khuyết tật, giấy khai sinh, giấy chứng tử cha/mẹ..., cùng với giấy tờ tùy thân và sổ hộ khẩu hoặc xác nhận cư trú.",
+      "keywords": [
+        "giấy tờ làm trợ cấp",
+        "hồ sơ trợ cấp xã hội",
+        "thủ tục nhận tiền trợ cấp",
+        "giấy tờ cho người khuyết tật",
+        "giấy tờ cho trẻ mồ côi",
+        "giấy tờ cho người cao tuổi"
+      ]
+    }
+  },
+  {
     "id": "369b29c01277f1e5",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://TT-01",
     "source_title": "Đăng ký khai tử",
@@ -2161,8 +3282,157 @@
     }
   },
   {
+    "id": "39a3ac4f8900cfd2",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-02",
+    "source_title": "Đình làng Cẩm Nê",
+    "evidence_quote": "gắn liền với làng nghề dệt chiếu truyền thống Cẩm Nê.",
+    "record": {
+      "question": "Đình Cẩm Nê có liên quan gì đến làng nghề truyền thống không?",
+      "answer": "Đình Cẩm Nê gắn liền với làng nghề dệt chiếu truyền thống Cẩm Nê, nằm trong khu vực nổi tiếng với hệ thống di tích lịch sử - tâm linh.",
+      "keywords": [
+        "đình cẩm nê và làng nghề",
+        "làng dệt chiếu cẩm nê",
+        "di tích tâm linh cẩm nê",
+        "đình cẩm nê có gì"
+      ]
+    }
+  },
+  {
+    "id": "3e5f4df5c2fd7d91",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-LS-07",
+    "source_title": "Hồ Đồng Nghệ",
+    "evidence_quote": "Khu du lịch hồ Đồng Nghệ hiện đang trong giai đoạn hoàn tất thủ tục để kêu gọi nhà đầu tư phát triển du lịch.",
+    "record": {
+      "question": "Hồ Đồng Nghệ có được phát triển thành khu du lịch không?",
+      "answer": "Khu du lịch hồ Đồng Nghệ hiện đang trong giai đoạn hoàn tất thủ tục để kêu gọi nhà đầu tư phát triển du lịch.",
+      "keywords": [
+        "du lịch hồ đồng nghệ",
+        "phát triển hồ đồng nghệ",
+        "quy hoạch du lịch hồ đồng nghệ",
+        "đầu tư hồ đồng nghệ",
+        "hồ đồng nghệ có dự án gì"
+      ]
+    }
+  },
+  {
+    "id": "412b518913da8144",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://TH-01",
+    "source_title": "Danh sách 15 thôn của xã Hòa Tiến sau sắp xếp",
+    "evidence_quote": "Theo thông tin UBND xã Hòa Tiến công bố ngày 07/7/2026, sau khi sắp xếp lại, xã Hòa Tiến có 15 thôn",
+    "record": {
+      "question": "Danh sách các thôn mới của xã Hòa Tiến được công bố khi nào vậy?",
+      "answer": "Danh sách các thôn mới của xã Hòa Tiến được UBND xã công bố vào ngày 07/7/2026.",
+      "keywords": [
+        "khi nào công bố thôn mới",
+        "ngày công bố thôn hòa tiến",
+        "danh sách thôn mới hòa tiến",
+        "thôn hòa tiến công bố",
+        "thông tin thôn hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "42a03fcc9d9e408e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-01",
+    "source_title": "Đăng ký biến động đất đai (chuyển nhượng, tặng cho, thừa kế quyền sử dụng đất)",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Đơn đăng ký biến động đất đai, tài sản gắn liền với đất (theo mẫu); Hợp đồng/văn bản chuyển nhượng, tặng cho, thừa kế đã công chứng hoặc chứng thực; Giấy chứng nhận quyền sử dụng đất (bản gốc); Giấy tờ tùy thân các bên liên quan",
+    "record": {
+      "question": "Muốn sang tên sổ đỏ do mua bán, cho tặng hay thừa kế thì cần những giấy tờ gì?",
+      "answer": "Để sang tên sổ đỏ do mua bán, cho tặng hoặc thừa kế, bạn cần chuẩn bị Đơn đăng ký biến động đất đai, hợp đồng hoặc văn bản chuyển nhượng/tặng cho/thừa kế đã công chứng hoặc chứng thực, bản gốc Giấy chứng nhận quyền sử dụng đất và giấy tờ tùy thân của các bên liên quan.",
+      "keywords": [
+        "giấy tờ sang tên sổ đỏ",
+        "hồ sơ chuyển nhượng đất",
+        "cho tặng đất cần gì",
+        "thừa kế đất cần giấy gì",
+        "sang tên sổ đỏ cần những gì"
+      ]
+    }
+  },
+  {
+    "id": "430aa02a70ff5b67",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-02",
+    "source_title": "Đình làng Cẩm Nê",
+    "evidence_quote": "thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu",
+    "record": {
+      "question": "Đình Cẩm Nê nằm trong khu vực nào của xã Hòa Tiến?",
+      "answer": "Đình Cẩm Nê thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu.",
+      "keywords": [
+        "đình cẩm nê ở đâu",
+        "cụm làng cổ cẩm nê",
+        "làng cổ hòa tiến",
+        "khu vực đình cẩm nê"
+      ]
+    }
+  },
+  {
+    "id": "43c602a5d79ae8f1",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-02",
+    "source_title": "Đăng ký nhận cha, mẹ, con",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 03 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+    "record": {
+      "question": "Làm thủ tục nhận cha, mẹ, con mất bao lâu?",
+      "answer": "Thời gian giải quyết tối đa là 03 ngày làm việc kể từ ngày UBND xã nhận đủ hồ sơ hợp lệ.",
+      "keywords": [
+        "bao lâu thì xong thủ tục nhận cha con",
+        "thời gian giải quyết nhận mẹ con",
+        "mấy ngày có kết quả nhận cha mẹ con",
+        "nhận cha con bao lâu",
+        "thời gian làm giấy nhận cha mẹ con"
+      ]
+    }
+  },
+  {
+    "id": "450dba427cd8f75a",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-02",
+    "source_title": "Cấp đổi, cấp lại Giấy chứng nhận quyền sử dụng đất",
+    "evidence_quote": "Mô tả: Cấp đổi Giấy chứng nhận quyền sử dụng đất khi giấy cũ bị ố, nhòe, rách, hư hỏng hoặc cấp lại khi bị mất, theo phân cấp giải quyết tại cấp xã.",
+    "record": {
+      "question": "Sổ đỏ cũ, rách hoặc bị mất thì có được cấp lại không?",
+      "answer": "Có, bạn có thể cấp đổi Giấy chứng nhận quyền sử dụng đất nếu giấy cũ bị ố, nhòe, rách, hư hỏng, hoặc cấp lại nếu bị mất.",
+      "keywords": [
+        "sổ đỏ cũ có đổi được không",
+        "sổ đỏ rách làm lại được không",
+        "mất sổ đỏ có cấp lại không",
+        "sổ đỏ bị mờ làm sao",
+        "đổi sổ đỏ mới"
+      ]
+    }
+  },
+  {
+    "id": "45dd1dc84ba62756",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-01",
+    "source_title": "Di tích mộ Đỗ Thúc Tịnh (di tích cấp quốc gia)",
+    "evidence_quote": "Mộ Đỗ Thúc Tịnh là di tích lịch sử - văn hóa cấp quốc gia duy nhất trên địa bàn xã Hòa Tiến",
+    "record": {
+      "question": "Di tích cấp quốc gia duy nhất ở xã Hòa Tiến là di tích nào?",
+      "answer": "Di tích lịch sử - văn hóa cấp quốc gia duy nhất trên địa bàn xã Hòa Tiến là Mộ Đỗ Thúc Tịnh.",
+      "keywords": [
+        "di tích quốc gia hòa tiến",
+        "mộ đỗ thúc tịnh ở đâu",
+        "di tích duy nhất hòa tiến",
+        "mộ đỗ thúc tịnh cấp gì"
+      ]
+    }
+  },
+  {
     "id": "4a81c87ab9ab994a",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KT-01",
     "source_title": "Đăng ký kết hôn",
@@ -2180,8 +3450,64 @@
     }
   },
   {
+    "id": "4c946591b84a21e7",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-05",
+    "source_title": "Văn chỉ La Châu",
+    "evidence_quote": "khu vực phụ cận văn chỉ nằm trong định hướng nâng cấp hạ tầng gắn với phát triển du lịch của xã.",
+    "record": {
+      "question": "Khu vực Văn chỉ La Châu có được phát triển du lịch không?",
+      "answer": "Khu vực phụ cận văn chỉ La Châu nằm trong định hướng nâng cấp hạ tầng gắn với phát triển du lịch của xã.",
+      "keywords": [
+        "văn chỉ la châu có du lịch không",
+        "phát triển du lịch la châu",
+        "du lịch văn chỉ la châu",
+        "quy hoạch du lịch la châu",
+        "văn chỉ la châu có gì chơi"
+      ]
+    }
+  },
+  {
+    "id": "4dcf1f1ea8c13c7f",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-03",
+    "source_title": "Đăng ký đất đai, cấp Giấy chứng nhận quyền sử dụng đất lần đầu",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 30 ngày làm việc",
+    "record": {
+      "question": "Làm sổ đỏ lần đầu mất bao lâu thì có?",
+      "answer": "Thời gian giải quyết việc cấp Giấy chứng nhận quyền sử dụng đất lần đầu là tối đa 30 ngày làm việc.",
+      "keywords": [
+        "bao lâu có sổ đỏ lần đầu",
+        "thời gian cấp sổ đỏ lần đầu",
+        "làm sổ đỏ lần đầu mất mấy ngày",
+        "sổ đỏ lần đầu bao lâu",
+        "làm sổ đỏ lần đầu có lâu không"
+      ]
+    }
+  },
+  {
+    "id": "54192ec409275b20",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-02",
+    "source_title": "Đình làng Cẩm Nê",
+    "evidence_quote": "Đình Cẩm Nê là một trong 7 di tích cấp thành phố của xã Hòa Tiến",
+    "record": {
+      "question": "Đình Cẩm Nê ở xã Hòa Tiến được xếp hạng di tích cấp nào?",
+      "answer": "Đình Cẩm Nê là một trong 7 di tích cấp thành phố của xã Hòa Tiến.",
+      "keywords": [
+        "đình cẩm nê cấp gì",
+        "xếp hạng đình cẩm nê",
+        "di tích đình cẩm nê",
+        "đình cẩm nê thuộc loại nào"
+      ]
+    }
+  },
+  {
     "id": "54b13db10082abb7",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KS-01",
     "source_title": "Đăng ký khai sinh",
@@ -2199,8 +3525,46 @@
     }
   },
   {
+    "id": "54b220dd59e51912",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-03",
+    "source_title": "Tách hộ",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai thay đổi thông tin cư trú (theo mẫu); Ý kiến đồng ý của chủ hộ, chủ sở hữu chỗ ở hợp pháp (nếu cần theo quy định)",
+    "record": {
+      "question": "Muốn tách hộ khẩu ra ở riêng thì cần giấy tờ gì?",
+      "answer": "Để tách hộ khẩu ra ở riêng, bạn cần chuẩn bị Tờ khai thay đổi thông tin cư trú theo mẫu và nếu cần theo quy định thì phải có thêm ý kiến đồng ý của chủ hộ hoặc chủ sở hữu chỗ ở hợp pháp.",
+      "keywords": [
+        "giấy tờ tách hộ",
+        "hồ sơ tách hộ",
+        "thủ tục tách hộ",
+        "làm sao để tách hộ",
+        "tách sổ hộ khẩu cần gì"
+      ]
+    }
+  },
+  {
+    "id": "55502295f5769c4d",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-LS-07",
+    "source_title": "Hồ Đồng Nghệ",
+    "evidence_quote": "Hồ Đồng Nghệ là hồ nước lớn thuộc xã Hòa Tiến, được xác định là khu vực có tài nguyên văn hóa, lịch sử và cảnh quan phong phú, gắn liền với cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu.",
+    "record": {
+      "question": "Hồ Đồng Nghệ có những đặc điểm gì nổi bật?",
+      "answer": "Hồ Đồng Nghệ là hồ nước lớn ở xã Hòa Tiến, được xác định là khu vực có tài nguyên văn hóa, lịch sử và cảnh quan phong phú, gắn liền với cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu.",
+      "keywords": [
+        "đặc điểm hồ đồng nghệ",
+        "hồ đồng nghệ có gì",
+        "thông tin hồ đồng nghệ",
+        "cảnh quan hồ đồng nghệ",
+        "văn hóa hồ đồng nghệ"
+      ]
+    }
+  },
+  {
     "id": "5a333d7bd89b5dcf",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KT-01",
     "source_title": "Đăng ký kết hôn",
@@ -2218,8 +3582,215 @@
     }
   },
   {
+    "id": "5a8bc816da71efc5",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-01",
+    "source_title": "Di tích mộ Đỗ Thúc Tịnh (di tích cấp quốc gia)",
+    "evidence_quote": "trong tổng số 16 di tích lịch sử - văn hóa của xã (gồm 1 di tích cấp quốc gia, 7 di tích cấp thành phố, 8 di tích chưa xếp hạng).",
+    "record": {
+      "question": "Xã Hòa Tiến có tổng cộng bao nhiêu di tích lịch sử - văn hóa?",
+      "answer": "Xã Hòa Tiến có tổng cộng 16 di tích lịch sử - văn hóa, bao gồm 1 di tích cấp quốc gia, 7 di tích cấp thành phố và 8 di tích chưa xếp hạng.",
+      "keywords": [
+        "hòa tiến có bao nhiêu di tích",
+        "số lượng di tích hòa tiến",
+        "di tích cấp thành phố hòa tiến",
+        "di tích chưa xếp hạng hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "5b7a2845d5badb57",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-01",
+    "source_title": "Lịch sử hình thành xã Hòa Tiến (sau sáp nhập 01/7/2025)",
+    "evidence_quote": "Xã có tổng diện tích tự nhiên 65,9 km², dân số khoảng 38.823 người",
+    "record": {
+      "question": "Xã Hòa Tiến (mới) có diện tích và dân số khoảng bao nhiêu?",
+      "answer": "Xã Hòa Tiến (mới) có tổng diện tích tự nhiên là 65,9 km² và dân số khoảng 38.823 người.",
+      "keywords": [
+        "dân số hòa tiến",
+        "diện tích hòa tiến",
+        "hòa tiến bao nhiêu người",
+        "xã hòa tiến rộng bao nhiêu",
+        "số dân hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "60d699c58603a6ca",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-03",
+    "source_title": "Đình làng Yến Nê",
+    "evidence_quote": "Đình Yến Nê là một trong 7 di tích cấp thành phố tại xã Hòa Tiến",
+    "record": {
+      "question": "Đình Yến Nê ở xã Hòa Tiến là di tích cấp nào?",
+      "answer": "Đình Yến Nê là một trong 7 di tích cấp thành phố tại xã Hòa Tiến.",
+      "keywords": [
+        "đình yến nê cấp gì",
+        "xếp hạng đình yến nê",
+        "di tích đình yến nê",
+        "đình yến nê thuộc loại nào"
+      ]
+    }
+  },
+  {
+    "id": "6254f7e14be3510e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LD-01",
+    "source_title": "Trợ cấp xã hội hàng tháng cho đối tượng bảo trợ xã hội",
+    "evidence_quote": "Xét duyệt, chi trả trợ cấp xã hội hàng tháng cho các đối tượng bảo trợ xã hội tại cộng đồng (người khuyết tật nặng, người cao tuổi neo đơn, trẻ mồ côi...) theo quy định.",
+    "record": {
+      "question": "Ai thì được nhận tiền trợ cấp xã hội hàng tháng vậy?",
+      "answer": "Các đối tượng bảo trợ xã hội tại cộng đồng như người khuyết tật nặng, người cao tuổi neo đơn, trẻ mồ côi... thì được xét duyệt, chi trả trợ cấp xã hội hàng tháng.",
+      "keywords": [
+        "ai được trợ cấp xã hội",
+        "đối tượng trợ cấp",
+        "tiền trợ cấp hàng tháng",
+        "người khuyết tật được hỗ trợ gì",
+        "trẻ mồ côi có được trợ cấp không",
+        "người già neo đơn có tiền trợ cấp không"
+      ]
+    }
+  },
+  {
+    "id": "63aa168a18c0e302",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://TH-01",
+    "source_title": "Danh sách 15 thôn của xã Hòa Tiến sau sắp xếp",
+    "evidence_quote": "Trụ sở UBND xã đặt tại Quốc lộ 14B, thôn Phú Sơn Tây.",
+    "record": {
+      "question": "Trụ sở UBND xã Hòa Tiến nằm ở đâu?",
+      "answer": "Trụ sở UBND xã Hòa Tiến đặt tại Quốc lộ 14B, thuộc thôn Phú Sơn Tây.",
+      "keywords": [
+        "ubnd hòa tiến ở đâu",
+        "địa chỉ ubnd hòa tiến",
+        "trụ sở xã hòa tiến",
+        "ubnd xã hòa tiến",
+        "ubnd hòa tiến thôn nào"
+      ]
+    }
+  },
+  {
+    "id": "6595f9dd2193ad81",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-06",
+    "source_title": "Đài chiến thắng Gò Hà",
+    "evidence_quote": "Đài chiến thắng Gò Hà là một trong 7 di tích cấp thành phố tại xã Hòa Tiến",
+    "record": {
+      "question": "Đài chiến thắng Gò Hà là gì vậy?",
+      "answer": "Đài chiến thắng Gò Hà là một trong 7 di tích cấp thành phố tại xã Hòa Tiến.",
+      "keywords": [
+        "đài chiến thắng gò hà ở đâu",
+        "đài gò hà là gì",
+        "thông tin đài gò hà",
+        "giới thiệu đài chiến thắng gò hà",
+        "di tích gò hà"
+      ]
+    }
+  },
+  {
+    "id": "68c66d522ccf3377",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-03",
+    "source_title": "Đăng ký giám hộ",
+    "evidence_quote": "Mô tả: Đăng ký việc giám hộ cho người chưa thành niên hoặc người mất/hạn chế năng lực hành vi dân sự không còn cha, mẹ hoặc cha mẹ không đủ điều kiện chăm sóc.",
+    "record": {
+      "question": "Đăng ký giám hộ là để làm gì?",
+      "answer": "Đăng ký giám hộ là để đăng ký việc giám hộ cho người chưa thành niên hoặc người mất/hạn chế năng lực hành vi dân sự không còn cha, mẹ hoặc cha mẹ không đủ điều kiện chăm sóc.",
+      "keywords": [
+        "giám hộ để làm gì",
+        "mục đích đăng ký giám hộ",
+        "ý nghĩa của việc giám hộ",
+        "khi nào cần đăng ký giám hộ",
+        "giám hộ là gì"
+      ]
+    }
+  },
+  {
+    "id": "6a47eeed28a65cd8",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-01",
+    "source_title": "Đăng ký biến động đất đai (chuyển nhượng, tặng cho, thừa kế quyền sử dụng đất)",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 10 ngày làm việc (không kể thời gian thực hiện nghĩa vụ tài chính)",
+    "record": {
+      "question": "Sang tên sổ đỏ do mua bán, cho tặng hay thừa kế mất bao lâu?",
+      "answer": "Thời gian giải quyết việc sang tên sổ đỏ là tối đa 10 ngày làm việc, chưa kể thời gian bạn thực hiện nghĩa vụ tài chính.",
+      "keywords": [
+        "bao lâu sang tên sổ đỏ xong",
+        "thời gian chuyển nhượng đất",
+        "sang tên đất mất mấy ngày",
+        "làm sổ đỏ thừa kế bao lâu",
+        "sang tên sổ đỏ có lâu không"
+      ]
+    }
+  },
+  {
+    "id": "6bfc783bd8fdc0e9",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-02",
+    "source_title": "Đăng ký nhận cha, mẹ, con",
+    "evidence_quote": "Nơi nộp: Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến",
+    "record": {
+      "question": "Đăng ký nhận cha, mẹ, con nộp hồ sơ ở đâu?",
+      "answer": "Bạn nộp hồ sơ tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến.",
+      "keywords": [
+        "chỗ nộp hồ sơ nhận cha con",
+        "địa điểm làm thủ tục nhận mẹ con",
+        "nộp giấy tờ nhận cha mẹ con ở đâu",
+        "làm giấy nhận cha con ở đâu",
+        "đăng ký nhận con ở đâu"
+      ]
+    }
+  },
+  {
+    "id": "708b753fedfa579f",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-02",
+    "source_title": "Đăng ký tạm trú",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai thay đổi thông tin cư trú (theo mẫu); Giấy tờ chứng minh chỗ ở hợp pháp (hợp đồng thuê, mượn nhà; xác nhận của chủ nhà...)",
+    "record": {
+      "question": "Muốn đăng ký tạm trú thì cần chuẩn bị giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị Tờ khai thay đổi thông tin cư trú (theo mẫu) và Giấy tờ chứng minh chỗ ở hợp pháp (hợp đồng thuê, mượn nhà; xác nhận của chủ nhà...).",
+      "keywords": [
+        "giấy tờ làm tạm trú",
+        "hồ sơ đăng ký tạm trú",
+        "cần gì để đăng ký tạm trú",
+        "làm giấy tạm trú cần gì",
+        "thủ tục đăng ký tạm trú cần gì"
+      ]
+    }
+  },
+  {
+    "id": "716c711a198ad747",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-02",
+    "source_title": "Truyền thống cách mạng và danh hiệu Anh hùng của xã Hòa Tiến",
+    "evidence_quote": "Đây là một trong những địa phương hiếm hoi của TP Đà Nẵng hội tụ đủ cả ba danh hiệu Anh hùng ở các lĩnh vực khác nhau.",
+    "record": {
+      "question": "Xã Hòa Tiến có gì đặc biệt về các danh hiệu Anh hùng này không?",
+      "answer": "Hòa Tiến là một trong những địa phương hiếm hoi của TP Đà Nẵng hội tụ đủ cả ba danh hiệu Anh hùng ở các lĩnh vực khác nhau.",
+      "keywords": [
+        "hòa tiến đặc biệt gì",
+        "điểm nổi bật hòa tiến",
+        "hòa tiến có gì khác biệt",
+        "danh hiệu anh hùng đà nẵng"
+      ]
+    }
+  },
+  {
     "id": "774cdc7748442215",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://XN-01",
     "source_title": "Xác nhận tình trạng hôn nhân",
@@ -2237,8 +3808,45 @@
     }
   },
   {
+    "id": "7a4be0e18057a764",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LN-01",
+    "source_title": "Làng nghề dệt chiếu Cẩm Nê",
+    "evidence_quote": "Du khách đến Cẩm Nê có thể trải nghiệm xâu cói vào khung dệt và học các họa tiết dệt chiếu truyền thống.",
+    "record": {
+      "question": "Đến làng dệt chiếu Cẩm Nê thì du khách có thể làm gì?",
+      "answer": "Du khách đến Cẩm Nê có thể trải nghiệm xâu cói vào khung dệt và học các họa tiết dệt chiếu truyền thống.",
+      "keywords": [
+        "trải nghiệm cẩm nê",
+        "hoạt động ở cẩm nê",
+        "du lịch cẩm nê",
+        "học dệt chiếu cẩm nê",
+        "tham quan cẩm nê"
+      ]
+    }
+  },
+  {
+    "id": "7a98b4602451e8d1",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-03",
+    "source_title": "Đình làng Yến Nê",
+    "evidence_quote": "ven khu vực hồ Đồng Nghệ — vùng đất được đánh giá có tài nguyên văn hóa, lịch sử, cảnh quan phong phú của xã.",
+    "record": {
+      "question": "Khu vực quanh đình Yến Nê có gì đặc biệt không?",
+      "answer": "Khu vực quanh đình Yến Nê, ven hồ Đồng Nghệ, được đánh giá là vùng đất có tài nguyên văn hóa, lịch sử và cảnh quan phong phú của xã Hòa Tiến.",
+      "keywords": [
+        "hồ đồng nghệ gần đình yến nê",
+        "tài nguyên văn hóa hòa tiến",
+        "cảnh quan đình yến nê",
+        "khu vực hồ đồng nghệ có gì"
+      ]
+    }
+  },
+  {
     "id": "7aa116b25c94b5f4",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KS-01",
     "source_title": "Đăng ký khai sinh",
@@ -2256,8 +3864,27 @@
     }
   },
   {
+    "id": "7f719f1d7da1c8f2",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-04",
+    "source_title": "Khai báo tạm vắng",
+    "evidence_quote": "Mô tả: Khai báo tạm vắng áp dụng cho một số trường hợp đặc biệt (đang trong thời gian bị điều tra, thi hành nghĩa vụ...) khi tạm thời đi khỏi nơi thường trú/tạm trú.",
+    "record": {
+      "question": "Những trường hợp nào thì phải đi khai báo tạm vắng?",
+      "answer": "Khai báo tạm vắng áp dụng cho một số trường hợp đặc biệt, ví dụ như khi bạn đang trong thời gian bị điều tra hoặc thi hành nghĩa vụ mà tạm thời đi khỏi nơi thường trú hoặc tạm trú.",
+      "keywords": [
+        "ai phải khai báo tạm vắng",
+        "khi nào cần báo tạm vắng",
+        "trường hợp nào báo tạm vắng",
+        "đi đâu phải báo tạm vắng",
+        "khai báo tạm vắng cho ai"
+      ]
+    }
+  },
+  {
     "id": "7ff2aaa0c300d52f",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-02",
     "source_title": "Chứng thực chữ ký",
@@ -2275,8 +3902,158 @@
     }
   },
   {
+    "id": "8166f91ccb5401d5",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-06",
+    "source_title": "Đài chiến thắng Gò Hà",
+    "evidence_quote": "phù hợp với bề dày lịch sử cách mạng của xã (được phong 3 danh hiệu Anh hùng).",
+    "record": {
+      "question": "Xã Hòa Tiến có lịch sử cách mạng như thế nào?",
+      "answer": "Xã Hòa Tiến có bề dày lịch sử cách mạng và đã được phong 3 danh hiệu Anh hùng. Đài chiến thắng Gò Hà là một di tích ghi dấu truyền thống đấu tranh cách mạng của địa phương.",
+      "keywords": [
+        "lịch sử hòa tiến",
+        "hòa tiến anh hùng",
+        "xã hòa tiến có mấy anh hùng",
+        "truyền thống cách mạng hòa tiến",
+        "hòa tiến có gì nổi bật"
+      ]
+    }
+  },
+  {
+    "id": "82d643337fd153aa",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-02",
+    "source_title": "Truyền thống cách mạng và danh hiệu Anh hùng của xã Hòa Tiến",
+    "evidence_quote": "được Nhà nước phong tặng 3 danh hiệu Anh hùng: Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ đổi mới, và Anh hùng Lực lượng vũ trang Công an xã.",
+    "record": {
+      "question": "Những danh hiệu Anh hùng mà xã Hòa Tiến được phong tặng là gì?",
+      "answer": "Xã Hòa Tiến được phong tặng các danh hiệu Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ đổi mới, và Anh hùng Lực lượng vũ trang Công an xã.",
+      "keywords": [
+        "danh hiệu anh hùng hòa tiến là gì",
+        "các danh hiệu anh hùng của hòa tiến",
+        "hòa tiến có những anh hùng nào",
+        "anh hùng lực lượng vũ trang hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "837eed0a2aa28359",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-02",
+    "source_title": "Truyền thống cách mạng và danh hiệu Anh hùng của xã Hòa Tiến",
+    "evidence_quote": "Hòa Tiến là địa phương giàu truyền thống cách mạng, được Nhà nước phong tặng 3 danh hiệu Anh hùng",
+    "record": {
+      "question": "Xã Hòa Tiến được phong tặng bao nhiêu danh hiệu Anh hùng?",
+      "answer": "Xã Hòa Tiến được Nhà nước phong tặng 3 danh hiệu Anh hùng.",
+      "keywords": [
+        "hòa tiến có mấy danh hiệu anh hùng",
+        "số danh hiệu anh hùng hòa tiến",
+        "hòa tiến được phong anh hùng mấy lần",
+        "danh hiệu anh hùng của hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "88b6639b28524de8",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-01",
+    "source_title": "Đăng ký thường trú",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 07 ngày làm việc kể từ ngày nhận đủ hồ sơ",
+    "record": {
+      "question": "Làm thủ tục đăng ký thường trú mất bao lâu?",
+      "answer": "Thời gian giải quyết tối đa là 07 ngày làm việc kể từ ngày nhận đủ hồ sơ.",
+      "keywords": [
+        "bao lâu thì xong đăng ký thường trú",
+        "thời gian giải quyết nhập hộ khẩu",
+        "mấy ngày có kết quả đăng ký thường trú",
+        "nhập hộ khẩu bao lâu",
+        "làm sổ hộ khẩu mất mấy ngày"
+      ]
+    }
+  },
+  {
+    "id": "95128915b3bdf01e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LN-01",
+    "source_title": "Làng nghề dệt chiếu Cẩm Nê",
+    "evidence_quote": "Làng nghề dệt chiếu Cẩm Nê là làng nghề truyền thống nổi tiếng thuộc xã Hòa Tiến, TP Đà Nẵng",
+    "record": {
+      "question": "Xã Hòa Tiến có làng nghề truyền thống nào nổi tiếng không?",
+      "answer": "Xã Hòa Tiến có làng nghề dệt chiếu Cẩm Nê là làng nghề truyền thống nổi tiếng.",
+      "keywords": [
+        "làng nghề hòa tiến",
+        "làng nghề cẩm nê",
+        "làng dệt chiếu hòa tiến",
+        "nghề truyền thống hòa tiến",
+        "làng nghề nổi tiếng hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "9730c2b7976176e7",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-04",
+    "source_title": "Khai báo tạm vắng",
+    "evidence_quote": "Lệ phí: Miễn phí (tham khảo); Thời gian giải quyết: Trong ngày làm việc",
+    "record": {
+      "question": "Khai báo tạm vắng có mất tiền không và làm có nhanh không?",
+      "answer": "Khai báo tạm vắng là miễn phí và thủ tục này sẽ được giải quyết ngay trong ngày làm việc.",
+      "keywords": [
+        "phí khai báo tạm vắng",
+        "báo tạm vắng có tốn tiền không",
+        "khai báo tạm vắng bao lâu",
+        "làm tạm vắng có nhanh không",
+        "thời gian giải quyết tạm vắng"
+      ]
+    }
+  },
+  {
+    "id": "97dc9387846aafe9",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LN-01",
+    "source_title": "Làng nghề dệt chiếu Cẩm Nê",
+    "evidence_quote": "Đây là một trong những sản phẩm được xã định hướng gắn phát triển du lịch với bảo tồn di tích và làng nghề.",
+    "record": {
+      "question": "Làng nghề dệt chiếu Cẩm Nê có được phát triển du lịch không?",
+      "answer": "Làng nghề dệt chiếu Cẩm Nê là một trong những sản phẩm được xã định hướng gắn phát triển du lịch với bảo tồn di tích và làng nghề.",
+      "keywords": [
+        "du lịch làng nghề cẩm nê",
+        "bảo tồn cẩm nê",
+        "phát triển du lịch cẩm nê",
+        "quy hoạch cẩm nê",
+        "cẩm nê có dự án gì"
+      ]
+    }
+  },
+  {
+    "id": "9a14e8dca3a15ccb",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-01",
+    "source_title": "Đăng ký thường trú",
+    "evidence_quote": "Nơi nộp: Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến / Cổng Dịch vụ công",
+    "record": {
+      "question": "Đăng ký thường trú nộp hồ sơ ở đâu?",
+      "answer": "Bạn có thể nộp hồ sơ tại Trung tâm Phục vụ hành chính công cấp xã Hòa Tiến hoặc qua Cổng Dịch vụ công.",
+      "keywords": [
+        "chỗ nộp hồ sơ nhập hộ khẩu",
+        "địa điểm làm thủ tục thường trú",
+        "nộp giấy tờ đăng ký thường trú ở đâu",
+        "làm hộ khẩu ở đâu",
+        "đăng ký thường trú online được không"
+      ]
+    }
+  },
+  {
     "id": "9ad5e7316a3d53f6",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-01",
     "source_title": "Chứng thực bản sao từ bản chính",
@@ -2294,8 +4071,66 @@
     }
   },
   {
+    "id": "9ae026609c4ec277",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-02",
+    "source_title": "Đăng ký nhận cha, mẹ, con",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký nhận cha, mẹ, con (theo mẫu); Giấy tờ tùy thân của các bên (CCCD/hộ chiếu); Chứng cứ chứng minh quan hệ cha con/mẹ con (nếu có, ví dụ kết quả xét nghiệm ADN hoặc văn bản của cơ quan y tế)",
+    "record": {
+      "question": "Muốn đăng ký nhận cha, mẹ, con thì cần chuẩn bị giấy tờ gì?",
+      "answer": "Để đăng ký nhận cha, mẹ, con, bạn cần chuẩn bị Tờ khai đăng ký nhận cha, mẹ, con (theo mẫu), giấy tờ tùy thân của các bên (CCCD/hộ chiếu), và nếu có, chứng cứ chứng minh quan hệ cha con/mẹ con (ví dụ kết quả xét nghiệm ADN hoặc văn bản của cơ quan y tế).",
+      "keywords": [
+        "đăng ký nhận con cần giấy gì",
+        "giấy tờ làm thủ tục nhận cha con",
+        "hồ sơ nhận mẹ con",
+        "muốn nhận con thì cần gì",
+        "giấy tờ nhận cha mẹ con",
+        "thủ tục nhận cha mẹ con cần gì"
+      ]
+    }
+  },
+  {
+    "id": "9de7af63d05f1d69",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-06",
+    "source_title": "Đài chiến thắng Gò Hà",
+    "evidence_quote": "ghi dấu truyền thống đấu tranh cách mạng của địa phương",
+    "record": {
+      "question": "Đài chiến thắng Gò Hà ghi nhớ điều gì?",
+      "answer": "Đài chiến thắng Gò Hà ghi dấu truyền thống đấu tranh cách mạng của địa phương.",
+      "keywords": [
+        "ý nghĩa đài gò hà",
+        "đài gò hà kỷ niệm gì",
+        "lịch sử đài gò hà",
+        "truyền thống gò hà",
+        "đấu tranh cách mạng gò hà"
+      ]
+    }
+  },
+  {
+    "id": "9f0202da44550124",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-03",
+    "source_title": "Đăng ký đất đai, cấp Giấy chứng nhận quyền sử dụng đất lần đầu",
+    "evidence_quote": "Mô tả: Đăng ký đất đai và cấp Giấy chứng nhận quyền sử dụng đất, quyền sở hữu tài sản gắn liền với đất lần đầu cho hộ gia đình, cá nhân đủ điều kiện theo quy định.",
+    "record": {
+      "question": "Ai được làm sổ đỏ lần đầu?",
+      "answer": "Việc đăng ký đất đai và cấp Giấy chứng nhận quyền sử dụng đất lần đầu là dành cho hộ gia đình, cá nhân đủ điều kiện theo quy định.",
+      "keywords": [
+        "ai được cấp sổ đỏ lần đầu",
+        "điều kiện làm sổ đỏ lần đầu",
+        "đối tượng cấp sổ đỏ lần đầu",
+        "làm sổ đỏ lần đầu cho ai",
+        "ai có thể làm sổ đỏ"
+      ]
+    }
+  },
+  {
     "id": "a8046c3462baead8",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://XN-01",
     "source_title": "Xác nhận tình trạng hôn nhân",
@@ -2313,8 +4148,120 @@
     }
   },
   {
+    "id": "af5c533e88625802",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-01",
+    "source_title": "Di tích mộ Đỗ Thúc Tịnh (di tích cấp quốc gia)",
+    "evidence_quote": "Đỗ Thúc Tịnh là danh nhân được thờ phụng, gắn với truyền thống lịch sử - văn hóa lâu đời của vùng đất Hòa Vang cũ.",
+    "record": {
+      "question": "Đỗ Thúc Tịnh là ai mà có mộ được xếp hạng di tích quốc gia ở Hòa Tiến?",
+      "answer": "Đỗ Thúc Tịnh là một danh nhân được thờ phụng, gắn liền với truyền thống lịch sử - văn hóa lâu đời của vùng đất Hòa Vang cũ.",
+      "keywords": [
+        "đỗ thúc tịnh là người nào",
+        "danh nhân đỗ thúc tịnh",
+        "mộ đỗ thúc tịnh có ý nghĩa gì",
+        "lịch sử đỗ thúc tịnh"
+      ]
+    }
+  },
+  {
+    "id": "af63e5a702a7b221",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LD-01",
+    "source_title": "Trợ cấp xã hội hàng tháng cho đối tượng bảo trợ xã hội",
+    "evidence_quote": "Thời gian giải quyết: Theo quy trình xét duyệt của Hội đồng xét duyệt cấp xã, thường 15-20 ngày làm việc (tham khảo)",
+    "record": {
+      "question": "Làm hồ sơ trợ cấp xã hội hàng tháng mất bao lâu thì có kết quả?",
+      "answer": "Việc xét duyệt hồ sơ trợ cấp xã hội hàng tháng thường mất khoảng 15-20 ngày làm việc, theo quy trình của Hội đồng xét duyệt cấp xã.",
+      "keywords": [
+        "bao lâu có trợ cấp",
+        "thời gian giải quyết trợ cấp",
+        "chờ trợ cấp bao lâu",
+        "khi nào có tiền trợ cấp",
+        "bao nhiêu ngày có kết quả"
+      ]
+    }
+  },
+  {
+    "id": "b02dab932196e78e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-04",
+    "source_title": "Cụm đình - miếu La Bông",
+    "evidence_quote": "Cụm đình - miếu La Bông là một trong 7 di tích cấp thành phố trên địa bàn xã Hòa Tiến, thuộc quần thể di tích lịch sử - tâm linh của cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, gắn với đời sống văn hóa tín ngưỡng lâu đời của cư dân địa phương.",
+    "record": {
+      "question": "Cụm đình - miếu La Bông là gì vậy?",
+      "answer": "Cụm đình - miếu La Bông là một trong 7 di tích cấp thành phố ở xã Hòa Tiến. Đây là một phần của quần thể di tích lịch sử - tâm linh của cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, gắn liền với đời sống văn hóa tín ngưỡng của người dân địa phương.",
+      "keywords": [
+        "đình miếu la bông là gì",
+        "thông tin cụm đình miếu la bông",
+        "giới thiệu đình miếu la bông",
+        "cụm đình miếu la bông ở đâu",
+        "đình miếu la bông có gì đặc biệt"
+      ]
+    }
+  },
+  {
+    "id": "b14890807ed4d939",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CT-03",
+    "source_title": "Chứng thực hợp đồng, giao dịch",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Dự thảo hợp đồng, giao dịch cần chứng thực; Giấy tờ tùy thân của các bên tham gia (CCCD/hộ chiếu); Giấy tờ chứng minh quyền sở hữu/quyền sử dụng tài sản liên quan (nếu có)",
+    "record": {
+      "question": "Muốn chứng thực hợp đồng, giao dịch thì cần chuẩn bị giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị Dự thảo hợp đồng, giao dịch cần chứng thực; Giấy tờ tùy thân của các bên tham gia (CCCD/hộ chiếu); và Giấy tờ chứng minh quyền sở hữu/quyền sử dụng tài sản liên quan (nếu có).",
+      "keywords": [
+        "giấy tờ chứng thực hợp đồng",
+        "hồ sơ chứng thực giao dịch",
+        "cần gì để chứng thực hợp đồng",
+        "làm giấy chứng thực giao dịch cần gì",
+        "thủ tục chứng thực hợp đồng cần gì"
+      ]
+    }
+  },
+  {
+    "id": "b1add8d970239a1e",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://TH-01",
+    "source_title": "Danh sách 15 thôn của xã Hòa Tiến sau sắp xếp",
+    "evidence_quote": "Yến Nê Tây (176,9345 ha · 815 hộ)",
+    "record": {
+      "question": "Thôn nào ở xã Hòa Tiến có nhiều hộ dân nhất?",
+      "answer": "Thôn Yến Nê Tây có nhiều hộ dân nhất với 815 hộ.",
+      "keywords": [
+        "thôn đông dân nhất hòa tiến",
+        "thôn nhiều hộ nhất",
+        "thôn nào đông dân hòa tiến",
+        "dân số thôn hòa tiến",
+        "thôn hòa tiến đông nhất"
+      ]
+    }
+  },
+  {
+    "id": "b3bfc8a94aab49ab",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-03",
+    "source_title": "Đình làng Yến Nê",
+    "evidence_quote": "nằm trong cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu ven khu vực hồ Đồng Nghệ",
+    "record": {
+      "question": "Đình Yến Nê nằm ở đâu trong xã Hòa Tiến?",
+      "answer": "Đình Yến Nê nằm trong cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, ven khu vực hồ Đồng Nghệ.",
+      "keywords": [
+        "đình yến nê ở đâu",
+        "cụm làng cổ yến nê",
+        "làng cổ hòa tiến",
+        "khu vực đình yến nê"
+      ]
+    }
+  },
+  {
     "id": "b8d0a51928aa68f6",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-01",
     "source_title": "Chứng thực bản sao từ bản chính",
@@ -2332,8 +4279,141 @@
     }
   },
   {
+    "id": "b988c9b2da7c64ce",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-04",
+    "source_title": "Cụm đình - miếu La Bông",
+    "evidence_quote": "thuộc quần thể di tích lịch sử - tâm linh của cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, gắn với đời sống văn hóa tín ngưỡng lâu đời của cư dân địa phương.",
+    "record": {
+      "question": "Cụm đình - miếu La Bông có ý nghĩa lịch sử, văn hóa gì không?",
+      "answer": "Cụm đình - miếu La Bông thuộc quần thể di tích lịch sử - tâm linh của cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu, gắn với đời sống văn hóa tín ngưỡng lâu đời của cư dân địa phương.",
+      "keywords": [
+        "ý nghĩa đình miếu la bông",
+        "văn hóa đình miếu la bông",
+        "lịch sử đình miếu la bông",
+        "đình miếu la bông liên quan gì",
+        "tín ngưỡng la bông"
+      ]
+    }
+  },
+  {
+    "id": "b9ec087fd48a2f08",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-02",
+    "source_title": "Cấp đổi, cấp lại Giấy chứng nhận quyền sử dụng đất",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Đơn đề nghị cấp đổi/cấp lại Giấy chứng nhận (theo mẫu); Giấy tờ tùy thân của người đề nghị; Đơn trình báo mất giấy tờ hoặc xác nhận của công an (trường hợp cấp lại do mất)",
+    "record": {
+      "question": "Nếu bị mất sổ đỏ thì cần chuẩn bị giấy tờ gì để làm lại?",
+      "answer": "Nếu bị mất sổ đỏ để làm lại, bạn cần chuẩn bị Đơn đề nghị cấp lại Giấy chứng nhận, giấy tờ tùy thân của người đề nghị và Đơn trình báo mất giấy tờ hoặc xác nhận của công an.",
+      "keywords": [
+        "giấy tờ làm lại sổ đỏ bị mất",
+        "hồ sơ cấp lại sổ đỏ",
+        "mất sổ đỏ cần giấy gì",
+        "làm lại sổ đỏ cần những gì",
+        "thủ tục cấp lại sổ đỏ"
+      ]
+    }
+  },
+  {
+    "id": "bbee753452aa359b",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CT-03",
+    "source_title": "Chứng thực hợp đồng, giao dịch",
+    "evidence_quote": "Thời gian giải quyết: Trong ngày hoặc tối đa 02 ngày làm việc với hồ sơ phức tạp",
+    "record": {
+      "question": "Chứng thực hợp đồng, giao dịch mất bao lâu?",
+      "answer": "Thủ tục này được giải quyết trong ngày hoặc tối đa 02 ngày làm việc với hồ sơ phức tạp.",
+      "keywords": [
+        "bao lâu thì xong chứng thực hợp đồng",
+        "thời gian giải quyết chứng thực giao dịch",
+        "mấy ngày có kết quả chứng thực hợp đồng",
+        "chứng thực hợp đồng bao lâu",
+        "làm giấy chứng thực hợp đồng mất mấy ngày"
+      ]
+    }
+  },
+  {
+    "id": "c5e2d4a0c85d7be9",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-05",
+    "source_title": "Văn chỉ La Châu",
+    "evidence_quote": "Văn chỉ La Châu là một trong 7 di tích cấp thành phố của xã Hòa Tiến, thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu. Đây là công trình thờ tự truyền thống ghi nhận truyền thống hiếu học của làng",
+    "record": {
+      "question": "Văn chỉ La Châu là chỗ nào vậy?",
+      "answer": "Văn chỉ La Châu là một trong 7 di tích cấp thành phố của xã Hòa Tiến, thuộc cụm làng cổ Cẩm Nê – Yến Nê – La Bông – La Châu. Đây là công trình thờ tự truyền thống ghi nhận truyền thống hiếu học của làng.",
+      "keywords": [
+        "văn chỉ la châu ở đâu",
+        "văn chỉ la châu là gì",
+        "thông tin văn chỉ la châu",
+        "giới thiệu văn chỉ la châu",
+        "di tích văn chỉ la châu"
+      ]
+    }
+  },
+  {
+    "id": "c9a316314108caa7",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-01",
+    "source_title": "Đăng ký thường trú",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai thay đổi thông tin cư trú (theo mẫu); Giấy tờ, tài liệu chứng minh chỗ ở hợp pháp (sổ đỏ, hợp đồng thuê nhà đã công chứng...); Giấy tờ chứng minh quan hệ nhân thân (nếu đăng ký theo diện người thân)",
+    "record": {
+      "question": "Muốn đăng ký thường trú thì cần chuẩn bị giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị Tờ khai thay đổi thông tin cư trú (theo mẫu), Giấy tờ, tài liệu chứng minh chỗ ở hợp pháp (sổ đỏ, hợp đồng thuê nhà đã công chứng...), và Giấy tờ chứng minh quan hệ nhân thân (nếu đăng ký theo diện người thân).",
+      "keywords": [
+        "giấy tờ làm hộ khẩu",
+        "hồ sơ đăng ký thường trú",
+        "cần gì để nhập hộ khẩu",
+        "làm sổ hộ khẩu cần gì",
+        "thủ tục đăng ký thường trú cần gì"
+      ]
+    }
+  },
+  {
+    "id": "cdae459df0487476",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-02",
+    "source_title": "Đăng ký tạm trú",
+    "evidence_quote": "Mô tả: Đăng ký tạm trú cho công dân sinh sống tại địa điểm thuộc xã ngoài nơi thường trú, từ đủ 30 ngày trở lên.",
+    "record": {
+      "question": "Khi nào thì cần đăng ký tạm trú?",
+      "answer": "Bạn cần đăng ký tạm trú khi sinh sống tại địa điểm thuộc xã ngoài nơi thường trú, từ đủ 30 ngày trở lên.",
+      "keywords": [
+        "ở tạm bao lâu thì phải đăng ký",
+        "đi làm xa có cần tạm trú không",
+        "ở trọ có cần đăng ký tạm trú không",
+        "tạm trú khi nào",
+        "điều kiện đăng ký tạm trú"
+      ]
+    }
+  },
+  {
+    "id": "d22129710c531889",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CT-03",
+    "source_title": "Chứng thực hợp đồng, giao dịch",
+    "evidence_quote": "Mô tả: Chứng thực hợp đồng, giao dịch (như hợp đồng ủy quyền, hợp đồng tặng cho, văn bản thỏa thuận...) theo quy định pháp luật về chứng thực tại cấp xã.",
+    "record": {
+      "question": "Những loại hợp đồng, giao dịch nào có thể chứng thực ở xã?",
+      "answer": "Xã có thể chứng thực hợp đồng, giao dịch như hợp đồng ủy quyền, hợp đồng tặng cho, văn bản thỏa thuận... theo quy định pháp luật về chứng thực tại cấp xã.",
+      "keywords": [
+        "chứng thực hợp đồng ủy quyền ở xã",
+        "chứng thực hợp đồng tặng cho",
+        "hợp đồng thỏa thuận có chứng thực được không",
+        "các loại hợp đồng có thể chứng thực",
+        "chứng thực giao dịch gì ở xã"
+      ]
+    }
+  },
+  {
     "id": "d43564bf61047f30",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://CT-02",
     "source_title": "Chứng thực chữ ký",
@@ -2351,8 +4431,65 @@
     }
   },
   {
+    "id": "d5f5a893e2452ba4",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-03",
+    "source_title": "Đăng ký giám hộ",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai đăng ký giám hộ (theo mẫu); Văn bản cử/chỉ định người giám hộ theo quy định Bộ luật Dân sự; Giấy tờ tùy thân của người giám hộ và người được giám hộ",
+    "record": {
+      "question": "Muốn đăng ký giám hộ thì cần giấy tờ gì?",
+      "answer": "Bạn cần chuẩn bị Tờ khai đăng ký giám hộ (theo mẫu), Văn bản cử/chỉ định người giám hộ theo quy định Bộ luật Dân sự, và Giấy tờ tùy thân của người giám hộ và người được giám hộ.",
+      "keywords": [
+        "giấy tờ làm thủ tục giám hộ",
+        "hồ sơ đăng ký giám hộ",
+        "cần những giấy gì để giám hộ",
+        "làm giấy giám hộ cần gì",
+        "thủ tục giám hộ cần giấy tờ gì"
+      ]
+    }
+  },
+  {
+    "id": "d6573de215fd113d",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-04",
+    "source_title": "Khai báo tạm vắng",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Tờ khai báo tạm vắng (theo mẫu); Giấy tờ tùy thân của người khai báo",
+    "record": {
+      "question": "Muốn khai báo tạm vắng thì cần mang theo giấy tờ gì?",
+      "answer": "Khi đi khai báo tạm vắng, bạn cần mang theo Tờ khai báo tạm vắng (theo mẫu) và giấy tờ tùy thân của người khai báo.",
+      "keywords": [
+        "giấy tờ khai báo tạm vắng",
+        "hồ sơ báo tạm vắng",
+        "cần gì để báo tạm vắng",
+        "khai báo tạm vắng cần giấy gì",
+        "mang gì đi báo tạm vắng"
+      ]
+    }
+  },
+  {
+    "id": "da274ad6092540c9",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-03",
+    "source_title": "Đăng ký giám hộ",
+    "evidence_quote": "Thời gian giải quyết: Trong ngày làm việc",
+    "record": {
+      "question": "Làm thủ tục đăng ký giám hộ mất bao lâu?",
+      "answer": "Thủ tục này được giải quyết trong ngày làm việc.",
+      "keywords": [
+        "bao lâu thì xong đăng ký giám hộ",
+        "thời gian giải quyết giám hộ",
+        "mấy ngày có kết quả giám hộ",
+        "làm giấy giám hộ bao lâu",
+        "đăng ký giám hộ mất mấy ngày"
+      ]
+    }
+  },
+  {
     "id": "de187a1bc6580315",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KT-01",
     "source_title": "Đăng ký kết hôn",
@@ -2371,7 +4508,7 @@
   },
   {
     "id": "e28df43d3a47c093",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://TT-01",
     "source_title": "Đăng ký khai tử",
@@ -2389,8 +4526,122 @@
     }
   },
   {
+    "id": "e789d477138f59ef",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-04",
+    "source_title": "Tách thửa, hợp thửa đất",
+    "evidence_quote": "Mô tả: Thực hiện thủ tục tách một thửa đất thành nhiều thửa hoặc hợp nhiều thửa đất liền kề thành một thửa, kèm cấp Giấy chứng nhận tương ứng.",
+    "record": {
+      "question": "Muốn chia nhỏ đất ra hoặc gộp các mảnh đất lại thì làm thủ tục gì?",
+      "answer": "Nếu bạn muốn chia một thửa đất thành nhiều thửa nhỏ hoặc gộp nhiều thửa đất liền kề thành một thửa, bạn cần làm thủ tục tách thửa hoặc hợp thửa đất.",
+      "keywords": [
+        "chia đất ra làm sao",
+        "gộp đất cần làm gì",
+        "thủ tục chia đất",
+        "làm sao để gộp đất",
+        "chia tách đất"
+      ]
+    }
+  },
+  {
+    "id": "e8f353d40cea4181",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://LS-01",
+    "source_title": "Lịch sử hình thành xã Hòa Tiến (sau sáp nhập 01/7/2025)",
+    "evidence_quote": "Xã Hòa Tiến (mới) được thành lập trên cơ sở nhập nguyên trạng xã Hòa Tiến và xã Hòa Khương (thuộc huyện Hòa Vang cũ), theo Nghị quyết số 1659/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội (ban hành 16/6/2025), chính thức hoạt động từ ngày 01/7/2025.",
+    "record": {
+      "question": "Xã Hòa Tiến bây giờ bắt đầu hoạt động từ khi nào?",
+      "answer": "Xã Hòa Tiến mới chính thức hoạt động từ ngày 01/7/2025, sau khi nhập nguyên trạng xã Hòa Tiến cũ và xã Hòa Khương.",
+      "keywords": [
+        "hòa tiến sáp nhập khi nào",
+        "xã hòa tiến mới",
+        "ngày thành lập hòa tiến",
+        "hòa tiến hoạt động từ bao giờ",
+        "hòa tiến và hòa khương"
+      ]
+    }
+  },
+  {
+    "id": "e9edfa1be84891d0",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-04",
+    "source_title": "Tách thửa, hợp thửa đất",
+    "evidence_quote": "Lệ phí: Theo biểu phí, lệ phí đất đai địa phương (tham khảo); Thời gian giải quyết: Tối đa 15-20 ngày làm việc",
+    "record": {
+      "question": "Tách thửa hoặc gộp thửa đất mất bao lâu và có mất tiền không?",
+      "answer": "Thời gian giải quyết việc tách thửa hoặc hợp thửa đất là tối đa 15 đến 20 ngày làm việc. Có lệ phí theo biểu phí, lệ phí đất đai quy định của địa phương.",
+      "keywords": [
+        "bao lâu tách thửa xong",
+        "thời gian gộp thửa đất",
+        "tách đất mất mấy ngày",
+        "phí tách thửa đất",
+        "gộp đất có tốn tiền không"
+      ]
+    }
+  },
+  {
+    "id": "ec283c5d86f66266",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DT-04",
+    "source_title": "Cụm đình - miếu La Bông",
+    "evidence_quote": "Cụm đình - miếu La Bông là một trong 7 di tích cấp thành phố trên địa bàn xã Hòa Tiến",
+    "record": {
+      "question": "Xã Hòa Tiến có bao nhiêu di tích cấp thành phố vậy?",
+      "answer": "Xã Hòa Tiến có 7 di tích cấp thành phố, trong đó có Cụm đình - miếu La Bông.",
+      "keywords": [
+        "hòa tiến có mấy di tích",
+        "số lượng di tích hòa tiến",
+        "di tích cấp thành phố hòa tiến",
+        "các di tích hòa tiến",
+        "di tích lịch sử hòa tiến"
+      ]
+    }
+  },
+  {
+    "id": "ed3ef08c106eacfe",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://DD-03",
+    "source_title": "Đăng ký đất đai, cấp Giấy chứng nhận quyền sử dụng đất lần đầu",
+    "evidence_quote": "Hồ sơ cần chuẩn bị: Đơn đăng ký đất đai, cấp Giấy chứng nhận (theo mẫu); Giấy tờ chứng minh nguồn gốc, quá trình sử dụng đất; Giấy tờ tùy thân, giấy tờ về nhà ở/tài sản gắn liền với đất (nếu có)",
+    "record": {
+      "question": "Muốn làm sổ đỏ lần đầu thì cần chuẩn bị những giấy tờ gì?",
+      "answer": "Để làm sổ đỏ lần đầu, bạn cần chuẩn bị Đơn đăng ký đất đai, cấp Giấy chứng nhận, các giấy tờ chứng minh nguồn gốc và quá trình sử dụng đất, giấy tờ tùy thân, và nếu có thì cả giấy tờ về nhà ở hoặc tài sản gắn liền với đất.",
+      "keywords": [
+        "giấy tờ làm sổ đỏ lần đầu",
+        "hồ sơ cấp sổ đỏ lần đầu",
+        "làm sổ đỏ lần đầu cần gì",
+        "giấy tờ chứng minh nguồn gốc đất",
+        "thủ tục làm sổ đỏ lần đầu"
+      ]
+    }
+  },
+  {
+    "id": "fafac7fa24dfbe5b",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://CU-03",
+    "source_title": "Tách hộ",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 05 ngày làm việc",
+    "record": {
+      "question": "Tách hộ khẩu mất bao lâu thì xong?",
+      "answer": "Thời gian giải quyết việc tách hộ khẩu là tối đa 05 ngày làm việc.",
+      "keywords": [
+        "bao lâu tách hộ xong",
+        "tách hộ bao nhiêu ngày",
+        "thời gian làm tách hộ",
+        "tách sổ hộ khẩu mất mấy ngày",
+        "làm tách hộ nhanh không"
+      ]
+    }
+  },
+  {
     "id": "fbd2f24ebdd69bf7",
-    "status": "pending",
+    "status": "accepted",
     "kind": "faq",
     "source_url": "kb://KS-01",
     "source_title": "Đăng ký khai sinh",
@@ -2404,6 +4655,25 @@
         "hồ sơ khai sinh cho bé",
         "giấy tờ đăng ký khai sinh",
         "chuẩn bị gì khi làm khai sinh"
+      ]
+    }
+  },
+  {
+    "id": "fed75c57c78f13c7",
+    "status": "accepted",
+    "kind": "faq",
+    "source_url": "kb://HT-04",
+    "source_title": "Đăng ký thay đổi, cải chính hộ tịch, bổ sung thông tin hộ tịch",
+    "evidence_quote": "Thời gian giải quyết: Tối đa 03 ngày làm việc, có thể kéo dài nếu cần xác minh",
+    "record": {
+      "question": "Làm thủ tục thay đổi thông tin hộ tịch mất bao lâu?",
+      "answer": "Thời gian giải quyết tối đa là 03 ngày làm việc, nhưng có thể kéo dài nếu cần xác minh.",
+      "keywords": [
+        "bao lâu thì xong đổi tên",
+        "thời gian sửa thông tin hộ tịch",
+        "mấy ngày có kết quả cải chính hộ tịch",
+        "bổ sung hộ tịch bao lâu",
+        "đổi thông tin hộ tịch mất mấy ngày"
       ]
     }
   }
