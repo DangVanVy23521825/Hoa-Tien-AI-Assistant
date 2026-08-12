@@ -49,8 +49,17 @@ Lọc **tức thì khi gõ** — không cần Enter, không gọi API (19 bản 
 Trường được đánh chỉ mục cho mỗi thủ tục:
 
 ```
-name + description + keywords[] + category + code
+name + keywords[] + category + code
 ```
+
+**Cố ý KHÔNG đánh chỉ mục `description`.** Đo trên dữ liệu thật: đưa `description` vào
+thì "khai sinh" ra 3 kết quả — lẫn cả "Đăng ký tạm trú" (`sinh` khớp "**sinh** sống",
+`khai` khớp "**khai** báo) — và "so do" ra 5 kết quả, lẫn "cải chính hộ tịch"
+(`so` khớp "**sổ** hộ tịch", `do` khớp "thay **đổi**"). Bỏ `description` thì "khai sinh"
+còn 2 (đều đúng) và "so do" còn đúng 4 thủ tục Đất đai. Đây cũng chính là quyết định đã
+có sẵn ở bản offline dự phòng: *"`retrieve()` chỉ đánh chỉ mục tiêu đề + từ khoá, không
+lấy toàn văn nội dung"* (`rules/frontend.md`). `keywords` vốn được biên tập đúng cho mục
+đích tra cứu; `description` là văn xuôi đầy từ thông dụng.
 
 Cả chuỗi tìm và chuỗi chỉ mục đều đi qua `normalizeVi()`. Truy vấn tách theo khoảng
 trắng thành các token; thủ tục khớp khi **mọi** token đều xuất hiện trong chuỗi chỉ mục.
@@ -154,9 +163,15 @@ chỉnh env trên Railway, là việc vận hành riêng.
 lĩnh vực trong DB (ví dụ "Lao động - Xã hội" → "Lao động, Thương binh và Xã hội") sẽ mất
 emoji, rơi về `📋`. Chấp nhận được: chip vẫn hiện đúng, chỉ mất icon.
 
-**Bỏ dấu làm tăng nhiễu.** "hoa" khớp cả "hoà", "hóa", "họa". Với 19 bản ghi thì vô hại;
-nếu sau này mở tìm kiếm sang 225 bản ghi thì phải xét lại (bài học đã có ở bản offline
+**Bỏ dấu làm tăng nhiễu.** "hoa" khớp cả "hoà", "hóa", "họa". Với chỉ mục hẹp
+(tiêu đề + từ khoá) và 19 bản ghi thì vô hại — đã đo. Nếu sau này mở tìm kiếm sang 225
+bản ghi hoặc đưa `description` vào chỉ mục thì phải xét lại (bài học đã có ở bản offline
 dự phòng: bỏ dấu xong "phở bò" trùng token với "phổ biến / bộ" — xem `rules/frontend.md`).
+
+**`category` nằm trong chỉ mục nên kéo theo vài kết quả họ hàng.** Gõ "tam tru" ra 2 kết
+quả: "Đăng ký tạm trú" và "Khai báo tạm vắng" — cái thứ hai khớp vì `tru` nằm trong lĩnh
+vực "Cư trú". Chấp nhận: đổi lại người dân gõ thẳng "đất đai" là ra cả nhóm, và hai thủ
+tục cùng lĩnh vực đứng cạnh nhau không gây hiểu nhầm.
 
 ## 6. Kiểm thử
 
@@ -169,7 +184,7 @@ cd frontend-next && npm run dev
 | # | Việc | Kỳ vọng |
 |---|---|---|
 | 1 | Mở `/thu-tuc` | 19 thẻ, 6 chip, dòng đếm "Hiển thị 19 / 19 thủ tục" |
-| 2 | Gõ `khai sinh` | Còn thủ tục Đăng ký khai sinh |
+| 2 | Gõ `khai sinh` | 2 kết quả: KS-01 + HT-04 (từ khoá "sửa giấy khai sinh") — đã đo trên dữ liệu thật |
 | 3 | Gõ `so do` (không dấu) | Ra đúng 4 thủ tục Đất đai (DD-01…DD-04) — đều có "sổ đỏ" trong keywords |
 | 4 | Bấm chip `Cư trú` | Còn 5 thẻ, dòng đếm cập nhật, số trên các chip khác **không đổi** |
 | 5 | Chip `Cư trú` + gõ `dat dai` | Rỗng → hiện empty state có nút hỏi trợ lý |
