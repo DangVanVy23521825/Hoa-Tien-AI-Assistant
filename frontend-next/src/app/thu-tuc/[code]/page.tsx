@@ -155,7 +155,11 @@ export default function ThuTucDetailPage() {
           <Printer className="w-4 h-4" />
           In checklist hồ sơ
         </Button>
-        <Link href="/tro-ly">
+        <Link
+          href={`/tro-ly?q=${encodeURIComponent(
+            `Thủ tục ${procedure.name} cần chuẩn bị hồ sơ gì?`,
+          )}`}
+        >
           <Button className="bg-paddy hover:bg-paddy-deep gap-2">
             <MessageSquare className="w-4 h-4" />
             Hỏi trợ lý về thủ tục này
