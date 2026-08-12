@@ -23,6 +23,7 @@ export interface Procedure {
   code: string;
   name: string;
   category: string;
+  keywords: string[];
   description: string;
   documents: string[];
   fee: string;
