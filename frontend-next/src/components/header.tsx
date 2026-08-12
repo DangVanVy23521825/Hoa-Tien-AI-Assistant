@@ -201,7 +201,7 @@ export default function Header() {
           <p className="leading-snug">
             <span className="font-semibold text-white">
               Hệ thống thử nghiệm phục vụ dự thi &ldquo;Ý tưởng sáng tạo · Hòa
-              Tiến số&rdquo; của Chi đoàn thôn Phú Sơn Nam.
+              Tiến số&rdquo; của thôn Phú Sơn Nam.
             </span>{" "}
             <span className="hidden sm:inline">
               Dữ liệu thủ tục mang tính tham khảo, cần đối soát với UBND xã Hòa
