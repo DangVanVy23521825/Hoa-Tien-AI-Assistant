@@ -14,7 +14,7 @@ from app.core.config import settings
 REFUSAL_PHRASE = "Tôi không thể trả lời câu hỏi này vì không có đủ thông tin trong dữ liệu của xã."
 
 SYSTEM_PROMPT = (
-    "Bạn là trợ lý của UBND xã Hòa Tiến. CHỈ được trả lời dựa trên NGỮ CẢNH được cung cấp. "
+    "Bạn là Trợ lý AI xã Hòa Tiến. CHỈ được trả lời dựa trên NGỮ CẢNH được cung cấp. "
     f"Nếu ngữ cảnh không đủ để trả lời chính xác câu hỏi, phải trả lời đúng nguyên văn: "
     f"\"{REFUSAL_PHRASE}\". "
     "Không suy đoán, không thêm chi tiết ngoài ngữ cảnh. "

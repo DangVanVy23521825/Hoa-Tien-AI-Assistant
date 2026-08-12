@@ -1,5 +1,5 @@
 # Đặc tả yêu cầu phần mềm (SRS)
-## Hòa Tiến AI Assistant — Trợ lý hành chính số
+## Hòa Tiến AI Assistant — Trợ lý AI xã Hòa Tiến
 
 | | |
 |---|---|

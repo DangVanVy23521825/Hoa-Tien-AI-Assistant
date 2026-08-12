@@ -98,33 +98,35 @@ _EXEMPLARS: dict[str, tuple[str, ...]] = {
 }
 
 _GREETING_HTML = (
-    "<p>Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>.</p>"
+    "<p>Xin chào 👋 Tôi là <b>Trợ lý AI xã Hòa Tiến</b>.</p>"
     "<p>Tôi có thể giúp bạn:</p>"
     "<ul>"
     "<li>Tra cứu thủ tục hành chính của xã</li>"
     "<li>Biết cần chuẩn bị giấy tờ gì, lệ phí và thời gian xử lý</li>"
     "<li>Tìm nơi nộp hồ sơ, giờ làm việc và cách nộp trực tuyến</li>"
+    "<li>Tìm hiểu về lịch sử, văn hóa, làng nghề và các thôn của xã</li>"
     "</ul>"
     "<p>Bạn thử hỏi: <b>“Đăng ký khai sinh cần giấy tờ gì?”</b> hoặc "
-    "<b>“Chứng thực bản sao mất bao nhiêu tiền?”</b></p>"
+    "<b>“Đình làng Hương Lam có gì đặc biệt?”</b></p>"
 )
 
 _CAPABILITY_HTML = (
-    "<p>Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b> — một chương trình máy tính, "
-    "không phải cán bộ. Tôi trả lời dựa trên dữ liệu thủ tục và hỏi đáp do UBND xã cung "
-    "cấp, và luôn kèm nguồn để bạn đối chiếu.</p>"
+    "<p>Tôi là <b>Trợ lý AI xã Hòa Tiến</b> — một chương trình máy tính, "
+    "không phải cán bộ. Tôi trả lời dựa trên kho dữ liệu về xã Hòa Tiến được tổng hợp từ "
+    "nguồn công khai của xã, và luôn kèm nguồn để bạn đối chiếu.</p>"
     "<p>Tôi giúp được:</p>"
     "<ul>"
     "<li>Tra cứu thủ tục: khai sinh, kết hôn, chứng thực, thường trú, đất đai…</li>"
     "<li>Liệt kê hồ sơ cần chuẩn bị, lệ phí, thời gian xử lý, nơi nộp</li>"
     "<li>Hướng dẫn nộp trực tuyến qua Cổng Dịch vụ công</li>"
+    "<li>Giới thiệu lịch sử, di tích, lễ hội, làng nghề và các thôn của xã</li>"
     "</ul>"
     "<p>Việc ngoài phạm vi dữ liệu của xã thì tôi sẽ nói rõ là không có thông tin, "
     "không tự suy đoán. Trường hợp cần chắc chắn, bạn liên hệ Bộ phận Một cửa của xã.</p>"
 )
 
 _THANKS_HTML = (
-    "<p>Rất vui được hỗ trợ bạn 🙂 Nếu còn thủ tục nào cần tra cứu, bạn cứ hỏi tiếp nhé.</p>"
+    "<p>Rất vui được hỗ trợ bạn 🙂 Nếu còn điều gì cần tra cứu, bạn cứ hỏi tiếp nhé.</p>"
 )
 
 _GOODBYE_HTML = (
@@ -132,14 +134,14 @@ _GOODBYE_HTML = (
 )
 
 _ACK_HTML = (
-    "<p>Vâng 🙂 Bạn cần tra cứu thủ tục nào nữa không? Ví dụ: "
+    "<p>Vâng 🙂 Bạn cần tra cứu điều gì nữa không? Ví dụ: "
     "<b>“Chứng thực bản sao cần gì?”</b> hoặc <b>“Bộ phận Một cửa làm việc mấy giờ?”</b></p>"
 )
 
 _EMPTY_HTML = (
-    "<p>Bạn muốn hỏi điều gì về thủ tục hành chính của <b>xã Hòa Tiến</b> ạ?</p>"
+    "<p>Bạn muốn hỏi điều gì về <b>xã Hòa Tiến</b> ạ?</p>"
     "<p>Ví dụ: <b>“Đăng ký khai sinh cần giấy tờ gì?”</b>, "
-    "<b>“Đăng ký thường trú thế nào?”</b> hoặc <b>“UBND xã ở đâu?”</b></p>"
+    "<b>“UBND xã ở đâu?”</b> hoặc <b>“Xã Hòa Tiến có bao nhiêu thôn?”</b></p>"
 )
 
 _ANSWERS = {

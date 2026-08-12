@@ -71,7 +71,7 @@ export default function Header() {
             </div>
             {/* Ẩn dưới sm: chỗ hẹp thì dòng này xuống hàng, header cao vống lên. */}
             <div className="hidden sm:block text-[11px] text-ink-soft tracking-widest uppercase whitespace-nowrap">
-              Trợ lý hành chính số
+              Trợ lý AI xã Hòa Tiến
             </div>
           </div>
         </Link>

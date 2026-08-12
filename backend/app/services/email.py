@@ -30,13 +30,13 @@ RESEND_ENDPOINT = "https://api.resend.com/emails"
 
 
 def _otp_subject(code: str) -> str:
-    return f"{code} là mã xác thực Trợ lý hành chính số Hòa Tiến"
+    return f"{code} là mã xác thực Trợ lý AI xã Hòa Tiến"
 
 
 def _otp_html(code: str, display_name: str, ttl_minutes: int) -> str:
     return f"""\
 <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#1f2937">
-  <h2 style="margin:0 0 4px;color:#15803d">Trợ lý hành chính số xã Hòa Tiến</h2>
+  <h2 style="margin:0 0 4px;color:#15803d">Trợ lý AI xã Hòa Tiến</h2>
   <p style="margin:0 0 20px;color:#6b7280;font-size:14px">Xác thực địa chỉ email của bạn</p>
   <p>Xin chào <b>{display_name}</b>,</p>
   <p>Mã xác thực tài khoản của bạn là:</p>
@@ -45,14 +45,14 @@ def _otp_html(code: str, display_name: str, ttl_minutes: int) -> str:
             padding:16px;margin:20px 0;color:#15803d">{code}</p>
   <p style="font-size:14px;color:#6b7280">
     Mã có hiệu lực trong <b>{ttl_minutes} phút</b>. Nếu bạn không đăng ký tài khoản
-    tại Trợ lý hành chính số xã Hòa Tiến, hãy bỏ qua email này.
+    tại Trợ lý AI xã Hòa Tiến, hãy bỏ qua email này.
   </p>
 </div>"""
 
 
 def _otp_text(code: str, ttl_minutes: int) -> str:
     return (
-        f"Mã xác thực Trợ lý hành chính số xã Hòa Tiến của bạn là: {code}\n"
+        f"Mã xác thực Trợ lý AI xã Hòa Tiến của bạn là: {code}\n"
         f"Mã có hiệu lực trong {ttl_minutes} phút.\n"
         "Nếu bạn không đăng ký tài khoản, hãy bỏ qua email này."
     )

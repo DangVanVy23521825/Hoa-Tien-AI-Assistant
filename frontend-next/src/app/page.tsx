@@ -10,7 +10,7 @@ import {
   FileText,
   Search,
   ClipboardList,
-  MapPin,
+  Landmark,
   BookText,
   ArrowRight,
   Phone,
@@ -24,31 +24,36 @@ const CAPABILITIES = [
   },
   {
     icon: ClipboardList,
-    title: "Chuẩn bị hồ sơ",
-    body: "Liệt kê đủ giấy tờ cần mang theo, lệ phí và thời gian xử lý. In được thành checklist.",
+    title: "Chuẩn bị & nộp hồ sơ",
+    body: "Giấy tờ cần mang, lệ phí, thời gian xử lý, nơi nộp và mã QR nộp trực tuyến. In được thành checklist.",
   },
   {
-    icon: MapPin,
-    title: "Tìm nơi thực hiện",
-    body: "Chỉ đúng nơi nộp hồ sơ, giờ làm việc, số điện thoại — kèm mã QR nộp trực tuyến.",
+    icon: Landmark,
+    title: "Hiểu về quê hương",
+    body: "Lịch sử hình thành, di tích, lễ hội, làng nghề và 15 thôn của xã — hỏi như hỏi người trong làng.",
   },
   {
     icon: BookText,
     title: "Dẫn nguồn",
-    body: "Mọi câu trả lời đều kèm mục dữ liệu và căn cứ pháp lý để người dân đối chiếu.",
+    body: "Mọi câu trả lời đều kèm mục dữ liệu và căn cứ để người dân đối chiếu, không có thì nói rõ là không có.",
   },
 ];
 
 /* Câu mẫu lấy từ knowledge base thật + thống kê câu người dân hỏi nhiều nhất.
    Không đưa câu mà xã không giải quyết (ví dụ cấp CCCD — việc của Công an xã):
-   người xem bấm thử sẽ nhận đúng câu "ngoài phạm vi", phản tác dụng khi trình diễn. */
+   người xem bấm thử sẽ nhận đúng câu "ngoài phạm vi", phản tác dụng khi trình diễn.
+
+   Cơ cấu cố ý: 3 hành chính + 2 lịch sử + 1 văn hóa, để người xem thấy ngay trợ lý
+   không chỉ biết thủ tục. Cả 6 câu đã chạy qua scripts/eval_retrieval.py trên KB
+   hiện tại, câu thấp nhất 11.40 điểm (ngưỡng MIN_MATCH_SCORE = 4.0) — THÊM/SỬA câu
+   nào thì phải đo lại, chip bấm ra fallback trước ban giám khảo là hỏng buổi demo. */
 const SAMPLE_QUESTIONS = [
   "Đăng ký khai sinh cho con cần giấy tờ gì?",
   "Chứng thực bản sao từ bản chính mất bao nhiêu tiền?",
-  "Đăng ký thường trú cần hồ sơ gì?",
-  "Muốn chuyển nhượng đất thì làm thủ tục thế nào?",
   "Bộ phận Một cửa làm việc mấy giờ?",
-  "Khai báo tạm vắng khi nào phải làm?",
+  "Xã Hòa Tiến được hình thành từ khi nào?",
+  "Di tích Chiến thắng Gò Hà có ý nghĩa gì?",
+  "Làng nghề dệt chiếu Cẩm Nê có gì đặc biệt?",
 ];
 
 export default function HomePage() {
@@ -66,12 +71,15 @@ export default function HomePage() {
               Xã Hòa Tiến · TP Đà Nẵng
             </Badge>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-ink">
-              Hỏi một câu,{" "}
-              <em className="font-serif italic font-semibold text-paddy">xong</em>{" "}
-              thủ tục.
+              Hiểu Hòa Tiến, chỉ bằng{" "}
+              <em className="font-serif italic font-semibold text-paddy">
+                một câu hỏi
+              </em>
+              .
             </h1>
             <p className="mt-5 text-lg text-ink-soft max-w-md">
-              Trợ lý hành chính AI dành cho người dân xã Hòa Tiến — trả lời trong
+              Trợ lý AI dành cho người dân xã Hòa Tiến — hỏi từ thủ tục hành
+              chính đến lịch sử, văn hóa, làng nghề của xã. Chỉ trả lời trong
               phạm vi dữ liệu của xã và luôn kèm nguồn để đối chiếu.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">

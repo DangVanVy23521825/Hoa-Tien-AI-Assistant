@@ -1,5 +1,5 @@
 /**
- * Relay gửi mail cho Trợ lý hành chính số Hòa Tiến.
+ * Relay gửi mail cho Trợ lý AI xã Hòa Tiến.
  *
  * Vì sao cần: Railway chặn cổng SMTP ra ngoài (25/465/587), backend không nối được
  * smtp.gmail.com. Web App này chạy dưới danh nghĩa chính tài khoản Gmail của dự án và
@@ -43,7 +43,7 @@ function doPost(e) {
       subject: body.subject,
       body: body.text || '',
       htmlBody: body.html || undefined,
-      name: body.fromName || 'Trợ lý hành chính số Hòa Tiến',
+      name: body.fromName || 'Trợ lý AI xã Hòa Tiến',
     });
 
     return json({ ok: true });

@@ -15,7 +15,7 @@ export default function MascotAvatar({
   return (
     <Image
       src="/mascot/mascot-face.png"
-      alt="Trợ lý Hòa Tiến AI"
+      alt="Trợ lý AI xã Hòa Tiến"
       width={size}
       height={size}
       /* style thay vì class: bong bóng tin nhắn là flex align-stretch,

@@ -22,7 +22,7 @@
 
 > "Kính chào ban giám khảo. Ở xã Hòa Tiến, mỗi ngày có rất nhiều người dân đến UBND chỉ để hỏi một câu: *thủ tục này cần giấy tờ gì?* Nhiều người đi cả chục cây số, chờ đợi, rồi phải quay về vì thiếu giấy tờ.
 >
-> Nhóm em mang đến **Hòa Tiến AI** — trợ lý hành chính số, với thông điệp: **'Hỏi một câu, xong thủ tục.'** Người dân chỉ cần hỏi bằng tiếng Việt tự nhiên, ngay trên điện thoại, là biết cần chuẩn bị gì."
+> Nhóm em mang đến **Hòa Tiến AI** — Trợ lý AI xã Hòa Tiến, với thông điệp: **'Hiểu Hòa Tiến, chỉ bằng một câu hỏi.'** Người dân chỉ cần hỏi bằng tiếng Việt tự nhiên, ngay trên điện thoại, là biết cần chuẩn bị gì — và không chỉ thủ tục: cả lịch sử, văn hóa, làng nghề của xã cũng hỏi được."
 
 ### ⏱ 0:40–2:20 — Demo trực tiếp (Tiêu chí 2 & 3)
 

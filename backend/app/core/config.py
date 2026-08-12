@@ -38,7 +38,7 @@ class Settings(BaseSettings):
     smtp_user: str = ""
     # Gmail: App Password 16 ký tự (cần bật 2FA), KHÔNG phải mật khẩu đăng nhập.
     smtp_password: str = ""
-    smtp_from_name: str = "Trợ lý hành chính số Hòa Tiến"
+    smtp_from_name: str = "Trợ lý AI xã Hòa Tiến"
     # Để trống thì dùng chính SMTP_USER làm địa chỉ gửi (Gmail bắt buộc như vậy).
     smtp_from_email: str = ""
 

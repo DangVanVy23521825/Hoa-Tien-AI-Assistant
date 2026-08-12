@@ -44,9 +44,9 @@ export default function TroLyPage() {
     {
       role: "bot",
       content:
-        "Xin chào 👋 Tôi là trợ lý hành chính số của xã Hòa Tiến. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…",
+        "Xin chào 👋 Tôi là Trợ lý AI xã Hòa Tiến. Bạn muốn hỏi gì ạ? Ví dụ: khai sinh, chứng thực, giờ làm việc, hay lịch sử — văn hóa — làng nghề của xã…",
       html:
-        "Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…",
+        "Xin chào 👋 Tôi là <b>Trợ lý AI xã Hòa Tiến</b>. Bạn muốn hỏi gì ạ? Ví dụ: khai sinh, chứng thực, giờ làm việc, hay lịch sử — văn hóa — làng nghề của xã…",
     },
   ]);
   const [input, setInput] = useState("");
@@ -248,11 +248,12 @@ export default function TroLyPage() {
             Trợ lý AI
           </Badge>
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            Hỏi bất cứ điều gì về thủ tục hành chính
+            Hỏi bất cứ điều gì về xã Hòa Tiến
           </h2>
           <p className="mt-2 text-ink-soft">
-            Ví dụ: &ldquo;Làm khai sinh cho con cần giấy tờ gì?&rdquo; — trợ lý
-            trả lời kèm nguồn và mã QR.
+            Ví dụ: &ldquo;Làm khai sinh cho con cần giấy tờ gì?&rdquo; hay
+            &ldquo;Đình làng Hương Lam có gì đặc biệt?&rdquo; — trợ lý trả lời
+            kèm nguồn.
           </p>
         </div>
 
@@ -260,7 +261,7 @@ export default function TroLyPage() {
           <div className="flex items-center gap-3 px-5 py-4 border-b border-line bg-gradient-to-r from-paddy-deep to-river-deep text-white">
             <MascotAvatar size={36} className="rounded-xl ring-white/25" />
             <div className="flex-1 min-w-0">
-              <div className="font-semibold text-sm">Trợ lý Hòa Tiến</div>
+              <div className="font-semibold text-sm">Trợ lý AI xã Hòa Tiến</div>
               <div className="text-xs opacity-85 flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#7ee6a1] animate-pulse-dot shrink-0" />
                 {/* Vế sau ẩn trên điện thoại: để nguyên thì dòng này xuống 3

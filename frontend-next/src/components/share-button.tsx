@@ -19,7 +19,7 @@ export default function ShareButton() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Hòa Tiến AI · Trợ lý hành chính số",
+          title: "Hòa Tiến AI · Trợ lý AI xã Hòa Tiến",
           url: current,
         });
       } catch {}

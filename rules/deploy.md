@@ -32,7 +32,7 @@ RAG_SEMANTIC_WEIGHT=4.0
 EMAIL_PROVIDER=gas
 GAS_WEBAPP_URL=<Web app URL của Apps Script, dạng https://script.google.com/macros/s/.../exec>
 GAS_SHARED_SECRET=<chuỗi ngẫu nhiên, phải khớp SHARED_SECRET trong script>
-SMTP_FROM_NAME=Trợ lý hành chính số Hòa Tiến
+SMTP_FROM_NAME=Trợ lý AI xã Hòa Tiến
 FREE_GUEST_TURNS=3
 ```
 

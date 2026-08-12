@@ -26,16 +26,16 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hòa Tiến AI · Trợ lý hành chính số",
+    default: "Hòa Tiến AI · Trợ lý AI xã Hòa Tiến",
     template: "%s · Hòa Tiến AI",
   },
   description:
-    "Trợ lý hành chính số xã Hòa Tiến (TP Đà Nẵng): hỏi thủ tục bằng tiếng Việt tự nhiên, nhận hướng dẫn hồ sơ kèm nguồn và mã QR nộp trực tuyến.",
+    "Trợ lý AI xã Hòa Tiến (TP Đà Nẵng): hỏi bằng tiếng Việt tự nhiên về thủ tục hành chính, thông tin liên hệ và cả lịch sử — văn hóa — làng nghề của xã, trả lời kèm dẫn nguồn.",
   openGraph: {
     type: "website",
-    title: "Hòa Tiến AI · Trợ lý hành chính số",
+    title: "Hòa Tiến AI · Trợ lý AI xã Hòa Tiến",
     description:
-      "Hỏi thủ tục hành chính bằng tiếng Việt tự nhiên — trả lời kèm dẫn nguồn, hồ sơ cần chuẩn bị và mã QR nộp trực tuyến.",
+      "Hỏi bằng tiếng Việt tự nhiên về thủ tục hành chính và cả lịch sử — văn hóa — làng nghề xã Hòa Tiến, trả lời kèm dẫn nguồn.",
     url: SITE_URL,
     locale: "vi_VN",
     images: ["/icons/og-image.png"],

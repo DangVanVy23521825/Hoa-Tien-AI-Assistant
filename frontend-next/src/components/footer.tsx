@@ -59,7 +59,7 @@ export default function Footer() {
             <div>
               <div className="text-white font-semibold">Hòa Tiến AI</div>
               <div className="text-[11px] uppercase tracking-widest opacity-70">
-                Trợ lý hành chính số
+                Trợ lý AI xã Hòa Tiến
               </div>
             </div>
           </div>

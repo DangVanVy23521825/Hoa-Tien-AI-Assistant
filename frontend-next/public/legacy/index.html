@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hòa Tiến AI · Trợ lý hành chính số</title>
+<title>Hòa Tiến AI · Trợ lý AI xã Hòa Tiến</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
@@ -265,7 +265,7 @@
   <div class="nav">
     <a class="brand" href="#top">
       <div class="seal">HT</div>
-      <div class="brand-text"><b>Hòa Tiến AI</b><span>Trợ lý hành chính số</span></div>
+      <div class="brand-text"><b>Hòa Tiến AI</b><span>Trợ lý AI xã Hòa Tiến</span></div>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#tro-ly">Trợ lý AI</a>
@@ -284,8 +284,8 @@
 <section class="hero">
   <div class="hero-copy">
     <span class="eyebrow">Xã Hòa Tiến · TP Đà Nẵng</span>
-    <h1>Hỏi một câu, <em>xong</em> thủ tục.</h1>
-    <p class="lead">Trợ lý AI giúp người dân Hòa Tiến tra cứu thủ tục hành chính, biết cần chuẩn bị hồ sơ gì và liên hệ đúng nơi — bằng tiếng Việt, ngay trên điện thoại.</p>
+    <h1>Hiểu Hòa Tiến, chỉ bằng <em>một câu hỏi</em>.</h1>
+    <p class="lead">Trợ lý AI xã Hòa Tiến giúp người dân tra cứu thủ tục hành chính, biết cần chuẩn bị hồ sơ gì, liên hệ đúng nơi và tìm hiểu lịch sử — văn hóa — làng nghề của xã, bằng tiếng Việt, ngay trên điện thoại.</p>
     <div class="hero-actions">
       <a href="#tro-ly" class="btn btn-primary">Trò chuyện với trợ lý →</a>
       <a href="#thu-tuc" class="btn btn-ghost">Xem danh mục thủ tục</a>
@@ -318,14 +318,14 @@
 <section id="tro-ly" class="block">
   <div class="sec-head" style="text-align:center;">
     <span class="eyebrow" style="margin:0 auto 12px; display:inline-flex;">Trợ lý AI</span>
-    <h2>Hỏi bất cứ điều gì về thủ tục hành chính</h2>
+    <h2>Hỏi bất cứ điều gì về xã Hòa Tiến</h2>
     <p style="margin:8px auto 0;">Ví dụ: “Làm khai sinh cho con cần giấy tờ gì?” — trợ lý trả lời kèm nguồn và mã QR.</p>
   </div>
   <div class="chat-wrap">
     <div class="chat-card">
       <div class="chat-top">
         <div class="avatar">HT</div>
-        <div><b>Trợ lý Hòa Tiến</b><span><i class="live"></i> Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã</span></div>
+        <div><b>Trợ lý AI xã Hòa Tiến</b><span><i class="live"></i> Đang trực tuyến · Trả lời trong phạm vi dữ liệu xã</span></div>
       </div>
       <div class="chat-body" id="chatBody"></div>
       <div class="chips" id="quickChips"></div>
@@ -379,7 +379,7 @@
 </section>
 
 <footer>
-  <b>Hòa Tiến AI</b> · Trợ lý hành chính số — sản phẩm dự thi “Ý tưởng sáng tạo · Hòa Tiến số”.<br/>
+  <b>Hòa Tiến AI</b> · Trợ lý AI xã Hòa Tiến — sản phẩm dự thi “Ý tưởng sáng tạo · Hòa Tiến số”.<br/>
   <span class="disc" style="display:block;">Đây là sản phẩm demo. Dữ liệu thủ tục mang tính tham khảo, cần đối soát với UBND xã Hòa Tiến trước khi sử dụng chính thức. Trợ lý AI chỉ trả lời trong phạm vi dữ liệu của xã và luôn hướng người dân liên hệ UBND khi cần.</span>
 </footer>
 
@@ -390,7 +390,7 @@
 
 <script>
 /* ============================================================
-   Hòa Tiến AI — Trợ lý hành chính số (demo, offline-first)
+   Hòa Tiến AI — Trợ lý AI xã Hòa Tiến (demo, offline-first)
    Kiến trúc tách lớp: KB → retrieve() → generate()/callLLM()
    Dễ nâng cấp lên RAG thật: thay retrieve() bằng vector search,
    thay generate() bằng callLLM() gọi LLM API.
@@ -583,7 +583,7 @@ function ask(query) {
 /* ---------- Khởi tạo UI ---------- */
 function initUI() {
   // greeting
-  addMsg('bot', `Xin chào 👋 Tôi là trợ lý hành chính số của <b>xã Hòa Tiến</b>. Bạn cần tra cứu thủ tục nào? Ví dụ: khai sinh, kết hôn, chứng thực, giờ làm việc…`);
+  addMsg('bot', `Xin chào 👋 Tôi là <b>Trợ lý AI xã Hòa Tiến</b>. Bạn muốn hỏi gì ạ? Ví dụ: khai sinh, chứng thực, giờ làm việc, hay lịch sử — văn hóa — làng nghề của xã…`);
 
   // quick chips
   const chips = ['Làm khai sinh cần gì?', 'Đăng ký kết hôn', 'Giờ làm việc?', 'Chứng thực bản sao'];

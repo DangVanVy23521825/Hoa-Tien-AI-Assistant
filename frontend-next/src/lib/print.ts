@@ -22,7 +22,7 @@ export function printChecklist(procedure: Procedure) {
     <p><b>Lệ phí:</b> ${escapeHtml(procedure.fee)} — <b>Thời gian xử lý:</b> ${escapeHtml(procedure.processing_time)}</p>
     <p><b>Nơi nộp:</b> ${escapeHtml(procedure.place_of_submission)}</p>
     <p><b>Nộp trực tuyến:</b> ${escapeHtml(procedure.online_url)}</p>
-    <p class="print-foot">In từ Trợ lý hành chính số Hòa Tiến AI · ${new Date().toLocaleDateString("vi-VN")} · Thông tin tham khảo, đối soát tại Bộ phận Một cửa.</p>`;
+    <p class="print-foot">In từ Trợ lý AI xã Hòa Tiến (Hòa Tiến AI) · ${new Date().toLocaleDateString("vi-VN")} · Thông tin tham khảo, đối soát tại Bộ phận Một cửa.</p>`;
 
   window.print();
 }

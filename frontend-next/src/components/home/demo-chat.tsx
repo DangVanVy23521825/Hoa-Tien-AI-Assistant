@@ -74,7 +74,7 @@ export default function DemoChat() {
       <div className="flex items-center gap-3 px-4 py-3 border-b border-line bg-gradient-to-r from-paddy-deep to-river-deep text-white">
         <MascotAvatar size={32} className="ring-white/25" />
         <div className="flex-1 min-w-0">
-          <div className="font-semibold text-sm">Trợ lý Hòa Tiến</div>
+          <div className="font-semibold text-sm">Trợ lý AI xã Hòa Tiến</div>
           <div className="text-[11px] opacity-85 flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#7ee6a1] animate-pulse-dot" />
             Trả lời trong phạm vi dữ liệu xã
