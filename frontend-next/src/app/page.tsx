@@ -85,10 +85,16 @@ export default function HomePage() {
               </em>
               .
             </h1>
-            <p className="mt-5 text-lg text-ink-soft max-w-md">
-              Trợ lý AI dành cho người dân xã Hòa Tiến — hỏi từ thủ tục hành
-              chính đến lịch sử, văn hóa, làng nghề của xã. Chỉ trả lời trong
-              phạm vi dữ liệu của xã và luôn kèm nguồn để đối chiếu.
+            {/* Hai đoạn: câu định vị ngắn (text-lg) rồi mới tới phần mô tả
+                chi tiết (text-base) — để khối chữ dài không đè lên h1. */}
+            <p className="mt-5 text-lg text-ink-soft max-w-lg">
+              Nền tảng hỗ trợ tra cứu thông tin và kết nối người dân với chính
+              quyền xã Hòa Tiến.
+            </p>
+            <p className="mt-3 text-base text-ink-soft max-w-lg">
+              Trợ lý AI Hòa Tiến hỗ trợ người dân tra cứu thủ tục hành chính,
+              tìm hiểu lịch sử, văn hóa, địa danh và làng nghề, đồng thời cung
+              cấp kênh tiếp nhận phản ánh, kiến nghị và thông tin từ cộng đồng.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href="/tro-ly">
