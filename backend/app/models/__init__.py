@@ -4,6 +4,7 @@ from app.models.email_otp import EmailOtp
 from app.models.faq import Faq
 from app.models.knowledge_article import KnowledgeArticle
 from app.models.procedure import Procedure
+from app.models.report import REPORT_CATEGORIES, Report
 from app.models.user import RoleEnum, User
 
 __all__ = [
@@ -15,4 +16,6 @@ __all__ = [
     "ChatHistory",
     "KnowledgeArticle",
     "EmailOtp",
+    "Report",
+    "REPORT_CATEGORIES",
 ]

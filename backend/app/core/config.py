@@ -50,6 +50,14 @@ class Settings(BaseSettings):
     # Số câu hỏi khách chưa đăng nhập được hỏi thử trước khi bị yêu cầu đăng ký.
     free_guest_turns: int = 3
 
+    # Phản ánh, kiến nghị. Hòm thư nhận là của NHÓM PHÁT TRIỂN, cố ý không phải mail
+    # của UBND xã — đây là sản phẩm dự thi, không phải kênh tiếp nhận chính thức.
+    # Để trống thì phiếu vẫn được lưu DB, chỉ bỏ qua bước gửi mail.
+    report_to_email: str = ""
+    # Hạn mức đếm theo TÀI KHOẢN trong DB, không dùng slowapi per-IP: hội trại cả xã
+    # chung một wifi NAT nên chặn theo IP sẽ chặn nhầm người thật.
+    report_daily_limit: int = 5
+
     gemini_api_key: str = ""
     gemini_generation_model: str = "gemini-2.5-flash"
 

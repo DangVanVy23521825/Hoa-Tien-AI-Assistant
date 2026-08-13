@@ -6,7 +6,7 @@ from slowapi.errors import RateLimitExceeded
 
 from app.core.config import settings
 from app.core.limiter import limiter
-from app.routers import admin, auth, chat, contacts, faq, procedures
+from app.routers import admin, auth, chat, contacts, faq, procedures, reports
 
 app = FastAPI(title="Hòa Tiến AI Assistant API", version="1.0.0")
 app.state.limiter = limiter
@@ -25,6 +25,7 @@ app.include_router(procedures.router)
 app.include_router(faq.router)
 app.include_router(contacts.router)
 app.include_router(chat.router)
+app.include_router(reports.router)
 app.include_router(admin.router)
 
 
