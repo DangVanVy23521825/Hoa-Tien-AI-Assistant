@@ -5,6 +5,7 @@ cộng dồn vào cùng một score, giữ nguyên MIN_MATCH_SCORE làm ngưỡn
 để không phá vỡ hành vi đã kiểm chứng (15/15 câu mẫu) khi chưa có embedding.
 """
 
+import logging
 import re
 import unicodedata
 from dataclasses import dataclass
@@ -17,6 +18,8 @@ from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.models import Contact, Faq, KnowledgeArticle, Procedure
 from app.services.embeddings import embed_text
+
+logger = logging.getLogger(__name__)
 
 SourceType = Literal["procedure", "faq", "contact", "commune", "article"]
 
@@ -39,6 +42,27 @@ def normalize(s: str | None) -> str:
 
 
 MIN_MATCH_SCORE = 4.0  # yêu cầu ít nhất 2 từ khớp độc lập (2×2) hoặc 1 cụm keyword khớp (+4)
+
+# Ngưỡng dùng khi KHÔNG có embedding câu hỏi (provider lỗi, hết quota, mất mạng).
+# Lúc đó `cos` là None với mọi tài liệu nên cổng cosine mở hoàn toàn (fail-open) và
+# keyword là tín hiệu duy nhất còn lại — tức hệ thống NỚI ra đúng lúc nó mù nhất.
+#
+# Đo trên bộ eval_retrieval với embedding tắt (20 câu hợp lệ · 14 câu ngoài phạm vi):
+#   ngưỡng  4.0 → 20/20 hợp lệ · CHẶN 0/14 câu rác   ← hành vi cũ: rác lọt hết
+#   ngưỡng 10.0 → 18/20 hợp lệ · chặn 12/14 câu rác  ← chọn cái này
+#   ngưỡng 12.0 → 15/20 hợp lệ · chặn 13/14          ← mất thêm 3 câu đúng chỉ để
+#                                                      chặn thêm 1 câu rác, không đáng
+# Độ phủ token đã thử làm điều kiện phụ nhưng vô tác dụng (kết quả phẳng ở mọi mức),
+# nên không thêm vào.
+#
+# Hai câu hợp lệ mất ở ngưỡng 10 đều là câu thống kê xã ("có bao nhiêu thôn", "rộng
+# bao nhiêu, dân số bao nhiêu") — gần như toàn stopword nên vốn dựa vào semantic để
+# khớp. Ở chế độ suy giảm chúng bị từ chối và hướng người dân về UBND xã. Đó là đánh
+# đổi có chủ đích: nguyên tắc kiến trúc #2 nói thà không trả lời còn hơn trả lời sai.
+#
+# 10.0 trùng đúng con số bản offline dự phòng dùng (rules/frontend.md) — hai lần đo
+# độc lập bằng hai cách khác nhau ra cùng kết quả.
+MIN_MATCH_SCORE_NO_EMBEDDING = 10.0
 
 # Cosine của gemini-embedding có "nền" ~0.5 giữa mọi cặp văn bản tiếng Việt kể cả
 # hoàn toàn không liên quan (đo trên KB production 08/2026: câu rác đạt 0.48–0.625,
@@ -256,5 +280,15 @@ def retrieve(db: Session, query: str, top_k: int = 3) -> list[Hit]:
             hits.append(Hit(type=source_type, ref=ref, score=score))
 
     hits.sort(key=lambda h: h.score, reverse=True)
-    hits = [h for h in hits if h.score >= MIN_MATCH_SCORE]
+    # Mất embedding thì cổng cosine mở hết, keyword thành tín hiệu duy nhất — phải
+    # SIẾT ngưỡng lại thay vì để nguyên, nếu không mọi câu ngoài phạm vi đều lọt.
+    if q_embedding is None:
+        logger.warning(
+            "[retrieval] Không có embedding câu hỏi — chạy chế độ suy giảm, "
+            "siết ngưỡng %.1f → %.1f", MIN_MATCH_SCORE, MIN_MATCH_SCORE_NO_EMBEDDING
+        )
+        min_score = MIN_MATCH_SCORE_NO_EMBEDDING
+    else:
+        min_score = MIN_MATCH_SCORE
+    hits = [h for h in hits if h.score >= min_score]
     return hits[:top_k]
