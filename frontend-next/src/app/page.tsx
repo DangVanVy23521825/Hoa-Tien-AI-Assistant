@@ -16,26 +16,34 @@ import {
   Phone,
 } from "lucide-react";
 
+/* Văn phong hành chính, trang trọng nhưng vẫn dễ hiểu — cố ý tránh giọng
+   quảng cáo sản phẩm, vì đây là trợ lý của chính quyền xã.
+
+   KHÔNG nêu "trình tự thực hiện": chuỗi "trình tự" không xuất hiện một lần nào
+   trong knowledge base và không thủ tục nào có trường quy trình các bước (cùng
+   lý do đã loại mục "Quy trình" khỏi trang chi tiết thủ tục). Nêu ra là hứa thứ
+   hệ thống không có. Thay bằng "căn cứ pháp lý" — trường legalBasis có thật ở
+   cả 19 thủ tục. */
 const CAPABILITIES = [
   {
     icon: Search,
-    title: "Tra cứu thủ tục",
-    body: "Hỏi bằng tiếng Việt tự nhiên, kể cả khẩu ngữ — không cần biết tên gọi hành chính chính xác.",
+    title: "Tra cứu thủ tục hành chính",
+    body: "Hỗ trợ tra cứu thông tin thủ tục hành chính bằng ngôn ngữ tự nhiên, bao gồm tên thủ tục, thành phần hồ sơ, căn cứ pháp lý và các điều kiện có liên quan.",
   },
   {
     icon: ClipboardList,
-    title: "Chuẩn bị & nộp hồ sơ",
-    body: "Giấy tờ cần mang, lệ phí, thời gian xử lý, nơi nộp và mã QR nộp trực tuyến. In được thành checklist.",
+    title: "Hướng dẫn chuẩn bị và thực hiện hồ sơ",
+    body: "Cung cấp thông tin về thành phần hồ sơ, lệ phí, thời hạn giải quyết, cơ quan thực hiện và hình thức nộp hồ sơ. Nội dung hướng dẫn có thể được tổng hợp thành checklist để thuận tiện cho việc chuẩn bị và thực hiện.",
   },
   {
     icon: Landmark,
-    title: "Hiểu về quê hương",
-    body: "Lịch sử hình thành, di tích, lễ hội, làng nghề và 15 thôn của xã — hỏi như hỏi người trong làng.",
+    title: "Tra cứu thông tin về địa phương",
+    body: "Cung cấp thông tin về lịch sử hình thành, di tích, lễ hội, làng nghề, văn hóa và 15 thôn thuộc xã Hòa Tiến, góp phần hỗ trợ người dân tìm hiểu về lịch sử, văn hóa và đời sống địa phương.",
   },
   {
     icon: BookText,
-    title: "Dẫn nguồn",
-    body: "Mọi câu trả lời đều kèm mục dữ liệu và căn cứ để người dân đối chiếu, không có thì nói rõ là không có.",
+    title: "Cung cấp nguồn thông tin đối chiếu",
+    body: "Các câu trả lời được cung cấp kèm theo nguồn dữ liệu và căn cứ liên quan để người dân thuận tiện kiểm tra, đối chiếu. Trường hợp hệ thống không có đủ thông tin làm căn cứ trả lời, AI sẽ thông báo rõ và không tự suy đoán.",
   },
 ];
 
@@ -147,7 +155,7 @@ export default function HomePage() {
         />
       </svg>
 
-      {/* ── AI giúp bạn làm gì? ──────────────────────────────── */}
+      {/* ── AI hỗ trợ người dân những gì? ────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-14">
         <div className="mb-8">
           <Badge
@@ -158,10 +166,12 @@ export default function HomePage() {
             Khả năng
           </Badge>
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            AI giúp bạn làm gì?
+            AI hỗ trợ người dân những gì?
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 2 cột thay vì 4: văn phong hành chính dài gấp mấy lần bản cũ,
+            nhồi 4 cột thì mỗi thẻ thành một cột chữ hẹp và cao. */}
+        <div className="grid sm:grid-cols-2 gap-4">
           {CAPABILITIES.map((c) => (
             <div
               key={c.title}
@@ -177,7 +187,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Tại sao có thể tin tưởng? ────────────────────────── */}
+      {/* ── Cơ sở để AI cung cấp thông tin đáng tin cậy ───────── */}
       <section className="bg-gradient-to-b from-white/75 to-[#f7f3e8]/75 border-t border-b border-line py-14 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
@@ -189,11 +199,14 @@ export default function HomePage() {
               Cách hoạt động
             </Badge>
             <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-              Tại sao có thể tin tưởng?
+              Cơ sở để AI cung cấp thông tin đáng tin cậy
             </h2>
-            <p className="mt-2 text-ink-soft max-w-xl mx-auto">
-              Trợ lý không trả lời bằng kiến thức chung trên Internet. Mỗi câu đi
-              qua bốn bước dưới đây — thiếu căn cứ thì từ chối, không suy đoán.
+            <p className="mt-2 text-ink-soft max-w-2xl mx-auto">
+              Trợ lý AI sử dụng nguồn dữ liệu được quản lý và cung cấp cho hệ
+              thống, thay vì trả lời dựa trên thông tin chung không được kiểm
+              chứng trên Internet. Mỗi yêu cầu được xử lý qua bốn bước nhằm bảo
+              đảm câu trả lời có căn cứ và phù hợp với phạm vi thông tin của địa
+              phương.
             </p>
           </div>
           <TrustPipeline />

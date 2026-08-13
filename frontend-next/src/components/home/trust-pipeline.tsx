@@ -1,33 +1,33 @@
 import { Database, Search, Sparkles, Quote, ArrowDown } from "lucide-react";
 
-/* "Tại sao có thể tin tưởng?" — kể đúng luồng RAG thật của hệ thống
+/* "Cơ sở để AI cung cấp thông tin đáng tin cậy" — kể đúng luồng RAG thật
    (retrieve() hybrid trên pgvector -> Gemini bị ép grounding -> trích nguồn),
    không phải sơ đồ trang trí. Mô tả từng bước phải khớp rules/ai-module.md. */
 
 const STEPS = [
   {
     icon: Database,
-    title: "Dữ liệu của xã",
+    title: "Cơ sở dữ liệu của xã",
     caption: "Knowledge Base",
-    body: "Thủ tục, hỏi đáp và thông tin liên hệ do UBND xã Hòa Tiến cung cấp — không lấy từ Internet.",
+    body: "Hệ thống sử dụng dữ liệu về thủ tục hành chính, thông tin địa phương, nội dung hỏi đáp và thông tin liên hệ do UBND xã Hòa Tiến cung cấp và quản lý.",
   },
   {
     icon: Search,
-    title: "Tìm đúng mục liên quan",
+    title: "Xác định thông tin liên quan",
     caption: "Retrieval",
-    body: "Kết hợp khớp từ khoá và tìm kiếm ngữ nghĩa. Câu hỏi ngoài phạm vi bị chặn ngay ở bước này.",
+    body: "Hệ thống phân tích yêu cầu và tìm kiếm các nội dung phù hợp trong cơ sở dữ liệu bằng phương pháp kết hợp giữa tìm kiếm từ khóa và tìm kiếm ngữ nghĩa. Các yêu cầu nằm ngoài phạm vi dữ liệu được kiểm soát và xử lý theo quy định của hệ thống.",
   },
   {
     icon: Sparkles,
-    title: "AI diễn giải dễ hiểu",
+    title: "Tổng hợp và diễn giải thông tin",
     caption: "AI reasoning",
-    body: "AI chỉ được viết lại từ dữ liệu vừa tìm được. Không đủ căn cứ thì phải nói không biết.",
+    body: "AI tổng hợp và diễn giải thông tin từ các dữ liệu đã được truy xuất, nhằm cung cấp câu trả lời rõ ràng, dễ hiểu và phù hợp với nhu cầu của người sử dụng. AI không tự bổ sung thông tin khi không có đủ căn cứ.",
   },
   {
     icon: Quote,
-    title: "Kèm nguồn để đối chiếu",
+    title: "Cung cấp nguồn đối chiếu",
     caption: "Citation",
-    body: "Mỗi câu trả lời đều dẫn tên mục dữ liệu và căn cứ pháp lý để người dân kiểm chứng.",
+    body: "Câu trả lời được kèm theo thông tin về nguồn dữ liệu và căn cứ liên quan, giúp người dân thuận tiện kiểm tra và đối chiếu. Trường hợp không có đủ căn cứ, hệ thống sẽ thông báo rõ thay vì đưa ra thông tin không xác thực.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function TrustPipeline() {
             </div>
             <div className="min-w-0">
               <div className="text-[11px] font-semibold uppercase tracking-widest text-river">
-                {s.caption}
+                {String(i + 1).padStart(2, "0")} — {s.caption}
               </div>
               <h3 className="font-semibold text-[15px] mt-0.5">{s.title}</h3>
               <p className="text-sm text-ink-soft mt-1">{s.body}</p>
