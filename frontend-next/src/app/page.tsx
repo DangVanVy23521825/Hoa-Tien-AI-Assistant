@@ -241,11 +241,10 @@ export default function HomePage() {
       <section className="px-6 pb-14">
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-paddy-deep to-river-deep text-white rounded-3xl px-8 py-12 text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-            Không phải xếp hàng để hỏi một câu.
+            Không cần đến UBND xã chỉ để hỏi một câu.
           </h2>
           <p className="mt-3 text-white/85 max-w-lg mx-auto">
-            Hỏi trợ lý trước, biết cần mang theo giấy tờ gì, rồi mới ra Bộ phận
-            Một cửa.
+            Hỏi AI Hòa Tiến trước — tra cứu thông tin, biết cần chuẩn bị gì và chủ động thực hiện công việc của mình.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Link href="/tro-ly">
