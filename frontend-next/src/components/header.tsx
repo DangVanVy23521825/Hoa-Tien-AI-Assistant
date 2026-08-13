@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -16,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AdminStatsDialog from "@/components/admin-stats-dialog";
-import { Menu, User, LogOut, BarChart3, Info } from "lucide-react";
+import { Menu, User, UserRound, LogOut, BarChart3, Info } from "lucide-react";
 
 const navLinks = [
   { href: "/tro-ly", label: "Trợ lý AI" },
@@ -120,13 +121,23 @@ export default function Header() {
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-52">
-                <DropdownMenuLabel>
-                  <div className="font-medium">{user.display_name}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {user.email}
-                  </div>
-                </DropdownMenuLabel>
+                {/* DropdownMenuLabel là Menu.GroupLabel của base-ui, BẮT BUỘC nằm
+                    trong Menu.Group. Thiếu bọc thì base-ui ném "MenuGroupContext is
+                    missing", React gỡ cả cây và người dùng thấy trang trắng báo
+                    "This page couldn't load" ngay khi bấm nút tài khoản. */}
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>
+                    <div className="font-medium">{user.display_name}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {user.email}
+                    </div>
+                  </DropdownMenuLabel>
+                </DropdownMenuGroup>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem render={<Link href="/tai-khoan" />}>
+                  <UserRound className="w-4 h-4 mr-2" />
+                  Tài khoản
+                </DropdownMenuItem>
                 {user.role === "admin" && (
                   <DropdownMenuItem onClick={() => setStatsOpen(true)}>
                     <BarChart3 className="w-4 h-4 mr-2" />
@@ -181,6 +192,20 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
+              {/* Menu mobile trước đây không có lối nào tới khu vực tài khoản. */}
+              {user && (
+                <Link
+                  href="/tai-khoan"
+                  onClick={() => setMobileOpen(false)}
+                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                    pathname === "/tai-khoan"
+                      ? "bg-paddy/10 text-paddy-deep"
+                      : "text-ink-soft hover:bg-muted"
+                  }`}
+                >
+                  Tài khoản
+                </Link>
+              )}
               <Link
                 href="/tro-ly"
                 onClick={() => setMobileOpen(false)}
