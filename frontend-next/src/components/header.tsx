@@ -22,6 +22,7 @@ const navLinks = [
   { href: "/tro-ly", label: "Trợ lý AI" },
   { href: "/thu-tuc", label: "Thủ tục" },
   { href: "/hoi-dap", label: "Hỏi đáp" },
+  { href: "/phan-anh", label: "Phản ánh" },
 ];
 
 export default function Header() {

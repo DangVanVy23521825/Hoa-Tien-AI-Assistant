@@ -33,6 +33,24 @@ export interface Procedure {
   online_url: string;
 }
 
+export type ReportCategory =
+  | "ha_tang"
+  | "moi_truong"
+  | "an_ninh"
+  | "thu_tuc"
+  | "khac";
+
+export interface Report {
+  id: string;
+  seq: number;
+  /** Mã phiếu người dân đọc được, ví dụ "PA-0007" — backend sinh từ `seq`. */
+  code: string;
+  category: ReportCategory;
+  content: string;
+  location: string | null;
+  created_at: string;
+}
+
 export interface Faq {
   id: string;
   question: string;
@@ -195,6 +213,12 @@ export const api = {
   getPublicStats: () => apiFetch<PublicStats>("/chat/stats/public"),
   getAdminStats: () => apiFetch<AdminStats>("/admin/stats"),
   getGuestQuota: () => apiFetch<GuestQuota>("/chat/guest-quota"),
+  createReport: (body: {
+    category: ReportCategory;
+    content: string;
+    location?: string;
+  }) => apiFetch<Report>("/reports", { method: "POST", body: JSON.stringify(body) }),
+  getMyReports: () => apiFetch<Report[]>("/reports/me"),
   /** Tạo tài khoản chưa xác thực + gửi OTP. Chưa có token cho tới khi verify. */
   register: (email: string, password: string, display_name: string) =>
     apiFetch<OtpSent>("/auth/register", {
