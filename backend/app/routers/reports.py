@@ -8,7 +8,7 @@ với mã OTP đăng ký — spam hết quota là hỏng luôn đường tạo t
 import logging
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, BackgroundTasks, Depends, status
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
@@ -36,6 +36,7 @@ def _sent_last_24h(db: Session, user_id) -> int:
 @router.post("", response_model=ReportOut, status_code=status.HTTP_201_CREATED)
 def create_report(
     payload: ReportCreate,
+    background: BackgroundTasks,
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user_required),
 ) -> Report:
@@ -59,7 +60,11 @@ def create_report(
     db.commit()
     db.refresh(report)
 
-    send_report_email(
+    # Gửi mail SAU khi trả lời, giống hệt cách issue_otp() làm. Gọi đồng bộ thì một
+    # lần relay Apps Script chậm hoặc lỗi sẽ bắt người dân ngồi chờ tới 30 giây
+    # timeout mới thấy phản hồi — đã gặp thật một lần Google trả 404 nhất thời.
+    background.add_task(
+        send_report_email,
         code=report.code,
         category=report.category,
         content=report.content,
