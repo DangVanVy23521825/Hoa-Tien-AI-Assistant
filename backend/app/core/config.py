@@ -48,7 +48,7 @@ class Settings(BaseSettings):
     gas_shared_secret: str = ""
 
     # Số câu hỏi khách chưa đăng nhập được hỏi thử trước khi bị yêu cầu đăng ký.
-    free_guest_turns: int = 3
+    free_guest_turns: int = 10
 
     # Phản ánh, kiến nghị. Hòm thư nhận là của NHÓM PHÁT TRIỂN, cố ý không phải mail
     # của UBND xã — đây là sản phẩm dự thi, không phải kênh tiếp nhận chính thức.

@@ -48,15 +48,16 @@ mới), gửi lại có cooldown **60 giây**/email và tối đa **5 lần/gi�
 Lỗi có ý nghĩa với FE trả dưới dạng `detail` là object `{code, message}`; lỗi thường vẫn
 là chuỗi. FE xử lý được cả hai dạng.
 
-## 3. Cổng 3 lượt cho khách
+## 3. Cổng lượt hỏi thử cho khách
 
 - FE sinh `guest_id` (UUID v4) lưu localStorage, gửi header `X-Guest-Id` ở mọi request chat.
 - `POST /chat` không kèm JWT: đếm `chat_history` có `guest_id` đó và `user_id IS NULL`;
-  vượt `FREE_GUEST_TURNS` (env, mặc định 3) → **403** `{code: "guest_quota_exceeded"}`.
+  vượt `FREE_GUEST_TURNS` (env, mặc định 10 — bản thiết kế gốc là 3, nới lên 10 ngày
+  14/08/2026 cho buổi thi) → **403** `{code: "guest_quota_exceeded"}`.
 - **Câu xã giao không trừ lượt.** "Xin chào"/"cảm ơn" đi qua tầng smalltalk, không phải
   tra cứu thật, nên không tính vào hạn mức (lưu với `guest_id = NULL`).
 - Người đã đăng nhập: không giới hạn, lịch sử lưu theo `user_id` như hiện tại.
-- Giới hạn đã biết: xoá dữ liệu trình duyệt là reset được 3 lượt. Chấp nhận — mục tiêu là
+- Giới hạn đã biết: xoá dữ liệu trình duyệt là reset được hạn mức. Chấp nhận — mục tiêu là
   khuyến khích đăng ký chứ không phải chống gian lận.
 - Chat demo ở trang chủ dùng chung hạn mức này (cùng một API).
 
@@ -74,7 +75,7 @@ Gửi qua `BackgroundTasks` để không giữ response. Mail hỏng không đư
 log lỗi, người dùng bấm "gửi lại mã".
 
 Env mới: `EMAIL_PROVIDER`, `RESEND_API_KEY`, `RESEND_FROM` (mặc định
-`Hòa Tiến AI <onboarding@resend.dev>`), `FREE_GUEST_TURNS` (mặc định 3),
+`Hòa Tiến AI <onboarding@resend.dev>`), `FREE_GUEST_TURNS` (mặc định 10),
 `OTP_TTL_MINUTES` (10), `OTP_MAX_ATTEMPTS` (5), `OTP_RESEND_COOLDOWN_SECONDS` (60).
 
 ## 5. Frontend (`frontend-next`)

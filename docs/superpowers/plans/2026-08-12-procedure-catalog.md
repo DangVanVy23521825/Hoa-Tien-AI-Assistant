@@ -786,4 +786,4 @@ git push origin main
 - Lưu bộ lọc vào URL / chia sẻ link kết quả lọc
 - Đồng bộ tính năng sang bản offline dự phòng
 - Sửa phân loại XN-01 "Xác nhận tình trạng hôn nhân" đang nằm ở lĩnh vực "Cư trú" (dữ liệu seed, cần bạn quyết)
-- Nới `FREE_GUEST_TURNS` cho buổi thi (việc vận hành trên Railway)
+- ~~Nới `FREE_GUEST_TURNS` cho buổi thi (việc vận hành trên Railway)~~ — đã làm 14/08/2026: 3 → 10

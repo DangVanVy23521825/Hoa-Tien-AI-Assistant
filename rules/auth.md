@@ -4,7 +4,7 @@
 
 | Role | Quyền |
 |---|---|
-| **Khách (ẩn danh)** | Xem `/procedures`, `/faq`, `/contacts` không giới hạn. Được hỏi `/chat` **tối đa 3 lượt tra cứu** (`FREE_GUEST_TURNS`) rồi phải đăng ký. Không lưu lịch sử. |
+| **Khách (ẩn danh)** | Xem `/procedures`, `/faq`, `/contacts` không giới hạn. Được hỏi `/chat` **tối đa 10 lượt tra cứu** (`FREE_GUEST_TURNS`) rồi phải đăng ký. Không lưu lịch sử. |
 | **`user`** (đã xác thực email) | Hỏi `/chat` không giới hạn + lưu và xem lại lịch sử chat của mình. |
 | **`admin`** | Toàn quyền CRUD nội dung (procedures/faq/contacts). Không cần quyền trên chat của user khác trừ khi có yêu cầu kiểm duyệt cụ thể. |
 

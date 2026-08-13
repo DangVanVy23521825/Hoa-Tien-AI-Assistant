@@ -154,10 +154,10 @@ Không đụng: backend, DB, `data/seed-knowledge-base.json`, `backend/data/`,
 ## 5. Rủi ro và điểm cần biết
 
 **Tự gửi tiêu lượt miễn phí của khách.** Khách chưa đăng nhập có `FREE_GUEST_TURNS`
-lượt (mặc định 3), đếm theo `X-Guest-Id` của thiết bị. Mỗi lần bấm nút hỏi AI từ danh
+lượt (mặc định 10), đếm theo `X-Guest-Id` của thiết bị. Mỗi lần bấm nút hỏi AI từ danh
 mục hoặc trang chi tiết **mất 1 lượt**. Ban giám khảo bấm thử vài thủ tục là hết lượt
-và bị chặn. Task này **không** đổi hạn mức — chỉ ghi nhận; nếu cần nới cho buổi thi thì
-chỉnh env trên Railway, là việc vận hành riêng.
+và bị chặn. Task này **không** đổi hạn mức — chỉ ghi nhận; hạn mức đã được nới từ 3 lên
+10 ngày 14/08/2026 cho buổi thi (đổi cả default trong code lẫn env trên Railway).
 
 **Emoji lĩnh vực là hardcode.** Bảng ánh xạ tên lĩnh vực → emoji nằm trong code. Đổi tên
 lĩnh vực trong DB (ví dụ "Lao động - Xã hội" → "Lao động, Thương binh và Xã hội") sẽ mất
